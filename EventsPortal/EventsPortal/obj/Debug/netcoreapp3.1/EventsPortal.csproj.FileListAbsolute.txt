@@ -2,7 +2,6 @@ D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\appsettings.Developm
 D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\appsettings.json
 D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\EventsPortal.exe
-D:\WebAPI\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.csprojAssemblyReference.cache
 D:\WebAPI\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.AssemblyInfoInputs.cache
 D:\WebAPI\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.AssemblyInfo.cs
 D:\WebAPI\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.RazorTargetAssemblyInfo.cache
@@ -52,3 +51,10 @@ D:\WebAPI\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.MvcAppl
 D:\WebAPI\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.dll
 D:\WebAPI\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.pdb
 D:\WebAPI\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.genruntimeconfig.cache
+D:\WebAPI\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.csprojAssemblyReference.cache
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Core.dll
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Repository.dll
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Service.dll
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Repository.pdb
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Service.pdb
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Core.pdb

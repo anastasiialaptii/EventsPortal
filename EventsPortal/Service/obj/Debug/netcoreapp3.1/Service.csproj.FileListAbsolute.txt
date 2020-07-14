@@ -1,0 +1,12 @@
+D:\WebAPI\EventsPortal\Service\bin\Debug\netcoreapp3.1\Service.deps.json
+D:\WebAPI\EventsPortal\Service\bin\Debug\netcoreapp3.1\Service.dll
+D:\WebAPI\EventsPortal\Service\bin\Debug\netcoreapp3.1\Service.pdb
+D:\WebAPI\EventsPortal\Service\bin\Debug\netcoreapp3.1\Core.dll
+D:\WebAPI\EventsPortal\Service\bin\Debug\netcoreapp3.1\Core.pdb
+D:\WebAPI\EventsPortal\Service\obj\Debug\netcoreapp3.1\Service.csprojAssemblyReference.cache
+D:\WebAPI\EventsPortal\Service\obj\Debug\netcoreapp3.1\Service.AssemblyInfoInputs.cache
+D:\WebAPI\EventsPortal\Service\obj\Debug\netcoreapp3.1\Service.AssemblyInfo.cs
+D:\WebAPI\EventsPortal\Service\obj\Debug\netcoreapp3.1\Service.csproj.CopyComplete
+D:\WebAPI\EventsPortal\Service\obj\Debug\netcoreapp3.1\Service.dll
+D:\WebAPI\EventsPortal\Service\obj\Debug\netcoreapp3.1\Service.pdb
+D:\WebAPI\EventsPortal\Service\obj\Debug\netcoreapp3.1\Service.csproj.CoreCompileInputs.cache

@@ -1,10 +1,11 @@
-using DAL.EventsPortalDbContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Repository;
+using Service;
 
 namespace EventsPortal
 {
@@ -19,8 +20,8 @@ namespace EventsPortal
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<EventsPortalDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("EventsPortalConnection")));
+            services.AddDbContext<AppContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EventsPortalConnection")));
+            services.AddTransient<IRoleService, RoleService>();
 
             services.AddCors(options =>
             {
