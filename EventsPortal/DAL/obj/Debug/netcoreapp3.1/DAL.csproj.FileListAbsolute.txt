@@ -1,0 +1,9 @@
+D:\WebAPI\EventsPortal\DAL\bin\Debug\netcoreapp3.1\DAL.deps.json
+D:\WebAPI\EventsPortal\DAL\bin\Debug\netcoreapp3.1\DAL.dll
+D:\WebAPI\EventsPortal\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfoInputs.cache
+D:\WebAPI\EventsPortal\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfo.cs
+D:\WebAPI\EventsPortal\DAL\bin\Debug\netcoreapp3.1\DAL.pdb
+D:\WebAPI\EventsPortal\DAL\obj\Debug\netcoreapp3.1\DAL.csprojAssemblyReference.cache
+D:\WebAPI\EventsPortal\DAL\obj\Debug\netcoreapp3.1\DAL.dll
+D:\WebAPI\EventsPortal\DAL\obj\Debug\netcoreapp3.1\DAL.pdb
+D:\WebAPI\EventsPortal\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CoreCompileInputs.cache
