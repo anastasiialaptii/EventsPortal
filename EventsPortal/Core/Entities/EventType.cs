@@ -1,6 +1,6 @@
 ﻿namespace Core.Entities
 {
-    public class Role
+    public class EventType
     {
         public int Id { get; set; }
 

@@ -7,12 +7,12 @@ namespace Service
 {
     public class RoleService : IRoleService
     {
-        public IEnumerable<Role> GetProduct()
+        public IEnumerable<UserRole> GetProduct()
         {
             throw new NotImplementedException();
         }
 
-        public Role GetProduct(int id)
+        public UserRole GetProduct(int id)
         {
             throw new NotImplementedException();
         }

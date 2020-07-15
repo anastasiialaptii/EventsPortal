@@ -20,7 +20,7 @@ namespace EventsPortal
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EventsPortalConnection")));
+            services.AddDbContext<EventsPortalDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EventsPortalConnection")));
             services.AddTransient<IRoleService, RoleService>();
 
             services.AddCors(options =>

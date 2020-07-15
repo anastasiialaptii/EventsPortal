@@ -9,4 +9,7 @@ D:\WebAPI\EventsPortal\Service\obj\Debug\netcoreapp3.1\Service.AssemblyInfo.cs
 D:\WebAPI\EventsPortal\Service\obj\Debug\netcoreapp3.1\Service.csproj.CopyComplete
 D:\WebAPI\EventsPortal\Service\obj\Debug\netcoreapp3.1\Service.dll
 D:\WebAPI\EventsPortal\Service\obj\Debug\netcoreapp3.1\Service.pdb
+D:\WebAPI\EventsPortal\Service\bin\Debug\netcoreapp3.1\Service.runtimeconfig.json
+D:\WebAPI\EventsPortal\Service\bin\Debug\netcoreapp3.1\Service.runtimeconfig.dev.json
 D:\WebAPI\EventsPortal\Service\obj\Debug\netcoreapp3.1\Service.csproj.CoreCompileInputs.cache
+D:\WebAPI\EventsPortal\Service\obj\Debug\netcoreapp3.1\Service.genruntimeconfig.cache

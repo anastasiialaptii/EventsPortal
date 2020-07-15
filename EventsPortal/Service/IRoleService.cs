@@ -5,7 +5,7 @@ namespace Service
 {
     public interface IRoleService
     {
-        IEnumerable<Role> GetProduct();
-        Role GetProduct(int id);
+        IEnumerable<UserRole> GetProduct();
+        UserRole GetProduct(int id);
     }
 }

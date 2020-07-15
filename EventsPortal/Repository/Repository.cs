@@ -1,27 +1,27 @@
 ﻿using Core.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Repository
 {
-    public class Repository: IRepository<Role>
+    public class Repository : IRepository<UserRole>
     {
-        private readonly AppContext context;
-       private readonly DbSet<Role> entities;
-        public Repository(AppContext context)
+        private readonly EventsPortalDbContext context;
+        private readonly DbSet<UserRole> entities;
+        public Repository(EventsPortalDbContext context)
         {
             this.context = context;
         }
-        public IEnumerable<Role> GetAll()
+
+        public IEnumerable<UserRole> GetAll()
         {
             return entities.AsEnumerable();
         }
-        public Role Get(int id)
+
+        public UserRole Get(int id)
         {
-            return entities.SingleOrDefault(p => p.Id== id);
+            return entities.SingleOrDefault(p => p.Id == id);
         }
     }
 }
