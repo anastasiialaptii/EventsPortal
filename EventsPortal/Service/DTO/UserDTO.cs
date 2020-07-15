@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Core.Entities
+namespace Service.DTO
 {
-    public class User
+    public class UserDTO
     {
         public int Id { get; set; }
 
@@ -12,8 +12,8 @@ namespace Core.Entities
 
         public byte[] AvatarImage { get; set; }
 
-        public UserRole UserRole { get; set; }
+        public UserRoleDTO UserRoleDTO { get; set; }
 
-        public ICollection<Visit> Visits { get; set; }
+        public ICollection<VisitDTO> VisitsDTO { get; set; }
     }
 }

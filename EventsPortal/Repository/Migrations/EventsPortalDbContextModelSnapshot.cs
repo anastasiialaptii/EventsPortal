@@ -50,7 +50,7 @@ namespace Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Event");
+                    b.ToTable("Events");
                 });
 
             modelBuilder.Entity("Core.Entities.EventType", b =>
@@ -90,9 +90,6 @@ namespace Data.Migrations
                     b.Property<byte[]>("AvatarImage")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<int?>("EventId")
-                        .HasColumnType("int");
-
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
@@ -103,8 +100,6 @@ namespace Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EventId");
 
                     b.HasIndex("UserRoleId");
 
@@ -160,16 +155,12 @@ namespace Data.Migrations
                         .HasForeignKey("EventTypeId");
 
                     b.HasOne("Core.Entities.User", "User")
-                        .WithMany("Events")
+                        .WithMany()
                         .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Core.Entities.User", b =>
                 {
-                    b.HasOne("Core.Entities.Event", null)
-                        .WithMany("Users")
-                        .HasForeignKey("EventId");
-
                     b.HasOne("Core.Entities.UserRole", "UserRole")
                         .WithMany("Users")
                         .HasForeignKey("UserRoleId");

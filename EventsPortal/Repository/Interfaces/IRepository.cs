@@ -12,9 +12,9 @@ namespace Repository
 
         void Update(T item);
 
-        IEnumerable<T> GetAllAsync();
+        Task<IEnumerable<T>> GetAllAsync();
 
-        Task<T> FindItemAsync(Func<T, bool> item);
+        T FindItemAsync(Func<T, bool> item);
 
         Task<T> GetIdAsync(int? id);
     }

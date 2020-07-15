@@ -42,8 +42,7 @@ namespace Data.Migrations
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     AvatarImage = table.Column<byte[]>(nullable: true),
-                    UserRoleId = table.Column<int>(nullable: true),
-                    EventId = table.Column<int>(nullable: true)
+                    UserRoleId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -57,7 +56,7 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Event",
+                name: "Events",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -71,15 +70,15 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Event", x => x.Id);
+                    table.PrimaryKey("PK_Events", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Event_EventTypes_EventTypeId",
+                        name: "FK_Events_EventTypes_EventTypeId",
                         column: x => x.EventTypeId,
                         principalTable: "EventTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Event_User_UserId",
+                        name: "FK_Events_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
@@ -97,9 +96,9 @@ namespace Data.Migrations
                 {
                     table.PrimaryKey("PK_Visit", x => new { x.EventId, x.UserId });
                     table.ForeignKey(
-                        name: "FK_Visit_Event_EventId",
+                        name: "FK_Visit_Events_EventId",
                         column: x => x.EventId,
-                        principalTable: "Event",
+                        principalTable: "Events",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -129,19 +128,14 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Event_EventTypeId",
-                table: "Event",
+                name: "IX_Events_EventTypeId",
+                table: "Events",
                 column: "EventTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Event_UserId",
-                table: "Event",
+                name: "IX_Events_UserId",
+                table: "Events",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_EventId",
-                table: "User",
-                column: "EventId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_User_UserRoleId",
@@ -152,37 +146,21 @@ namespace Data.Migrations
                 name: "IX_Visit_UserId",
                 table: "Visit",
                 column: "UserId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_User_Event_EventId",
-                table: "User",
-                column: "EventId",
-                principalTable: "Event",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Event_EventTypes_EventTypeId",
-                table: "Event");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Event_User_UserId",
-                table: "Event");
-
             migrationBuilder.DropTable(
                 name: "Visit");
+
+            migrationBuilder.DropTable(
+                name: "Events");
 
             migrationBuilder.DropTable(
                 name: "EventTypes");
 
             migrationBuilder.DropTable(
                 name: "User");
-
-            migrationBuilder.DropTable(
-                name: "Event");
 
             migrationBuilder.DropTable(
                 name: "UserRole");

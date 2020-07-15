@@ -7,9 +7,7 @@ namespace Core.EntitiesBuilder
     {
         public EventBuilder(EntityTypeBuilder<Event> entityBuilder)
         {
-            entityBuilder
-                .HasOne(x => x.User)
-                .WithMany(w => w.Events);
+            entityBuilder.HasKey(x => x.Id);
         }
     }
 }

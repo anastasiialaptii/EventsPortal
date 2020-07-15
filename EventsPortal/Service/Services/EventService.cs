@@ -1,19 +1,21 @@
 ﻿using AutoMapper;
-using Core.Entities;
 using Data.Interfaces;
 using Service.DTO;
 using Service.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Service.Services
 {
-    public class EventTypeService : IEventsTypeService
+    public class EventService : IEventService
     {
         private readonly IUnitOfWork _dbOperation;
         private readonly IMapper _mapper;
 
-        public EventTypeService(
+        public EventService(
             IUnitOfWork uow,
             IMapper mapper)
         {
@@ -21,9 +23,9 @@ namespace Service.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<EventTypeDTO> GetEventsType()
+        public async Task<IEnumerable<EventDTO>> GetEvents()
         {
-            return _mapper.Map<List<EventTypeDTO>>( _dbOperation.EventTypes.GetAllAsync());
+            return _mapper.Map<List<EventDTO>>(await _dbOperation.Events.GetAllAsync());
         }
     }
 }

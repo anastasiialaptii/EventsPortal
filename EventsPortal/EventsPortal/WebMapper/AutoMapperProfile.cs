@@ -2,14 +2,14 @@
 using EventsPortal.ViewModel;
 using Service.DTO;
 
-namespace EventsPortal
+namespace EventsPortal.WebMapper
 {
     public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
         {
-            CreateMap<EventTypeViewModel, EventTypeDTO>();
-            CreateMap<EventTypeDTO, EventTypeViewModel>();
+            CreateMap<EventViewModel, EventDTO>();
+            CreateMap<EventDTO, EventViewModel>();
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Core.Entities
+namespace Service.DTO
 {
-    public class Event
+    public class EventDTO
     {
         public int Id { get; set; }
 
@@ -14,10 +14,10 @@ namespace Core.Entities
 
         public byte[] Image { get; set; }
 
-        public EventType EventType { get; set; }
+        public EventTypeDTO EventTypeDTO { get; set; }
 
-        public User User { get; set; }
+        public UserDTO User { get; set; }
 
-        public ICollection<Visit> Visits { get; set; }
+        public ICollection<VisitDTO> VisitsDTO { get; set; }
     }
 }

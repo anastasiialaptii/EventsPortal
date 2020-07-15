@@ -46,7 +46,8 @@ namespace EventsPortal
             });
 
             services.AddDbContext<EventsPortalDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EventsPortalConnection")));
-            services.AddTransient<IEventsTypeService, EventTypeService>();
+
+            services.AddTransient<IEventService, EventService>();
             services.AddTransient<IUnitOfWork, EventsPortalUnitOfWork>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

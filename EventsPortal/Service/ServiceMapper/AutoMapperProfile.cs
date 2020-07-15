@@ -2,14 +2,14 @@
 using Core.Entities;
 using Service.DTO;
 
-namespace Service
+namespace Service.ServiceMapper
 {
     public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
         {
-            CreateMap<EventType, EventTypeDTO>();
-            CreateMap<EventTypeDTO, EventType>();
+            CreateMap<Event, EventDTO>();
+            CreateMap<EventDTO, Event>();
         }
     }
 }

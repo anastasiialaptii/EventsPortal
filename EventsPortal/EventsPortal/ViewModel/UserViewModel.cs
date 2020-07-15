@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Core.Entities
+namespace EventsPortal.ViewModel
 {
-    public class User
+    public class UserViewModel
     {
         public int Id { get; set; }
 
@@ -12,8 +12,8 @@ namespace Core.Entities
 
         public byte[] AvatarImage { get; set; }
 
-        public UserRole UserRole { get; set; }
+        public UserRoleViewModel UserRoleViewModel { get; set; }
 
-        public ICollection<Visit> Visits { get; set; }
+        public ICollection<VisitViewModel> VisitsViewModel { get; set; }
     }
 }

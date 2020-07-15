@@ -10,20 +10,20 @@ namespace Data.Repository
     {
         private readonly EventsPortalDbContext _dbContext;
 
-        private EventTypeRepository eventTypeRepository;
+        private EventRepository eventRepository;
 
         public EventsPortalUnitOfWork(DbContextOptions<EventsPortalDbContext> options)
         {
             _dbContext = new EventsPortalDbContext(options);
         }
 
-        public IRepository<EventType> EventTypes
+        public IRepository<Event> Events
         {
             get
             {
-                if (eventTypeRepository == null)
-                    eventTypeRepository = new EventTypeRepository(_dbContext);
-                return eventTypeRepository;
+                if (eventRepository == null)
+                    eventRepository = new EventRepository(_dbContext);
+                return eventRepository;
             }
         }
 

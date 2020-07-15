@@ -6,7 +6,7 @@ namespace Data.Interfaces
 {
     public interface IUnitOfWork
     {
-        IRepository<EventType> EventTypes { get; }
+        IRepository<Event> Events { get; }
 
         Task Save();
     }

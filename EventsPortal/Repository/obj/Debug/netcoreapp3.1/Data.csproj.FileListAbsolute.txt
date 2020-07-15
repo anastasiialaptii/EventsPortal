@@ -8,8 +8,8 @@ D:\WebAPI\EventsPortal\Repository\bin\Debug\netcoreapp3.1\Core.pdb
 D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.csprojAssemblyReference.cache
 D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.AssemblyInfoInputs.cache
 D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.AssemblyInfo.cs
-D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.csproj.CoreCompileInputs.cache
 D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.csproj.CopyComplete
 D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.dll
 D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.pdb
 D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.genruntimeconfig.cache
+D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.csproj.CoreCompileInputs.cache
