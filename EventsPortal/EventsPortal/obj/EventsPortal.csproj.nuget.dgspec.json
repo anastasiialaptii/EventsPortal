@@ -95,9 +95,6 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\WebAPI\\EventsPortal\\Repository\\Data.csproj": {
-                "projectPath": "D:\\WebAPI\\EventsPortal\\Repository\\Data.csproj"
-              },
               "D:\\WebAPI\\EventsPortal\\Service\\Service.csproj": {
                 "projectPath": "D:\\WebAPI\\EventsPortal\\Service\\Service.csproj"
               }
@@ -113,6 +110,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.6, )"
@@ -279,6 +280,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
             "Microsoft.AspNetCore.Mvc.Core": {
               "target": "Package",
               "version": "[2.2.5, )"

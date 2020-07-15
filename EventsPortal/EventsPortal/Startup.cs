@@ -1,3 +1,4 @@
+using AutoMapper;
 using Data.Interfaces;
 using Data.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Repository;
 using Service.Interfaces;
 using Service.Services;
+using System;
 
 namespace EventsPortal
 {
@@ -46,7 +48,9 @@ namespace EventsPortal
             services.AddDbContext<EventsPortalDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EventsPortalConnection")));
             services.AddTransient<IEventsTypeService, EventTypeService>();
             services.AddTransient<IUnitOfWork, EventsPortalUnitOfWork>();
- 
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

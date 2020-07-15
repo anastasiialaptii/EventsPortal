@@ -1,5 +1,7 @@
-﻿using Core.Entities;
+﻿using AutoMapper;
+using Core.Entities;
 using Data.Repository;
+using EventsPortal.ViewModel;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
@@ -16,18 +18,19 @@ namespace EventsPortal.Controllers
     public class TestController : ControllerBase
     {
         private readonly IEventsTypeService _eventsTypeService;
+        private IMapper _mapper;
 
-        public TestController(IEventsTypeService eventsTypeService)
+        public TestController(IEventsTypeService eventsTypeService, IMapper mapper)
         {
             _eventsTypeService = eventsTypeService;
+            _mapper = mapper;
 
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<EventType>> GetAll()
+        public ActionResult<IEnumerable<EventTypeViewModel>> GetAll()
         {
-            return  _eventsTypeService.GetEventsType().ToList();
-                
+            return  _mapper.Map<List<EventTypeViewModel>>(_eventsTypeService.GetEventsType().ToList());                
         }
     }
 }
