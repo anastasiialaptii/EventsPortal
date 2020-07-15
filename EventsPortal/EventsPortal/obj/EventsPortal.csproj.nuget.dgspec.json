@@ -95,8 +95,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\WebAPI\\EventsPortal\\Repository\\Repository.csproj": {
-                "projectPath": "D:\\WebAPI\\EventsPortal\\Repository\\Repository.csproj"
+              "D:\\WebAPI\\EventsPortal\\Repository\\Data.csproj": {
+                "projectPath": "D:\\WebAPI\\EventsPortal\\Repository\\Data.csproj"
               },
               "D:\\WebAPI\\EventsPortal\\Service\\Service.csproj": {
                 "projectPath": "D:\\WebAPI\\EventsPortal\\Service\\Service.csproj"
@@ -121,11 +121,19 @@
               "target": "Package",
               "version": "[3.1.6, )"
             },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.6, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.3, )"
             },
             "System.Configuration.ConfigurationManager": {
               "target": "Package",
@@ -154,12 +162,12 @@
         }
       }
     },
-    "D:\\WebAPI\\EventsPortal\\Repository\\Repository.csproj": {
+    "D:\\WebAPI\\EventsPortal\\Repository\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WebAPI\\EventsPortal\\Repository\\Repository.csproj",
-        "projectName": "Repository",
-        "projectPath": "D:\\WebAPI\\EventsPortal\\Repository\\Repository.csproj",
+        "projectUniqueName": "D:\\WebAPI\\EventsPortal\\Repository\\Data.csproj",
+        "projectName": "Data",
+        "projectPath": "D:\\WebAPI\\EventsPortal\\Repository\\Data.csproj",
         "packagesPath": "C:\\Users\\Office\\.nuget\\packages\\",
         "outputPath": "D:\\WebAPI\\EventsPortal\\Repository\\obj\\",
         "projectStyle": "PackageReference",
@@ -255,6 +263,9 @@
             "projectReferences": {
               "D:\\WebAPI\\EventsPortal\\Core\\Core.csproj": {
                 "projectPath": "D:\\WebAPI\\EventsPortal\\Core\\Core.csproj"
+              },
+              "D:\\WebAPI\\EventsPortal\\Repository\\Data.csproj": {
+                "projectPath": "D:\\WebAPI\\EventsPortal\\Repository\\Data.csproj"
               }
             }
           }
@@ -268,6 +279,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.6, )"

@@ -1,11 +1,15 @@
+using Data.Interfaces;
+using Data.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Repository;
-using Service;
+using Service.Interfaces;
+using Service.Services;
 
 namespace EventsPortal
 {
@@ -20,8 +24,15 @@ namespace EventsPortal
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<EventsPortalDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EventsPortalConnection")));
-            services.AddTransient<IRoleService, RoleService>();
+            services.AddControllers();
+
+            services.AddMvc()
+               .SetCompatibilityVersion(CompatibilityVersion.Latest)
+               .AddJsonOptions(options =>
+               {
+                   options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                   options.JsonSerializerOptions.PropertyNamingPolicy = null;
+               });
 
             services.AddCors(options =>
             {
@@ -31,6 +42,11 @@ namespace EventsPortal
                     .AllowAnyHeader()
                     );
             });
+
+            services.AddDbContext<EventsPortalDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EventsPortalConnection")));
+            services.AddTransient<IEventsTypeService, EventTypeService>();
+            services.AddTransient<IUnitOfWork, EventsPortalUnitOfWork>();
+ 
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

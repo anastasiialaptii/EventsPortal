@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository;
 
-namespace Repository.Migrations
+namespace Data.Migrations
 {
     [DbContext(typeof(EventsPortalDbContext))]
     partial class EventsPortalDbContextModelSnapshot : ModelSnapshot
@@ -65,7 +65,7 @@ namespace Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EventType");
+                    b.ToTable("EventTypes");
 
                     b.HasData(
                         new

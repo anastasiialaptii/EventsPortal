@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ivw9/VFtZjOCupH8FHmPLBDuRanAItPPWFKl5fmuPaNppKccJP9flRssbsz2t4T3F8Waj0vsF+UrHgzdIVdqrA==",
+  "dgSpecHash": "AdxkJERCBZ0CYPY7b1KgEbIxNxEUd/HiF+wrOx3Jihqc2j+QxLhExcLqPS6HlIqC4cCxvFz+K0YR45E0XxOg6A==",
   "success": true,
-  "projectFilePath": "D:\\WebAPI\\EventsPortal\\Repository\\Repository.csproj",
+  "projectFilePath": "D:\\WebAPI\\EventsPortal\\Repository\\Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Office\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Office\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

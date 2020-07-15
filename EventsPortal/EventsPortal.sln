@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventsPortal", "EventsPortal\EventsPortal.csproj", "{47E5228C-E952-408B-BBED-80B1852028D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{8E079C95-DE35-4E16-8A9E-A6598A0FE967}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{8E079C95-DE35-4E16-8A9E-A6598A0FE967}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{7AB2E713-42AD-4605-83D6-080D1F632CA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Repository\Data.csproj", "{7AB2E713-42AD-4605-83D6-080D1F632CA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{AB9EDC64-3CEA-4E09-801D-06AE17DE04CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{AB9EDC64-3CEA-4E09-801D-06AE17DE04CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
