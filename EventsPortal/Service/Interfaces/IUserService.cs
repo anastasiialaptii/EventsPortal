@@ -8,9 +8,9 @@ namespace Service.Interfaces
     {
         Task<IEnumerable<UserDTO>> GetUsers();
 
-        Task<UserDTO> GetUserById();
+        Task<UserDTO> GetUserById(int? id);
 
-        Task DeleteUser(UserDTO UserDTO);
+        Task DeleteUser(int? id);
 
         Task EditUser(UserDTO UserDTO);
 

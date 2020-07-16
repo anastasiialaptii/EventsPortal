@@ -34,6 +34,7 @@ namespace EventsPortal
                {
                    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
                    options.JsonSerializerOptions.PropertyNamingPolicy = null;
+
                });
 
             services.AddCors(options =>
@@ -45,9 +46,11 @@ namespace EventsPortal
                     );
             });
 
-            services.AddDbContext<EventsPortalDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EventsPortalConnection")));
+            services.AddDbContext<EventsPortalDbContext>(options =>
+                 options.UseSqlServer(Configuration.GetConnectionString("EventsPortalConnection")));
 
             services.AddTransient<IEventService, EventService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddTransient<IUnitOfWork, EventsPortalUnitOfWork>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

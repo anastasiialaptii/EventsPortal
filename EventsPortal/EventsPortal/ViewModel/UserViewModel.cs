@@ -12,8 +12,12 @@ namespace EventsPortal.ViewModel
 
         public string AvatarImageURI { get; set; }
 
+        public int UserRoleId { get; set; }
+
         public virtual UserRoleViewModel UserRoleViewModel { get; set; }
 
         public virtual ICollection<VisitViewModel> VisitsViewModel { get; set; }
+
+        public virtual ICollection<EventViewModel> EventsViewModel { get; set; }
     }
 }

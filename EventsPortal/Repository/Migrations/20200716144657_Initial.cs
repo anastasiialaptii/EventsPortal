@@ -2,7 +2,7 @@
 
 namespace Data.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -41,7 +41,7 @@ namespace Data.Migrations
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     AvatarImageURI = table.Column<string>(nullable: true),
-                    UserRoleId = table.Column<int>(nullable: true)
+                    UserRoleId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -51,7 +51,7 @@ namespace Data.Migrations
                         column: x => x.UserRoleId,
                         principalTable: "UserRole",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

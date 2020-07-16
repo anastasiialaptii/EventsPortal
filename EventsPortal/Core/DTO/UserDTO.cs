@@ -12,6 +12,8 @@ namespace Service.DTO
 
         public string AvatarImageURI { get; set; }
 
+        public int UserRoleId { get; set; }
+
         public virtual UserRoleDTO UserRoleDTO { get; set; }
 
         public virtual ICollection<VisitDTO> VisitsDTO { get; set; }

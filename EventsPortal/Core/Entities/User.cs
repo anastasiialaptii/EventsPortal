@@ -12,6 +12,8 @@ namespace Core.Entities
 
         public string AvatarImageURI { get; set; }
 
+        public int UserRoleId { get; set; }
+
         public virtual UserRole UserRole { get; set; }
 
         public virtual ICollection<Visit> Visits { get; set; }

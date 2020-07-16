@@ -28,7 +28,7 @@ namespace Data.Repository
 
         public void Delete(User item)
         {
-            var deleteItem = _dbContext.Users.Find(item);
+            var deleteItem = _dbContext.Users.Find(item.Id);
 
             if (deleteItem != null)
             {
@@ -54,13 +54,7 @@ namespace Data.Repository
         {
             if (id != null)
             {
-                var searchItem = await _dbContext.Users.FindAsync(id);
-
-                if (searchItem != null)
-                {
-                    return searchItem;
-                }
-                else throw new ArgumentNullException();
+                return await _dbContext.Users.FindAsync(id);
             }
             else throw new ArgumentNullException();
         }
