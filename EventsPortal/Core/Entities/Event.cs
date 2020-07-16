@@ -12,7 +12,7 @@ namespace Core.Entities
 
         public string Descriprion { get; set; }
 
-        public string Image { get; set; }
+        public string ImageURI { get; set; }
 
         public EventType EventType { get; set; }
 

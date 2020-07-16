@@ -7,5 +7,13 @@ namespace Service.Interfaces
     public interface IEventService
     {
         Task<IEnumerable<EventDTO>> GetEvents();
+
+        Task<EventDTO> GetEventById(int? id);
+
+        Task DeleteEvent (int? id);
+
+        Task EditEvent(EventDTO eventDTO);
+
+        Task AddEvent(EventDTO eventDTO);
     }
 }

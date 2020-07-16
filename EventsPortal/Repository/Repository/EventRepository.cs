@@ -23,7 +23,6 @@ namespace Data.Repository
             {
                 _dbContext.Events.Add(item);
             }
-            else throw new ArgumentNullException();
         }
 
         public void Delete(Event item)
@@ -34,14 +33,17 @@ namespace Data.Repository
             {
                 _dbContext.Events.Remove(deleteItem);
             }
-            else throw new ArgumentNullException();
         }
 
         public Event FindItemAsync(Func<Event, bool> item)
         {
-            return _dbContext.Events
-                .Where(item)
-                .FirstOrDefault();
+            if (item != null)
+            {
+                return _dbContext.Events
+                    .Where(item)
+                    .FirstOrDefault();
+            }
+            else throw new ArgumentNullException();
         }
 
         public async Task<IEnumerable<Event>> GetAllAsync()
@@ -54,11 +56,7 @@ namespace Data.Repository
         {
             if (id != null)
             {
-                var searchItem = await _dbContext.Events.FindAsync(id);
-
-                if (searchItem != null)
-                    return searchItem;
-                else throw new ArgumentNullException();
+                return await _dbContext.Events.FindAsync(id);
             }
             else throw new ArgumentNullException();
         }
@@ -69,7 +67,6 @@ namespace Data.Repository
             {
                 _dbContext.Entry(item).State = EntityState.Modified;
             }
-            else throw new ArgumentNullException();
         }
     }
 }

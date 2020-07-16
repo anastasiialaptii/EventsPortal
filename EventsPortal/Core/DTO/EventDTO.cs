@@ -12,7 +12,7 @@ namespace Service.DTO
 
         public string Descriprion { get; set; }
 
-        public string Image { get; set; }
+        public string ImageURI { get; set; }
 
         public EventTypeDTO EventTypeDTO { get; set; }
 

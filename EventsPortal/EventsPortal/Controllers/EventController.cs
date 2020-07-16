@@ -2,7 +2,9 @@
 using EventsPortal.ViewModel;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Service.DTO;
 using Service.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,6 +31,49 @@ namespace EventsPortal.Controllers
         {
             return _mapper.Map<List<EventViewModel>>
                 (await _eventService.GetEvents()).ToList();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<EventViewModel>> GetEventById(int? id)
+        {
+            if (id != null)
+            {
+                var serachItem = await _eventService.GetEventById(id);
+
+                if (serachItem != null)
+                {
+                    return _mapper.Map<EventViewModel>(serachItem);
+                }
+                else return NotFound();
+            }
+            else throw new ArgumentNullException();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<EventViewModel>> CreateEvent(EventViewModel eventViewModel)
+        {
+            if (eventViewModel != null)
+            {
+                await _eventService.AddEvent(
+                    _mapper.Map<EventDTO>(eventViewModel));
+            }
+            return CreatedAtAction(nameof(GetEventById), new { id = eventViewModel.Id }, eventViewModel);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteEvent(int? id)
+        {
+            if (id != null)
+            {
+                var searchItem = await _eventService.GetEventById(id);
+                if (searchItem != null)
+                {
+                    await _eventService.DeleteEvent(id);
+                    return NoContent();
+                }
+                else return NotFound();
+            }
+            else throw new ArgumentNullException();
         }
     }
 }
