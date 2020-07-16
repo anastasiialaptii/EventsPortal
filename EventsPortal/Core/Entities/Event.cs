@@ -14,10 +14,14 @@ namespace Core.Entities
 
         public string ImageURI { get; set; }
 
-        public EventType EventType { get; set; }
+        public int EventTypeId { get; set; }
 
-        public User Organizer { get; set; } 
+        public int OrganizerId { get; set; }
 
-        public ICollection<Visit> Visits { get; set; }
+        public virtual EventType EventType { get; set; }
+
+        public virtual User Organizer { get; set; }
+
+        public virtual ICollection<Visit> Visits { get; set; }
     }
 }

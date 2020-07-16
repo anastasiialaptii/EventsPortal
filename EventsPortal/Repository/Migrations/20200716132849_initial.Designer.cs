@@ -10,8 +10,8 @@ using Repository;
 namespace Data.Migrations
 {
     [DbContext(typeof(EventsPortalDbContext))]
-    [Migration("20200716081924_Rename_attribute")]
-    partial class Rename_attribute
+    [Migration("20200716132849_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,10 +31,10 @@ namespace Data.Migrations
                     b.Property<string>("Descriprion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EventTypeId")
+                    b.Property<int>("EventTypeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Image")
+                    b.Property<string>("ImageURI")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")
@@ -43,7 +43,7 @@ namespace Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("OrganizerId")
+                    b.Property<int>("OrganizerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -67,7 +67,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EventTypes");
+                    b.ToTable("EventType");
 
                     b.HasData(
                         new
@@ -105,7 +105,7 @@ namespace Data.Migrations
 
                     b.HasIndex("UserRoleId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Core.Entities.UserRole", b =>
@@ -147,18 +147,22 @@ namespace Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Visit");
+                    b.ToTable("Visits");
                 });
 
             modelBuilder.Entity("Core.Entities.Event", b =>
                 {
                     b.HasOne("Core.Entities.EventType", "EventType")
-                        .WithMany()
-                        .HasForeignKey("EventTypeId");
+                        .WithMany("Events")
+                        .HasForeignKey("EventTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Core.Entities.User", "Organizer")
-                        .WithMany()
-                        .HasForeignKey("OrganizerId");
+                        .WithMany("Events")
+                        .HasForeignKey("OrganizerId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Core.Entities.User", b =>

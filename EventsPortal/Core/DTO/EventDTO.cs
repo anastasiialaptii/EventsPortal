@@ -14,10 +14,14 @@ namespace Service.DTO
 
         public string ImageURI { get; set; }
 
-        public EventTypeDTO EventTypeDTO { get; set; }
+        public int EventTypeId { get; set; }
 
-        public UserDTO OrganizerDTO { get; set; }
+        public int OrganizerId { get; set; }
 
-        public ICollection<VisitDTO> VisitsDTO { get; set; }
+        public virtual EventTypeDTO EventTypeDTO { get; set; }
+
+        public virtual UserDTO OrganizerDTO { get; set; }
+
+        public virtual ICollection<VisitDTO> VisitsDTO { get; set; }
     }
 }

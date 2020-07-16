@@ -29,7 +29,7 @@ namespace Data.Migrations
                     b.Property<string>("Descriprion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EventTypeId")
+                    b.Property<int>("EventTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("ImageURI")
@@ -41,7 +41,7 @@ namespace Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("OrganizerId")
+                    b.Property<int>("OrganizerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -151,12 +151,16 @@ namespace Data.Migrations
             modelBuilder.Entity("Core.Entities.Event", b =>
                 {
                     b.HasOne("Core.Entities.EventType", "EventType")
-                        .WithMany()
-                        .HasForeignKey("EventTypeId");
+                        .WithMany("Events")
+                        .HasForeignKey("EventTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Core.Entities.User", "Organizer")
-                        .WithMany()
-                        .HasForeignKey("OrganizerId");
+                        .WithMany("Events")
+                        .HasForeignKey("OrganizerId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Core.Entities.User", b =>

@@ -14,10 +14,14 @@ namespace EventsPortal.ViewModel
 
         public string ImageURI { get; set; }
 
-        public EventTypeViewModel EventTypeViewModel { get; set; }
+        public int EventTypeId { get; set; }
 
-        public UserViewModel OrganizerViewModel { get; set; }
+        public int OrganizerId { get; set; }
 
-        public ICollection<VisitViewModel> VisitsViewModel { get; set; }
+        public virtual EventTypeViewModel EventTypeViewModel { get; set; }
+
+        public virtual UserViewModel OrganizerViewModel { get; set; }
+
+        public virtual ICollection<VisitViewModel> VisitsViewModel { get; set; }
     }
 }

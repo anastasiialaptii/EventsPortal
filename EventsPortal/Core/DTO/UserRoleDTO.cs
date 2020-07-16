@@ -8,6 +8,6 @@ namespace Service.DTO
 
         public string Name { get; set; }
 
-        public ICollection<UserDTO> UsersDTO { get; set; }
+        public virtual ICollection<UserDTO> UsersDTO { get; set; }
     }
 }

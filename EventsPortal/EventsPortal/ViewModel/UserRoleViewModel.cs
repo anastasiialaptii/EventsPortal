@@ -8,7 +8,7 @@ namespace EventsPortal.ViewModel
 
         public string Name { get; set; }
 
-        public ICollection<UserViewModel> UsersViewModel { get; set; }
+        public virtual ICollection<UserViewModel> UsersViewModel { get; set; }
 
     }
 }

@@ -4,10 +4,10 @@
     {
         public int EventId { get; set; }
 
-        public EventViewModel EventViewModel { get; set; }
+        public virtual EventViewModel EventViewModel { get; set; }
 
         public int UserId { get; set; }
 
-        public UserViewModel UserViewModel { get; set; }
+        public virtual UserViewModel UserViewModel { get; set; }
     }
 }

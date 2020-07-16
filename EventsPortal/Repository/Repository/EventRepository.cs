@@ -49,6 +49,7 @@ namespace Data.Repository
         public async Task<IEnumerable<Event>> GetAllAsync()
         {
             return await _dbContext.Events
+                .Include(x=>x.EventType)
                 .ToListAsync();
         }
 

@@ -8,6 +8,15 @@ namespace Core.EntitiesBuilder
         public EventBuilder(EntityTypeBuilder<Event> entityBuilder)
         {
             entityBuilder.HasKey(x => x.Id);
+
+            entityBuilder
+                .HasOne(x => x.EventType)
+                .WithMany(x => x.Events);
+
+            entityBuilder
+                .HasOne(x => x.Organizer)
+                .WithMany(x => x.Events)
+                .OnDelete(Microsoft.EntityFrameworkCore.DeleteBehavior.NoAction);
         }
     }
 }
