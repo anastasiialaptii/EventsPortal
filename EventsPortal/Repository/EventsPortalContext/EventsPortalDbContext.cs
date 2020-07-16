@@ -7,8 +7,11 @@ namespace Repository
 {
     public class EventsPortalDbContext : DbContext
     {
-        public DbSet<EventType> EventTypes { get; set; }
+        public DbSet<Visit> Visits { get; set; }
+
         public DbSet<Event> Events { get; set; }
+
+        public DbSet<User> Users { get; set; }
 
         public EventsPortalDbContext(DbContextOptions<EventsPortalDbContext> options) : base(options)
         {

@@ -8,53 +8,50 @@ using System.Threading.Tasks;
 
 namespace Data.Repository
 {
-    public class EventRepository : IRepository<Event>
+    public class VisitRepository : IRepository<Visit>
     {
         private readonly EventsPortalDbContext _dbContext;
 
-        public EventRepository(EventsPortalDbContext dbContext)
+        public VisitRepository(EventsPortalDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public void Create(Event item)
+        public void Create(Visit item)
         {
             if (item != null)
             {
-                _dbContext.Events.Add(item);
+                _dbContext.Visits.Add(item);
             }
             else throw new ArgumentNullException();
         }
 
-        public void Delete(Event item)
+        public void Delete(Visit item)
         {
-            var deleteItem = _dbContext.Events.Find(item.Id);
-
-            if (deleteItem != null)
+            if (item != null)
             {
-                _dbContext.Events.Remove(deleteItem);
+                _dbContext.Visits.Remove(item);
             }
             else throw new ArgumentNullException();
         }
 
-        public Event FindItemAsync(Func<Event, bool> item)
+        public Visit FindItemAsync(Func<Visit, bool> item)
         {
-            return _dbContext.Events
-                .Where(item)
-                .FirstOrDefault();
+            return _dbContext.Visits
+                 .Where(item)
+                 .FirstOrDefault();
         }
 
-        public async Task<IEnumerable<Event>> GetAllAsync()
+        public async Task<IEnumerable<Visit>> GetAllAsync()
         {
-            return await _dbContext.Events
-                .ToListAsync();
+            return await _dbContext.Visits.ToListAsync();
         }
 
-        public async Task<Event> GetIdAsync(int? id)
+        public async Task<Visit> GetIdAsync(int? id)
         {
             if (id != null)
             {
-                var searchItem = await _dbContext.Events.FindAsync(id);
+                var searchItem = await _dbContext.Visits.FindAsync(id);
 
                 if (searchItem != null)
                     return searchItem;
@@ -63,7 +60,7 @@ namespace Data.Repository
             else throw new ArgumentNullException();
         }
 
-        public void Update(Event item)
+        public void Update(Visit item)
         {
             if (item != null)
             {

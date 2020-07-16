@@ -11,6 +11,8 @@ namespace Data.Repository
         private readonly EventsPortalDbContext _dbContext;
 
         private EventRepository eventRepository;
+        private UserRepository userRepository;
+        private VisitRepository visitRepository;
 
         public EventsPortalUnitOfWork(DbContextOptions<EventsPortalDbContext> options)
         {
@@ -24,6 +26,26 @@ namespace Data.Repository
                 if (eventRepository == null)
                     eventRepository = new EventRepository(_dbContext);
                 return eventRepository;
+            }
+        }
+
+        public IRepository<User> Users
+        {
+            get
+            {
+                if (userRepository == null)
+                    userRepository = new UserRepository(_dbContext);
+                return userRepository;
+            }
+        }
+
+        public IRepository<Visit> Visits
+        {
+            get
+            {
+                if (visitRepository == null)
+                    visitRepository = new VisitRepository(_dbContext);
+                return visitRepository;
             }
         }
 

@@ -8,6 +8,10 @@ namespace Data.Interfaces
     {
         IRepository<Event> Events { get; }
 
+        IRepository<Visit> Visits { get; }
+
+        IRepository<User> Users { get; }
+
         Task Save();
     }
 }

@@ -8,62 +8,64 @@ using System.Threading.Tasks;
 
 namespace Data.Repository
 {
-    public class EventRepository : IRepository<Event>
+    public class UserRepository : IRepository<User>
     {
         private readonly EventsPortalDbContext _dbContext;
 
-        public EventRepository(EventsPortalDbContext dbContext)
+        public UserRepository(EventsPortalDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public void Create(Event item)
+        public void Create(User item)
         {
             if (item != null)
             {
-                _dbContext.Events.Add(item);
+                _dbContext.Users.Add(item);
             }
             else throw new ArgumentNullException();
         }
 
-        public void Delete(Event item)
+        public void Delete(User item)
         {
-            var deleteItem = _dbContext.Events.Find(item.Id);
+            var deleteItem = _dbContext.Users.Find(item);
 
             if (deleteItem != null)
             {
-                _dbContext.Events.Remove(deleteItem);
+                _dbContext.Users.Remove(deleteItem);
             }
-            else throw new ArgumentNullException();
         }
 
-        public Event FindItemAsync(Func<Event, bool> item)
+        public User FindItemAsync(Func<User, bool> item)
         {
-            return _dbContext.Events
+            return _dbContext.Users
                 .Where(item)
                 .FirstOrDefault();
         }
 
-        public async Task<IEnumerable<Event>> GetAllAsync()
+        public async Task<IEnumerable<User>> GetAllAsync()
         {
-            return await _dbContext.Events
+            return await _dbContext.Users
+                .Include(x => x.UserRole)
                 .ToListAsync();
         }
 
-        public async Task<Event> GetIdAsync(int? id)
+        public async Task<User> GetIdAsync(int? id)
         {
             if (id != null)
             {
-                var searchItem = await _dbContext.Events.FindAsync(id);
+                var searchItem = await _dbContext.Users.FindAsync(id);
 
                 if (searchItem != null)
+                {
                     return searchItem;
+                }
                 else throw new ArgumentNullException();
             }
             else throw new ArgumentNullException();
         }
 
-        public void Update(Event item)
+        public void Update(User item)
         {
             if (item != null)
             {
