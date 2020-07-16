@@ -10,7 +10,7 @@ namespace Core.Entities
 
         public string LastName { get; set; }
 
-        public byte[] AvatarImage { get; set; }
+        public string AvatarImageURI { get; set; }
 
         public UserRole UserRole { get; set; }
 

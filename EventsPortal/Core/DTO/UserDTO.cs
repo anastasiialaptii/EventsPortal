@@ -10,7 +10,7 @@ namespace Service.DTO
 
         public string LastName { get; set; }
 
-        public byte[] AvatarImage { get; set; }
+        public string AvatarImageURI { get; set; }
 
         public UserRoleDTO UserRoleDTO { get; set; }
 

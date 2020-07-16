@@ -10,6 +10,18 @@ namespace Service.ServiceMapper
         {
             CreateMap<Event, EventDTO>();
             CreateMap<EventDTO, Event>();
+
+            CreateMap<Visit, VisitDTO>();
+            CreateMap<VisitDTO, Visit>();
+
+            CreateMap<User, UserDTO>();
+            CreateMap<UserDTO, User>();
+
+            CreateMap<UserRole, UserRoleDTO>();
+            CreateMap<UserRoleDTO, UserRole>();
+
+            CreateMap<EventType, EventTypeDTO>();
+            CreateMap<EventTypeDTO, EventType>();
         }
     }
 }

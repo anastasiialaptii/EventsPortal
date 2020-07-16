@@ -12,11 +12,11 @@ namespace Core.Entities
 
         public string Descriprion { get; set; }
 
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
 
         public EventType EventType { get; set; }
 
-        public User User { get; set; }
+        public User Organizer { get; set; } 
 
         public ICollection<Visit> Visits { get; set; }
     }

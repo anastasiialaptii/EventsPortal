@@ -12,11 +12,11 @@ namespace Service.DTO
 
         public string Descriprion { get; set; }
 
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
 
         public EventTypeDTO EventTypeDTO { get; set; }
 
-        public UserDTO User { get; set; }
+        public UserDTO OrganizerDTO { get; set; }
 
         public ICollection<VisitDTO> VisitsDTO { get; set; }
     }

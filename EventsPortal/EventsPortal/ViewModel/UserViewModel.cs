@@ -10,7 +10,7 @@ namespace EventsPortal.ViewModel
 
         public string LastName { get; set; }
 
-        public byte[] AvatarImage { get; set; }
+        public string AvatarImageURI { get; set; }
 
         public UserRoleViewModel UserRoleViewModel { get; set; }
 

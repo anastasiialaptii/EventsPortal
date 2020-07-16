@@ -10,6 +10,18 @@ namespace EventsPortal.WebMapper
         {
             CreateMap<EventViewModel, EventDTO>();
             CreateMap<EventDTO, EventViewModel>();
+
+            CreateMap<VisitViewModel, VisitDTO>();
+            CreateMap<VisitDTO, VisitViewModel>();
+
+            CreateMap<UserViewModel, UserDTO>();
+            CreateMap<UserDTO, UserViewModel>();
+
+            CreateMap<UserRoleViewModel, UserRoleDTO>();
+            CreateMap<UserRoleDTO, UserRoleViewModel>();
+
+            CreateMap<EventTypeViewModel, EventTypeDTO>();
+            CreateMap<EventTypeDTO, EventTypeViewModel>();
         }
     }
 }
