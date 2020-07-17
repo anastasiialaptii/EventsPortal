@@ -25,7 +25,7 @@ namespace Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Descriprion")
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EventTypeId")
@@ -50,6 +50,38 @@ namespace Data.Migrations
                     b.HasIndex("OrganizerId");
 
                     b.ToTable("Events");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Funny event",
+                            EventTypeId = 1,
+                            ImageURI = "eventImage",
+                            Location = "East Blue",
+                            Name = "B-day party",
+                            OrganizerId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Cool event",
+                            EventTypeId = 1,
+                            ImageURI = "eventImage",
+                            Location = "West Blue",
+                            Name = "Tea party",
+                            OrganizerId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Awesome event",
+                            EventTypeId = 2,
+                            ImageURI = "eventImage",
+                            Location = "South Blue",
+                            Name = "Banquets",
+                            OrganizerId = 1
+                        });
                 });
 
             modelBuilder.Entity("Core.Entities.EventType", b =>
@@ -103,6 +135,32 @@ namespace Data.Migrations
                     b.HasIndex("UserRoleId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AvatarImageURI = "avatarName",
+                            FirstName = "Madara",
+                            LastName = "Uchiha",
+                            UserRoleId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AvatarImageURI = "avatarName",
+                            FirstName = "Zoro",
+                            LastName = "Roronoa",
+                            UserRoleId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AvatarImageURI = "avatarName",
+                            FirstName = "Naruto",
+                            LastName = "Uzumaki",
+                            UserRoleId = 1
+                        });
                 });
 
             modelBuilder.Entity("Core.Entities.UserRole", b =>

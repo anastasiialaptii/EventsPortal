@@ -62,7 +62,7 @@ namespace Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     Location = table.Column<string>(nullable: true),
-                    Descriprion = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
                     ImageURI = table.Column<string>(nullable: true),
                     EventTypeId = table.Column<int>(nullable: false),
                     OrganizerId = table.Column<int>(nullable: false)
@@ -124,6 +124,36 @@ namespace Data.Migrations
                     { 1, "Visitor" },
                     { 2, "Organizer" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "AvatarImageURI", "FirstName", "LastName", "UserRoleId" },
+                values: new object[] { 1, "avatarName", "Madara", "Uchiha", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "AvatarImageURI", "FirstName", "LastName", "UserRoleId" },
+                values: new object[] { 3, "avatarName", "Naruto", "Uzumaki", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "AvatarImageURI", "FirstName", "LastName", "UserRoleId" },
+                values: new object[] { 2, "avatarName", "Zoro", "Roronoa", 2 });
+
+            migrationBuilder.InsertData(
+                table: "Events",
+                columns: new[] { "Id", "Description", "EventTypeId", "ImageURI", "Location", "Name", "OrganizerId" },
+                values: new object[] { 1, "Funny event", 1, "eventImage", "East Blue", "B-day party", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Events",
+                columns: new[] { "Id", "Description", "EventTypeId", "ImageURI", "Location", "Name", "OrganizerId" },
+                values: new object[] { 2, "Cool event", 1, "eventImage", "West Blue", "Tea party", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Events",
+                columns: new[] { "Id", "Description", "EventTypeId", "ImageURI", "Location", "Name", "OrganizerId" },
+                values: new object[] { 3, "Awesome event", 2, "eventImage", "South Blue", "Banquets", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Events_EventTypeId",

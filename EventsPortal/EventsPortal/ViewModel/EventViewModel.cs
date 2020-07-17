@@ -10,7 +10,7 @@ namespace EventsPortal.ViewModel
 
         public string Location { get; set; }
         
-        public string Descriprion { get; set; }
+        public string Description { get; set; }
 
         public string ImageURI { get; set; }
 

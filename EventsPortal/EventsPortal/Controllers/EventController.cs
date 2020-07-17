@@ -6,6 +6,7 @@ using Service.DTO;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -74,6 +75,33 @@ namespace EventsPortal.Controllers
                 else return NotFound();
             }
             else throw new ArgumentNullException();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateEvent(int id, [FromBody] EventViewModel eventViewModel)
+        {
+            if (id != eventViewModel.Id)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                await _eventService.EditEvent(
+               _mapper.Map<EventDTO>(eventViewModel));
+            }
+            catch (DBConcurrencyException)
+            {
+                if (_eventService.GetEventById(id) == null)
+                {
+                    return NotFound();
+                }
+
+                else
+                {
+                    throw;
+                }
+            }
+            return Ok();
         }
     }
 }

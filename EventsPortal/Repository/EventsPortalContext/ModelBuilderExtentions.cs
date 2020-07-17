@@ -33,6 +33,66 @@ namespace Repository.EventsPortalContext
                     Id = 2,
                     Name = "Public"
                 });
+
+            modelBuilder.Entity<User>()
+                .HasData(
+                new User
+                {
+                    Id = 1,
+                    FirstName = "Madara",
+                    LastName = "Uchiha",
+                    AvatarImageURI = "avatarName",
+                    UserRoleId = 1
+                },
+                new User
+                {
+                    Id = 2,
+                    FirstName = "Zoro",
+                    LastName = "Roronoa",
+                    AvatarImageURI = "avatarName",
+                    UserRoleId = 2
+                },
+                new User
+                {
+                    Id = 3,
+                    FirstName = "Naruto",
+                    LastName = "Uzumaki",
+                    AvatarImageURI = "avatarName",
+                    UserRoleId = 1
+                });
+
+            modelBuilder.Entity<Event>()
+                .HasData(
+                new Event
+                {
+                    Id = 1,
+                    Description = "Funny event",
+                    EventTypeId = 1,
+                    ImageURI = "eventImage",
+                    Location = "East Blue",
+                    Name = "B-day party",
+                    OrganizerId = 1
+                },
+                 new Event
+                 {
+                     Id = 2,
+                     Description = "Cool event",
+                     EventTypeId = 1,
+                     ImageURI = "eventImage",
+                     Location = "West Blue",
+                     Name = "Tea party",
+                     OrganizerId = 1
+                 },
+                 new Event
+                 {
+                     Id = 3,
+                     Description = "Awesome event",
+                     EventTypeId = 2,
+                     ImageURI = "eventImage",
+                     Location = "South Blue",
+                     Name = "Banquets",
+                     OrganizerId = 1
+                 });
         }
     }
 }

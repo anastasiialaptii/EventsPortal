@@ -6,6 +6,7 @@ using Service.DTO;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -75,5 +76,33 @@ namespace UsersPortal.Controllers
             }
             else throw new ArgumentNullException();
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UserViewModel userViewModel)
+        {
+            if (id != userViewModel.Id)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                await _userService.EditUser(
+               _mapper.Map<UserDTO>(userViewModel));
+            }
+            catch (DBConcurrencyException)
+            {
+                if (_userService.GetUserById(id) == null)
+                {
+                    return NotFound();
+                }
+
+                else
+                {
+                    throw;
+                }
+            }
+            return Ok();
+        }
     }
 }
+
