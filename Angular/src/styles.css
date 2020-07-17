@@ -1,10 +1,13 @@
+table{
+    color: black;
+}
 body{
-    background-color: #04c582;;
+    background-color: rgb(253, 253, 253);
 }
 
 input.form-control,input.form-control:focus{
-    background-color: #636b7b;
-    color: #fff;
+    background-color: white;
+    color: black;
     border: 1px solid #636b7b;
 
 }
@@ -15,8 +18,8 @@ input.form-control:focus{
 
 button[type=submit].btn{
     border-radius: 20px;
-    background-color: #04c582;
-    color: #fff;
+    background-color: #b0ffbd;
+    color: black;
 }
 
 div.form-group label:not(.text-danger){
@@ -26,7 +29,7 @@ div.form-group label:not(.text-danger){
 
 div.form-group.required>label:first-child:after{
     content:'*';
-    color: #fff;
+    color: black;
     padding-left: 5px;
 }
 
@@ -46,7 +49,7 @@ div.form-group.required>label:first-child:after{
   .wrapped-div {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-    background: #2e3137;
+    background: #1512b69b;
     padding: 30px;
     width: 90%;
     max-width: 450px;
@@ -73,8 +76,8 @@ div.form-group.required>label:first-child:after{
     display:inline-block;
     padding: 30px 40px 10px 40px;
     cursor: pointer;
-    color: #545d6a;
-    border-bottom: 2px solid #545d6a;
+    color: #434850;
+    border-bottom: 2px solid #434850;
   }
 
   .tab-header h2:focus {

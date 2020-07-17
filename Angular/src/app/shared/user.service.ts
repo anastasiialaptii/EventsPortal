@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
   formData: User;
+  userList: User[];
   readonly rootURL = 'http://localhost:50618/api';
 
 
@@ -17,6 +18,8 @@ export class UserService {
   }
 
   GetUserList() {
-    return this.http.get(this.rootURL + '/User/GetUsersList')
+    this.http.get(this.rootURL + '/User/GetUsersList')
+      .toPromise()
+      .then(res => this.userList = res as User[]);
   }
 }

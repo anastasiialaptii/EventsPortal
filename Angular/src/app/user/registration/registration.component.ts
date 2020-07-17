@@ -30,14 +30,17 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     if (this.service.formData.Id == 0)
-      this.InsertBicycle(form);
-      this.router.navigate(['/user-list']);     
+      {
+        this.InsertBicycle(form);
+        
+         }
   }
 
   InsertBicycle(form: NgForm) {
     this.service.CreateUser().subscribe(
       res => {
        this.resetForm();
+       this.router.navigate(['/user/user-list']);  
       },
       err => {
         debugger;
