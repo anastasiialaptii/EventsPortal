@@ -1,4 +1,5 @@
 ﻿using Service.DTO;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -15,5 +16,7 @@ namespace Service.Interfaces
         Task EditEvent(EventDTO eventDTO);
 
         Task AddEvent(EventDTO eventDTO);
+
+        Object GetList();
     }
 }

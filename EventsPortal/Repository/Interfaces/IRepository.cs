@@ -17,5 +17,7 @@ namespace Repository
         T FindItemAsync(Func<T, bool> item);
 
         Task<T> GetIdAsync(int? id);
+
+        Object GetList();
     }
 }

@@ -69,5 +69,10 @@ namespace Service.Services
         {
             return _mapper.Map<List<EventDTO>>(await _dbOperation.Events.GetAllAsync());
         }
+
+        public object GetList()
+        {
+            return _dbOperation.Events.GetList();
+        }
     }
 }

@@ -59,6 +59,11 @@ namespace Data.Repository
             else throw new ArgumentNullException();
         }
 
+        public object GetList()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(User item)
         {
             if (item != null)

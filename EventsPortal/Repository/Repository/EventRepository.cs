@@ -69,5 +69,27 @@ namespace Data.Repository
                 _dbContext.Entry(item).State = EntityState.Modified;
             }
         }
+
+        public Object GetList()
+        {
+            var result = (from a in _dbContext.Events
+                          join b in _dbContext.Users on a.OrganizerId equals b.Id
+
+                          select new
+                          {
+                              a.Id,
+                              a.Name,
+                              Organizer = b.LastName,
+                              a.Location,
+                              a.ImageURI
+                          }).ToList();
+
+            //var result1 = _dbContext.Events.Join(_dbContext.Users,
+            // p => p.OrganizerId, 
+            // t => t.Id, 
+            // (p, t) => new { Name = p.Location, Team = p.Name, Country = t.FirstName });
+
+            return result;
+        }
     }
 }
