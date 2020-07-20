@@ -18,6 +18,8 @@ namespace Service.DTO
 
         public int UserRoleId { get; set; }
 
+        public UserRoleDTO UserRoleDTO { get; set; }
+
         public IEnumerable<EventDTO> EventsDTO { get; set; }
     }
 }

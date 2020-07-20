@@ -31,7 +31,10 @@ namespace Data.Repository
 
         public void Delete(EventDTO item)
         {
-            _dbContext.Events.Remove(_mapper.Map<Event>(item));
+            if (item != null)
+            {
+                _dbContext.Events.Remove(_mapper.Map<Event>(item));
+            }
         }
 
         public async Task<IEnumerable<EventDTO>> GetAllAsync()
@@ -55,7 +58,7 @@ namespace Data.Repository
         {
             if (id != null)
             {
-                return await _dbContext.Events.Where(x => x.Id == id)
+                return await _dbContext.Events
                 .Select(x => new EventDTO
                 {
                     Id = x.Id,
@@ -67,7 +70,9 @@ namespace Data.Repository
                     EventTypeId = x.EventTypeId,
                     UserDTO = new UserDTO { Login = x.Organizer.Login },
                     EventTypeDTO = new EventTypeDTO { Name = x.EventType.Name }
-                }).FirstOrDefaultAsync();
+                })
+               .Where(x => x.Id == id)
+               .FirstOrDefaultAsync();
             }
             else throw new ArgumentNullException();
         }

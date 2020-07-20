@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 namespace UsersPortal.Controllers
 {
     [EnableCors("CorsPolicy")]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -30,8 +30,8 @@ namespace UsersPortal.Controllers
 
         }
 
-        [HttpGet, Route("c")]
-        public /*IEnumerable<string> */async Task/*<ActionResult*/<IEnumerable<UserDTO>> GetUsersList()
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersList()
         {
             return _mapper.Map<List<UserDTO>>
                 (await _userService.GetUsers()).ToList();

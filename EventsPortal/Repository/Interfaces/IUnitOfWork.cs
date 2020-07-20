@@ -10,7 +10,7 @@ namespace Data.Interfaces
 
         //IRepository<VisitDTO> Visits { get; }
 
-        //IRepository<UserDTO> Users { get; }
+        IRepository<UserDTO> Users { get; }
 
         Task Save();
     }

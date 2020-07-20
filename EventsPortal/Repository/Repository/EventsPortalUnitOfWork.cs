@@ -13,7 +13,7 @@ namespace Data.Repository
         private IMapper _mapper;
 
         private EventRepository eventRepository;
-        //private UserRepository userRepository;
+        private UserRepository userRepository;
         //private VisitRepository visitRepository;
 
         public EventsPortalUnitOfWork(DbContextOptions<EventsPortalDbContext> options, IMapper mapper)
@@ -32,15 +32,15 @@ namespace Data.Repository
             }
         }
 
-        //public IRepository<UserDTO> Users
-        //{
-        //    get
-        //    {
-        //        if (userRepository == null)
-        //            userRepository = new userRepository(_dbContext);
-        //        return userRepository;
-        //    }
-        //}
+        public IRepository<UserDTO> Users
+        {
+            get
+            {
+                if (userRepository == null)
+                    userRepository = new UserRepository(_dbContext, _mapper);
+                return userRepository;
+            }
+        }
 
         //public IRepository<VisitDTO> Visits
         //{
