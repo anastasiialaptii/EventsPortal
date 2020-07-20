@@ -10,14 +10,14 @@ namespace Service.DTO
 
         public string LastName { get; set; }
 
+        public string Login { get; set; }
+
+        public string Password { get; set; }
+
         public string AvatarImageURI { get; set; }
 
         public int UserRoleId { get; set; }
 
-        public virtual UserRoleDTO UserRoleDTO { get; set; }
-
-        public virtual ICollection<VisitDTO> VisitsDTO { get; set; }
-
-        public virtual ICollection<EventDTO> EventsDTO { get; set; }
+        public IEnumerable<EventDTO> EventsDTO { get; set; }
     }
 }

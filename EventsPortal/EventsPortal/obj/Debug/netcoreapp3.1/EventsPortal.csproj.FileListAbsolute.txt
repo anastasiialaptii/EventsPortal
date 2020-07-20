@@ -292,8 +292,6 @@ H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Data
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.csprojAssemblyReference.cache
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.AssemblyInfoInputs.cache
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.AssemblyInfo.cs
-H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.csproj.CoreCompileInputs.cache
-H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.MvcApplicationPartsAssemblyInfo.cache
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.RazorTargetAssemblyInfo.cache
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.csproj.CopyComplete
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.dll
@@ -310,3 +308,12 @@ H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Even
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\staticwebassets\EventsPortal.StaticWebAssets.Manifest.cache
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\staticwebassets\EventsPortal.StaticWebAssets.xml
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.genruntimeconfig.cache
+H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.csproj.CoreCompileInputs.cache
+H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.MvcApplicationPartsAssemblyInfo.cache

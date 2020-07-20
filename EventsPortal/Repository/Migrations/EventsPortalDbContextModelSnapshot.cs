@@ -127,6 +127,12 @@ namespace Data.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Login")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("UserRoleId")
                         .HasColumnType("int");
 
@@ -143,6 +149,8 @@ namespace Data.Migrations
                             AvatarImageURI = "avatarName",
                             FirstName = "Madara",
                             LastName = "Uchiha",
+                            Login = "Ninja",
+                            Password = "qwerty",
                             UserRoleId = 1
                         },
                         new
@@ -151,6 +159,8 @@ namespace Data.Migrations
                             AvatarImageURI = "avatarName",
                             FirstName = "Zoro",
                             LastName = "Roronoa",
+                            Login = "Samurai",
+                            Password = "qwerty",
                             UserRoleId = 2
                         },
                         new
@@ -159,6 +169,8 @@ namespace Data.Migrations
                             AvatarImageURI = "avatarName",
                             FirstName = "Naruto",
                             LastName = "Uzumaki",
+                            Login = "Hokage",
+                            Password = "qwerty",
                             UserRoleId = 1
                         });
                 });

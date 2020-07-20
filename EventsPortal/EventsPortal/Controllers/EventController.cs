@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using EventsPortal.ViewModel;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTO;
@@ -34,14 +33,14 @@ namespace EventsPortal.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<EventViewModel>>> GetEventsList()
+        public async Task<ActionResult<IEnumerable<EventDTO>>> GetEventsList()
         {
-            return _mapper.Map<List<EventViewModel>>
+            return _mapper.Map<List<EventDTO>>
                 (await _eventService.GetEvents()).ToList();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<EventViewModel>> GetEventById(int? id)
+        public async Task<ActionResult<EventDTO>> GetEventById(int? id)
         {
             if (id != null)
             {
@@ -49,7 +48,7 @@ namespace EventsPortal.Controllers
 
                 if (serachItem != null)
                 {
-                    return _mapper.Map<EventViewModel>(serachItem);
+                    return _mapper.Map<EventDTO>(serachItem);
                 }
                 else return NotFound();
             }
@@ -57,14 +56,14 @@ namespace EventsPortal.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<EventViewModel>> CreateEvent(EventViewModel eventViewModel)
+        public async Task<ActionResult<EventDTO>> CreateEvent(EventDTO EventDTO)
         {
-            if (eventViewModel != null)
+            if (EventDTO != null)
             {
                 await _eventService.AddEvent(
-                    _mapper.Map<EventDTO>(eventViewModel));
+                    _mapper.Map<EventDTO>(EventDTO));
             }
-            return CreatedAtAction(nameof(GetEventById), new { id = eventViewModel.Id }, eventViewModel);
+            return CreatedAtAction(nameof(GetEventById), new { id = EventDTO.Id }, EventDTO);
         }
 
         [HttpDelete("{id}")]
@@ -84,16 +83,16 @@ namespace EventsPortal.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateEvent(int id, [FromBody] EventViewModel eventViewModel)
+        public async Task<IActionResult> UpdateEvent(int id, [FromBody] EventDTO EventDTO)
         {
-            if (id != eventViewModel.Id)
+            if (id != EventDTO.Id)
             {
                 return BadRequest();
             }
             try
             {
                 await _eventService.EditEvent(
-               _mapper.Map<EventDTO>(eventViewModel));
+               _mapper.Map<EventDTO>(EventDTO));
             }
             catch (DBConcurrencyException)
             {

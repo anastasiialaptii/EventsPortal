@@ -1,19 +1,22 @@
 ﻿using AutoMapper;
-using EventsPortal.ViewModel;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Service.DTO;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace UsersPortal.Controllers
 {
     [EnableCors("CorsPolicy")]
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -27,15 +30,15 @@ namespace UsersPortal.Controllers
 
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserViewModel>>> GetUsersList()
+        [HttpGet, Route("c")]
+        public /*IEnumerable<string> */async Task/*<ActionResult*/<IEnumerable<UserDTO>> GetUsersList()
         {
-            return _mapper.Map<List<UserViewModel>>
+            return _mapper.Map<List<UserDTO>>
                 (await _userService.GetUsers()).ToList();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserViewModel>> GetUserById(int? id)
+        public async Task<ActionResult<UserDTO>> GetUserById(int? id)
         {
             if (id != null)
             {
@@ -43,22 +46,48 @@ namespace UsersPortal.Controllers
 
                 if (serachItem != null)
                 {
-                    return _mapper.Map<UserViewModel>(serachItem);
+                    return _mapper.Map<UserDTO>(serachItem);
                 }
                 else return NotFound();
             }
             else throw new ArgumentNullException();
         }
 
-        [HttpPost]
-        public async Task<ActionResult<UserViewModel>> CreateUser(UserViewModel UserViewModel)
+        [HttpPost, Route("login")]
+        public IActionResult CreateUser([FromBody] UserDTO UserDTO)
         {
-            if (UserViewModel != null)
+            if (UserDTO == null)
             {
-                await _userService.AddUser(
-                    _mapper.Map<UserDTO>(UserViewModel));
+                return BadRequest("Invalid client request");
             }
-            return CreatedAtAction(nameof(GetUserById), new { id = UserViewModel.Id }, UserViewModel);
+
+            if (UserDTO.FirstName == "1" && UserDTO.LastName == "1")
+            {
+                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("pirateKing@123"));
+                var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, UserDTO.FirstName),
+                    new Claim(ClaimTypes.Role, "Operator")
+                };
+
+                var tokeOptions = new JwtSecurityToken(
+                    issuer: "http://localhost:50816",
+                    audience: "http://localhost:50816",
+                    claims: claims,
+                    expires: DateTime.Now.AddMinutes(5),
+                    signingCredentials: signinCredentials
+                );
+
+                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+                return Ok(new { Token = tokenString });
+            }
+            else
+            {
+                return Unauthorized();
+            }
+
         }
 
         [HttpDelete("{id}")]
@@ -78,16 +107,16 @@ namespace UsersPortal.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] UserViewModel userViewModel)
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UserDTO UserDTO)
         {
-            if (id != userViewModel.Id)
+            if (id != UserDTO.Id)
             {
                 return BadRequest();
             }
             try
             {
                 await _userService.EditUser(
-               _mapper.Map<UserDTO>(userViewModel));
+               _mapper.Map<UserDTO>(UserDTO));
             }
             catch (DBConcurrencyException)
             {

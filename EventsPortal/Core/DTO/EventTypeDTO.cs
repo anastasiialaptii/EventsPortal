@@ -8,6 +8,6 @@ namespace Service.DTO
 
         public string Name { get; set; }
 
-        public virtual ICollection<EventDTO> EventsDTO { get; set; }
+        public IEnumerable<EventDTO> EventsDTO { get; set; }
     }
 }

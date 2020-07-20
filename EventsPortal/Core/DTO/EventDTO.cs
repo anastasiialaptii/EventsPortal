@@ -18,10 +18,6 @@ namespace Service.DTO
 
         public int OrganizerId { get; set; }
 
-        public virtual EventTypeDTO EventTypeDTO { get; set; }
-
-        public virtual UserDTO OrganizerDTO { get; set; }
-
-        public virtual ICollection<VisitDTO> VisitsDTO { get; set; }
+        public IEnumerable<VisitDTO> VisitsDTO { get; set; }
     }
 }

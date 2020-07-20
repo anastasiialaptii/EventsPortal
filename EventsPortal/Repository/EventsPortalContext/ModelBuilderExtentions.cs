@@ -41,6 +41,8 @@ namespace Repository.EventsPortalContext
                     Id = 1,
                     FirstName = "Madara",
                     LastName = "Uchiha",
+                    Login = "Ninja",
+                    Password = "qwerty",
                     AvatarImageURI = "avatarName",
                     UserRoleId = 1
                 },
@@ -49,6 +51,8 @@ namespace Repository.EventsPortalContext
                     Id = 2,
                     FirstName = "Zoro",
                     LastName = "Roronoa",
+                    Login = "Samurai",
+                    Password = "qwerty",
                     AvatarImageURI = "avatarName",
                     UserRoleId = 2
                 },
@@ -57,6 +61,8 @@ namespace Repository.EventsPortalContext
                     Id = 3,
                     FirstName = "Naruto",
                     LastName = "Uzumaki",
+                    Login = "Hokage",
+                    Password = "qwerty",
                     AvatarImageURI = "avatarName",
                     UserRoleId = 1
                 });
