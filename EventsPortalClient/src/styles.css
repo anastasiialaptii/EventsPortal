@@ -3,22 +3,32 @@
 
 body{
     padding: 20px;
+    margin-left: 40px;
+    margin-right: 20px;
 }
-
-.form-control.ng-touched.ng-invalid{
-    border: 2px solid red;
+.flex-container {
+    display: flex;
+    justify-content: center;
+  }
+.flex-item{
+    margin-left: 10px;
 }
-
-.text-success{
-    color: green;
+.footer{
+    background-color:#4392e2;
+    height: 1000%;
+    width: 100%;
+    display: flex;
 }
-
-.logout:hover{
-    cursor: pointer;
+.footer-container{     
+    min-height: 35px;
+    flex-shrink:0; 
 }
+.card-img-block{
 
-ul li{
-    text-decoration: none;
-    list-style: none;
-    font-size: 25px;
+    min-width: 150px;
+    min-height: 66px;
+}
+.card-img{
+   height: 70%;
+   width: 70%;
 }

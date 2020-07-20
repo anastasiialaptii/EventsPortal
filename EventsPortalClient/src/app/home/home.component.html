@@ -1,4 +1,6 @@
-<h1>Events Portal</h1>
+<div class="flex-container">
+  <h1>Events Portal</h1>
+</div>
 <br>
 <div *ngIf="isUserAuthenticated()" style="color:blue;">
   <h2>
@@ -6,11 +8,23 @@
   </h2>
 </div>
 
-<br>
-<ul>
+<div class="flex-container">
+  <div class="flex-item">
+    <h4 *ngIf="!isUserAuthenticated()"><a routerLink="/login">Login</a></h4>
+  </div>
+  <div class="flex-item">
+    <h4 *ngIf="!isUserAuthenticated()"><a routerLink="/joinPortal">Join Portal</a></h4>
+  </div>
+  <div class="flex-item">
+    <h4 *ngIf="isUserAuthenticated()"><a class="logout" (click)="logOut()">Logout</a></h4>
+  </div>
+</div>
 <!--<li><a routerLink="/customers">Customer</a></li>-->
-  <li *ngIf="!isUserAuthenticated()"><a routerLink="/login">Login</a></li>
-  <li *ngIf="!isUserAuthenticated()"><a routerLink="/joinPortal">Join Portal</a></li>
-  <li *ngIf="isUserAuthenticated()"><a class="logout" (click)="logOut()">Logout</a></li>
-  <app-event-list></app-event-list>
-</ul>
+<app-event-list></app-event-list>
+<div class="footer">
+  <div class="footer-container">
+  <h3 class="footer-text">
+      Copyright Your Website 2020
+  </h3>
+</div>
+</div>

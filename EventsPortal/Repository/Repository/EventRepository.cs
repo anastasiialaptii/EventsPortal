@@ -51,7 +51,8 @@ namespace Data.Repository
                     EventTypeId = x.EventTypeId,
                     UserDTO = new UserDTO { Login = x.Organizer.Login },
                     EventTypeDTO = new EventTypeDTO { Name = x.EventType.Name }
-                }).ToListAsync();
+                })
+                .ToListAsync();
         }
 
         public async Task<EventDTO> GetIdAsync(int? id)

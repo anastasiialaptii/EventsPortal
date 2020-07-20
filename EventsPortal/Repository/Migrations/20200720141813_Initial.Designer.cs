@@ -9,7 +9,7 @@ using Repository;
 namespace Data.Migrations
 {
     [DbContext(typeof(EventsPortalDbContext))]
-    [Migration("20200719183159_Initial")]
+    [Migration("20200720141813_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
