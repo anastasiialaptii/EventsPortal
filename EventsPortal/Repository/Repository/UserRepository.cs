@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Data.Repository
 {
-    public class UserRepository : IRepository<User>
+    public class UserRepository //: IRepository<User>
     {
         private readonly EventsPortalDbContext _dbContext;
 

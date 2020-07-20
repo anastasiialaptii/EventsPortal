@@ -1,5 +1,4 @@
 ﻿using Service.DTO;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,12 +10,10 @@ namespace Service.Interfaces
 
         Task<EventDTO> GetEventById(int? id);
 
-        Task DeleteEvent (int? id);
+        Task DeleteEvent(int? id);
 
         Task EditEvent(EventDTO eventDTO);
 
         Task AddEvent(EventDTO eventDTO);
-
-        Object GetList();
     }
 }

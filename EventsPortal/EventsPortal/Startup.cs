@@ -53,7 +53,7 @@ namespace EventsPortal
                  options.UseSqlServer(Configuration.GetConnectionString("EventsPortalConnection")));
 
             services.AddTransient<IEventService, EventService>();
-            services.AddTransient<IUserService, UserService>();
+            //services.AddTransient<IUserService, UserService>();
             services.AddTransient<IUnitOfWork, EventsPortalUnitOfWork>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

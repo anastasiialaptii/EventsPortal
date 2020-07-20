@@ -1,6 +1,8 @@
-﻿using Core.Entities;
+﻿using AutoMapper;
+using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Repository;
+using Service.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,88 +10,74 @@ using System.Threading.Tasks;
 
 namespace Data.Repository
 {
-    public class EventRepository : IRepository<Event>
+    public class EventRepository : IRepository<EventDTO>
     {
         private readonly EventsPortalDbContext _dbContext;
+        private readonly IMapper _mapper;
 
-        public EventRepository(EventsPortalDbContext dbContext)
+        public EventRepository(EventsPortalDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
+            _mapper = mapper;
         }
 
-        public void Create(Event item)
+        public void Create(EventDTO item)
         {
             if (item != null)
             {
-                _dbContext.Events.Add(item);
+                _dbContext.Events.Add(_mapper.Map<Event>(item));
             }
         }
 
-        public void Delete(Event item)
+        public void Delete(EventDTO item)
         {
-            var deleteItem = _dbContext.Events.Find(item.Id);
-
-            if (deleteItem != null)
-            {
-                _dbContext.Events.Remove(deleteItem);
-            }
+            _dbContext.Events.Remove(_mapper.Map<Event>(item));
         }
 
-        public Event FindItemAsync(Func<Event, bool> item)
+        public async Task<IEnumerable<EventDTO>> GetAllAsync()
         {
-            if (item != null)
-            {
-                return _dbContext.Events
-                    .Where(item)
-                    .FirstOrDefault();
-            }
-            else throw new ArgumentNullException();
+            return await _dbContext.Events
+                .Select(x => new EventDTO
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Location = x.Location,
+                    ImageURI = x.ImageURI,
+                    Description = x.Description,
+                    OrganizerId = x.OrganizerId,
+                    EventTypeId = x.EventTypeId,
+                    UserDTO = new UserDTO { Login = x.Organizer.Login },
+                    EventTypeDTO = new EventTypeDTO { Name = x.EventType.Name }
+                }).ToListAsync();
         }
 
-        public async Task<IEnumerable<Event>> GetAllAsync()
-        {
-           return await _dbContext.Events
-                .Include(x=>x.Organizer)
-                .ToListAsync();
-        }
-
-        public async Task<Event> GetIdAsync(int? id)
+        public async Task<EventDTO> GetIdAsync(int? id)
         {
             if (id != null)
             {
-                return await _dbContext.Events.FindAsync(id);
+                return await _dbContext.Events.Where(x => x.Id == id)
+                .Select(x => new EventDTO
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Location = x.Location,
+                    ImageURI = x.ImageURI,
+                    Description = x.Description,
+                    OrganizerId = x.OrganizerId,
+                    EventTypeId = x.EventTypeId,
+                    UserDTO = new UserDTO { Login = x.Organizer.Login },
+                    EventTypeDTO = new EventTypeDTO { Name = x.EventType.Name }
+                }).FirstOrDefaultAsync();
             }
             else throw new ArgumentNullException();
         }
 
-        public void Update(Event item)
+        public void Update(EventDTO item)
         {
             if (item != null)
             {
-                _dbContext.Entry(item).State = EntityState.Modified;
+                _dbContext.Entry(_mapper.Map<Event>(item)).State = EntityState.Modified;
             }
-        }
-
-        public Object GetList()
-        {
-            var result = (from a in _dbContext.Events
-                          join b in _dbContext.Users on a.OrganizerId equals b.Id
-
-                          select new
-                          {
-                              a.Id,
-                              a.Name,
-                              Organizer = b.LastName,
-                              a.Location,
-                              a.ImageURI
-                          }).ToList();
-
-            //var result1 = _dbContext.Events.Join(_dbContext.Users,
-            // p => p.OrganizerId, 
-            // t => t.Id, 
-            // (p, t) => new { Name = p.Location, Team = p.Name, Country = t.FirstName });
-
-            return result;
         }
     }
 }

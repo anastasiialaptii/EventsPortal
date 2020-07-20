@@ -1,16 +1,16 @@
-﻿using Core.Entities;
-using Repository;
+﻿using Repository;
+using Service.DTO;
 using System.Threading.Tasks;
 
 namespace Data.Interfaces
 {
     public interface IUnitOfWork
     {
-        IRepository<Event> Events { get; }
+        IRepository<EventDTO> Events { get; }
 
-        IRepository<Visit> Visits { get; }
+        //IRepository<VisitDTO> Visits { get; }
 
-        IRepository<User> Users { get; }
+        //IRepository<UserDTO> Users { get; }
 
         Task Save();
     }

@@ -27,12 +27,6 @@ namespace EventsPortal.Controllers
         }
 
         [HttpGet]
-        public Object GetEvents()
-        {
-            return _eventService.GetList();
-        }
-
-        [HttpGet]
         public async Task<ActionResult<IEnumerable<EventDTO>>> GetEventsList()
         {
             return _mapper.Map<List<EventDTO>>
