@@ -1,7 +1,7 @@
 import { User } from "./user.model"
 import { EventType } from './eventType.model';
 
-export class Event {
+export class Events {
     public Id: number;
     public Name: number;
     public Location: string;

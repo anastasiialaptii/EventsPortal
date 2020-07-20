@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { UserService } from 'app/shared/services/user.service';
 
 @Component({
   selector: 'app-join-portal',
@@ -6,9 +8,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JoinPortalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService:UserService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+   // this.resetForm();
   }
 
+  resetForm(form?: NgForm) {
+    if (form != null)
+      form.form.reset();
+    this.userService.formData = {
+      Id: 0,
+      FirstName: '',
+      LastName: '',
+      Login:'',
+      Password:'',
+      UserRoleId: 1,
+      AvatarImageURI:'',
+      UserRole:null
+    }
+  }
+  onSubmit(form: NgForm) {
+    if (this.userService.formData.Id == 0)
+      this.InsertUser(form);     
+  }
+
+  InsertUser(form: NgForm) {
+    this.userService.CreateUser().subscribe(
+      err => {
+        debugger;
+        console.log(err);
+      }
+    )
+  }
 }

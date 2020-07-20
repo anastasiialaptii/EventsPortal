@@ -1,0 +1,17 @@
+<form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+    <input type="hidden" name="Id" [value]="eventService.formData.Id">
+    <div class="container-fluid">
+        <h2 class="form-signin-heading">Let's Create Event</h2>
+        <br/>
+        <label for="Name" class="sr-only">Name</label>
+        <input id="Name" name="Name" ngModel class="form-control" placeholder="Name" required>
+        <br/>
+        <label for="Location" class="sr-only">Locatione</label>
+        <input id="Location" name="Location" ngModel class="form-control" placeholder="Location" required>
+        <br/>
+        <label for="Description" class="sr-only">Description</label>
+        <input id="Description" name="Description" ngModel class="form-control" placeholder="Description" required>
+        <br/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+    </div>
+</form>

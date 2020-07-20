@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { JoinPortalComponent } from './join-portal/join-portal.component';
 import { EventListComponent } from './event-list/event-list.component';
+import { EventComponent } from './event/event.component';
 
 export function tokenGetter() {
   return Cookie.get('Token');
@@ -26,6 +27,7 @@ export function tokenGetter() {
     AppComponent,
     JoinPortalComponent,
     EventListComponent,
+    EventComponent,
   ],
   imports: [
     BrowserModule,

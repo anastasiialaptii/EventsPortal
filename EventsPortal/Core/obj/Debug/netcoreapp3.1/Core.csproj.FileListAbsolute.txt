@@ -15,7 +15,6 @@ H:\TechStack\EventsPortal\EventsPortal\Core\bin\Debug\netcoreapp3.1\Core.runtime
 H:\TechStack\EventsPortal\EventsPortal\Core\bin\Debug\netcoreapp3.1\Core.runtimeconfig.dev.json
 H:\TechStack\EventsPortal\EventsPortal\Core\bin\Debug\netcoreapp3.1\Core.dll
 H:\TechStack\EventsPortal\EventsPortal\Core\bin\Debug\netcoreapp3.1\Core.pdb
-H:\TechStack\EventsPortal\EventsPortal\Core\obj\Debug\netcoreapp3.1\Core.csprojAssemblyReference.cache
 H:\TechStack\EventsPortal\EventsPortal\Core\obj\Debug\netcoreapp3.1\Core.AssemblyInfoInputs.cache
 H:\TechStack\EventsPortal\EventsPortal\Core\obj\Debug\netcoreapp3.1\Core.AssemblyInfo.cs
 H:\TechStack\EventsPortal\EventsPortal\Core\obj\Debug\netcoreapp3.1\Core.csproj.CoreCompileInputs.cache

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
+import { decode } from 'punycode';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ export class HomeComponent {
   isUserAuthenticated() {
     let token = Cookie.get('Token');
     if (token && !this.jwtHelper.isTokenExpired(token)) {
+     console.log(decode(token));
       return true;
     }
     else {

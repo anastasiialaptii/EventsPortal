@@ -74,7 +74,7 @@ namespace EventsPortal
 
                     ValidIssuer = "http://localhost:50618",
                     ValidAudience = "http://localhost:50618",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("pirateKing@123"))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
                 };
             });
         }

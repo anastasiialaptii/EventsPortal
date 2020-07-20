@@ -1,19 +1,19 @@
-<form class="form-signin" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+ <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+    <input type="hidden" name="Id" [value]="userService.formData.Id">
     <div class="container-fluid">
         <h2 class="form-signin-heading">Let's Join Portal</h2>
-        <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username or password.</div>
         <br/>
         <label for="FirstName" class="sr-only">First Name</label>
-        <input id="FirstName" name="FirstName" ngModel class="form-control" placeholder="First Name" required>
+        <input name="FirstName" #Name="ngModel" [(ngModel)]="userService.formData.FirstName" class="form-control"placeholder="First Name">
         <br/>
         <label for="LastName" class="sr-only">Last Name</label>
-        <input id="LastName" name="LastName" ngModel class="form-control" placeholder="Last Name" required>
+        <input name="LastName" #Name="ngModel" [(ngModel)]="userService.formData.LastName" class="form-control"placeholder="Last Name">
         <br/>
         <label for="Login" class="sr-only">Login</label>
-        <input id="Login" name="Login" ngModel class="form-control" placeholder="Login" required>
+        <input name="Login" #Name="ngModel" [(ngModel)]="userService.formData.Login" class="form-control"placeholder="Login">
         <br/>
         <label for="Password" class="sr-only">Password</label>
-        <input type="password" id="Password" name="Password" ngModel class="form-control" placeholder="Password" required>
+        <input name="Password" #Name="ngModel" [(ngModel)]="userService.formData.Password" class="form-control"placeholder="Password">
         <br/>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Join</button>
     </div>

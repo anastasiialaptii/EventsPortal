@@ -4,7 +4,7 @@
 <br>
 <div *ngIf="isUserAuthenticated()" style="color:blue;">
   <h2>
-    YOU ARE LOGGED IN
+    YOU ARE LOGGED IN   
   </h2>
 </div>
 
@@ -16,15 +16,20 @@
     <h4 *ngIf="!isUserAuthenticated()"><a routerLink="/joinPortal">Join Portal</a></h4>
   </div>
   <div class="flex-item">
+    <h4 *ngIf="isUserAuthenticated()"><a class="logout" (click)="logOut()">Add Event</a></h4>
+  </div>
+  <div class="flex-item">
     <h4 *ngIf="isUserAuthenticated()"><a class="logout" (click)="logOut()">Logout</a></h4>
   </div>
 </div>
-<!--<li><a routerLink="/customers">Customer</a></li>-->
+
+<div *ngIf="isUserAuthenticated()">
 <app-event-list></app-event-list>
+</div>
 <div class="footer">
   <div class="footer-container">
   <h3 class="footer-text">
-      Copyright Your Website 2020
+      Events Portal 2020
   </h3>
 </div>
 </div>

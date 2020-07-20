@@ -13,18 +13,14 @@ export class LoginComponent {
 
   constructor(private router: Router, private http: HttpClient) { }
 
-  public login = (form: NgForm) => {
+  public AuthorizeUser = (form: NgForm) => {
     const credentials = JSON.stringify(form.value);
-    this.http.post("http://localhost:50618/api/User/login", credentials, {
+    this.http.post("http://localhost:50618/api/Auth/login", credentials, {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
       })
     }).subscribe(response => {
       const token = (<any>response).Token;
-     // console.log(response);
-     // console.log(token);
-     // localStorage.setItem('Token', token);
-      
       Cookie.set('Token', token);
       this.invalidLogin = false;
       this.router.navigate(["/"]);

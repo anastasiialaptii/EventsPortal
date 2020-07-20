@@ -12,6 +12,7 @@ body{
   }
 .flex-item{
     margin-left: 10px;
+    margin-bottom: 20px;
 }
 .footer{
     background-color:#4392e2;
