@@ -4,6 +4,7 @@ using Data.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -58,6 +59,16 @@ namespace EventsPortal
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            services.AddAuthentication()
+                .AddGoogle("Google", opt =>
+                {
+                    var googleAuth = Configuration.GetSection("Authentication:Google");
+
+                    opt.ClientId = googleAuth["ClientId"];
+                    opt.ClientSecret = googleAuth["ClientSecret"];
+                    opt.SignInScheme = IdentityConstants.ExternalScheme;
+                });
+
             services.AddAuthentication(opt =>
             {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -89,7 +100,8 @@ namespace EventsPortal
             app.UseRouting();
             app.UseCors("CorsPolicy");
 
-            app.UseAuthentication();
+            app.UseAuthentication()
+                        ;
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

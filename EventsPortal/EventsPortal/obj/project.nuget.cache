@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2zlwCQXUKFbBe++a/goEmN4QrGOo4dnBp1R28IOFWxWoPlL6H643i15O/+LVVUBj8r0YYNv027zVgLBgeGajpA==",
+  "dgSpecHash": "EO152FO0iT/x/loFYlpixRQs6FPsKVMDH63Hn3WS9wkDSIeAJSSt80ebCe1eacLCUzG75LBOb+zK8Zv3EB4ffg==",
   "success": true,
   "projectFilePath": "H:\\TechStack\\EventsPortal\\EventsPortal\\EventsPortal\\EventsPortal.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\lapti\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.0\\automapper.extensions.microsoft.dependencyinjection.8.0.0.nupkg.sha512",
     "C:\\Users\\lapti\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\lapti\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\lapti\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\3.1.6\\microsoft.aspnetcore.authentication.google.3.1.6.nupkg.sha512",
     "C:\\Users\\lapti\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.6\\microsoft.aspnetcore.authentication.jwtbearer.3.1.6.nupkg.sha512",
     "C:\\Users\\lapti\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",
     "C:\\Users\\lapti\\.nuget\\packages\\microsoft.aspnetcore.authorization.policy\\2.2.0\\microsoft.aspnetcore.authorization.policy.2.2.0.nupkg.sha512",

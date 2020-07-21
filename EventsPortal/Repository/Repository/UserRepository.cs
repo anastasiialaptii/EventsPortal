@@ -1,8 +1,6 @@
-﻿using AutoMapper;
-using Core.Entities;
+﻿using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Repository;
-using Service.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,38 +8,45 @@ using System.Threading.Tasks;
 
 namespace Data.Repository
 {
-    public class UserRepository : IRepository<UserDTO>
+    public class UserRepository : IRepository<User>
     {
         private readonly EventsPortalDbContext _dbContext;
-        private IMapper _mapper;
 
-        public UserRepository(EventsPortalDbContext dbContext, IMapper mapper)
+        public UserRepository(EventsPortalDbContext dbContext)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
 
-        public void Create(UserDTO item)
+        public void Create(User item)
         {
             if (item != null)
             {
-                _dbContext.Users.Add(_mapper.Map<User>(item));
+                _dbContext.Users.Add(item);
             }
             else throw new ArgumentNullException();
         }
 
-        public void Delete(UserDTO item)
+        public void Delete(User item)
         {
             if (item != null)
             {
-                _dbContext.Users.Remove(_mapper.Map<User>(item));
+                _dbContext.Users.Remove(item);
             }
         }
 
-        public async Task<IEnumerable<UserDTO>> GetAllAsync()
+        public User FindItem(Func<User, bool> item)
+        {
+            if (item != null)
+            {
+                return _dbContext.Users.Where(item).FirstOrDefault();
+            }
+            else throw new ArgumentNullException();
+        }
+
+        public async Task<IEnumerable<User>> GetAllAsync()
         {
             return await _dbContext.Users
-                .Select(x => new UserDTO
+                .Select(x => new User
                 {
                     Id = x.Id,
                     AvatarImageURI = x.AvatarImageURI,
@@ -50,20 +55,21 @@ namespace Data.Repository
                     Login = x.Login,
                     Password = x.Password,
                     UserRoleId = x.UserRoleId,
-                    UserRoleDTO = new UserRoleDTO
+                    UserRole = new UserRole
                     {
+                        Id = x.UserRole.Id,
                         Name = x.UserRole.Name
                     }
                 })
                 .ToListAsync();
         }
 
-        public async Task<UserDTO> GetIdAsync(int? id)
+        public async Task<User> GetIdAsync(int? id)
         {
             if (id != null)
             {
                 return await _dbContext.Users
-                    .Select(x => new UserDTO
+                    .Select(x => new User
                     {
                         Id = x.Id,
                         AvatarImageURI = x.AvatarImageURI,
@@ -72,8 +78,9 @@ namespace Data.Repository
                         Login = x.Login,
                         Password = x.Password,
                         UserRoleId = x.UserRoleId,
-                        UserRoleDTO = new UserRoleDTO
+                        UserRole = new UserRole
                         {
+                            Id = x.UserRole.Id,
                             Name = x.UserRole.Name
                         }
                     })
@@ -83,11 +90,11 @@ namespace Data.Repository
             else throw new ArgumentNullException();
         }
 
-        public void Update(UserDTO item)
+        public void Update(User item)
         {
             if (item != null)
             {
-                _dbContext.Entry(_mapper.Map<User>(item)).State = EntityState.Modified;
+                _dbContext.Entry(item).State = EntityState.Modified;
             }
             else throw new ArgumentNullException();
         }

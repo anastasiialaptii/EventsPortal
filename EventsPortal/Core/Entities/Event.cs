@@ -2,10 +2,8 @@
 
 namespace Core.Entities
 {
-    public class Event
+    public class Event : BaseEntity
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
 
         public string Location { get; set; }

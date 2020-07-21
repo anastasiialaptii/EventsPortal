@@ -14,5 +14,9 @@ export class AuthService {
     invalidLogin: boolean;
 
     constructor(private router: Router, public http: HttpClient) { }
+  
+    AuthUser() {
+      return this.http.post('http://localhost:50618/signin-google', this.formData)
+    }
 
 }

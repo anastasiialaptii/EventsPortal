@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Entities;
 using Data.Interfaces;
 using Service.DTO;
 using Service.Interfaces;
@@ -25,7 +26,8 @@ namespace Service.Services
         {
             if (UserDTO != null)
             {
-                _dbOperation.Users.Create(UserDTO);
+                _dbOperation.Users.Create(
+                    _mapper.Map<User>(UserDTO));
                 await _dbOperation.Save();
             }
         }
@@ -48,7 +50,8 @@ namespace Service.Services
         {
             if (UserDTO != null)
             {
-                _dbOperation.Users.Update(UserDTO);
+                _dbOperation.Users.Update(
+                    _mapper.Map<User>(UserDTO));
                 await _dbOperation.Save();
             }
         }
@@ -57,14 +60,16 @@ namespace Service.Services
         {
             if (id != null)
             {
-                return _mapper.Map<UserDTO>(await _dbOperation.Users.GetIdAsync(id));
+                return _mapper.Map<UserDTO>(
+                    await _dbOperation.Users.GetIdAsync(id));
             }
             else throw new ArgumentNullException();
         }
 
         public async Task<IEnumerable<UserDTO>> GetUsers()
         {
-            return _mapper.Map<List<UserDTO>>(await _dbOperation.Users.GetAllAsync());
+            return _mapper.Map<List<UserDTO>>(
+                await _dbOperation.Users.GetAllAsync());
         }
     }
 }

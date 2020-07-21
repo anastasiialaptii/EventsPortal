@@ -10,9 +10,8 @@ import { decode } from 'punycode';
   styleUrls: []
 })
 export class HomeComponent {
-
-  constructor(private jwtHelper: JwtHelperService, private router: Router) {
-  }
+  constructor(private jwtHelper: JwtHelperService, private router: Router
+  ) { }  
 
   isUserAuthenticated() {
     let token = Cookie.get('Token');
@@ -27,5 +26,9 @@ export class HomeComponent {
 
   public logOut = () => {
     Cookie.delete('Token');
+  }
+
+  public socialSignIn(){
+
   }
 }

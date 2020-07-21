@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Service.DTO;
@@ -19,13 +18,10 @@ namespace EventsPortal.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IUserService _userService;
-        private IMapper _mapper;
-        private List<Claim> claims;
 
-        public AuthController(IUserService userService, IMapper mapper)
+        public AuthController(IUserService userService)
         {
             _userService = userService;
-            _mapper = mapper;
 
         }
 
@@ -47,11 +43,10 @@ namespace EventsPortal.Controllers
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
-                claims = new List<Claim>
+                var claims = new List<Claim>
                             {
-                                new Claim(ClaimTypes.Name, userDTO.Login)
+                                new Claim("Login", userDTO.Login)
                             };
-
                 var tokenOptions = new JwtSecurityToken(
                     issuer: "http://localhost:50816",
                     audience: "http://localhost:50816",

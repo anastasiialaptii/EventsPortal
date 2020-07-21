@@ -5,7 +5,6 @@ using Service.DTO;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace Service.Services
@@ -27,7 +26,8 @@ namespace Service.Services
         {
             if (eventDTO != null)
             {
-                _dbOperation.Events.Create((eventDTO));
+                _dbOperation.Events.Create(
+                    _mapper.Map<Event>(eventDTO));
                 await _dbOperation.Save();
             }
         }
@@ -50,7 +50,8 @@ namespace Service.Services
         {
             if (eventDTO != null)
             {
-                _dbOperation.Events.Update(eventDTO);
+                _dbOperation.Events.Update(
+                    _mapper.Map<Event>(eventDTO));
                 await _dbOperation.Save();
             }
         }
@@ -59,14 +60,16 @@ namespace Service.Services
         {
             if (id != null)
             {
-                return _mapper.Map<EventDTO>(await _dbOperation.Events.GetIdAsync(id));
+                return _mapper.Map<EventDTO>(
+                    await _dbOperation.Events.GetIdAsync(id));
             }
             else throw new ArgumentNullException();
         }
 
         public async Task<IEnumerable<EventDTO>> GetEvents()
         {
-            return _mapper.Map<List<EventDTO>>(await _dbOperation.Events.GetAllAsync());
+            return _mapper.Map<List<EventDTO>>(
+                await _dbOperation.Events.GetAllAsync());
         }
     }
 }

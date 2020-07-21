@@ -315,5 +315,8 @@ H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Micr
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
+H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json
+H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Google.dll
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.csproj.CoreCompileInputs.cache
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.MvcApplicationPartsAssemblyInfo.cache

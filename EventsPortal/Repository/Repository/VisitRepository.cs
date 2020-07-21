@@ -35,7 +35,7 @@ namespace Data.Repository
             else throw new ArgumentNullException();
         }
 
-        public Visit FindItemAsync(Func<Visit, bool> item)
+        public Visit FindItem(Func<Visit, bool> item)
         {
             return _dbContext.Visits
                  .Where(item)

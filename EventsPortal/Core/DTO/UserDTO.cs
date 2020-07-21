@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Core.DTO;
 
 namespace Service.DTO
 {
-    public class UserDTO
+    public class UserDTO : BaseEntityDTO
     {
-        public int Id { get; set; }
-
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -18,8 +16,6 @@ namespace Service.DTO
 
         public int UserRoleId { get; set; }
 
-        public UserRoleDTO UserRoleDTO { get; set; }
-
-        public IEnumerable<EventDTO> EventsDTO { get; set; }
+        public UserRoleDTO UserRole { get; set; }
     }
 }

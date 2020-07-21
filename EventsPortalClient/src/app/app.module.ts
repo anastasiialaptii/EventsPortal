@@ -8,7 +8,6 @@ import { JwtModule } from "@auth0/angular-jwt";
 
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { CustomersComponent } from './customers/customers.component';
 import { AppComponent } from './app.component';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { JoinPortalComponent } from './join-portal/join-portal.component';
@@ -23,7 +22,6 @@ export function tokenGetter() {
   declarations: [
     HomeComponent,
     LoginComponent,
-    CustomersComponent,
     AppComponent,
     JoinPortalComponent,
     EventListComponent,
@@ -33,11 +31,11 @@ export function tokenGetter() {
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
       { path: '', component: HomeComponent },  
-      { path: 'joinPortal', component: JoinPortalComponent }, 
-      { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard] },
+      { path: 'joinPortal', component: JoinPortalComponent }
     ]),
     JwtModule.forRoot({
       config: {

@@ -1,18 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Repository
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<TEntity> where TEntity : class
     {
-        void Create(T item);
+        void Create(TEntity item);
 
-        void Delete(T item);
+        void Delete(TEntity item);
 
-        void Update(T item);
+        void Update(TEntity item);
 
-        Task<IEnumerable<T>> GetAllAsync();
+        Task<IEnumerable<TEntity>> GetAllAsync();
 
-        Task<T> GetIdAsync(int? id);
+        Task<TEntity> GetIdAsync(int? id);
+
+        TEntity FindItem(Func<TEntity, bool> item);
     }
 }

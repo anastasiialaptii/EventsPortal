@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Core.DTO;
+using System.Collections.Generic;
 
 namespace Service.DTO
 {
-    public class EventDTO
+    public class EventDTO : BaseEntityDTO
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
 
         public string Location { get; set; }
@@ -18,10 +17,9 @@ namespace Service.DTO
 
         public int OrganizerId { get; set; }
 
-        public UserDTO UserDTO { get; set; }
+        public UserDTO Organizer { get; set; }
 
-        public EventTypeDTO EventTypeDTO { get; set; }
+        public EventTypeDTO EventType { get; set; }
 
-        public IEnumerable<VisitDTO> VisitsDTO { get; set; }
     }
 }

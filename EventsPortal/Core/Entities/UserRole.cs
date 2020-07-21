@@ -2,10 +2,8 @@
 
 namespace Core.Entities
 {
-    public class UserRole
+    public class UserRole : BaseEntity
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
 
         public virtual ICollection<User> Users { get; set; }

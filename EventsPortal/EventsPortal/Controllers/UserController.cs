@@ -6,7 +6,6 @@ using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace UsersPortal.Controllers
@@ -27,10 +26,9 @@ namespace UsersPortal.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersList()
+        public async Task<IEnumerable<UserDTO>> GetUsersList()
         {
-            return _mapper.Map<List<UserDTO>>
-                (await _userService.GetUsers()).ToList();
+            return await _userService.GetUsers();
         }
 
         [HttpGet("{id}")]
@@ -42,7 +40,7 @@ namespace UsersPortal.Controllers
 
                 if (serachItem != null)
                 {
-                    return _mapper.Map<UserDTO>(serachItem);
+                    return serachItem;
                 }
                 else return NotFound();
             }
@@ -54,8 +52,7 @@ namespace UsersPortal.Controllers
         {
             if (UserDTO != null)
             {
-                await _userService.AddUser(
-                    _mapper.Map<UserDTO>(UserDTO));
+                await _userService.AddUser(UserDTO);
             }
             return CreatedAtAction(nameof(GetUserById), new { id = UserDTO.Id }, UserDTO);
 
@@ -86,8 +83,7 @@ namespace UsersPortal.Controllers
             }
             try
             {
-                await _userService.EditUser(
-               _mapper.Map<UserDTO>(UserDTO));
+                await _userService.EditUser(UserDTO);
             }
             catch (DBConcurrencyException)
             {
