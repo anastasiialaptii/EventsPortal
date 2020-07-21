@@ -9,19 +9,19 @@ import { EventService } from 'app/shared/services/event.service';
 })
 export class EventComponent implements OnInit {
 
-  constructor(private eventService:EventService) { }
+  constructor(private eventService: EventService) { }
 
   ngOnInit() {
   }
-  
+
   onSubmit(form: NgForm) {
     if (this.eventService.formData.Id == 0)
-      this.InsertEvent(form);     
+      this.InsertEvent(form);
   }
 
   InsertEvent(form: NgForm) {
     this.eventService.CreateEvent().subscribe(
-      res=>{debugger;},
+      res => { debugger; },
       err => {
         debugger;
         console.log(err);

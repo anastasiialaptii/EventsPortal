@@ -20,6 +20,7 @@ namespace EventsPortal.Controllers
     {
         private readonly IUserService _userService;
         private IMapper _mapper;
+        private List<Claim> claims;
 
         public AuthController(IUserService userService, IMapper mapper)
         {
@@ -33,23 +34,22 @@ namespace EventsPortal.Controllers
         {
             var searchList = await _userService.GetUsers();
 
-            var counter = 1;
+            var counter = 0;
 
-            //foreach (var item in searchList)
-            //{
-            //    if (item.Login == userDTO.Login && item.Password == userDTO.Password)
-            //        counter++;
-            //}
+            foreach (var item in searchList)
+            {
+                if (item.Login == userDTO.Login && item.Password == userDTO.Password)
+                    counter++;
+            }
 
             if (counter > 0)
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
-                var claims = new List<Claim>
+                claims = new List<Claim>
                             {
-                                new Claim(ClaimTypes.Name, userDTO.Login),
-                                new Claim(ClaimTypes.Role, "Organizer")
+                                new Claim(ClaimTypes.Name, userDTO.Login)
                             };
 
                 var tokenOptions = new JwtSecurityToken(
@@ -59,7 +59,7 @@ namespace EventsPortal.Controllers
                     expires: DateTime.Now.AddMinutes(5),
                     signingCredentials: signinCredentials
                 );
-
+                counter = 0;
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
                 return Ok(new { Token = tokenString });
             }

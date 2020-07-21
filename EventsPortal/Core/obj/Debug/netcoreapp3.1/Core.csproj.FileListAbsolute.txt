@@ -21,3 +21,4 @@ H:\TechStack\EventsPortal\EventsPortal\Core\obj\Debug\netcoreapp3.1\Core.csproj.
 H:\TechStack\EventsPortal\EventsPortal\Core\obj\Debug\netcoreapp3.1\Core.dll
 H:\TechStack\EventsPortal\EventsPortal\Core\obj\Debug\netcoreapp3.1\Core.pdb
 H:\TechStack\EventsPortal\EventsPortal\Core\obj\Debug\netcoreapp3.1\Core.genruntimeconfig.cache
+H:\TechStack\EventsPortal\EventsPortal\Core\obj\Debug\netcoreapp3.1\Core.csprojAssemblyReference.cache

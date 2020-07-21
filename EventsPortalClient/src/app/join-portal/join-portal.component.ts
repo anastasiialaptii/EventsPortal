@@ -11,7 +11,7 @@ export class JoinPortalComponent implements OnInit {
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
-   // this.resetForm();
+    this.resetForm();
   }
 
   resetForm(form?: NgForm) {
@@ -24,7 +24,7 @@ export class JoinPortalComponent implements OnInit {
       Login:'',
       Password:'',
       UserRoleId: 1,
-      AvatarImageURI:'',
+      AvatarImageURI:'avatarName',
       UserRole:null
     }
   }
@@ -35,6 +35,7 @@ export class JoinPortalComponent implements OnInit {
 
   InsertUser(form: NgForm) {
     this.userService.CreateUser().subscribe(
+      res=>{debugger;},
       err => {
         debugger;
         console.log(err);
