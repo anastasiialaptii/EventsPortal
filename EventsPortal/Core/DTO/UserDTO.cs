@@ -4,18 +4,16 @@ namespace Service.DTO
 {
     public class UserDTO : BaseEntityDTO
     {
-        public string FirstName { get; set; }
+        public string Email { get; set; }
 
-        public string LastName { get; set; }
+        public string IdToken { get; set; }
 
-        public string Login { get; set; }
+        public string Image { get; set; }
 
-        public string Password { get; set; }
+        public string Name { get; set; }
 
-        public string AvatarImageURI { get; set; }
+        public string Provider { get; set; }
 
-        public int UserRoleId { get; set; }
-
-        public UserRoleDTO UserRole { get; set; }
+        public string Token { get; set; }
     }
 }

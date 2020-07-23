@@ -49,17 +49,12 @@ namespace Data.Repository
                 .Select(x => new User
                 {
                     Id = x.Id,
-                    AvatarImageURI = x.AvatarImageURI,
-                    FirstName = x.FirstName,
-                    LastName = x.LastName,
-                    Login = x.Login,
-                    Password = x.Password,
-                    UserRoleId = x.UserRoleId,
-                    UserRole = new UserRole
-                    {
-                        Id = x.UserRole.Id,
-                        Name = x.UserRole.Name
-                    }
+                    IdToken = x.IdToken,
+                    Email = x.Email,
+                    Image = x.Image,
+                    Name = x.Name,
+                    Provider = x.Provider,
+                    Token = x.Token
                 })
                 .ToListAsync();
         }
@@ -69,22 +64,16 @@ namespace Data.Repository
             if (id != null)
             {
                 return await _dbContext.Users
-                    .Select(x => new User
-                    {
-                        Id = x.Id,
-                        AvatarImageURI = x.AvatarImageURI,
-                        FirstName = x.FirstName,
-                        LastName = x.LastName,
-                        Login = x.Login,
-                        Password = x.Password,
-                        UserRoleId = x.UserRoleId,
-                        UserRole = new UserRole
-                        {
-                            Id = x.UserRole.Id,
-                            Name = x.UserRole.Name
-                        }
-                    })
-                    .Where(x => x.Id == id)
+                .Select(x => new User
+                {
+                    Id = x.Id,
+                    IdToken = x.IdToken,
+                    Email = x.Email,
+                    Image = x.Image,
+                    Name = x.Name,
+                    Provider = x.Provider,
+                    Token = x.Token
+                })
                     .FirstOrDefaultAsync();
             }
             else throw new ArgumentNullException();

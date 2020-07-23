@@ -9,7 +9,7 @@ using Repository;
 namespace Data.Migrations
 {
     [DbContext(typeof(EventsPortalDbContext))]
-    [Migration("20200721192135_Initial")]
+    [Migration("20200723202937_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,38 +52,6 @@ namespace Data.Migrations
                     b.HasIndex("OrganizerId");
 
                     b.ToTable("Events");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Funny event",
-                            EventTypeId = 1,
-                            ImageURI = "eventImage",
-                            Location = "East Blue",
-                            Name = "B-day party",
-                            OrganizerId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Cool event",
-                            EventTypeId = 1,
-                            ImageURI = "eventImage",
-                            Location = "West Blue",
-                            Name = "Tea party",
-                            OrganizerId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Awesome event",
-                            EventTypeId = 2,
-                            ImageURI = "eventImage",
-                            Location = "South Blue",
-                            Name = "Banquets",
-                            OrganizerId = 1
-                        });
                 });
 
             modelBuilder.Entity("Core.Entities.EventType", b =>
@@ -120,88 +88,27 @@ namespace Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AvatarImageURI")
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("IdToken")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
+                    b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Login")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserRoleId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserRoleId");
-
-                    b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AvatarImageURI = "avatarName",
-                            FirstName = "Madara",
-                            LastName = "Uchiha",
-                            Login = "Ninja",
-                            Password = "qwerty",
-                            UserRoleId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AvatarImageURI = "avatarName",
-                            FirstName = "Zoro",
-                            LastName = "Roronoa",
-                            Login = "Samurai",
-                            Password = "qwerty",
-                            UserRoleId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AvatarImageURI = "avatarName",
-                            FirstName = "Naruto",
-                            LastName = "Uzumaki",
-                            Login = "Hokage",
-                            Password = "qwerty",
-                            UserRoleId = 1
-                        });
-                });
-
-            modelBuilder.Entity("Core.Entities.UserRole", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Provider")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("UserRole");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Visitor"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Organizer"
-                        });
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Core.Entities.Visit", b =>
@@ -231,15 +138,6 @@ namespace Data.Migrations
                         .WithMany("Events")
                         .HasForeignKey("OrganizerId")
                         .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Core.Entities.User", b =>
-                {
-                    b.HasOne("Core.Entities.UserRole", "UserRole")
-                        .WithMany("Users")
-                        .HasForeignKey("UserRoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 

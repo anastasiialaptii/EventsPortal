@@ -7,9 +7,7 @@ namespace Core.EntitiesBuilder
     {
         public UserBuilder(EntityTypeBuilder<User> entityBuilder)
         {
-            entityBuilder
-                .HasOne(x => x.UserRole)
-                .WithMany(x => x.Users);
+            entityBuilder.HasKey(x => x.Id);
         }
     }
 }

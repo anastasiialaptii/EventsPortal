@@ -20,7 +20,6 @@ namespace Repository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            new RoleBuilder(modelBuilder.Entity<UserRole>());
             new TypeBuilder(modelBuilder.Entity<EventType>());
             new UserBuilder(modelBuilder.Entity<User>());
             new VisitBuilder(modelBuilder.Entity<Visit>());

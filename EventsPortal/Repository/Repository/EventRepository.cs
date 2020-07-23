@@ -57,7 +57,7 @@ namespace Data.Repository
                     Organizer = new User
                     {
                         Id = x.Organizer.Id,
-                        Login = x.Organizer.Login
+                        Name = x.Organizer.Name
                     },
                     EventType = new EventType
                     {
@@ -85,7 +85,7 @@ namespace Data.Repository
                     Organizer = new User
                     {
                         Id = x.Organizer.Id,
-                        Login = x.Organizer.Login
+                        Name = x.Organizer.Name
                     },
                     EventType = new EventType
                     {

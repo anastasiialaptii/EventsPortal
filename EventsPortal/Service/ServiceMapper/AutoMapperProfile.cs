@@ -17,9 +17,6 @@ namespace Service.ServiceMapper
             CreateMap<User, UserDTO>();
             CreateMap<UserDTO, User>();
 
-            CreateMap<UserRole, UserRoleDTO>();
-            CreateMap<UserRoleDTO, UserRole>();
-
             CreateMap<EventType, EventTypeDTO>();
             CreateMap<EventTypeDTO, EventType>();
         }

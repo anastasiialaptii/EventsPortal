@@ -20,40 +20,21 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserRole",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserRole", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    Login = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
-                    AvatarImageURI = table.Column<string>(nullable: true),
-                    UserRoleId = table.Column<int>(nullable: false)
+                    Email = table.Column<string>(nullable: true),
+                    IdToken = table.Column<string>(nullable: true),
+                    Image = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Provider = table.Column<string>(nullable: true),
+                    Token = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Users_UserRole_UserRoleId",
-                        column: x => x.UserRoleId,
-                        principalTable: "UserRole",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -112,50 +93,12 @@ namespace Data.Migrations
             migrationBuilder.InsertData(
                 table: "EventType",
                 columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 1, "Private" },
-                    { 2, "Public" }
-                });
+                values: new object[] { 1, "Private" });
 
             migrationBuilder.InsertData(
-                table: "UserRole",
+                table: "EventType",
                 columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 1, "Visitor" },
-                    { 2, "Organizer" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "Id", "AvatarImageURI", "FirstName", "LastName", "Login", "Password", "UserRoleId" },
-                values: new object[] { 1, "avatarName", "Madara", "Uchiha", "Ninja", "qwerty", 1 });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "Id", "AvatarImageURI", "FirstName", "LastName", "Login", "Password", "UserRoleId" },
-                values: new object[] { 3, "avatarName", "Naruto", "Uzumaki", "Hokage", "qwerty", 1 });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "Id", "AvatarImageURI", "FirstName", "LastName", "Login", "Password", "UserRoleId" },
-                values: new object[] { 2, "avatarName", "Zoro", "Roronoa", "Samurai", "qwerty", 2 });
-
-            migrationBuilder.InsertData(
-                table: "Events",
-                columns: new[] { "Id", "Description", "EventTypeId", "ImageURI", "Location", "Name", "OrganizerId" },
-                values: new object[] { 1, "Funny event", 1, "eventImage", "East Blue", "B-day party", 1 });
-
-            migrationBuilder.InsertData(
-                table: "Events",
-                columns: new[] { "Id", "Description", "EventTypeId", "ImageURI", "Location", "Name", "OrganizerId" },
-                values: new object[] { 2, "Cool event", 1, "eventImage", "West Blue", "Tea party", 1 });
-
-            migrationBuilder.InsertData(
-                table: "Events",
-                columns: new[] { "Id", "Description", "EventTypeId", "ImageURI", "Location", "Name", "OrganizerId" },
-                values: new object[] { 3, "Awesome event", 2, "eventImage", "South Blue", "Banquets", 1 });
+                values: new object[] { 2, "Public" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Events_EventTypeId",
@@ -166,11 +109,6 @@ namespace Data.Migrations
                 name: "IX_Events_OrganizerId",
                 table: "Events",
                 column: "OrganizerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_UserRoleId",
-                table: "Users",
-                column: "UserRoleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Visits_UserId",
@@ -191,9 +129,6 @@ namespace Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
-
-            migrationBuilder.DropTable(
-                name: "UserRole");
         }
     }
 }
