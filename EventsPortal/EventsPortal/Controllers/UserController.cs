@@ -75,15 +75,15 @@ namespace UsersPortal.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] UserDTO UserDTO)
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UserDTO userDTO)
         {
-            if (id != UserDTO.Id)
+            if (id != userDTO.Id)
             {
                 return BadRequest();
             }
             try
             {
-                await _userService.EditUser(UserDTO);
+                await _userService.EditUser(userDTO);
             }
             catch (DBConcurrencyException)
             {

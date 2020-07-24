@@ -89,6 +89,9 @@ namespace Data.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("GoogleId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("IdToken")
                         .HasColumnType("nvarchar(max)");
 

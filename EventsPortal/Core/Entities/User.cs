@@ -4,6 +4,8 @@ namespace Core.Entities
 {
     public class User : BaseEntity
     {
+        public string GoogleId { get; set; }
+
         public string Email { get; set; }
 
         public string IdToken { get; set; }

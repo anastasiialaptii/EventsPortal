@@ -9,7 +9,7 @@ using Repository;
 namespace Data.Migrations
 {
     [DbContext(typeof(EventsPortalDbContext))]
-    [Migration("20200723202937_Initial")]
+    [Migration("20200724123542_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -89,6 +89,9 @@ namespace Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GoogleId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IdToken")

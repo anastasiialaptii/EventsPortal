@@ -1,19 +1,14 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using EventsPortal.GoogleAuthModels;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 using Service.DTO;
 using Service.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EventsPortal.Controllers
 {
     [EnableCors("CorsPolicy")]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -25,43 +20,33 @@ namespace EventsPortal.Controllers
 
         }
 
-        //[HttpPost, Route("login")]
-        //public async Task<IActionResult> AuthUser([FromBody] UserDTO userDTO)
-        //{
-        //    var searchList = await _userService.GetUsers();
+        [HttpPost]
+        public async Task<object> Savesresponse(GoogleUser googleUser)
+        {
+            var userDTO = new UserDTO()
+            {
+                GoogleId = googleUser.id,
+                Email = googleUser.email,
+                IdToken = googleUser.idToken,
+                Image = googleUser.image,
+                Name = googleUser.name,
+                Provider = googleUser.provider,
+                Token = googleUser.token
+            };
 
-        //    var counter = 0;
+            var userList = await _userService.GetUsers();
+        
 
-        //    foreach (var item in searchList)
-        //    {
-        //        if (item.Login == userDTO.Login && item.Password == userDTO.Password)
-        //            counter++;
-        //    }
+            foreach (var user in userList)
+            {
+                if (user.Email == userDTO.Email)
+                {
+                    return new Response { Message = googleUser.idToken, Status = "Exists" };
+                }
+            }
 
-        //    if (counter > 0)
-        //    {
-        //        var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
-        //        var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-
-        //        var claims = new List<Claim>
-        //                    {
-        //                        new Claim("Login", userDTO.Login)
-        //                    };
-        //        var tokenOptions = new JwtSecurityToken(
-        //            issuer: "http://localhost:50816",
-        //            audience: "http://localhost:50816",
-        //            claims: claims,
-        //            expires: DateTime.Now.AddMinutes(5),
-        //            signingCredentials: signinCredentials
-        //        );
-        //        counter = 0;
-        //        var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
-        //        return Ok(new { Token = tokenString });
-        //    }
-        //    else
-        //    {
-        //        return Unauthorized();
-        //    }
-        //}
+            await _userService.AddUser(userDTO);
+            return new Response { Message = googleUser.idToken, Status = "OK" };
+        }
     }
 }

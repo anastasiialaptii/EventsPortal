@@ -25,6 +25,7 @@ namespace Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    GoogleId = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     IdToken = table.Column<string>(nullable: true),
                     Image = table.Column<string>(nullable: true),

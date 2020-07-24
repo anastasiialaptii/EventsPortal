@@ -4,6 +4,8 @@ namespace Service.DTO
 {
     public class UserDTO : BaseEntityDTO
     {
+        public string GoogleId { get; set; }
+
         public string Email { get; set; }
 
         public string IdToken { get; set; }
