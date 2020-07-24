@@ -9,12 +9,14 @@ import { getAuthServiceConfigs } from './shared/config/auth-provider'
 
 import { SocialLoginModule, AuthServiceConfig } from "angular-6-social-login";
 import { AuthComponent } from './auth/auth.component';
+import { PublicEventListComponent } from './public-event-list/public-event-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent
+    AuthComponent,
+    PublicEventListComponent
   ],
   imports: [
     BrowserModule,

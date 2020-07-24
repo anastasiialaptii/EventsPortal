@@ -1,0 +1,5 @@
+<table class="table table-hover" *ngFor="let event of eventService.PublicEventList">
+    <td>
+        <h5>{{event.Name}} / {{event.Location}} / {{event.Organizer.Name}}</h5>
+    </td>
+</table>

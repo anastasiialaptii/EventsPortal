@@ -19,9 +19,8 @@ export class AuthComponent implements OnInit {
     public OAuth: AuthService,
     public GAuthService: GoogleAuthService
   ) { }
-  ngOnInit() {
 
-  }
+  ngOnInit() { }
 
   public socialSignIn(socialProvider: string) {
     let socialPlatformProvider;

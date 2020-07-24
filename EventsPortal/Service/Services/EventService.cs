@@ -71,5 +71,19 @@ namespace Service.Services
             return _mapper.Map<List<EventDTO>>(
                 await _dbOperation.Events.GetAllAsync());
         }
+
+        public async Task<IEnumerable<EventDTO>> GetPublicEventList()
+        {
+            var events = _mapper.Map<List<EventDTO>>(
+                await _dbOperation.Events.GetAllAsync());
+
+            var publicEventList = new List<EventDTO>();
+            foreach (var item in events)
+            {
+                if (item.EventType.Name == "Public")
+                    publicEventList.Add(item);
+            }
+            return publicEventList;
+        }
     }
 }
