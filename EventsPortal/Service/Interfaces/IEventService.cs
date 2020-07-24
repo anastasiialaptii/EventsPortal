@@ -17,5 +17,7 @@ namespace Service.Interfaces
         Task AddEvent(EventDTO eventDTO);
 
         Task<IEnumerable<EventDTO>> GetPublicEventList();
+
+        Task<IEnumerable<EventDTO>> GetPrivateEventList(string organizerId);
     }
 }

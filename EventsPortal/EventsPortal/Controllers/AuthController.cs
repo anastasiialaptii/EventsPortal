@@ -23,6 +23,16 @@ namespace EventsPortal.Controllers
         [HttpPost]
         public async Task<object> Savesresponse(GoogleUser googleUser)
         {
+
+            var userList = await _userService.GetUsers();   
+
+            foreach (var user in userList)
+            {
+                if (user.Email == googleUser.email)
+                {
+                    return new Response { Message = user.Token, Status = "Exists" };
+                }
+            }
             var userDTO = new UserDTO()
             {
                 GoogleId = googleUser.id,
@@ -33,20 +43,8 @@ namespace EventsPortal.Controllers
                 Provider = googleUser.provider,
                 Token = googleUser.token
             };
-
-            var userList = await _userService.GetUsers();
-        
-
-            foreach (var user in userList)
-            {
-                if (user.Email == userDTO.Email)
-                {
-                    return new Response { Message = googleUser.idToken, Status = "Exists" };
-                }
-            }
-
             await _userService.AddUser(userDTO);
-            return new Response { Message = googleUser.idToken, Status = "OK" };
+            return new Response { Message = googleUser.token, Status = "OK" };
         }
     }
 }

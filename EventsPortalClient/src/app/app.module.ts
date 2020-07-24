@@ -4,19 +4,21 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { getAuthServiceConfigs } from './shared/config/auth-provider'
+import { getAuthServiceConfigs, AuthGuard } from './shared/config/auth-provider'
 
 
 import { SocialLoginModule, AuthServiceConfig } from "angular-6-social-login";
 import { AuthComponent } from './auth/auth.component';
 import { PublicEventListComponent } from './public-event-list/public-event-list.component';
+import { PrivateEventListComponent } from './private-event-list/private-event-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
-    PublicEventListComponent
+    PublicEventListComponent,
+    PrivateEventListComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,7 @@ import { PublicEventListComponent } from './public-event-list/public-event-list.
     SocialLoginModule,
     HttpClientModule
   ],
-  providers: [
+  providers: [AuthGuard,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs

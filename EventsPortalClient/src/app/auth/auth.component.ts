@@ -3,6 +3,7 @@ import { GoogleLoginProvider, AuthService } from 'angular-6-social-login';
 
 import { GoogleAuthService } from '../shared/services/auth-service';
 import { User } from '../shared/models/user-model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -17,7 +18,8 @@ export class AuthComponent implements OnInit {
   users = new User();
   constructor(
     public OAuth: AuthService,
-    public GAuthService: GoogleAuthService
+    public GAuthService: GoogleAuthService,
+    private router: Router
   ) { }
 
   ngOnInit() { }
@@ -32,6 +34,7 @@ export class AuthComponent implements OnInit {
       console.log(socialProvider, users);
       console.log(users);
       this.Savesresponse(users);
+      this.router.navigate(["public-event-list"]);
     });
   }
 
@@ -44,14 +47,8 @@ export class AuthComponent implements OnInit {
       localStorage.setItem('socialusers', JSON.stringify(this.users));
       console.log(localStorage.setItem('socialusers', JSON.stringify(this.users)));
       console.log(localStorage.getItem('socialusers'));
-    })
-  }
 
-  isUserAuthenticated() {
-    let token = (localStorage.getItem('socialusers'));
-    if (token)
-      return true;
-    else return false;
+    })
   }
 
   logOut() {

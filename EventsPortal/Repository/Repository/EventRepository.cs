@@ -57,7 +57,13 @@ namespace Data.Repository
                     Organizer = new User
                     {
                         Id = x.Organizer.Id,
-                        Name = x.Organizer.Name
+                        Name = x.Organizer.Name,
+                        Email = x.Organizer.Email,
+                        GoogleId = x.Organizer.GoogleId,
+                        IdToken = x.Organizer.IdToken,
+                        Image = x.Organizer.Image,
+                        Provider = x.Organizer.Provider,
+                        Token = x.Organizer.Token
                     },
                     EventType = new EventType
                     {
@@ -85,7 +91,13 @@ namespace Data.Repository
                     Organizer = new User
                     {
                         Id = x.Organizer.Id,
-                        Name = x.Organizer.Name
+                        Name = x.Organizer.Name,
+                        Email = x.Organizer.Email,
+                        GoogleId = x.Organizer.GoogleId,
+                        IdToken = x.Organizer.IdToken,
+                        Image = x.Organizer.Image,
+                        Provider = x.Organizer.Provider,
+                        Token = x.Organizer.Token
                     },
                     EventType = new EventType
                     {

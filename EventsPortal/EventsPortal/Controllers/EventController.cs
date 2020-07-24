@@ -26,7 +26,7 @@ namespace EventsPortal.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<EventDTO>> GetEventsList()
+        public async Task<IEnumerable<EventDTO>> GetEventList()
         {
             return await _eventService.GetEvents();
         }
@@ -37,6 +37,11 @@ namespace EventsPortal.Controllers
             return await _eventService.GetPublicEventList();
         }
 
+        [HttpGet("{organizerId}")]
+        public async Task<IEnumerable<EventDTO>> GetPrivateEventList(string organizerId)
+        {
+            return await _eventService.GetPrivateEventList(organizerId);
+        }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<EventDTO>> GetEventById(int? id)

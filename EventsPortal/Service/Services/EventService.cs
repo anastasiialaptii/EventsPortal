@@ -72,6 +72,20 @@ namespace Service.Services
                 await _dbOperation.Events.GetAllAsync());
         }
 
+        public async Task<IEnumerable<EventDTO>> GetPrivateEventList(string organizerId)
+        {
+            var events = _mapper.Map<List<EventDTO>>(
+                await _dbOperation.Events.GetAllAsync());
+
+            var privateEventList = new List<EventDTO>();
+            foreach (var item in events)
+            {
+                if (item.Organizer.Token == organizerId)
+                    privateEventList.Add(item);
+            }
+            return privateEventList;
+        }
+
         public async Task<IEnumerable<EventDTO>> GetPublicEventList()
         {
             var events = _mapper.Map<List<EventDTO>>(
