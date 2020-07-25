@@ -7,7 +7,7 @@
         <h5>
             {{event.Name}} / {{event.Location}} / {{event.Organizer.Name}} / {{event.EventType.Name}}
             <button> Edit</button>
-            <button> Delete </button>
+            <button (click)="onDelete(event.Id)"> Delete </button>
         </h5>
     </td>
 </table>

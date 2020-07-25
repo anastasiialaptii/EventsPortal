@@ -32,10 +32,8 @@ export class PrivateEventListComponent implements OnInit {
   }
 
   resetForm(form?: NgForm) {
-
     if (form != null)
       form.form.reset();
-
     this.userService.GetUserByToken(this.token.Message).subscribe(
       res => {
         this.eventService.formData = {
@@ -61,6 +59,19 @@ export class PrivateEventListComponent implements OnInit {
         debugger;
         console.log(err);
       })
+  }
+
+  onDelete(id) {
+    if (confirm('Are you sure to delete this record ?')) {
+      this.eventService.DeleteEvent(id)
+        .subscribe(res => {
+          this.eventService.GetPrivateEventList(this.token.Message);
+        },
+          err => {
+            debugger;
+            console.log(err);
+          })
+    }
   }
 }
 

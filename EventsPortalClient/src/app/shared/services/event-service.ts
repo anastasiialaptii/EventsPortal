@@ -13,7 +13,6 @@ export class EventService {
     PublicEventList: EventItem[];
     PrivateEventList: EventItem[];
 
-
     constructor(private http: HttpClient) { }
 
     GetPublicEventList() {
@@ -34,5 +33,9 @@ export class EventService {
 
     CreateEvent() {
         return this.http.post(Configuration.URI + '/Event/CreateEvent', this.formData);
+    }
+
+    DeleteEvent(id: number) {
+        return this.http.delete(Configuration.URI + '/Event/DeleteEvent/' + id);
     }
 }
