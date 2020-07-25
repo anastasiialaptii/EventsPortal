@@ -66,6 +66,17 @@ namespace Service.Services
             else throw new ArgumentNullException();
         }
 
+        public async Task<int> GetUserByToken(string token)
+        {
+            var userList = await _dbOperation.Users.GetAllAsync();
+            foreach (var item in userList)
+            {
+                if (item.Token == token)
+                    return item.Id;
+            }
+            return 0;
+        }
+
         public async Task<IEnumerable<UserDTO>> GetUsers()
         {
             return _mapper.Map<List<UserDTO>>(

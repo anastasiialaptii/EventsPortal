@@ -2,18 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Configuration } from '../config/configuration';
-import { User } from '../models/user-model';
+import { EventItem } from '../models/event-model';
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class EventService {
-    url: string;
-    userToken: string;
-    formData: Event;
-    PublicEventList: Event[];
-    PrivateEventList: Event[];
+    formData: EventItem;
+    PublicEventList: EventItem[];
+    PrivateEventList: EventItem[];
 
 
     constructor(private http: HttpClient) { }
@@ -21,16 +19,20 @@ export class EventService {
     GetPublicEventList() {
         return this.http.get(Configuration.URI + '/Event/GetPublicEventList')
             .toPromise()
-            .then(res => this.PublicEventList = res as Event[]);
+            .then(res => this.PublicEventList = res as EventItem[]);
     }
 
-    GetPrivateEventList(id:string) {
+    GetPrivateEventList(id: string) {
         return this.http.get(Configuration.URI + '/Event/GetPrivateEventList/' + id)
             .toPromise()
-            .then(res => this.PrivateEventList = res as Event[]);
+            .then(res => this.PrivateEventList = res as EventItem[]);
     }
 
     GetEventById(id: number) {
         return this.http.get(Configuration.URI + '/Event/GetEventById/' + id);
+    }
+
+    CreateEvent() {
+        return this.http.post(Configuration.URI + '/Event/CreateEvent', this.formData);
     }
 }

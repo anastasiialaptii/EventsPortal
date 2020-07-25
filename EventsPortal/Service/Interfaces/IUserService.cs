@@ -15,5 +15,7 @@ namespace Service.Interfaces
         Task EditUser(UserDTO UserDTO);
 
         Task AddUser(UserDTO UserDTO);
+
+        Task<int> GetUserByToken(string token);
     }
 }

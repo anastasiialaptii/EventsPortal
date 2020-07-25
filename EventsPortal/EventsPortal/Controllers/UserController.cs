@@ -31,6 +31,12 @@ namespace UsersPortal.Controllers
             return await _userService.GetUsers();
         }
 
+        [HttpGet("{token}")]
+        public async Task<int> GetUserByToken(string token)
+        {
+            return await _userService.GetUserByToken(token);
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<UserDTO>> GetUserById(int? id)
         {
