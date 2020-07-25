@@ -80,7 +80,7 @@ namespace Service.Services
             var privateEventList = new List<EventDTO>();
             foreach (var item in events)
             {
-                if (item.Organizer.Token == organizerId)
+                if (item.Organizer.Token == organizerId && item.EventType.Name == "Private")
                     privateEventList.Add(item);
             }
             return privateEventList;
