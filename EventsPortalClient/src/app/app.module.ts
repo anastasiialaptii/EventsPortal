@@ -26,7 +26,8 @@ import { PrivateEventListComponent } from './private-event-list/private-event-li
     SocialLoginModule,
     HttpClientModule
   ],
-  providers: [AuthGuard,
+  providers: [
+    AuthGuard,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs

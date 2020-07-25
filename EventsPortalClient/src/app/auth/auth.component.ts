@@ -34,7 +34,6 @@ export class AuthComponent implements OnInit {
       console.log(socialProvider, users);
       console.log(users);
       this.Savesresponse(users);
-      this.router.navigate(["private-event-list"]);
     });
   }
 
