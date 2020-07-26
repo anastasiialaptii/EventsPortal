@@ -76,8 +76,8 @@ export class PrivateEventListComponent implements OnInit {
     }
   }
 
-  editProduct(p: EventItem) {
-    this.eventItem = p;
+  editProduct(event: EventItem) {
+    this.eventItem = event;
   }
 
   cancel() {
