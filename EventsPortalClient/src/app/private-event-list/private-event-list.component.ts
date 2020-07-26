@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { EventService } from '../shared/services/event-service';
 import { UserService } from '../shared/services/user-service';
 import { EventItem } from '../shared/models/event-model';
+import { EventType } from '../shared/models/event-type';
 
 @Component({
   selector: 'app-private-event-list',
@@ -16,6 +17,7 @@ export class PrivateEventListComponent implements OnInit {
   token = JSON.parse(localStorage.getItem('socialusers'));
   userId: number;
   eventItem: EventItem = new EventItem();
+  eventType: EventType[];
   tableMode: boolean = true;
   constructor(
     public eventService: EventService,
@@ -23,6 +25,10 @@ export class PrivateEventListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.eventType = [
+      { Id: 1, Name: "Private" },
+      { Id: 2, Name: "Public" }
+    ];
     this.eventService.GetPrivateEventList(this.token.Message);
     this.resetForm();
   }
@@ -36,6 +42,7 @@ export class PrivateEventListComponent implements OnInit {
   resetForm(form?: NgForm) {
     if (form != null)
       form.form.reset();
+
     this.userService.GetUserByToken(this.token.Message).subscribe(
       res => {
         this.eventService.formData = {

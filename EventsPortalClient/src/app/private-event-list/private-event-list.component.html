@@ -80,10 +80,8 @@
             </div>
             <div class="form-group">
                 <h6>Category</h6>
-                <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventService.formData.EventTypeId"
-                    class="form-control">
-                    <option value="1">Private</option>
-                    <option value="2">Public</option>
+                <select name = "EventTypeId" #Name="ngModel" [(ngModel)] = "eventService.formData.EventTypeId"  class="form-control">
+                    <option *ngFor = "let type of eventType" [ngValue] = type.Id>{{type.Name}}</option>
                 </select>
             </div>
         </div>
