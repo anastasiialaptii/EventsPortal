@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 
 import { EventService } from '../shared/services/event-service';
 import { UserService } from '../shared/services/user-service';
+import { EventItem } from '../shared/models/event-model';
 
 @Component({
   selector: 'app-private-event-list',
@@ -14,6 +15,8 @@ import { UserService } from '../shared/services/user-service';
 export class PrivateEventListComponent implements OnInit {
   token = JSON.parse(localStorage.getItem('socialusers'));
   userId: number;
+  eventItem: EventItem = new EventItem();
+  tableMode: boolean = true;
   constructor(
     public eventService: EventService,
     public userService: UserService
@@ -26,7 +29,6 @@ export class PrivateEventListComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     if (this.eventService.formData.Id == 0) {
-
       this.createEvent(form);
     }
   }
@@ -73,5 +75,29 @@ export class PrivateEventListComponent implements OnInit {
           })
     }
   }
-}
 
+  editProduct(p: EventItem) {
+    this.eventItem = p;
+  }
+
+  cancel() {
+    this.eventItem = new EventItem();
+    this.tableMode = true;
+  }
+
+  add() {
+    this.cancel();
+    this.tableMode = false;
+  }
+
+  save() {
+    this.eventService.EditEvent(this.eventItem.Id, this.eventItem)
+      .subscribe(res => {
+        this.eventService.GetPrivateEventList(this.token.Message);
+      },
+        err => {
+          debugger;
+          console.log(err);
+        })
+  }
+}

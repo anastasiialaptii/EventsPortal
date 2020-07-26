@@ -2,47 +2,97 @@
 <h3>Your own private events</h3>
 
 
-<table class="table table-hover" *ngFor="let event of eventService.PrivateEventList">
-    <td>
-        <h5>
-            {{event.Name}} / {{event.Location}} / {{event.Organizer.Name}} / {{event.EventType.Name}}
-            <button> Edit</button>
-            <button (click)="onDelete(event.Id)"> Delete </button>
-        </h5>
-    </td>
-</table>
-<h4>Create new</h4>
 
-<form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
-    <input type="hidden" name="Id" [value]="eventService.formData.Id">
-    <input type="hidden" name="ImageURI" [value]="eventService.formData.ImageURI">
-    <input type="hidden" name="OrganizerId" [value]="eventService.formData.OrganizerId">
-    <div class="flex-container">
-        <div class="form-group">
-            <h6>Name</h6>
-            <input name="Name" #Name="ngModel" [(ngModel)]="eventService.formData.Name" class="form-control"
-                placeholder="Name">
+
+<input type="button" value="Add" class="btn btn-default" (click)="add()" />
+<table *ngIf="tableMode; else create" class="table table-striped">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Location</td>
+            <td>Description</td>
+            <td>Event Type</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let event of eventService.PrivateEventList">
+            <ng-template [ngIf]="eventItem?.Id != event.Id" [ngIfElse]="edit">
+                <td>{{event.Name}}</td>
+                <td>{{event.Location}}</td>
+                <td>{{event.Description}}</td>
+                <td>{{event.EventType.Name}}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary" (click)="editProduct(event)">Edit</button>
+                    <button class="btn btn-sm btn-danger" (click)="onDelete(event.Id)">Delete</button>
+                </td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+
+<!--edit mode-->
+<ng-template #edit>
+    <td>
+        <h4>Name</h4>
+        <input type="text" [(ngModel)]="eventItem.Name" class="form-control" />
+    </td>
+    <td>
+        <h4>Location</h4>
+        <input type="text" [(ngModel)]="eventItem.Location" class="form-control" />
+    </td>
+    <td>
+        <h4>Description</h4>
+        <input type="text" [(ngModel)]="eventItem.Description" class="form-control" />
+    </td>
+    <td>
+        <h4>Event Type</h4>
+        <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventItem.EventTypeId" class="form-control">
+            <option value="1">Private</option>
+            <option value="2">Public</option>
+        </select>
+    </td>
+    <td>
+        <input type="button" value="Save" (click)="save()" class="btn btn-sm btn-success" />
+        <input type="button" value="Cancel" (click)="cancel()" class="btn btn-sm btn-warning" />
+    </td>
+</ng-template>
+
+<!--add mode-->
+<ng-template #create>
+    <h4>Create new</h4>
+    <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <input type="hidden" name="Id" [value]="eventService.formData.Id">
+        <input type="hidden" name="ImageURI" [value]="eventService.formData.ImageURI">
+        <input type="hidden" name="OrganizerId" [value]="eventService.formData.OrganizerId">
+        <div class="flex-container">
+            <div class="form-group">
+                <h6>Name</h6>
+                <input name="Name" #Name="ngModel" [(ngModel)]="eventService.formData.Name" class="form-control"
+                    placeholder="Name">
+            </div>
+            <div class="form-group">
+                <h6>Location</h6>
+                <input name="Location" #Name="ngModel" [(ngModel)]="eventService.formData.Location" class="form-control"
+                    placeholder="Location">
+            </div>
+            <div class="form-group">
+                <h6>Description</h6>
+                <input name="Description" #Name="ngModel" [(ngModel)]="eventService.formData.Description"
+                    class="form-control" placeholder="Description">
+            </div>
+            <div class="form-group">
+                <h6>Category</h6>
+                <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventService.formData.EventTypeId"
+                    class="form-control">
+                    <option value="1">Private</option>
+                    <option value="2">Public</option>
+                </select>
+            </div>
         </div>
-        <div class="form-group">
-            <h6>Location</h6>
-            <input name="Location" #Name="ngModel" [(ngModel)]="eventService.formData.Location" class="form-control"
-                placeholder="Location">
-        </div>
-        <div class="form-group">
-            <h6>Description</h6>
-            <input name="Description" #Name="ngModel" [(ngModel)]="eventService.formData.Description"
-                class="form-control" placeholder="Description">
-        </div>
-        <div class="form-group">
-            <h6>Category</h6>
-            <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventService.formData.EventTypeId"
-                class="form-control">
-                <option value="1">Private</option>
-                <option value="2">Public</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <button class="btn btn-info btn-lg btn-block" type="submit">Create</button>
-        </div>
-    </div>
-</form>
+  
+    <div>
+        <button class="btn btn-info btn-lg btn-block" type="submit">Create</button>
+        <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+    </div>  </form>
+</ng-template>

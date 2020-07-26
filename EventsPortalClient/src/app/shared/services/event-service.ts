@@ -38,4 +38,9 @@ export class EventService {
     DeleteEvent(id: number) {
         return this.http.delete(Configuration.URI + '/Event/DeleteEvent/' + id);
     }
+
+    EditEvent(id: number, event: EventItem) {
+        return this.http.put(Configuration.URI + '/Event/UpdateEvent/' + id, event);
+
+    }
 }
