@@ -2,6 +2,6 @@
 <table  class="table table-hover" *ngFor="let event of eventService.PublicEventList">
     <td>
         <h5>{{event.Name}} / {{event.Location}} / {{event.Organizer.Name}} / {{event.EventType.Name}} </h5>
-        <!-- <button routerLink="/login">Let's go</button>  -->
+        <button class="btn btn-sm btn-danger" (click)="createEvent()">Go</button> 
     </td>
 </table>

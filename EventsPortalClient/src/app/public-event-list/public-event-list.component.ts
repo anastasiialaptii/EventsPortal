@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { EventService } from '../shared/services/event-service';
-
-//import { isUserAuthenticated } from '../shared/config/auth-provider';
+import { VisitService } from '../shared/services/visit-service';
+import { Visit } from '../shared/models/visit-model';
 
 @Component({
   selector: 'app-public-event-list',
@@ -10,12 +10,26 @@ import { EventService } from '../shared/services/event-service';
   styles: [
   ]
 })
+
 export class PublicEventListComponent implements OnInit {
-isValid :any;
-  constructor(public eventService: EventService) { }
+  visit: Visit;
+  constructor(
+    public eventService: EventService,
+    public visitService: VisitService) { }
 
   ngOnInit(): void {
     this.eventService.GetPublicEventList();
-   // this.isValid = isUserAuthenticated();
+    this.visit = 
+      { EventId: 83, UserId: 9  }
+    ;
+  }
+
+  createEvent() {
+    this.visitService.CreateVisit(this.visit).subscribe(
+      res => { console.log("success") },
+      err => {
+        debugger;
+        console.log(err);
+      });
   }
 }
