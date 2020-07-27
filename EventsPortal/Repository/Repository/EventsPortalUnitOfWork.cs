@@ -49,7 +49,7 @@ namespace Data.Repository
             }
         }
 
-        public async Task Save()
+        public async Task SaveAsync()
         {
             await _dbContext.SaveChangesAsync();
         }

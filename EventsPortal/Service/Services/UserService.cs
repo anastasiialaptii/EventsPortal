@@ -28,7 +28,7 @@ namespace Service.Services
             {
                 _dbOperation.Users.Create(
                     _mapper.Map<User>(UserDTO));
-                await _dbOperation.Save();
+                await _dbOperation.SaveAsync();
             }
         }
 
@@ -41,7 +41,7 @@ namespace Service.Services
                 if (searchItem != null)
                 {
                     _dbOperation.Users.Delete(searchItem);
-                    await _dbOperation.Save();
+                    await _dbOperation.SaveAsync();
                 }
             }
         }
@@ -52,7 +52,7 @@ namespace Service.Services
             {
                 _dbOperation.Users.Update(
                     _mapper.Map<User>(UserDTO));
-                await _dbOperation.Save();
+                await _dbOperation.SaveAsync();
             }
         }
 

@@ -28,7 +28,7 @@ namespace Service.Services
             {
                 _dbOperation.Events.Create(
                     _mapper.Map<Event>(eventDTO));
-                await _dbOperation.Save();
+                await _dbOperation.SaveAsync();
             }
         }
 
@@ -41,7 +41,7 @@ namespace Service.Services
                 if (searchItem != null)
                 {
                     _dbOperation.Events.Delete(searchItem);
-                    await _dbOperation.Save();
+                    await _dbOperation.SaveAsync();
                 }
             }
         }
@@ -52,7 +52,7 @@ namespace Service.Services
             {
                 _dbOperation.Events.Update(
                     _mapper.Map<Event>(eventDTO));
-                await _dbOperation.Save();
+                await _dbOperation.SaveAsync();
             }
         }
 

@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTO;
 using Service.Interfaces;
@@ -16,13 +15,10 @@ namespace EventsPortal.Controllers
     public class EventController : ControllerBase
     {
         private readonly IEventService _eventService;
-        private IMapper _mapper;
 
-        public EventController(IEventService eventService, IMapper mapper)
+        public EventController(IEventService eventService)
         {
             _eventService = eventService;
-            _mapper = mapper;
-
         }
 
         [HttpGet]

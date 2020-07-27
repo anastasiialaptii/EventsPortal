@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTO;
 using Service.Interfaces;
@@ -16,13 +15,10 @@ namespace UsersPortal.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
-        private IMapper _mapper;
 
-        public UserController(IUserService userService, IMapper mapper)
+        public UserController(IUserService userService)
         {
             _userService = userService;
-            _mapper = mapper;
-
         }
 
         [HttpGet]

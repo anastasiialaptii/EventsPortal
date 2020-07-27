@@ -17,7 +17,6 @@ namespace EventsPortal.Controllers
         public AuthController(IUserService userService)
         {
             _userService = userService;
-
         }
 
         [HttpPost]

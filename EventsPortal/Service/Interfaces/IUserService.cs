@@ -12,9 +12,9 @@ namespace Service.Interfaces
 
         Task DeleteUser(int? id);
 
-        Task EditUser(UserDTO UserDTO);
+        Task EditUser(UserDTO userDTO);
 
-        Task AddUser(UserDTO UserDTO);
+        Task AddUser(UserDTO userDTO);
 
         Task<int> GetUserByToken(string token);
     }

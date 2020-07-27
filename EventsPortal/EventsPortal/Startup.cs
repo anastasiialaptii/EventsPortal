@@ -51,6 +51,7 @@ namespace EventsPortal
 
             services.AddTransient<IEventService, EventService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IVisitService, VisitService>();
             services.AddTransient<IUnitOfWork, EventsPortalUnitOfWork>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
