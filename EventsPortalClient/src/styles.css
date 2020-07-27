@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-img{
-    max-width: 200px;
-    max-height: 300px;
+.card-img-top{
+    padding: 15px;
+    align-self: center;
+    border-radius: 20px;
 }
