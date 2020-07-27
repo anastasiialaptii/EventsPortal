@@ -1,35 +1,36 @@
 <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a routerLink="" class="nav-link active" href="#">Public Events</a>
+        <a routerLink="" class="nav-link active" href="#">Public Events</a>
     </li>
     <li class="nav-item">
         <a routerLink="/private-event-list" class="nav-link active" href="#">Private Events</a>
-      </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Log in</a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item">
-            <div class="row">
-                <div class="col-md-3">
-                    <a class="btn btn-outline-dark" (click)="socialSignIn('google')" role="button" style="text-transform:none">
-                        <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-                        Login with Google
-                    </a>
-                </div>
-            </div>
-        </a>
-        <a class="dropdown-item">
-            <div class="row">
-                <div class="col-md-3">
-                    <a class="btn btn-outline-dark" (click)="logOut()" role="button" style="text-transform:none">
-                        <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google log-out"
-                            src="https://banner2.cleanpng.com/20180714/of/kisspng-arrow-computer-icons-logout-icon-5b4ac3055271c0.0399370615316262453377.jpg" />
-                        Log out
-                    </a>
-                </div>
-            </div>
-        </a>
-      </div>
     </li>
-  </ul>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false">Log in</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a (click)="socialSignIn('google')" role="button" style="text-transform:none">
+                            <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                            Login with Google
+                        </a>
+                    </div>
+                </div>
+            </a>
+            <a class="dropdown-item">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a (click)="logOut()" role="button" style="text-transform:none">
+                            <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google log-out"
+                                src="https://banner2.cleanpng.com/20180714/of/kisspng-arrow-computer-icons-logout-icon-5b4ac3055271c0.0399370615316262453377.jpg" />
+                            Log out
+                        </a>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </li>
+</ul>
