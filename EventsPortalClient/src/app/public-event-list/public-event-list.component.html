@@ -1,19 +1,14 @@
 <app-auth></app-auth>
-<table  class="table table-hover" *ngFor="let event of eventService.PublicEventList">
-    <td>
-        <div class="card text-white bg-info mb-3" style="width: 18rem;">
-            <img class="card-img-top" src="{{event.ImageURI}}" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">{{event.Name}} / {{event.Location}} / </h5>
-              <p class="card-text"> {{event.Description}}</p>
-              <button class="btn btn-sm btn-danger" (click)="createVisit(event.Id)">Go</button> 
-              <h6 class="card-title">{{event.Organizer.Name}}</h6>
+    <div class="parent-flex" >
+        <div class="flex-item" *ngFor="let event of eventService.PublicEventList">
+            <div class="card text-white bg-info mb-3" style="width: 18rem;">
+                <img class="card-img-top" src="{{event.ImageURI}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{event.Name}} / {{event.Location}} / </h5>
+                    <p class="card-text"> {{event.Description}}</p>
+                    <button class="btn btn-sm btn-danger" (click)="createVisit(event.Id)">Go</button>
+                    <h6 class="card-title">{{event.Organizer.Name}}</h6>
+                </div>
             </div>
-          </div>
-        <!-- <img class="card-img" src={{event.ImageURI}}>  
-        <h5>{{event.Name}} / {{event.Location}} / {{event.Organizer.Name}} /
-             {{event.EventType.Name}} / 
-              {{event.Description}} </h5>
-        <button class="btn btn-sm btn-danger" (click)="createVisit(event.Id)">Go</button>  -->
-    </td>
-</table>
+        </div>
+    </div>
