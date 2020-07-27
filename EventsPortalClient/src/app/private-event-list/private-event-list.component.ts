@@ -19,6 +19,7 @@ export class PrivateEventListComponent implements OnInit {
   eventItem: EventItem = new EventItem();
   eventType: EventType[];
   tableMode: boolean = true;
+  
   constructor(
     public eventService: EventService,
     public userService: UserService
