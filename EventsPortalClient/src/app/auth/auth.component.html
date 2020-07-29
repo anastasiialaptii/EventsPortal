@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
         <a *ngIf="!this.authGuard.canActivate()" class="nav-link" href="#" (click)="socialSignIn('google')">Sign In</a>
-        <a *ngIf="this.authGuard.canActivate()" routerLink="/public-event-list" class="nav-link">Events</a>
+        <a *ngIf="this.authGuard.canActivate()" routerLink="/allowed-event-list" class="nav-link">Events</a>
         <a *ngIf="this.authGuard.canActivate()" class="nav-link" href="#" (click)="logOut()">Log out</a>
     </div>
 </nav>

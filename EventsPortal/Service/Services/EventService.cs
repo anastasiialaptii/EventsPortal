@@ -86,7 +86,7 @@ namespace Service.Services
             return privateEventList;
         }
 
-        public async Task<IEnumerable<EventDTO>> GetPublicEventList()
+        public async Task<IEnumerable<EventDTO>> GetAllowedEventList()
         {
             var events = _mapper.Map<List<EventDTO>>(
                 await _dbOperation.Events.GetAllAsync());

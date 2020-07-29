@@ -8,13 +8,13 @@ import { EventItem } from '../shared/models/event-model';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-public-event-list',
-  templateUrl: './public-event-list.component.html',
+  selector: 'app-allowed-event-list',
+  templateUrl: './allowed-event-list.component.html',
   styles: [
   ]
 })
 
-export class PublicEventListComponent implements OnInit {
+export class AllowedEventListComponent implements OnInit {
   token = JSON.parse(localStorage.getItem('socialusers'));
   userId: number;
   visit: Visit;
@@ -36,7 +36,7 @@ export class PublicEventListComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetForm();
-    this.eventService.GetPublicEventList().subscribe((res: any) => {
+    this.eventService.GetAllowedEventList().subscribe((res: any) => {
       this.eventItem = res;
       debugger;
       console.log(res)

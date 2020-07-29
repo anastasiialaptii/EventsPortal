@@ -10,15 +10,13 @@ import { EventItem } from '../models/event-model';
 
 export class EventService {
     formData: EventItem;
-    PublicEventList: EventItem[];
+    AllowedEventList: EventItem[];
     PrivateEventList: EventItem[];
 
     constructor(private http: HttpClient) { }
 
-    GetPublicEventList() {
-        return this.http.get(Configuration.URI + '/Event/GetPublicEventList')
-            // .toPromise()
-            // .then(res => this.PublicEventList = res as EventItem[]);
+    GetAllowedEventList() {
+        return this.http.get(Configuration.URI + '/Event/GetAllowedEventList');
     }
 
     GetPrivateEventList(id: string) {

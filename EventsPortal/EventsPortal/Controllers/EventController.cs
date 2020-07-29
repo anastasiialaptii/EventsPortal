@@ -28,9 +28,9 @@ namespace EventsPortal.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<EventDTO>> GetPublicEventList()
+        public async Task<IEnumerable<EventDTO>> GetAllowedEventList()
         {
-            return await _eventService.GetPublicEventList();
+            return await _eventService.GetAllowedEventList();
         }
 
         [HttpGet("{organizerId}")]
