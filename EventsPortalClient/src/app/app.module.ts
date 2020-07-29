@@ -12,6 +12,7 @@ import { SocialLoginModule, AuthServiceConfig } from "angular-6-social-login";
 import { AuthComponent } from './auth/auth.component';
 import { PublicEventListComponent } from './public-event-list/public-event-list.component';
 import { PrivateEventListComponent } from './private-event-list/private-event-list.component';
+import { JwPaginationModule } from 'jw-angular-pagination';
 
 
 @NgModule({
@@ -20,13 +21,14 @@ import { PrivateEventListComponent } from './private-event-list/private-event-li
     AuthComponent,
     PublicEventListComponent,
     PrivateEventListComponent
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SocialLoginModule,
     HttpClientModule,
-    FormsModule
+    FormsModule, JwPaginationModule
   ],
   providers: [
     AuthGuard,

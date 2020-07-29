@@ -7,9 +7,9 @@ import { AuthComponent } from './auth/auth.component';
 
 
 const routes: Routes = [
-  { path: '', component: PublicEventListComponent },
+  { path: 'public-event-list', component: PublicEventListComponent, canActivate: [AuthGuard] },
   { path: 'private-event-list', component: PrivateEventListComponent, canActivate: [AuthGuard]},
-  { path: 'login', component: AuthComponent }
+  { path: '', component: AuthComponent }
 ];
 
 @NgModule({

@@ -3,7 +3,7 @@ import { GoogleLoginProvider, AuthService } from 'angular-6-social-login';
 
 import { GoogleAuthService } from '../shared/services/auth-service';
 import { User } from '../shared/models/user-model';
-import { Router } from '@angular/router';
+import { AuthGuard } from '../shared/config/auth-provider';
 
 @Component({
   selector: 'app-auth',
@@ -17,9 +17,9 @@ export class AuthComponent implements OnInit {
   response;
   users = new User();
   constructor(
-    public OAuth: AuthService,
-    public GAuthService: GoogleAuthService,
-    private router: Router
+    public oAuth: AuthService,
+    public gAuthService: GoogleAuthService,
+    public authGuard: AuthGuard
   ) { }
 
   ngOnInit() { }
@@ -30,7 +30,7 @@ export class AuthComponent implements OnInit {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
 
-    this.OAuth.signIn(socialPlatformProvider).then(users => {
+    this.oAuth.signIn(socialPlatformProvider).then(users => {
       console.log(socialProvider, users);
       console.log(users);
       this.Savesresponse(users);
@@ -38,7 +38,7 @@ export class AuthComponent implements OnInit {
   }
 
   Savesresponse(users: User) {
-    this.GAuthService.AuthUser(users).subscribe((res: any) => {
+    this.gAuthService.AuthUser(users).subscribe((res: any) => {
       debugger;
       console.log(res);
       this.users = res;

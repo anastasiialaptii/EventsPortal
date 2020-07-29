@@ -17,8 +17,8 @@ export class EventService {
 
     GetPublicEventList() {
         return this.http.get(Configuration.URI + '/Event/GetPublicEventList')
-            .toPromise()
-            .then(res => this.PublicEventList = res as EventItem[]);
+            // .toPromise()
+            // .then(res => this.PublicEventList = res as EventItem[]);
     }
 
     GetPrivateEventList(id: string) {

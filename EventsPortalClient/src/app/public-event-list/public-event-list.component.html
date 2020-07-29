@@ -1,14 +1,17 @@
 <app-auth></app-auth>
-    <div class="parent-flex" >
-        <div class="flex-item" *ngFor="let event of eventService.PublicEventList">
-            <div class="card text-white bg-info mb-3" style="width: 18rem;">
-                <img class="card-img-top" src="{{event.ImageURI}}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{event.Name}} / {{event.Location}} / </h5>
-                    <p class="card-text"> {{event.Description}}</p>
-                    <button class="btn btn-sm btn-danger" (click)="createVisit(event.Id)">Go</button>
-                    <h6 class="card-title">{{event.Organizer.Name}}</h6>
-                </div>
+<div class="event-nav">
+    <h4>Events</h4>
+    <a onclick="" href="#" class="btn btn-sm btn-info">Create</a>
+    <input type="text" placeholder="Search by name...">
+    <div class="card text-center m-3">
+        <div class="card-body">
+            <div *ngFor="let item of pageOfItemsEvent">
+                {{item.data.Name}} / {{item.data.Location}} / {{item.data.Descriprion}}
+                <a onclick="" href="#">Details</a>
             </div>
         </div>
+        <div class="card-footer pb-0 pt-3">
+            <jw-pagination [items]="itemsEvent" (changePage)="onChangePage1($event)"></jw-pagination>
+        </div>
     </div>
+</div>
