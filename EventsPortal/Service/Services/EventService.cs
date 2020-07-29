@@ -72,32 +72,32 @@ namespace Service.Services
                 await _dbOperation.Events.GetAllAsync());
         }
 
-        public async Task<IEnumerable<EventDTO>> GetPrivateEventList(string organizerId)
-        {
-            var events = _mapper.Map<List<EventDTO>>(
-                await _dbOperation.Events.GetAllAsync());
-
-            var privateEventList = new List<EventDTO>();
-            foreach (var item in events)
-            {
-                if (item.Organizer.Token == organizerId && item.EventType.Name == "Private")
-                    privateEventList.Add(item);
-            }
-            return privateEventList;
-        }
-
         public async Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId)
         {
             var events = _mapper.Map<List<EventDTO>>(
                 await _dbOperation.Events.GetAllAsync());
 
-            var publicEventList = new List<EventDTO>();
+            var allowedEventList = new List<EventDTO>();
             foreach (var item in events)
             {
                 if (item.EventType.Name == "Public" || item.Organizer.Token == organizerId)
-                    publicEventList.Add(item);
+                    allowedEventList.Add(item);
             }
-            return publicEventList;
+            return allowedEventList;
+        }
+
+        public async Task<IEnumerable<EventDTO>> GetSearchedEventList(string searchEvent)
+        {
+            var events = _mapper.Map<List<EventDTO>>(
+                await _dbOperation.Events.GetAllAsync());
+
+            var searchedEventList = new List<EventDTO>();
+            foreach (var item in events)
+            {
+                if (item.Name == searchEvent)
+                    searchedEventList.Add(item);
+            }
+            return searchedEventList;
         }
     }
 }

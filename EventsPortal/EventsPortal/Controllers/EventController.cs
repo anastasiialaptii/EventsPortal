@@ -33,6 +33,12 @@ namespace EventsPortal.Controllers
             return await _eventService.GetAllowedEventList(organizerId);
         }
 
+        [HttpGet("{searchEvent}")]
+        public async Task<IEnumerable<EventDTO>> GetSearchedEventList(string searchEvent)
+        {
+            return await _eventService.GetSearchedEventList(searchEvent);
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<EventDTO>> GetEventById(int? id)
         {

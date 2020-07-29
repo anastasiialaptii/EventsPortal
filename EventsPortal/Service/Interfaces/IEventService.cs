@@ -18,5 +18,7 @@ namespace Service.Interfaces
 
         Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId);
 
+        Task<IEnumerable<EventDTO>> GetSearchedEventList(string searchEvent);
+
     }
 }
