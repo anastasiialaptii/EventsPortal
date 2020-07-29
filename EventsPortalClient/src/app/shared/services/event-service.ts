@@ -15,12 +15,12 @@ export class EventService {
 
     constructor(private http: HttpClient) { }
 
-    GetAllowedEventList() {
-        return this.http.get(Configuration.URI + '/Event/GetAllowedEventList');
+    GetAllowedEventList(id: string) {
+        return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/'+ id);
     }
 
     GetPrivateEventList(id: string) {
-        return this.http.get(Configuration.URI + '/Event/GetPrivateEventList/' + id)
+        return this.http.get(Configuration.URI + '/Event/GetPrivateEventList/' )
             .toPromise()
             .then(res => this.PrivateEventList = res as EventItem[]);
     }

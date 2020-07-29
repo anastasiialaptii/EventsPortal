@@ -7,7 +7,7 @@
     <div class="card text-center m-3">
         <div class="card-body">
             <div *ngFor="let item of pageOfItemsEvent">
-                {{item.data.Name}} / {{item.data.Location}} / {{item.data.Descriprion}}
+                {{item.data.Name}} / {{item.data.Location}} / {{item.data.EventType.Name}}
                 <a onclick="" href="#">Details</a>
             </div>
         </div>

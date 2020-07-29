@@ -86,7 +86,7 @@ namespace Service.Services
             return privateEventList;
         }
 
-        public async Task<IEnumerable<EventDTO>> GetAllowedEventList()
+        public async Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId)
         {
             var events = _mapper.Map<List<EventDTO>>(
                 await _dbOperation.Events.GetAllAsync());
@@ -94,7 +94,7 @@ namespace Service.Services
             var publicEventList = new List<EventDTO>();
             foreach (var item in events)
             {
-                if (item.EventType.Name == "Public")
+                if (item.EventType.Name == "Public" || item.Organizer.Token == organizerId)
                     publicEventList.Add(item);
             }
             return publicEventList;

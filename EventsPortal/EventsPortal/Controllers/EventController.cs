@@ -27,16 +27,10 @@ namespace EventsPortal.Controllers
             return await _eventService.GetEvents();
         }
 
-        [HttpGet]
-        public async Task<IEnumerable<EventDTO>> GetAllowedEventList()
-        {
-            return await _eventService.GetAllowedEventList();
-        }
-
         [HttpGet("{organizerId}")]
-        public async Task<IEnumerable<EventDTO>> GetPrivateEventList(string organizerId)
+        public async Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId)
         {
-            return await _eventService.GetPrivateEventList(organizerId);
+            return await _eventService.GetAllowedEventList(organizerId);
         }
 
         [HttpGet("{id}")]

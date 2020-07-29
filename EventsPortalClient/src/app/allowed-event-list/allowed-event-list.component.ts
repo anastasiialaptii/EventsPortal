@@ -36,7 +36,7 @@ export class AllowedEventListComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetForm();
-    this.eventService.GetAllowedEventList().subscribe((res: any) => {
+    this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
       this.eventItem = res;
       debugger;
       console.log(res)
@@ -63,6 +63,7 @@ export class AllowedEventListComponent implements OnInit {
     this.cancel();
     this.tableMode = false;
   }
+  
   resetForm(form?: NgForm) {
     if (form != null)
       form.form.reset();
