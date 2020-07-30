@@ -2,8 +2,16 @@
 
 <div class="event-nav" *ngIf="tableMode; else create">
     <h4>Events</h4>
+    <form #form="ngForm" (submit)="onSearchEvent()" autocomplete="off">
+        <input name="Name" #Name="ngModel" [(ngModel)]="eventService.searchEventFormData.Name"
+            class="form-control" placeholder="Search by Name...">
+            <button class="btn btn-info btn-lg btn-block" type="submit">Search</button>
+    </form>
+    <div *ngFor="let item of eventService.PrivateEventList">
+        {{item.Name}} / {{item.Location}} / {{item.EventType.Name}}
+    </div>
+
     <a class="btn btn-sm btn-info" (click)="add()">Create</a>
-    <input type="text" placeholder="Search by name...">
     <div class="card text-center m-3">
         <div class="card-body">
             <div *ngFor="let item of pageOfItemsEvent">
@@ -17,9 +25,9 @@
     </div>
 </div>
 
-<!--add mode-->
+add mode
 <ng-template #create>
-    <h4>Create new</h4>
+    <h4>Create event</h4>
     <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
         <input type="hidden" name="Id" [value]="eventService.formData.Id">
         <input type="hidden" name="ImageURI" [value]="eventService.formData.ImageURI">

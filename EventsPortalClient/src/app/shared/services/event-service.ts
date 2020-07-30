@@ -10,19 +10,23 @@ import { EventItem } from '../models/event-model';
 
 export class EventService {
     formData: EventItem;
-    AllowedEventList: EventItem[];
+    searchEventFormData: EventItem;
     PrivateEventList: EventItem[];
 
     constructor(private http: HttpClient) { }
 
-    GetAllowedEventList(id: string) {
-        return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/'+ id);
+    GetAllowedEventList(idUser: string) {
+        return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/'+ idUser);
+    }
+
+    GetSearchedEventList() {
+        return this.http.get(Configuration.URI + '/Event/GetSearchedEventList/'+ this.searchEventFormData.Name)
+        .toPromise()
+        .then(res => this.PrivateEventList = res as EventItem[]);
     }
 
     GetPrivateEventList(id: string) {
-        return this.http.get(Configuration.URI + '/Event/GetPrivateEventList/' )
-            .toPromise()
-            .then(res => this.PrivateEventList = res as EventItem[]);
+        return this.http.get(Configuration.URI + '/Event/GetPrivateEventList/' );
     }
 
     GetEventById(id: number) {

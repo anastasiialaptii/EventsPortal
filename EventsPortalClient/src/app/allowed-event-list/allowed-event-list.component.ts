@@ -36,9 +36,9 @@ export class AllowedEventListComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetForm();
+    this.eventService.GetSearchedEventList();
     this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
       this.eventItem = res;
-      debugger;
       console.log(res)
       this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
     });
@@ -51,6 +51,14 @@ export class AllowedEventListComponent implements OnInit {
   onSubmit(form: NgForm) {
     if (this.eventService.formData.Id == 0) {
       this.createEvent(form);
+      this.tableMode = true;
+    }
+  }
+
+  onSearchEvent() {
+    alert(this.eventService.searchEventFormData.Name);
+    if (this.eventService.searchEventFormData.Name != null) {
+      this.eventService.GetSearchedEventList();
     }
   }
 
@@ -63,10 +71,13 @@ export class AllowedEventListComponent implements OnInit {
     this.cancel();
     this.tableMode = false;
   }
-  
+
   resetForm(form?: NgForm) {
     if (form != null)
       form.form.reset();
+    this.eventService.searchEventFormData = {
+      Name: ''
+    };
 
     this.userService.GetUserByToken(this.token.Message).subscribe(
       res => {
