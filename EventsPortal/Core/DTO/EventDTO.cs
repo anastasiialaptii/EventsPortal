@@ -1,5 +1,4 @@
 ﻿using Core.DTO;
-using System.Collections.Generic;
 
 namespace Service.DTO
 {

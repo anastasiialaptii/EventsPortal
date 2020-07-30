@@ -11,7 +11,6 @@ import { getAuthServiceConfigs, AuthGuard } from './shared/config/auth-provider'
 import { SocialLoginModule, AuthServiceConfig } from "angular-6-social-login";
 import { AuthComponent } from './auth/auth.component';
 import { AllowedEventListComponent } from './allowed-event-list/allowed-event-list.component';
-import { PrivateEventListComponent } from './private-event-list/private-event-list.component';
 import { JwPaginationModule } from 'jw-angular-pagination';
 
 
@@ -19,9 +18,7 @@ import { JwPaginationModule } from 'jw-angular-pagination';
   declarations: [
     AppComponent,
     AuthComponent,
-    AllowedEventListComponent,
-    PrivateEventListComponent
-   
+    AllowedEventListComponent
   ],
   imports: [
     BrowserModule,

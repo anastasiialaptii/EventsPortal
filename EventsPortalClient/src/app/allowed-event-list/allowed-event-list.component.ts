@@ -20,7 +20,7 @@ export class AllowedEventListComponent implements OnInit {
   visit: Visit;
   tableMode: boolean = true;
   itemsEvent = [];
-  eventType = [
+  eventTypes = [
     { Id: 1, Name: "Private" },
     { Id: 2, Name: "Public" }
   ];

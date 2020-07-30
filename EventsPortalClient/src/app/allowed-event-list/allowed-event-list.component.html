@@ -52,7 +52,7 @@
                 <h6>Category</h6>
                 <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventService.formData.EventTypeId"
                     class="form-control">
-                    <option *ngFor="let type of eventType" [ngValue]=type.Id>{{type.Name}}</option>
+                    <option *ngFor="let type of eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
                 </select>
             </div>
         </div>

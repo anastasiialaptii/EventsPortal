@@ -46,7 +46,6 @@ export class AuthComponent implements OnInit {
       localStorage.setItem('socialusers', JSON.stringify(this.users));
       console.log(localStorage.setItem('socialusers', JSON.stringify(this.users)));
       console.log(localStorage.getItem('socialusers'));
-
     })
   }
 
