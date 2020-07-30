@@ -10,8 +10,8 @@
     <div *ngFor="let item of eventService.PrivateEventList">
         {{item.Name}} / {{item.Location}} / {{item.EventType.Name}}
     </div>
-
-    <a class="btn btn-sm btn-info" (click)="add()">Create</a>
+<br>
+    <button class="btn btn-primary btn-lg" (click)="add()">Create</button>
     <div class="card text-center m-3">
         <div class="card-body">
             <div *ngFor="let item of pageOfItemsEvent">
@@ -25,7 +25,7 @@
     </div>
 </div>
 
-add mode
+<!-- add mode -->
 <ng-template #create>
     <h4>Create event</h4>
     <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
@@ -56,10 +56,9 @@ add mode
                 </select>
             </div>
         </div>
-
         <div>
             <button class="btn btn-info btn-lg btn-block" type="submit">Create</button>
-            <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+            <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning btn-lg btn-block" />
         </div>
     </form>
 </ng-template>
