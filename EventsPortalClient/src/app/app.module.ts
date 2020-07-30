@@ -12,13 +12,15 @@ import { SocialLoginModule, AuthServiceConfig } from "angular-6-social-login";
 import { AuthComponent } from './auth/auth.component';
 import { AllowedEventListComponent } from './allowed-event-list/allowed-event-list.component';
 import { JwPaginationModule } from 'jw-angular-pagination';
+import { VisitorsListComponent } from './visitors-list/visitors-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
-    AllowedEventListComponent
+    AllowedEventListComponent,
+    VisitorsListComponent
   ],
   imports: [
     BrowserModule,

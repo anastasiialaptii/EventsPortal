@@ -28,6 +28,22 @@ namespace Service.Services
             await _dbOperation.SaveAsync();
         }
 
+        public async Task<IEnumerable<VisitDTO>> GetVisitorsByEvent(int eventId)
+        {
+            var eventVisitorsList = _mapper.Map<List<VisitDTO>>(
+                await _dbOperation.Visits.GetAllAsync());
+            
+            var visitorsList = new List<VisitDTO>();
+            foreach (var item in eventVisitorsList)
+            {
+                if(item.EventId == eventId)
+                {
+                    visitorsList.Add(item);
+                }
+            }
+            return visitorsList;
+        }
+
         public async Task<IEnumerable<VisitDTO>> GetVisits()
         {
             return _mapper.Map<List<VisitDTO>>(

@@ -9,10 +9,16 @@ import { Visit } from '../models/visit-model';
 })
 
 export class VisitService {
-
+    VisitorsList: Visit[];
     constructor(private http: HttpClient) { }
 
     CreateVisit(visit: Visit) {
         return this.http.post(Configuration.URI + '/Visit/CreateVisit', visit);
+    }
+
+    GetVisitorsList(eventId: number) {
+        return this.http.get(Configuration.URI + '/Visit/GetVisitorsList/' + eventId)
+            .toPromise()
+            .then(res => this.VisitorsList = res as Visit[]);
     }
 }

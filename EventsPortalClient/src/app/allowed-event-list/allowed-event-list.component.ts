@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { EventService } from '../shared/services/event-service';
 import { VisitService } from '../shared/services/visit-service';
 import { UserService } from '../shared/services/user-service';
 import { Visit } from '../shared/models/visit-model';
 import { EventItem } from '../shared/models/event-model';
-import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-allowed-event-list',
@@ -56,10 +57,13 @@ export class AllowedEventListComponent implements OnInit {
   }
 
   onSearchEvent() {
-    alert(this.eventService.searchEventFormData.Name);
     if (this.eventService.searchEventFormData.Name != null) {
       this.eventService.GetSearchedEventList();
     }
+  }
+
+  onEventDetails(eventId: number) {
+      this.visitService.GetVisitorsList(eventId);
   }
 
   cancel() {

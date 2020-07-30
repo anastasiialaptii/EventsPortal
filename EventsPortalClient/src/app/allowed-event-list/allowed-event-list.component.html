@@ -3,20 +3,20 @@
 <div class="event-nav" *ngIf="tableMode; else create">
     <h4>Events</h4>
     <form #form="ngForm" (submit)="onSearchEvent()" autocomplete="off">
-        <input name="Name" #Name="ngModel" [(ngModel)]="eventService.searchEventFormData.Name"
-            class="form-control" placeholder="Search by Name...">
-            <button class="btn btn-info btn-lg btn-block" type="submit">Search</button>
+        <input name="Name" #Name="ngModel" [(ngModel)]="eventService.searchEventFormData.Name" class="form-control"
+            placeholder="Search by Name...">
+        <button class="btn btn-info btn-lg btn-block" type="submit">Search</button>
     </form>
-    <div *ngFor="let item of eventService.PrivateEventList">
+    <div *ngFor="let item of eventService.SearchEventList">
         {{item.Name}} / {{item.Location}} / {{item.EventType.Name}}
     </div>
-<br>
+    <br>
     <button class="btn btn-primary btn-lg" (click)="add()">Create</button>
     <div class="card text-center m-3">
         <div class="card-body">
             <div *ngFor="let item of pageOfItemsEvent">
                 {{item.data.Name}} / {{item.data.Location}} / {{item.data.EventType.Name}}
-                <a onclick="" href="#">Details</a>
+                <a (click)="onEventDetails(item.data.Id)" [routerLink]="['/visitors-list', 'item.data.Id']">Details</a>
             </div>
         </div>
         <div class="card-footer pb-0 pt-3">

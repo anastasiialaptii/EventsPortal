@@ -1,0 +1,13 @@
+<app-auth></app-auth>
+<h4>Event</h4>
+<div *ngFor="let item of visitService.VisitorsList | slice:0:1;">
+    <h6>Name: {{item.Event.Name}}</h6> 
+    <h6>Location: {{item.Event.Location}} </h6>
+    <h6>Description: {{item.Event.Description}} </h6>  
+   <img src= "{{item.Event.ImageURI}}">
+</div>
+
+<h4>Visitors:</h4>
+<div *ngFor="let item of visitService.VisitorsList">
+    {{item.User.Name}} 
+</div>

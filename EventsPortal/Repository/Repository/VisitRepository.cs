@@ -44,7 +44,29 @@ namespace Data.Repository
 
         public async Task<IEnumerable<Visit>> GetAllAsync()
         {
-            return await _dbContext.Visits.ToListAsync();
+            return await _dbContext.Visits
+                .Select(x => new Visit
+                {
+                    EventId = x.EventId,
+                    UserId = x.UserId,
+                    Event = new Event
+                    {
+                        Id = x.Event.Id,
+                        Name = x.Event.Name,
+                        Description = x.Event.Description,
+                        ImageURI = x.Event.ImageURI,
+                        Location = x.Event.Location,
+                        OrganizerId = x.Event.OrganizerId,
+                        EventTypeId = x.Event.EventTypeId
+                    },
+                    User = new User
+                    {
+                        Id = x.User.Id,
+                        Name = x.User.Name,
+                        Email = x.User.Email
+                    }
+                })
+                .ToListAsync();
         }
 
         public async Task<Visit> GetIdAsync(int? id)

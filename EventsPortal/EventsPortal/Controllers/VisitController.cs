@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EventsPortal.Controllers
 {
-    [Route("api/[controller]/[action] ")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class VisitController : ControllerBase
     {
@@ -21,6 +21,12 @@ namespace EventsPortal.Controllers
         public async Task<IEnumerable<VisitDTO>> GetVisitList()
         {
             return await _visitService.GetVisits();
+        }
+
+        [HttpGet("{eventId}")]
+        public async Task<IEnumerable<VisitDTO>> GetVisitorsList(int eventId)
+        {
+            return await _visitService.GetVisitorsByEvent(eventId);
         }
 
         [HttpPost]
