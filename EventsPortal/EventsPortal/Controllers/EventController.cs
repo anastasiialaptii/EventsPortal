@@ -1,10 +1,14 @@
 ﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTO;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace EventsPortal.Controllers
@@ -19,6 +23,26 @@ namespace EventsPortal.Controllers
         public EventController(IEventService eventService)
         {
             _eventService = eventService;
+        }
+
+        //[HttpGet]
+        //public IActionResult RetPath()
+        //{
+        //    Byte[] b = System.IO.File.ReadAllBytes("Resources\\Images\\photo_2018-03-30_21-22-48.jpg");  
+        //    return File(b, "image/jpeg");
+        //}
+
+        [HttpGet]
+        public IActionResult  Get()
+        {
+            Byte[] b = System.IO.File.ReadAllBytes("Resources\\Images\\photo_2018-03-30_21-22-48.jpg");
+          //   return (System.Convert.ToBase64String(b));
+            //   return File(b, "image/jpeg");
+            //return (b);
+
+
+            return Ok ("{\"image\""+":\""+ System.Convert.ToBase64String(b)+"\"}");
+
         }
 
         [HttpGet]
@@ -55,12 +79,12 @@ namespace EventsPortal.Controllers
             else throw new ArgumentNullException();
         }
 
-        [HttpPost]
+        [HttpPost, DisableRequestSizeLimit]
         public async Task<ActionResult<EventDTO>> CreateEvent([FromBody] EventDTO eventDTO)
         {
             if (eventDTO != null)
             {
-                await _eventService.AddEvent(eventDTO);
+                    await _eventService.AddEvent(eventDTO);
             }
             return CreatedAtAction(nameof(GetEventById), new { id = eventDTO.Id }, eventDTO);
         }

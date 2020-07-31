@@ -3,9 +3,12 @@ import { NgForm } from '@angular/forms';
 
 import { EventService } from '../shared/services/event-service';
 import { VisitService } from '../shared/services/visit-service';
+import { SettingService } from '../shared/services/setting-service';
+
 import { UserService } from '../shared/services/user-service';
 import { Visit } from '../shared/models/visit-model';
 import { EventItem } from '../shared/models/event-model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -28,14 +31,28 @@ export class AllowedEventListComponent implements OnInit {
   eventItem: EventItem[];
   pageOfItemsEvent: Array<EventItem>;
   event: EventItem = new EventItem();
+  thumbnail: any;
 
+ public snippet;
   constructor(
     public eventService: EventService,
     public visitService: VisitService,
-    public userService: UserService
+    public userService: UserService,
+    public setting: SettingService, 
+    private sanitizer: DomSanitizer
+   
   ) { }
 
   ngOnInit(): void {
+
+      this.eventService.getData()
+      .subscribe((baseImage : any) => {
+        // alert(JSON.stringify(data.image));
+        let objectURL = 'data:image/jpeg;base64,' + baseImage.image;
+
+         this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+       
+      });
     this.resetForm();
     this.eventService.GetSearchedEventList();
     this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {

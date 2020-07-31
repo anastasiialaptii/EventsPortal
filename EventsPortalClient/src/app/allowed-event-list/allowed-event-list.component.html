@@ -1,6 +1,7 @@
 <app-auth></app-auth>
+<img id="myimage" [src]='thumbnail' />
 
-<div class="event-nav" *ngIf="tableMode; else create">
+<!-- <div class="event-nav" *ngIf="tableMode; else create">
     <h4>Events</h4>
     <form #form="ngForm" (submit)="onSearchEvent()" autocomplete="off">
         <input name="Name" #Name="ngModel" [(ngModel)]="eventService.searchEventFormData.Name" class="form-control"
@@ -25,7 +26,7 @@
     </div>
 </div>
 
-<!-- add mode -->
+add mode
 <ng-template #create>
     <h4>Create event</h4>
     <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
@@ -61,4 +62,4 @@
             <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning btn-lg btn-block" />
         </div>
     </form>
-</ng-template>
+</ng-template> -->

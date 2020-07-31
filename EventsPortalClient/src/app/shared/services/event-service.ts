@@ -13,8 +13,14 @@ export class EventService {
     searchEventFormData: EventItem;
     SearchEventList: EventItem[];
     EventById: EventItem;
+    image: any;
+    imageSrc: any;
 
     constructor(private http: HttpClient) { }
+
+    getData() {
+        return this.http.get(Configuration.URI + '/Event/Get');      
+    }
 
     GetAllowedEventList(idUser: string) {
         return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/' + idUser);
