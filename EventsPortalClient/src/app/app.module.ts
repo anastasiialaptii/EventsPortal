@@ -14,6 +14,7 @@ import { AuthComponent } from './auth/auth.component';
 import { AllowedEventListComponent } from './allowed-event-list/allowed-event-list.component';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { VisitorsListComponent } from './visitors-list/visitors-list.component';
+import { UploadImgComponent } from './upload-img/upload-img.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { VisitorsListComponent } from './visitors-list/visitors-list.component';
     AppComponent,
     AuthComponent,
     AllowedEventListComponent,
-    VisitorsListComponent
+    VisitorsListComponent,
+    UploadImgComponent
   ],
   imports: [
     BrowserModule,

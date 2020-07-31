@@ -37,9 +37,6 @@ namespace EventsPortal.Controllers
 
             }
             return NoContent();
-           // var b = System.IO.File.ReadAllBytes("Resources\\Images\\photo_2018-03-30_21-22-48.jpg");
-          //  return Ok ("{\"image\""+":\""+ System.Convert.ToBase64String(System.IO.File.ReadAllBytes(test)) +"\"}");
-
         }
 
         [HttpGet]

@@ -1,5 +1,5 @@
 <app-auth></app-auth>
-<img id="myimage" [src]='thumbnail' />
+<!-- <img id="myimage" [src]='thumbnail' />  uploading img-->
 
 <!-- <div class="event-nav" *ngIf="tableMode; else create">
     <h4>Events</h4>
@@ -26,7 +26,7 @@
     </div>
 </div>
 
-add mode
+
 <ng-template #create>
     <h4>Create event</h4>
     <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
@@ -63,3 +63,5 @@ add mode
         </div>
     </form>
 </ng-template> -->
+
+<app-upload-img></app-upload-img>

@@ -9,6 +9,7 @@ import { UserService } from '../shared/services/user-service';
 import { Visit } from '../shared/models/visit-model';
 import { EventItem } from '../shared/models/event-model';
 import { DomSanitizer } from '@angular/platform-browser';
+import { HttpEventType } from '@angular/common/http';
 
 
 @Component({
@@ -31,9 +32,13 @@ export class AllowedEventListComponent implements OnInit {
   eventItem: EventItem[];
   pageOfItemsEvent: Array<EventItem>;
   event: EventItem = new EventItem();
-  thumbnail: any;
+  thumbnail: any; //download img
+  public snippet; //download img
+  
+  public response: { dbPath: '' };
 
-  public snippet;
+  
+
   constructor(
     public eventService: EventService,
     public visitService: VisitService,
@@ -44,12 +49,14 @@ export class AllowedEventListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    //getting image
     this.eventService.getData()
       .subscribe((baseImage: any) => {
         let objectURL = 'data:image/jpeg;base64,' + baseImage.image;
         this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
       });
+    //getting image
+
     this.resetForm();
     this.eventService.GetSearchedEventList();
     this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
@@ -57,6 +64,10 @@ export class AllowedEventListComponent implements OnInit {
       console.log(res)
       this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
     });
+  }
+
+  public uploadFinished = (event) => {
+    this.response = event;
   }
 
   onChangePage(pageOfItemsEvent: Array<any>) {

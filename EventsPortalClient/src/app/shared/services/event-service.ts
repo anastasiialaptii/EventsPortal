@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 
 import { Configuration } from '../config/configuration';
 import { EventItem } from '../models/event-model';
@@ -9,21 +9,27 @@ import { EventItem } from '../models/event-model';
 })
 
 export class EventService {
+    image: any; //download img
+    imageSrc: any; //download img
     formData: EventItem;
     searchEventFormData: EventItem;
     SearchEventList: EventItem[];
     EventById: EventItem;
-    image: any;
-    imageSrc: any;
+    
 
     constructor(private http: HttpClient) { }
 
-    getData() {
-        return this.http.get(Configuration.URI + '/Event/Get');      
+    CreateEvent() {
+        return this.http.post(Configuration.URI + '/Event/CreateEvent', this.formData, { reportProgress: true, observe: 'events' });
     }
 
     GetAllowedEventList(idUser: string) {
         return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/' + idUser);
+    }
+
+    //getting image from db
+    getData() {
+        return this.http.get(Configuration.URI + '/Event/Get');
     }
 
     GetSearchedEventList() {
@@ -42,16 +48,11 @@ export class EventService {
             .then(res => this.EventById = res as EventItem);
     }
 
-    CreateEvent() {
-        return this.http.post(Configuration.URI + '/Event/CreateEvent', this.formData);
-    }
-
     DeleteEvent(id: number) {
         return this.http.delete(Configuration.URI + '/Event/DeleteEvent/' + id);
     }
 
     EditEvent(id: number, event: EventItem) {
         return this.http.put(Configuration.URI + '/Event/UpdateEvent/' + id, event);
-
     }
 }
