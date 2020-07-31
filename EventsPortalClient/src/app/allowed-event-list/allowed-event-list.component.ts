@@ -33,25 +33,22 @@ export class AllowedEventListComponent implements OnInit {
   event: EventItem = new EventItem();
   thumbnail: any;
 
- public snippet;
+  public snippet;
   constructor(
     public eventService: EventService,
     public visitService: VisitService,
     public userService: UserService,
-    public setting: SettingService, 
+    public setting: SettingService,
     private sanitizer: DomSanitizer
-   
+
   ) { }
 
   ngOnInit(): void {
 
-      this.eventService.getData()
-      .subscribe((baseImage : any) => {
-        // alert(JSON.stringify(data.image));
+    this.eventService.getData()
+      .subscribe((baseImage: any) => {
         let objectURL = 'data:image/jpeg;base64,' + baseImage.image;
-
-         this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-       
+        this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
       });
     this.resetForm();
     this.eventService.GetSearchedEventList();
@@ -80,7 +77,7 @@ export class AllowedEventListComponent implements OnInit {
   }
 
   onEventDetails(eventId: number) {
-      this.visitService.GetVisitorsList(eventId);
+    this.visitService.GetVisitorsList(eventId);
   }
 
   cancel() {

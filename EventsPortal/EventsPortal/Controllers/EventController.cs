@@ -25,23 +25,20 @@ namespace EventsPortal.Controllers
             _eventService = eventService;
         }
 
-        //[HttpGet]
-        //public IActionResult RetPath()
-        //{
-        //    Byte[] b = System.IO.File.ReadAllBytes("Resources\\Images\\photo_2018-03-30_21-22-48.jpg");  
-        //    return File(b, "image/jpeg");
-        //}
-
         [HttpGet]
-        public IActionResult  Get()
+        public async Task<IActionResult> Get()
         {
-            Byte[] b = System.IO.File.ReadAllBytes("Resources\\Images\\photo_2018-03-30_21-22-48.jpg");
-          //   return (System.Convert.ToBase64String(b));
-            //   return File(b, "image/jpeg");
-            //return (b);
+            var x = await  _eventService.GetSearchedEventList("423");
+            string test;
+            foreach (var item in x)
+            {
+                test = item.ImageURI;
+                return Ok("{\"image\"" + ":\"" + System.Convert.ToBase64String(System.IO.File.ReadAllBytes(test)) + "\"}");
 
-
-            return Ok ("{\"image\""+":\""+ System.Convert.ToBase64String(b)+"\"}");
+            }
+            return NoContent();
+           // var b = System.IO.File.ReadAllBytes("Resources\\Images\\photo_2018-03-30_21-22-48.jpg");
+          //  return Ok ("{\"image\""+":\""+ System.Convert.ToBase64String(System.IO.File.ReadAllBytes(test)) +"\"}");
 
         }
 
