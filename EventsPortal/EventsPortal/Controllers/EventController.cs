@@ -1,14 +1,10 @@
 ﻿using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTO;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace EventsPortal.Controllers
@@ -28,13 +24,12 @@ namespace EventsPortal.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var x = await  _eventService.GetSearchedEventList("423");
+            var x = await _eventService.GetSearchedEventList("423");
             string test;
             foreach (var item in x)
             {
                 test = item.ImageURI;
                 return Ok("{\"image\"" + ":\"" + System.Convert.ToBase64String(System.IO.File.ReadAllBytes(test)) + "\"}");
-
             }
             return NoContent();
         }
@@ -78,7 +73,7 @@ namespace EventsPortal.Controllers
         {
             if (eventDTO != null)
             {
-                    await _eventService.AddEvent(eventDTO);
+                await _eventService.AddEvent(eventDTO);
             }
             return CreatedAtAction(nameof(GetEventById), new { id = eventDTO.Id }, eventDTO);
         }
