@@ -16,7 +16,7 @@ namespace Service.Interfaces
 
         Task AddEvent(EventDTO eventDTO);
 
-        Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId);
+        Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId, string searchEvent);
 
         Task<IEnumerable<EventDTO>> GetSearchedEventList(string searchEvent);
 

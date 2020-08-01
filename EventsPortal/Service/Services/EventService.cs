@@ -72,16 +72,51 @@ namespace Service.Services
                 await _dbOperation.Events.GetAllAsync());
         }
 
-        public async Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId)
+        public async Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId, string searchEvent)
         {
             var events = _mapper.Map<List<EventDTO>>(
                 await _dbOperation.Events.GetAllAsync());
 
             var allowedEventList = new List<EventDTO>();
-            foreach (var item in events)
+
+            if (organizerId == null && searchEvent == null)
             {
-                if (item.EventType.Name == "Public" || item.Organizer.Token == organizerId)
-                    allowedEventList.Add(item);
+                foreach (var item in events)
+                {
+                    if (item.EventType.Name == "Public")
+                        allowedEventList.Add(item);
+                }
+              //  return allowedEventList;
+            }
+
+            if (organizerId != null && searchEvent != null)
+            {
+                foreach (var item in events)
+                {
+                    if ((item.EventType.Name == "Public" || item.Organizer.Token == organizerId) && item.Name.Contains(searchEvent))
+                        allowedEventList.Add(item);
+                }
+              //  return allowedEventList;
+            }
+
+            if (organizerId != null && searchEvent == null)
+            {
+                foreach (var item in events)
+                {
+                    if (item.EventType.Name == "Public" || item.Organizer.Token == organizerId)
+                        allowedEventList.Add(item);
+                }
+              //  return allowedEventList;
+            }
+
+            if (organizerId == null && searchEvent != null)
+            {
+                foreach (var item in events)
+                {
+                    if (item.EventType.Name == "Public" && item.Name.Contains(searchEvent))
+                        allowedEventList.Add(item);
+                }
+              
             }
             return allowedEventList;
         }
