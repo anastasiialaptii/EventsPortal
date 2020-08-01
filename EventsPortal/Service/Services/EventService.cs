@@ -94,7 +94,7 @@ namespace Service.Services
             var searchedEventList = new List<EventDTO>();
             foreach (var item in events)
             {
-                if (item.Name == searchEvent)
+                if (item.Name.Contains(searchEvent))
                     searchedEventList.Add(item);
             }
             return searchedEventList;
