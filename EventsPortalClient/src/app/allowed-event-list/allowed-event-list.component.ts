@@ -106,7 +106,10 @@ export class AllowedEventListComponent implements OnInit {
       })
   }
 
-
+  isUserLogged(idEventUser:string){
+    if(this.token.Message==idEventUser)
+    return true;
+  }
 
   onEventDetails(eventId: number) {
     this.visitService.GetVisitorsList(eventId);
@@ -159,5 +162,23 @@ export class AllowedEventListComponent implements OnInit {
           });
       }
     )
+  }
+
+  onDelete(id) {
+    if (confirm('Are you sure to delete this record ?')) {
+      this.eventService.DeleteEvent(id)
+        .subscribe(res => {
+          this.eventService.GetAllowedEventList(this.token.Message, this.eventService.searchEventFormData.Name).subscribe((res: any) => {
+            this.eventItem = res;
+            debugger;
+            console.log(res)
+            this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
+          });
+        },
+          err => {
+            debugger;
+            console.log(err);
+          })
+    }
   }
 }

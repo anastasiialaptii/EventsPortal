@@ -39,12 +39,6 @@ export class EventService {
         return this.http.get(Configuration.URI + '/Event/Get');
     }
 
-    // GetSearchedEventList() {
-    //     return this.http.get(Configuration.URI + '/Event/GetSearchedEventList/' + this.searchEventFormData.Name)
-    //         .toPromise()
-    //         .then(res => this.SearchEventList = res as EventItem[]);
-    // }
-
     GetEventById(id: number) {
         return this.http.get(Configuration.URI + '/Event/GetEventById/' + id)
             .toPromise()
