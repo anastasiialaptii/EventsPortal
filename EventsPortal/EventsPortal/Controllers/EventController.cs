@@ -41,6 +41,8 @@ namespace EventsPortal.Controllers
         }
 
         [HttpGet("{organizerId}/{searchEvent}")]
+        [HttpGet("{organizerId}")]
+        [HttpGet]
         public async Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId, string searchEvent)
         {
             return await _eventService.GetAllowedEventList(organizerId, searchEvent);

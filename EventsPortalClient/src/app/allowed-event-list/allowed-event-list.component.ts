@@ -11,7 +11,6 @@ import { EventItem } from '../shared/models/event-model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpEventType } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-allowed-event-list',
   templateUrl: './allowed-event-list.component.html',
@@ -36,7 +35,6 @@ export class AllowedEventListComponent implements OnInit {
   public snippet; //download img
   public response: { "dbPath": '' };
 
-
   constructor(
     public eventService: EventService,
     public visitService: VisitService,
@@ -46,7 +44,7 @@ export class AllowedEventListComponent implements OnInit {
 
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {this.resetForm();
     //getting image
     this.eventService.getData()
       .subscribe((baseImage: any) => {
@@ -54,9 +52,8 @@ export class AllowedEventListComponent implements OnInit {
         this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
       });
     //getting image
-
-    this.resetForm();
-    this.eventService.GetSearchedEventList();
+    
+    //this.eventService.GetSearchedEventList();
     this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
       this.eventItem = res;
       console.log(res)
@@ -88,7 +85,7 @@ export class AllowedEventListComponent implements OnInit {
   createEvent(form: NgForm) {
     this.eventService.CreateEvent().subscribe(
       res => {
-        this.eventService.GetPrivateEventList(this.token.Message);
+        //this.eventService.GetPrivateEventList(this.token.Message);
         this.resetForm();
       },
       err => {

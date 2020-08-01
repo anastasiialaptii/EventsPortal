@@ -15,7 +15,6 @@ export class EventService {
     searchEventFormData: EventItem;
     SearchEventList: EventItem[];
     EventById: EventItem;
-    
 
     constructor(private http: HttpClient) { }
 
@@ -23,36 +22,37 @@ export class EventService {
         return this.http.post(Configuration.URI + '/Event/CreateEvent', this.formData, { reportProgress: true, observe: 'events' });
     }
 
-    GetAllowedEventList(idUser: string) {
-        return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/' + idUser);
+    GetAllowedEventList(idUser?: string, searchString?: string) {
+        if (idUser == null && searchString == null) {
+            return this.http.get(Configuration.URI + '/Event/GetAllowedEventList');
+        }
+        else if (idUser != null && searchString == null) {
+            return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/' + idUser);
+        }
     }
 
-    //getting image from db
-    getData() {
-        return this.http.get(Configuration.URI + '/Event/Get');
-    }
+//getting image from db 
+getData() {
+    return this.http.get(Configuration.URI + '/Event/Get');
+}
 
-    GetSearchedEventList() {
-        return this.http.get(Configuration.URI + '/Event/GetSearchedEventList/' + this.searchEventFormData.Name)
-            .toPromise()
-            .then(res => this.SearchEventList = res as EventItem[]);
-    }
+GetSearchedEventList() {
+    return this.http.get(Configuration.URI + '/Event/GetSearchedEventList/' + this.searchEventFormData.Name)
+        .toPromise()
+        .then(res => this.SearchEventList = res as EventItem[]);
+}
 
-    GetPrivateEventList(id: string) {
-        return this.http.get(Configuration.URI + '/Event/GetPrivateEventList/');
-    }
+GetEventById(id: number) {
+    return this.http.get(Configuration.URI + '/Event/GetEventById/' + id)
+        .toPromise()
+        .then(res => this.EventById = res as EventItem);
+}
 
-    GetEventById(id: number) {
-        return this.http.get(Configuration.URI + '/Event/GetEventById/' + id)
-            .toPromise()
-            .then(res => this.EventById = res as EventItem);
-    }
+DeleteEvent(id: number) {
+    return this.http.delete(Configuration.URI + '/Event/DeleteEvent/' + id);
+}
 
-    DeleteEvent(id: number) {
-        return this.http.delete(Configuration.URI + '/Event/DeleteEvent/' + id);
-    }
-
-    EditEvent(id: number, event: EventItem) {
-        return this.http.put(Configuration.URI + '/Event/UpdateEvent/' + id, event);
-    }
+EditEvent(id: number, event: EventItem) {
+    return this.http.put(Configuration.URI + '/Event/UpdateEvent/' + id, event);
+}
 }

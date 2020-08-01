@@ -79,16 +79,7 @@ namespace Service.Services
 
             var allowedEventList = new List<EventDTO>();
 
-            if (organizerId == null && searchEvent == null)
-            {
-                foreach (var item in events)
-                {
-                    if (item.EventType.Name == "Public")
-                        allowedEventList.Add(item);
-                }
-              //  return allowedEventList;
-            }
-
+            //worked
             if (organizerId != null && searchEvent != null)
             {
                 foreach (var item in events)
@@ -96,29 +87,38 @@ namespace Service.Services
                     if ((item.EventType.Name == "Public" || item.Organizer.Token == organizerId) && item.Name.Contains(searchEvent))
                         allowedEventList.Add(item);
                 }
-              //  return allowedEventList;
+                return allowedEventList;
             }
-
-            if (organizerId != null && searchEvent == null)
+            //worked
+            else if (organizerId != null && searchEvent == null)
             {
                 foreach (var item in events)
                 {
                     if (item.EventType.Name == "Public" || item.Organizer.Token == organizerId)
                         allowedEventList.Add(item);
                 }
-              //  return allowedEventList;
+                return allowedEventList;
             }
 
-            if (organizerId == null && searchEvent != null)
+            else if (organizerId == null && searchEvent != null)
             {
                 foreach (var item in events)
                 {
                     if (item.EventType.Name == "Public" && item.Name.Contains(searchEvent))
                         allowedEventList.Add(item);
                 }
-              
+
             }
-            return allowedEventList;
+            else if (organizerId == null && searchEvent == null)
+            {
+                foreach (var item in events)
+                {
+                    if (item.EventType.Name == "Public")
+                        allowedEventList.Add(item);
+                }
+                return allowedEventList;
+            }
+            return new List<EventDTO>() { new EventDTO { Description = "none" } };
         }
 
         public async Task<IEnumerable<EventDTO>> GetSearchedEventList(string searchEvent)
