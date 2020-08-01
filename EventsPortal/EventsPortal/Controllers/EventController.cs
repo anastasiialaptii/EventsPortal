@@ -24,7 +24,7 @@ namespace EventsPortal.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var x = await _eventService.GetSearchedEventList("423");
+            var x = await _eventService.GetSearchedEventList("3");
             string test;
             foreach (var item in x)
             {

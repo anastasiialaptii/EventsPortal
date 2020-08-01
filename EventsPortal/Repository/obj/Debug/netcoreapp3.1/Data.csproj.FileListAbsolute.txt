@@ -13,12 +13,6 @@ D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.dll
 D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.pdb
 D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.genruntimeconfig.cache
 D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.csproj.CoreCompileInputs.cache
-H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.csprojAssemblyReference.cache
-H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.AssemblyInfoInputs.cache
-H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.AssemblyInfo.cs
-H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.csproj.CoreCompileInputs.cache
-H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.dll
-H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.pdb
 H:\TechStack\EventsPortal\EventsPortal\Repository\bin\Debug\netcoreapp3.1\Data.deps.json
 H:\TechStack\EventsPortal\EventsPortal\Repository\bin\Debug\netcoreapp3.1\Data.runtimeconfig.json
 H:\TechStack\EventsPortal\EventsPortal\Repository\bin\Debug\netcoreapp3.1\Data.runtimeconfig.dev.json
@@ -26,5 +20,11 @@ H:\TechStack\EventsPortal\EventsPortal\Repository\bin\Debug\netcoreapp3.1\Data.d
 H:\TechStack\EventsPortal\EventsPortal\Repository\bin\Debug\netcoreapp3.1\Data.pdb
 H:\TechStack\EventsPortal\EventsPortal\Repository\bin\Debug\netcoreapp3.1\Core.dll
 H:\TechStack\EventsPortal\EventsPortal\Repository\bin\Debug\netcoreapp3.1\Core.pdb
+H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.csprojAssemblyReference.cache
+H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.AssemblyInfoInputs.cache
+H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.AssemblyInfo.cs
+H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.csproj.CoreCompileInputs.cache
 H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.csproj.CopyComplete
+H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.dll
+H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.pdb
 H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.genruntimeconfig.cache

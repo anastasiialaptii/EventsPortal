@@ -1,7 +1,7 @@
 <app-auth></app-auth>
-<!-- <img id="myimage" [src]='thumbnail' />  uploading img-->
+<img id="myimage" [src]='thumbnail' />  uploading img
 
-<!-- <div class="event-nav" *ngIf="tableMode; else create">
+ <div class="event-nav" *ngIf="tableMode; else create">
     <h4>Events</h4>
     <form #form="ngForm" (submit)="onSearchEvent()" autocomplete="off">
         <input name="Name" #Name="ngModel" [(ngModel)]="eventService.searchEventFormData.Name" class="form-control"
@@ -10,14 +10,18 @@
     </form>
     <div *ngFor="let item of eventService.SearchEventList">
         {{item.Name}} / {{item.Location}} / {{item.EventType.Name}}
+       
     </div>
     <br>
     <button class="btn btn-primary btn-lg" (click)="add()">Create</button>
     <div class="card text-center m-3">
         <div class="card-body">
             <div *ngFor="let item of pageOfItemsEvent">
-                {{item.data.Name}} / {{item.data.Location}} / {{item.data.EventType.Name}}
+                           {{item.data.Name}} / {{item.data.Location}} / {{item.data.EventType.Name}}
+                    <img [src]="createImgPath(item.data.ImageURI)"  style="width:60px; height:60px;">
+     
                 <a (click)="onEventDetails(item.data.Id)" [routerLink]="['/visitors-list', 'item.data.Id']">Details</a>
+             
             </div>
         </div>
         <div class="card-footer pb-0 pt-3">
@@ -31,7 +35,7 @@
     <h4>Create event</h4>
     <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
         <input type="hidden" name="Id" [value]="eventService.formData.Id">
-        <input type="hidden" name="ImageURI" [value]="eventService.formData.ImageURI">
+        <!-- <input type="hidden" name="ImageURI" [value]="eventService.formData.ImageURI"> -->
         <input type="hidden" name="OrganizerId" [value]="eventService.formData.OrganizerId">
         <div class="flex-container">
             <div class="form-group">
@@ -56,12 +60,12 @@
                     <option *ngFor="let type of eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
                 </select>
             </div>
-        </div>
+        
+        </div>    
         <div>
             <button class="btn btn-info btn-lg btn-block" type="submit">Create</button>
             <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning btn-lg btn-block" />
-        </div>
+        </div><app-upload-img (onUploadFinished)="uploadFinished($event)"></app-upload-img>
     </form>
-</ng-template> -->
+</ng-template> 
 
-<app-upload-img></app-upload-img>

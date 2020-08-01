@@ -23,7 +23,6 @@ export class UploadImgComponent implements OnInit {
     if (files.length === 0) {
       return;
     }
-
     let fileToUpload = <File>files[0];
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);

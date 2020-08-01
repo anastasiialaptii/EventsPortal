@@ -34,10 +34,8 @@ export class AllowedEventListComponent implements OnInit {
   event: EventItem = new EventItem();
   thumbnail: any; //download img
   public snippet; //download img
-  
-  public response: { dbPath: '' };
+  public response: { "dbPath": '' };
 
-  
 
   constructor(
     public eventService: EventService,
@@ -66,8 +64,14 @@ export class AllowedEventListComponent implements OnInit {
     });
   }
 
+  public createImgPath = (serverPath: string) => {
+    return `http://localhost:50618/${serverPath}`;
+  }
+
   public uploadFinished = (event) => {
     this.response = event;
+    debugger;
+    this.eventService.formData.ImageURI=this.response.dbPath;
   }
 
   onChangePage(pageOfItemsEvent: Array<any>) {
@@ -79,6 +83,18 @@ export class AllowedEventListComponent implements OnInit {
       this.createEvent(form);
       this.tableMode = true;
     }
+  }
+
+  createEvent(form: NgForm) {
+    this.eventService.CreateEvent().subscribe(
+      res => {
+        this.eventService.GetPrivateEventList(this.token.Message);
+        this.resetForm();
+      },
+      err => {
+        debugger;
+        console.log(err);
+      })
   }
 
   onSearchEvent() {
@@ -104,10 +120,10 @@ export class AllowedEventListComponent implements OnInit {
   resetForm(form?: NgForm) {
     if (form != null)
       form.form.reset();
+
     this.eventService.searchEventFormData = {
       Name: ''
     };
-
     this.userService.GetUserByToken(this.token.Message).subscribe(
       res => {
         this.eventService.formData = {
@@ -115,24 +131,12 @@ export class AllowedEventListComponent implements OnInit {
           Name: '',
           Location: '',
           Description: '',
-          ImageURI: '',
+          //ImageURI: '',
           EventTypeId: 1,
           OrganizerId: res
         }
       }
     )
-  }
-
-  createEvent(form: NgForm) {
-    this.eventService.CreateEvent().subscribe(
-      res => {
-        this.eventService.GetPrivateEventList(this.token.Message);
-        this.resetForm();
-      },
-      err => {
-        debugger;
-        console.log(err);
-      })
   }
 
   createVisit(id: number) {
