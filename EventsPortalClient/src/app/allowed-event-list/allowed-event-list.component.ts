@@ -44,7 +44,8 @@ export class AllowedEventListComponent implements OnInit {
 
   ) { }
 
-  ngOnInit(): void {this.resetForm();
+  ngOnInit(): void {
+    this.resetForm();
     //getting image
     this.eventService.getData()
       .subscribe((baseImage: any) => {
@@ -52,13 +53,24 @@ export class AllowedEventListComponent implements OnInit {
         this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
       });
     //getting image
-    
+
     //this.eventService.GetSearchedEventList();
     this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
       this.eventItem = res;
       console.log(res)
       this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
     });
+  }
+
+  onSearchEvent() {
+    if (this.eventService.searchEventFormData.Name != null) {
+      this.eventService.GetAllowedEventList(this.token.Message, this.eventService.searchEventFormData.Name).subscribe((res: any) => {
+        this.eventItem = res;
+        debugger;
+        console.log(res)
+        this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
+      });
+    }
   }
 
   public createImgPath = (serverPath: string) => {
@@ -68,7 +80,7 @@ export class AllowedEventListComponent implements OnInit {
   public uploadFinished = (event) => {
     this.response = event;
     debugger;
-    this.eventService.formData.ImageURI=this.response.dbPath;
+    this.eventService.formData.ImageURI = this.response.dbPath;
   }
 
   onChangePage(pageOfItemsEvent: Array<any>) {
@@ -94,11 +106,7 @@ export class AllowedEventListComponent implements OnInit {
       })
   }
 
-  onSearchEvent() {
-    if (this.eventService.searchEventFormData.Name != null) {
-      this.eventService.GetSearchedEventList();
-    }
-  }
+
 
   onEventDetails(eventId: number) {
     this.visitService.GetVisitorsList(eventId);

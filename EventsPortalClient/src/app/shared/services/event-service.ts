@@ -29,30 +29,33 @@ export class EventService {
         else if (idUser != null && searchString == null) {
             return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/' + idUser);
         }
+        else if (idUser != null && searchString != null) {
+            return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/' + idUser + '/' + searchString);
+        }
     }
 
-//getting image from db 
-getData() {
-    return this.http.get(Configuration.URI + '/Event/Get');
-}
+    //getting image from db 
+    getData() {
+        return this.http.get(Configuration.URI + '/Event/Get');
+    }
 
-GetSearchedEventList() {
-    return this.http.get(Configuration.URI + '/Event/GetSearchedEventList/' + this.searchEventFormData.Name)
-        .toPromise()
-        .then(res => this.SearchEventList = res as EventItem[]);
-}
+    // GetSearchedEventList() {
+    //     return this.http.get(Configuration.URI + '/Event/GetSearchedEventList/' + this.searchEventFormData.Name)
+    //         .toPromise()
+    //         .then(res => this.SearchEventList = res as EventItem[]);
+    // }
 
-GetEventById(id: number) {
-    return this.http.get(Configuration.URI + '/Event/GetEventById/' + id)
-        .toPromise()
-        .then(res => this.EventById = res as EventItem);
-}
+    GetEventById(id: number) {
+        return this.http.get(Configuration.URI + '/Event/GetEventById/' + id)
+            .toPromise()
+            .then(res => this.EventById = res as EventItem);
+    }
 
-DeleteEvent(id: number) {
-    return this.http.delete(Configuration.URI + '/Event/DeleteEvent/' + id);
-}
+    DeleteEvent(id: number) {
+        return this.http.delete(Configuration.URI + '/Event/DeleteEvent/' + id);
+    }
 
-EditEvent(id: number, event: EventItem) {
-    return this.http.put(Configuration.URI + '/Event/UpdateEvent/' + id, event);
-}
+    EditEvent(id: number, event: EventItem) {
+        return this.http.put(Configuration.URI + '/Event/UpdateEvent/' + id, event);
+    }
 }

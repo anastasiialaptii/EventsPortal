@@ -4,7 +4,7 @@
     <h6>Name: {{item.Event.Name}}</h6> 
     <h6>Location: {{item.Event.Location}} </h6>
     <h6>Description: {{item.Event.Description}} </h6>  
-   <img src= "{{item.Event.ImageURI}}">
+    <img [src]="createImgPath(item.Event.ImageURI)"  style="width:60px; height:60px;">
 </div>
 
 <h4>Visitors:</h4>
