@@ -9,7 +9,7 @@ import { UserService } from '../shared/services/user-service';
 import { Visit } from '../shared/models/visit-model';
 import { EventItem } from '../shared/models/event-model';
 import { DomSanitizer } from '@angular/platform-browser';
-import { HttpEventType } from '@angular/common/http';
+// import { HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-allowed-event-list',
@@ -31,9 +31,9 @@ export class AllowedEventListComponent implements OnInit {
   eventItem: EventItem[];
   pageOfItemsEvent: Array<EventItem>;
   event: EventItem = new EventItem();
-  thumbnail: any; //download img
-  public snippet; //download img
-  public response: { "dbPath": '' };
+  response: { "dbPath": '' };
+  // thumbnail: any; //download img
+  // public snippet; //download img
 
   constructor(
     public eventService: EventService,
@@ -46,15 +46,12 @@ export class AllowedEventListComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetForm();
-    //getting image
-    this.eventService.getData()
-      .subscribe((baseImage: any) => {
-        let objectURL = 'data:image/jpeg;base64,' + baseImage.image;
-        this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-      });
-    //getting image
-
-    //this.eventService.GetSearchedEventList();
+    // getting image
+    // this.eventService.getData()
+    //   .subscribe((baseImage: any) => {
+    //     let objectURL = 'data:image/jpeg;base64,' + baseImage.image;
+    //     this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+    //   });
     this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
       this.eventItem = res;
       console.log(res)

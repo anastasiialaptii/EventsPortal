@@ -9,11 +9,11 @@ export class SettingService {
   constructor(private config: EventService) { }
 
   ngOnInit() {
-    this.config.getData()
-      .subscribe(data => {
-          debugger;
-        console.log(data);
-        this.snippet = data;
-      });
+    // this.config.getData()
+    //   .subscribe(data => {
+    //       debugger;
+    //     console.log(data);
+    //     this.snippet = data;
+    //   });
   }
 }
