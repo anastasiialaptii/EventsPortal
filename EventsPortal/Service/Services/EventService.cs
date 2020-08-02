@@ -79,17 +79,15 @@ namespace Service.Services
 
             var allowedEventList = new List<EventDTO>();
 
-            //worked
             if (organizerId != null && searchEvent != null)
             {
                 foreach (var item in events)
                 {
-                    if ((item.EventType.Name == "Public" || item.Organizer.Token == organizerId) && item.Name.Contains(searchEvent))
+                    if ((item.EventType.Name == "Public" || item.Organizer.Token == organizerId) && item.Name.Contains(searchEvent.ToUpper()))
                         allowedEventList.Add(item);
                 }
                 return allowedEventList;
             }
-            //worked
             else if (organizerId != null && searchEvent == null)
             {
                 foreach (var item in events)
@@ -104,7 +102,7 @@ namespace Service.Services
             {
                 foreach (var item in events)
                 {
-                    if (item.EventType.Name == "Public" && item.Name.Contains(searchEvent))
+                    if (item.EventType.Name == "Public" && item.Name.Contains(searchEvent.ToUpper()))
                         allowedEventList.Add(item);
                 }
 

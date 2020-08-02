@@ -21,10 +21,7 @@ export class EventService {
     }
 
     GetAllowedEventList(idUser?: string, searchString?: string) {
-        if (idUser == null && searchString == null) {
-            return this.http.get(Configuration.URI + '/Event/GetAllowedEventList');
-        }
-        else if (idUser != null && searchString == null) {
+        if (idUser != null && searchString == null) {
             return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/' + idUser);
         }
         else if (idUser != null && searchString != null) {
