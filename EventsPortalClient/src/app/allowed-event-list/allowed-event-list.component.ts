@@ -3,13 +3,11 @@ import { NgForm } from '@angular/forms';
 
 import { EventService } from '../shared/services/event-service';
 import { VisitService } from '../shared/services/visit-service';
-import { SettingService } from '../shared/services/setting-service';
 
 import { UserService } from '../shared/services/user-service';
 import { Visit } from '../shared/models/visit-model';
 import { EventItem } from '../shared/models/event-model';
-import { DomSanitizer } from '@angular/platform-browser';
-// import { HttpEventType } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-allowed-event-list',
@@ -32,26 +30,15 @@ export class AllowedEventListComponent implements OnInit {
   pageOfItemsEvent: Array<EventItem>;
   event: EventItem = new EventItem();
   response: { "dbPath": '' };
-  // thumbnail: any; //download img
-  // public snippet; //download img
 
   constructor(
     public eventService: EventService,
     public visitService: VisitService,
-    public userService: UserService,
-    public setting: SettingService,
-    private sanitizer: DomSanitizer
-
+    public userService: UserService
   ) { }
 
   ngOnInit(): void {
     this.resetForm();
-    // getting image
-    // this.eventService.getData()
-    //   .subscribe((baseImage: any) => {
-    //     let objectURL = 'data:image/jpeg;base64,' + baseImage.image;
-    //     this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-    //   });
     this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
       this.eventItem = res;
       console.log(res)
@@ -74,34 +61,9 @@ export class AllowedEventListComponent implements OnInit {
     return `http://localhost:50618/${serverPath}`;
   }
 
-  // public uploadFinished = (event) => {
-  //   this.response = event;
-  //   debugger;
-  //   this.eventService.formData.ImageURI = this.response.dbPath;
-  // }
-
   onChangePage(pageOfItemsEvent: Array<any>) {
     this.pageOfItemsEvent = pageOfItemsEvent;
   }
-
-  // onSubmit(form: NgForm) {
-  //   if (this.eventService.formData.Id == 0) {
-  //     this.createEvent(form);
-  //     this.tableMode = true;
-  //   }
-  // }
-
-  // createEvent(form: NgForm) {
-  //   this.eventService.CreateEvent().subscribe(
-  //     res => {
-  //       //this.eventService.GetPrivateEventList(this.token.Message);
-  //       this.resetForm();
-  //     },
-  //     err => {
-  //       debugger;
-  //       console.log(err);
-  //     })
-  // }
 
   isUserLogged(idEventUser:string){
     if(this.token.Message==idEventUser)
