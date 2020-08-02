@@ -29,6 +29,10 @@ export class EventService {
         }
     }
 
+    GetEventList(){
+        return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/');
+    }
+
     GetEventById(id: number) {
         return this.http.get(Configuration.URI + '/Event/GetEventById/' + id)
             .toPromise()

@@ -14,6 +14,7 @@ import { JwPaginationModule } from 'jw-angular-pagination';
 import { VisitorsListComponent } from './visitors-list/visitors-list.component';
 import { UploadImgComponent } from './upload-img/upload-img.component';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { Configuration } from './shared/config/configuration';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
     FormsModule, JwPaginationModule
   ],
   providers: [
-    AuthGuard,
+    AuthGuard, Configuration,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs

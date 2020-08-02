@@ -7,6 +7,7 @@ import { VisitService } from '../shared/services/visit-service';
 import { UserService } from '../shared/services/user-service';
 import { Visit } from '../shared/models/visit-model';
 import { EventItem } from '../shared/models/event-model';
+import { Configuration } from '../shared/config/configuration'
 
 
 @Component({
@@ -34,7 +35,8 @@ export class AllowedEventListComponent implements OnInit {
   constructor(
     public eventService: EventService,
     public visitService: VisitService,
-    public userService: UserService
+    public userService: UserService,
+    public config: Configuration
   ) { }
 
   ngOnInit(): void {
@@ -57,17 +59,14 @@ export class AllowedEventListComponent implements OnInit {
     }
   }
 
-  public createImgPath = (serverPath: string) => {
-    return `http://localhost:50618/${serverPath}`;
-  }
 
   onChangePage(pageOfItemsEvent: Array<any>) {
     this.pageOfItemsEvent = pageOfItemsEvent;
   }
 
-  isUserLogged(idEventUser:string){
-    if(this.token.Message==idEventUser)
-    return true;
+  isUserLogged(idEventUser: string) {
+    if (this.token.Message == idEventUser)
+      return true;
   }
 
   onEventDetails(eventId: number) {
@@ -98,7 +97,6 @@ export class AllowedEventListComponent implements OnInit {
           Name: '',
           Location: '',
           Description: '',
-          //ImageURI: '',
           EventTypeId: 1,
           OrganizerId: res
         }

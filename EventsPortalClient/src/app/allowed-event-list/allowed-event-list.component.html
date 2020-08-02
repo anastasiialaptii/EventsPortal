@@ -1,5 +1,4 @@
 <app-auth></app-auth>
-<!-- <img id="myimage" [src]='thumbnail' />  uploading img -->
 <div class="event-nav" *ngIf="tableMode">
     <h4>Events</h4>
     <div *ngFor="let item of eventService.SearchEventList">
@@ -14,15 +13,14 @@
         <div class="card-body">
             <div *ngFor="let item of pageOfItemsEvent">
                 {{item.data.Name}} / {{item.data.Location}} / {{item.data.EventType.Name}}
-                <img [src]="createImgPath(item.data.ImageURI)" style="width:60px; height:60px;">
-                <!--      
+                <img [src]="config.createImgPath(item.data.ImageURI)" style="width:60px; height:60px;">                   
                 <a (click)="onEventDetails(item.data.Id)" [routerLink]="['/visitors-list', 'item.data.Id']">Details</a>
                 <br>
-                <a *ngIf="isUserLogged(item.data.Organizer.Token)" (click)="onDelete(itemё.data.Id)">Delete</a> -->
+                <a *ngIf="isUserLogged(item.data.Organizer.Token)" (click)="onDelete(item.data.Id)">Delete</a>
             </div>
         </div>
         <div class="card-footer pb-0 pt-3">
-            <jw-pagination [items]="itemsEvent" (changePage)="onChangePage($event)"></jw-pagination>
+            <jw-pagination [items]="itemsEvent" [pageSize]="10" (changePage)="onChangePage($event)"></jw-pagination>
         </div>
     </div>
 </div>
