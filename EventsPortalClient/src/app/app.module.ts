@@ -8,14 +8,13 @@ import { AppComponent } from './app.component';
 import { getAuthServiceConfigs, AuthGuard } from './shared/config/auth-provider';
 import {SettingService} from '../app/shared/services/setting-service';
 
-
 import { SocialLoginModule, AuthServiceConfig } from "angular-6-social-login";
 import { AuthComponent } from './auth/auth.component';
 import { AllowedEventListComponent } from './allowed-event-list/allowed-event-list.component';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { VisitorsListComponent } from './visitors-list/visitors-list.component';
 import { UploadImgComponent } from './upload-img/upload-img.component';
-
+import { CreateEventComponent } from './create-event/create-event.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,8 @@ import { UploadImgComponent } from './upload-img/upload-img.component';
     AuthComponent,
     AllowedEventListComponent,
     VisitorsListComponent,
-    UploadImgComponent
+    UploadImgComponent,
+    CreateEventComponent
   ],
   imports: [
     BrowserModule,

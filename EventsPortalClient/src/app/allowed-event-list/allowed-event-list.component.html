@@ -1,74 +1,28 @@
 <app-auth></app-auth>
 <!-- <img id="myimage" [src]='thumbnail' />  uploading img -->
-
- <div class="event-nav" *ngIf="tableMode; else create">
+<div class="event-nav" *ngIf="tableMode">
     <h4>Events</h4>
-   
     <div *ngFor="let item of eventService.SearchEventList">
         {{item.Name}} / {{item.Location}} / {{item.EventType.Name}}
-       
     </div>
-    <br>
-    <button class="btn btn-primary btn-lg" (click)="add()">Create</button>
-
     <form #form="ngForm" (submit)="onSearchEvent()" autocomplete="off">
         <input name="Name" #Name="ngModel" [(ngModel)]="eventService.searchEventFormData.Name" class="form-control"
-            placeholder="Search by Name...">
+            placeholder="Search for an event">
         <button class="btn btn-info btn-lg btn-block" type="submit">Search</button>
     </form>
     <div class="card text-center m-3">
         <div class="card-body">
             <div *ngFor="let item of pageOfItemsEvent">
-                           {{item.data.Name}} / {{item.data.Location}} / {{item.data.EventType.Name}}
-                    <img [src]="createImgPath(item.data.ImageURI)"  style="width:60px; height:60px;">
-     
+                {{item.data.Name}} / {{item.data.Location}} / {{item.data.EventType.Name}}
+                <img [src]="createImgPath(item.data.ImageURI)" style="width:60px; height:60px;">
+                <!--      
                 <a (click)="onEventDetails(item.data.Id)" [routerLink]="['/visitors-list', 'item.data.Id']">Details</a>
                 <br>
-                <a *ngIf="isUserLogged(item.data.Organizer.Token)" (click)="onDelete(item.data.Id)">Delete</a>
+                <a *ngIf="isUserLogged(item.data.Organizer.Token)" (click)="onDelete(itemё.data.Id)">Delete</a> -->
             </div>
         </div>
         <div class="card-footer pb-0 pt-3">
             <jw-pagination [items]="itemsEvent" (changePage)="onChangePage($event)"></jw-pagination>
         </div>
     </div>
-</div> 
-
-
-<ng-template #create>
-    <h4>Create event</h4>
-    <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
-        <input type="hidden" name="Id" [value]="eventService.formData.Id">
-        <input type="hidden" name="ImageURI" [value]="eventService.formData.ImageURI">
-        <input type="hidden" name="OrganizerId" [value]="eventService.formData.OrganizerId">
-        <div class="flex-container">
-            <div class="form-group">
-                <h6>Name</h6>
-                <input name="Name" #Name="ngModel" [(ngModel)]="eventService.formData.Name" class="form-control"
-                    placeholder="Name">
-            </div>
-            <div class="form-group">
-                <h6>Location</h6>
-                <input name="Location" #Name="ngModel" [(ngModel)]="eventService.formData.Location" class="form-control"
-                    placeholder="Location">
-            </div>
-            <div class="form-group">
-                <h6>Description</h6>
-                <input name="Description" #Name="ngModel" [(ngModel)]="eventService.formData.Description"
-                    class="form-control" placeholder="Description">
-            </div>
-            <div class="form-group">
-                <h6>Category</h6>
-                <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventService.formData.EventTypeId"
-                    class="form-control">
-                    <option *ngFor="let type of eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
-                </select>
-            </div>
-        
-        </div>    
-        <div>
-            <button class="btn btn-info btn-lg btn-block" type="submit">Create</button>
-            <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning btn-lg btn-block" />
-        </div><app-upload-img (onUploadFinished)="uploadFinished($event)"></app-upload-img>
-    </form>
-</ng-template> 
-
+</div>

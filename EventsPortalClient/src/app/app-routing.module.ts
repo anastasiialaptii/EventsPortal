@@ -4,11 +4,12 @@ import { AllowedEventListComponent } from './allowed-event-list/allowed-event-li
 import { AuthGuard } from './shared/config/auth-provider';
 import { AuthComponent } from './auth/auth.component';
 import { VisitorsListComponent } from './visitors-list/visitors-list.component';
-
+import { CreateEventComponent } from './create-event/create-event.component';
 
 const routes: Routes = [
   { path: 'allowed-event-list', component: AllowedEventListComponent, canActivate: [AuthGuard] },
   { path: 'visitors-list/:eventId', component: VisitorsListComponent, canActivate: [AuthGuard] },
+  { path: 'create-event', component: CreateEventComponent, canActivate: [AuthGuard] },
   { path: '', component: AuthComponent }
 ];
 

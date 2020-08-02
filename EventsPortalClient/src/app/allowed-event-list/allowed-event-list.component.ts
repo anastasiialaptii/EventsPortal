@@ -77,34 +77,34 @@ export class AllowedEventListComponent implements OnInit {
     return `http://localhost:50618/${serverPath}`;
   }
 
-  public uploadFinished = (event) => {
-    this.response = event;
-    debugger;
-    this.eventService.formData.ImageURI = this.response.dbPath;
-  }
+  // public uploadFinished = (event) => {
+  //   this.response = event;
+  //   debugger;
+  //   this.eventService.formData.ImageURI = this.response.dbPath;
+  // }
 
   onChangePage(pageOfItemsEvent: Array<any>) {
     this.pageOfItemsEvent = pageOfItemsEvent;
   }
 
-  onSubmit(form: NgForm) {
-    if (this.eventService.formData.Id == 0) {
-      this.createEvent(form);
-      this.tableMode = true;
-    }
-  }
+  // onSubmit(form: NgForm) {
+  //   if (this.eventService.formData.Id == 0) {
+  //     this.createEvent(form);
+  //     this.tableMode = true;
+  //   }
+  // }
 
-  createEvent(form: NgForm) {
-    this.eventService.CreateEvent().subscribe(
-      res => {
-        //this.eventService.GetPrivateEventList(this.token.Message);
-        this.resetForm();
-      },
-      err => {
-        debugger;
-        console.log(err);
-      })
-  }
+  // createEvent(form: NgForm) {
+  //   this.eventService.CreateEvent().subscribe(
+  //     res => {
+  //       //this.eventService.GetPrivateEventList(this.token.Message);
+  //       this.resetForm();
+  //     },
+  //     err => {
+  //       debugger;
+  //       console.log(err);
+  //     })
+  // }
 
   isUserLogged(idEventUser:string){
     if(this.token.Message==idEventUser)
@@ -120,10 +120,10 @@ export class AllowedEventListComponent implements OnInit {
     this.tableMode = true;
   }
 
-  add() {
-    this.cancel();
-    this.tableMode = false;
-  }
+  // add() {
+  //   this.cancel();
+  //   this.tableMode = false;
+  // }
 
   resetForm(form?: NgForm) {
     if (form != null)

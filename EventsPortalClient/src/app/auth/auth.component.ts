@@ -4,6 +4,7 @@ import { GoogleLoginProvider, AuthService } from 'angular-6-social-login';
 import { GoogleAuthService } from '../shared/services/auth-service';
 import { User } from '../shared/models/user-model';
 import { AuthGuard } from '../shared/config/auth-provider';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -13,13 +14,13 @@ import { AuthGuard } from '../shared/config/auth-provider';
 })
 
 export class AuthComponent implements OnInit {
-
   response;
   users = new User();
   constructor(
     public oAuth: AuthService,
     public gAuthService: GoogleAuthService,
-    public authGuard: AuthGuard
+    public authGuard: AuthGuard,
+    private router: Router
   ) { }
 
   ngOnInit() { }
@@ -46,6 +47,7 @@ export class AuthComponent implements OnInit {
       localStorage.setItem('socialusers', JSON.stringify(this.users));
       console.log(localStorage.setItem('socialusers', JSON.stringify(this.users)));
       console.log(localStorage.getItem('socialusers'));
+      this.router.navigate(["/allowed-event-list"]);
     })
   }
 
