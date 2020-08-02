@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../shared/services/event-service';
 import { UserService } from '../shared/services/user-service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-event',
@@ -19,7 +20,9 @@ export class CreateEventComponent implements OnInit {
   
   constructor(
     public eventService: EventService,
-    public userService: UserService) { }
+    public userService: UserService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.resetForm();
@@ -34,7 +37,7 @@ export class CreateEventComponent implements OnInit {
   createEvent(form: NgForm) {
     this.eventService.CreateEvent().subscribe(
       res => {
-        //this.eventService.GetPrivateEventList(this.token.Message);
+        this.router.navigate(['/allowed-event-list']);
         this.resetForm();
       },
       err => {
@@ -52,7 +55,6 @@ export class CreateEventComponent implements OnInit {
   resetForm(form?: NgForm) {
     if (form != null)
       form.form.reset();
-
     this.eventService.searchEventFormData = {
       Name: ''
     };
@@ -63,7 +65,6 @@ export class CreateEventComponent implements OnInit {
           Name: '',
           Location: '',
           Description: '',
-          //ImageURI: '',
           EventTypeId: 1,
           OrganizerId: res
         }
