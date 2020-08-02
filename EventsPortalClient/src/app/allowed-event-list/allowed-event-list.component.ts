@@ -23,14 +23,9 @@ export class AllowedEventListComponent implements OnInit {
   visit: Visit;
   tableMode: boolean = true;
   itemsEvent = [];
-  eventTypes = [
-    { Id: 1, Name: "Private" },
-    { Id: 2, Name: "Public" }
-  ];
   eventItem: EventItem[];
   pageOfItemsEvent: Array<EventItem>;
   event: EventItem = new EventItem();
-  response: { "dbPath": '' };
 
   constructor(
     public eventService: EventService,
@@ -59,7 +54,6 @@ export class AllowedEventListComponent implements OnInit {
     }
   }
 
-
   onChangePage(pageOfItemsEvent: Array<any>) {
     this.pageOfItemsEvent = pageOfItemsEvent;
   }
@@ -77,11 +71,6 @@ export class AllowedEventListComponent implements OnInit {
     this.event = new EventItem();
     this.tableMode = true;
   }
-
-  // add() {
-  //   this.cancel();
-  //   this.tableMode = false;
-  // }
 
   resetForm(form?: NgForm) {
     if (form != null)

@@ -98,15 +98,6 @@ namespace Service.Services
                 return allowedEventList;
             }
 
-            else if (organizerId == null && searchEvent != null)
-            {
-                foreach (var item in events)
-                {
-                    if (item.EventType.Name == "Public" && item.Name.Contains(searchEvent.ToUpper()))
-                        allowedEventList.Add(item);
-                }
-
-            }
             else if (organizerId == null && searchEvent == null)
             {
                 foreach (var item in events)
