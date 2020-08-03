@@ -1,40 +1,40 @@
 <app-auth></app-auth>
-<h2>Create event</h2>
-<h4>Tell us about your awesome event</h4>
-<h6>Don't worry you can change this info later</h6>
-<form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
-    <input type="hidden" name="Id" [value]="eventService.formData.Id">
-    <input type="hidden" name="ImageURI" [value]="eventService.formData.ImageURI">
-    <input type="hidden" name="OrganizerId" [value]="eventService.formData.OrganizerId">
-    <div class="flex-container">
-        <div class="form-group">
-            <h6>Event Name</h6>
-            <input name="Name" #Name="ngModel" [(ngModel)]="eventService.formData.Name" class="form-control"
-                placeholder="Name">
+<h1 class = "main-content text-center">Create event ✨</h1>
+<div class="create-form">
+    <h2>Tell us about your awesome event</h2>
+    <h4>Don't worry you can change this info later</h4>
+    <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <input type="hidden" name="Id" [value]="eventService.formData.Id">
+        <input type="hidden" name="ImageURI" [value]="eventService.formData.ImageURI">
+        <input type="hidden" name="OrganizerId" [value]="eventService.formData.OrganizerId">
+        <div class="flex-container">
+            <div class="form-group">
+                <h5>Event name:</h5>
+                <input name="Name" #Name="ngModel" [(ngModel)]="eventService.formData.Name" class="form-control"
+                    placeholder="Name">
+            </div>
+            <div class="form-group">
+                <h5>Event location:</h5>
+                <input name="Location" #Name="ngModel" [(ngModel)]="eventService.formData.Location" class="form-control"
+                    placeholder="Location">
+            </div>
+            <div class="form-group">
+                <h5>Event Category</h5>
+                <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventService.formData.EventTypeId"
+                    class="form-control">
+                    <option *ngFor="let type of eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <h5>Event Description:</h5>
+                <textarea name="Description" #Name="ngModel" [(ngModel)]="eventService.formData.Description"
+                    class="form-control" placeholder="Provide short info about event"></textarea>
+            </div>
+            <div class="form-group btn-upload-create">
+                <h5>Event photo:</h5>
+                <app-upload-img (onUploadFinished)="uploadFinished($event)"></app-upload-img>
+                <button class="btn btn-success" type="submit">Create</button>
+            </div>
         </div>
-        <div class="form-group">
-            <h6>Event Location</h6>
-            <input name="Location" #Name="ngModel" [(ngModel)]="eventService.formData.Location" class="form-control"
-                placeholder="Location">
-        </div>
-        <div class="form-group">
-            <h6>Event Description</h6>
-            <input name="Description" #Name="ngModel" [(ngModel)]="eventService.formData.Description"
-                class="form-control" placeholder="Description">
-        </div>
-        <div class="form-group">
-            <h6>Event Category</h6>
-            <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventService.formData.EventTypeId"
-                class="form-control">
-                <option *ngFor="let type of eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <h6>Upload Event Promo</h6>
-            <app-upload-img (onUploadFinished)="uploadFinished($event)"></app-upload-img>
-        </div>
-    </div>
-    <div>
-        <button class="btn btn-info btn-lg btn-block" type="submit">Create</button>
-    </div>
-</form>
+    </form>
+</div>
