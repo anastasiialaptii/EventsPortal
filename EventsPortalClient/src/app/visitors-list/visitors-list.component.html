@@ -1,15 +1,16 @@
 <app-auth></app-auth>
+<div class="main-content">
+    <div *ngFor="let item of eventService.EventByIdList">
+        <h6>{{item.Name}}</h6>
+        <button type="button" class="btn btn-warning">Edit</button>
+        <h6>Description: {{item.Description}} </h6>
+        <h6>Location: {{item.Location}} </h6>
 
-<h4>Event</h4>
-<div *ngFor="let item of eventService.EventByIdList">
-    <h6>Name: {{item.Name}}</h6>
-    <h6>Location: {{item.Location}} </h6>
-    <h6>Description: {{item.Description}} </h6>
-    <img [src]="createImgPath(item.ImageURI)" style="width:60px; height:60px;">
-</div>
+        <img [src]="createImgPath(item.ImageURI)">
+    </div>
 
-<h4>Visitors:</h4>
-
-<div *ngFor="let item of visitService.VisitorsList">
-    {{item.User.Name}}
+    <h4>Visitors:</h4>
+    <div *ngFor="let item of visitService.VisitorsList">
+        {{item.User.Name}}
+    </div>
 </div>

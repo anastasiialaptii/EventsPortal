@@ -12,6 +12,8 @@ import { Configuration } from '../shared/config/configuration';
 export class HomePageComponent implements OnInit {
   eventItem: EventItem[];
   itemsEvent = [];
+  pageOfItemsEvent: Array<EventItem>;
+  token = JSON.parse(localStorage.getItem('socialusers'));
 
   constructor(
     public eventService:EventService,
@@ -25,10 +27,10 @@ export class HomePageComponent implements OnInit {
       this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
     });
   }
-  
-  pageOfItemsEvent: Array<EventItem>;
 
   onChangePage(pageOfItemsEvent: Array<any>) {
     this.pageOfItemsEvent = pageOfItemsEvent;
   }
+
+  createVisit
 }

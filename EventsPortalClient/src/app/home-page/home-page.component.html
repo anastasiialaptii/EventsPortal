@@ -1,17 +1,24 @@
 <app-auth></app-auth>
-<h3>Events:</h3>
-<div *ngFor="let item of pageOfItemsEvent">
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" [src]="config.createImgPath(item.data.ImageURI)" alt="Card image cap">
+<div class="main-content">
+    <div class="text-center m-3">
+        <h1 class="text-left">Events 🎉</h1>
+    </div>
+    <div class="card text-center m-3">
         <div class="card-body">
-            <h5 class="card-title">{{item.data.Name}}</h5>
-            <p class="card-text">{{item.data.Location}}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-            <br>
-            <a href="#" class="btn btn-primary">Details</a>
+            <div class="paginator" *ngFor="let item of pageOfItemsEvent">
+                <div class="flex-item">
+                    <div class="card-body-width">                  
+                            <img class="card-img-top" [src]="config.createImgPath(item.data.ImageURI)"
+                                alt="Card image cap">
+                            <h3 class="card-title">{{item.data.Name}}</h3>
+                            <h4 class="card-text">Location: {{item.data.Location}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer pb-0 pt-3">
+            <jw-pagination class="jw-pagination" [items]="itemsEvent" [pageSize]="50"
+                (changePage)="onChangePage($event)"></jw-pagination>
         </div>
     </div>
-</div>
-<div class="card-footer pb-0 pt-3">
-    <jw-pagination [items]="itemsEvent" [pageSize]="10" (changePage)="onChangePage($event)"></jw-pagination>
 </div>

@@ -8,7 +8,7 @@
         <form #form="ngForm" (submit)="onSearchEvent()" autocomplete="off">
             <div class="input-group mb-3">
                 <input name="Name" #Name="ngModel" [(ngModel)]="eventService.searchEventFormData.Name"
-                    class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    class="form-control" placeholder="Search for an event" aria-describedby="basic-addon2">
                 <div class="input-group-append">
                     <button class="btn btn-info" type="submit">Search</button>
                 </div>
