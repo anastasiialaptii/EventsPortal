@@ -1,5 +1,5 @@
 <app-auth></app-auth>
-<div class="main-content" *ngIf="tableMode">
+<div class="main-content">
     <div class="text-center m-3">
         <h1 class="text-left">Events 🎉</h1>
         <div *ngFor="let item of eventService.SearchEventList">
@@ -24,10 +24,10 @@
                             [routerLink]="['/visitors-list', 'item.data.Id']">
                             <img class="card-img-top" [src]="config.createImgPath(item.data.ImageURI)"
                                 alt="Card image cap">
+                             </div>
                             <h3 class="card-title">{{item.data.Name}}</h3>
                             <h4 class="card-text">Location: {{item.data.Location}}</h4>
                             <h6 class="card-title">Event Type: {{item.data.EventType.Name}}</h6>
-                        </div>
                     </div>
                     <button class="btn btn-md btn-success" (click)="createVisit(item.data.Id)">Go</button>
                     <button class="btn btn-md btn-danger" (click)="onDelete(item.data.Id)">Delete</button>

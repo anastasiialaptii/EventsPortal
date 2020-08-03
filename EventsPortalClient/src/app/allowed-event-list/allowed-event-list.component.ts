@@ -21,7 +21,6 @@ export class AllowedEventListComponent implements OnInit {
   token = JSON.parse(localStorage.getItem('socialusers'));
   userId: number;
   visit: Visit;
-  tableMode: boolean = true;
   itemsEvent = [];
   eventItem: EventItem[];
   pageOfItemsEvent: Array<EventItem>;
@@ -66,11 +65,6 @@ export class AllowedEventListComponent implements OnInit {
   onEventDetails(eventId: number) {
     this.visitService.GetVisitorsList(eventId);
     this.eventService.GetEventById(eventId);
-  }
-
-  cancel() {
-    this.event = new EventItem();
-    this.tableMode = true;
   }
 
   resetForm(form?: NgForm) {
