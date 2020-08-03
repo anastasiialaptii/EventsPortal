@@ -10,6 +10,8 @@ import { Visit } from '../models/visit-model';
 
 export class VisitService {
     VisitorsList: Visit[];
+    visitorsPerEvent: number;
+
     constructor(private http: HttpClient) { }
 
     CreateVisit(visit: Visit) {

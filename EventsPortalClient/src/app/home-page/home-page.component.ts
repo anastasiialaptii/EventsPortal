@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventItem } from '../shared/models/event-model';
 import { EventService } from '../shared/services/event-service';
+import { Configuration } from '../shared/config/configuration';
 
 @Component({
   selector: 'app-home-page',
@@ -13,15 +14,16 @@ export class HomePageComponent implements OnInit {
   itemsEvent = [];
 
   constructor(
-    public eventService:EventService
+    public eventService:EventService,
+    public config: Configuration
   ) { }
 
   ngOnInit(): void {
-    // this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
-    //   this.eventItem = res;
-    //   console.log(res)
-    //   this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
-    // });
+    this.eventService.GetEventList().subscribe((res: any) => {
+      this.eventItem = res;
+      console.log(res)
+      this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
+    });
   }
   
   pageOfItemsEvent: Array<EventItem>;

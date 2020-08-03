@@ -65,6 +65,7 @@ export class AllowedEventListComponent implements OnInit {
 
   onEventDetails(eventId: number) {
     this.visitService.GetVisitorsList(eventId);
+    this.eventService.GetEventById(eventId);
   }
 
   cancel() {

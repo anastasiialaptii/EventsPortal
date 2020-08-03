@@ -8,7 +8,7 @@ namespace Service.Interfaces
     {
         Task<IEnumerable<EventDTO>> GetEvents();
 
-        Task<EventDTO> GetEventById(int? id);
+        Task<IEnumerable<EventDTO>> GetEventById(int? id);
 
         Task DeleteEvent(int? id);
 

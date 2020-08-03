@@ -320,3 +320,13 @@ H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\stat
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.dll
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.pdb
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.genruntimeconfig.cache
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Google.dll
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll

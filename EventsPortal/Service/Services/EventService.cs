@@ -3,7 +3,6 @@ using Core.Entities;
 using Data.Interfaces;
 using Service.DTO;
 using Service.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -56,14 +55,18 @@ namespace Service.Services
             }
         }
 
-        public async Task<EventDTO> GetEventById(int? id)
+        public async Task<IEnumerable<EventDTO>> GetEventById(int? id)
         {
-            if (id != null)
+            var events = _mapper.Map<List<EventDTO>>(
+                await _dbOperation.Events.GetAllAsync());
+
+            var eventByIdList = new List<EventDTO>();
+            foreach (var item in events)
             {
-                return _mapper.Map<EventDTO>(
-                    await _dbOperation.Events.GetIdAsync(id));
+                if (item.Id == id)
+                    eventByIdList.Add(item);
             }
-            else throw new ArgumentNullException();
+            return eventByIdList;
         }
 
         public async Task<IEnumerable<EventDTO>> GetEvents()
@@ -83,7 +86,7 @@ namespace Service.Services
             {
                 foreach (var item in events)
                 {
-                    if ((item.EventType.Name == "Public" || item.Organizer.Token == organizerId) && item.Name.Contains(searchEvent.ToUpper()))
+                    if ((item.EventType.Name == "Public" || item.Organizer.Token == organizerId) && item.Name.Contains(searchEvent))
                         allowedEventList.Add(item);
                 }
                 return allowedEventList;

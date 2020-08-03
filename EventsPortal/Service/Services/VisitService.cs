@@ -28,15 +28,30 @@ namespace Service.Services
             await _dbOperation.SaveAsync();
         }
 
+        public async Task<int> GetTotalVisitorsPerEvent(int eventId)
+        {
+            var events = _mapper.Map<List<VisitDTO>>(
+            await _dbOperation.Visits.GetAllAsync());
+
+            var visitorsPerEvent = new List<VisitDTO>();
+
+            foreach (var item in events)
+            {
+                if (item.EventId == eventId)
+                    visitorsPerEvent.Add(item);
+            }
+            return visitorsPerEvent.Count;
+        }
+
         public async Task<IEnumerable<VisitDTO>> GetVisitorsByEvent(int eventId)
         {
             var eventVisitorsList = _mapper.Map<List<VisitDTO>>(
                 await _dbOperation.Visits.GetAllAsync());
-            
+
             var visitorsList = new List<VisitDTO>();
             foreach (var item in eventVisitorsList)
             {
-                if(item.EventId == eventId)
+                if (item.EventId == eventId)
                 {
                     visitorsList.Add(item);
                 }

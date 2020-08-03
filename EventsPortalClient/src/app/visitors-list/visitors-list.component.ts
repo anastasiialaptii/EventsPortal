@@ -15,8 +15,9 @@ import { EventService } from '../shared/services/event-service';
 export class VisitorsListComponent implements OnInit {
   id: number;
   private subscription: Subscription;
+
   constructor(
-    private activateRoute: ActivatedRoute,
+    public activateRoute: ActivatedRoute,
     public visitService: VisitService,
     public eventService: EventService
   ) {
@@ -25,7 +26,9 @@ export class VisitorsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.visitService.GetVisitorsList(this.id);
+    this.eventService.GetEventById(this.id);
   }
+
   public createImgPath = (serverPath: string) => {
     return `http://localhost:50618/${serverPath}`;
   }

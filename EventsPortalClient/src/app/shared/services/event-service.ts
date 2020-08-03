@@ -12,7 +12,7 @@ export class EventService {
     formData: EventItem;
     searchEventFormData: EventItem;
     SearchEventList: EventItem[];
-    EventById: EventItem;
+    EventByIdList: EventItem[];
 
     constructor(private http: HttpClient) { }
 
@@ -30,13 +30,13 @@ export class EventService {
     }
 
     GetEventList(){
-        return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/');
+        return this.http.get(Configuration.URI + '/Event/GetAllowedEventList');
     }
 
     GetEventById(id: number) {
         return this.http.get(Configuration.URI + '/Event/GetEventById/' + id)
             .toPromise()
-            .then(res => this.EventById = res as EventItem);
+            .then(res => this.EventByIdList = res as EventItem[]);
     }
 
     DeleteEvent(id: number) {

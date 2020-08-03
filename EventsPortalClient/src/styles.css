@@ -1,37 +1,55 @@
-/* You can add global styles to this file, and also import other style files */
-/* .card-img-top{
+body{
+  background-color: rgba(204, 237, 238, 0.164);
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 1.3em;
+}
+
+.card-img-top{
     padding: 15px;
     align-self: center;
     border-radius: 20px;
     max-width: auto;
-    min-height: 400px;
-    max-height: 400px;
+    min-height: 200px;
+    max-height: 200px;
 }
-.parent-flex {
+
+.card-body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: tomato;
-  }
+    
+  } 
+
+.card-body-width{
+    width: 18rem;
+  } 
   
-  .flex-item {
-    margin: 1%;
-    margin-left: 40px;
+.flex-item {
+    margin-bottom: 1rem;
     flex-grow: 4;
     flex-shrink: 4; 
     flex-basis: 15%;
-  } */
-/* 
-  @media (min-width: 375px) {
-    body {
-      background-color: aqua;
+  }
+  
+  .card-title{
+    font-weight: bold;
+  }
+  .card-tex{
+    font-weight: lighter;
+    font-size: 1em;
+  }
+
+  @media (min-width: 370px) {
+    body{
+      background-color: rgba(204, 237, 238, 0.164);
     }
   }
   
   @media (min-width: 500px) {
-    body { background-color: yellow;
-    }
-  } */
+
+  }
+
   @media only screen and (min-width : 320px) {
 
   }
@@ -50,3 +68,4 @@
   @media only screen and (min-width : 992px) {
   
   }
+  

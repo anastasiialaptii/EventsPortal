@@ -55,17 +55,11 @@ namespace EventsPortal.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<EventDTO>> GetEventById(int? id)
+        public async Task<IEnumerable<EventDTO>> GetEventById(int? id)
         {
             if (id != null)
             {
-                var searchItem = await _eventService.GetEventById(id);
-
-                if (searchItem != null)
-                {
-                    return searchItem;
-                }
-                else return NotFound();
+                return await _eventService.GetEventById(id);
             }
             else throw new ArgumentNullException();
         }
