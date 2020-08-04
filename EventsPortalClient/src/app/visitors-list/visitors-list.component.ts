@@ -21,10 +21,6 @@ export class VisitorsListComponent implements OnInit {
   private subscription: Subscription;
   eventView: EventItem = new EventItem();
   tableMode: boolean = true;
-  eventTypes = [
-    { Id: 1, Name: "Private" },
-    { Id: 2, Name: "Public" }
-  ];
 
   constructor(
     public activateRoute: ActivatedRoute,

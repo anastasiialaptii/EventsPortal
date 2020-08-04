@@ -19,7 +19,7 @@
             <div class="form-group">
                 <h5>Event Category</h5>
                 <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventService.formData.EventTypeId" class="form-control" required>
-                    <option *ngFor="let type of eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
+                    <option *ngFor="let type of config.eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
                 </select>
             </div>
             <div class="form-group">

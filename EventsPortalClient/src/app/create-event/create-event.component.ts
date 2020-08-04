@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { EventService } from '../shared/services/event-service';
 import { UserService } from '../shared/services/user-service';
+import { Configuration } from '../shared/config/configuration';
 
 @Component({
   selector: 'app-create-event',
@@ -13,17 +14,14 @@ import { UserService } from '../shared/services/user-service';
 })
 
 export class CreateEventComponent implements OnInit {
-  eventTypes = [
-    { Id: 1, Name: "Private" },
-    { Id: 2, Name: "Public" }
-  ];
   response: { "dbPath": '' };
   token = JSON.parse(localStorage.getItem('socialusers'));
   
   constructor(
     public eventService: EventService,
     public userService: UserService,
-    private router: Router
+    private router: Router,
+    public config: Configuration
     ) { }
 
   ngOnInit(): void {
