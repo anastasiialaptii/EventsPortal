@@ -29,7 +29,7 @@ namespace EventsPortal.Controllers
             {
                 if (user.Email == googleUser.email)
                 {
-                    return new Response { Message = user.Token, Status = "Exists" };
+                    return new Response { Message = user.Token, UserName = user.Name, Status = "Exists" };
                 }
             }
             var userDTO = new UserDTO()
@@ -43,7 +43,7 @@ namespace EventsPortal.Controllers
                 Token = googleUser.token
             };
             await _userService.AddUser(userDTO);
-            return new Response { Message = googleUser.token, Status = "OK" };
+            return new Response { Message = googleUser.token, UserName = googleUser.name, Status = "OK" };
         }
     }
 }

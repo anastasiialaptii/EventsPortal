@@ -14,7 +14,9 @@ import { Router } from '@angular/router';
 })
 
 export class AuthComponent implements OnInit {
+  userName: string;
   response;
+  token = JSON.parse(localStorage.getItem('socialusers'));
   users = new User();
   constructor(
     public oAuth: AuthService,
@@ -23,7 +25,9 @@ export class AuthComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.userName=this.token.UserName;
+  }
 
   public socialSignIn(socialProvider: string) {
     let socialPlatformProvider;

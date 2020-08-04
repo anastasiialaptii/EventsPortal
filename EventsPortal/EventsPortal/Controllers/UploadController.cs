@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
 using System.Net.Http.Headers;
@@ -21,7 +20,7 @@ namespace EventsPortal.Controllers
 
                 if (file.Length > 0)
                 {
-                    var fileName = Guid.NewGuid().ToString()+ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var fileName = Guid.NewGuid().ToString() + ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
                     var fullPath = Path.Combine(pathToSave, fileName);
                     var dbPath = Path.Combine(folderName, fileName);
 
@@ -42,7 +41,5 @@ namespace EventsPortal.Controllers
                 return StatusCode(500, $"Internal server error: {ex}");
             }
         }
-
-      
     }
 }
