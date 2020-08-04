@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
+import { Configuration } from '../shared/config/configuration'
+
 import { VisitService } from '../shared/services/visit-service';
 import { EventService } from '../shared/services/event-service';
+
 import { EventItem } from '../shared/models/event-model';
 
 @Component({
@@ -26,7 +29,8 @@ export class VisitorsListComponent implements OnInit {
   constructor(
     public activateRoute: ActivatedRoute,
     public visitService: VisitService,
-    public eventService: EventService
+    public eventService: EventService,
+    public config: Configuration
   ) {
     this.subscription = activateRoute.params.subscribe(params => this.id = +params['eventId']);
   }
@@ -34,10 +38,6 @@ export class VisitorsListComponent implements OnInit {
   ngOnInit(): void {
     this.visitService.GetVisitorsList(this.id);
     this.eventService.GetEventById(this.id);
-  }
-
-  createImgPath = (serverPath: string) => {
-    return `http://localhost:50618/${serverPath}`;
   }
 
   editEvent(eventItem: EventItem) {

@@ -69,12 +69,7 @@ body {
 }
 
 .nav-link {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    color: #e9b4e4;
 }
 
 .main-content {

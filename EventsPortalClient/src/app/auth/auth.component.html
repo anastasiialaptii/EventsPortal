@@ -3,7 +3,7 @@
         <div class="container">
             <a *ngIf="!this.authGuard.canActivate()" class="nav-link" href="#" (click)="socialSignIn('google')">Sign
                 In</a>
-            <a *ngIf="this.authGuard.canActivate()" class="nav-link" href="/allowed-event-list">Hello, {{userName}}</a>
+            <a class="nav-link" *ngIf="this.authGuard.canActivate()" href="/allowed-event-list">Hello, {{userName}}</a>
             <a *ngIf="this.authGuard.canActivate()" routerLink="/allowed-event-list" class="nav-link">Events</a>
             <a *ngIf="this.authGuard.canActivate()" routerLink="/create-event" class="nav-link">Create Event</a>
             <a *ngIf="this.authGuard.canActivate()" class="nav-link" href="#" (click)="logOut()">Log out</a>

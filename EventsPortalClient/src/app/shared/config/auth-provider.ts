@@ -1,5 +1,7 @@
 import { AuthServiceConfig, GoogleLoginProvider } from "angular-6-social-login";
+
 import { Configuration } from './configuration'
+
 import { Injectable } from '@angular/core';
 import { CanActivate } from "@angular/router";
 

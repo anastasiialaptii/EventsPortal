@@ -14,10 +14,11 @@ import { Router } from '@angular/router';
 })
 
 export class AuthComponent implements OnInit {
+  token = JSON.parse(localStorage.getItem('socialusers'));
   userName: string;
   response;
-  token = JSON.parse(localStorage.getItem('socialusers'));
   users = new User();
+
   constructor(
     public oAuth: AuthService,
     public gAuthService: GoogleAuthService,
@@ -29,20 +30,19 @@ export class AuthComponent implements OnInit {
     this.userName=this.token.UserName;
   }
 
-  public socialSignIn(socialProvider: string) {
+  socialSignIn(socialProvider: string) {
     let socialPlatformProvider;
     if (socialProvider === 'google') {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
-
     this.oAuth.signIn(socialPlatformProvider).then(users => {
       console.log(socialProvider, users);
       console.log(users);
-      this.Savesresponse(users);
+      this.savesresponse(users);
     });
   }
 
-  Savesresponse(users: User) {
+  savesresponse(users: User) {
     this.gAuthService.AuthUser(users).subscribe((res: any) => {
       debugger;
       console.log(res);

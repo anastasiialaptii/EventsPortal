@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../shared/services/event-service';
-import { UserService } from '../shared/services/user-service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { EventService } from '../shared/services/event-service';
+import { UserService } from '../shared/services/user-service';
 
 @Component({
   selector: 'app-create-event',
@@ -10,12 +11,13 @@ import { Router } from '@angular/router';
   styles: [
   ]
 })
+
 export class CreateEventComponent implements OnInit {
   eventTypes = [
     { Id: 1, Name: "Private" },
     { Id: 2, Name: "Public" }
   ];
-  public response: { "dbPath": '' };
+  response: { "dbPath": '' };
   token = JSON.parse(localStorage.getItem('socialusers'));
   
   constructor(
@@ -46,7 +48,7 @@ export class CreateEventComponent implements OnInit {
       })
   }
 
-  public uploadFinished = (event) => {
+  uploadFinished = (event) => {
     this.response = event;
     debugger;
     this.eventService.formData.ImageURI = this.response.dbPath;

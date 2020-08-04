@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { EventItem } from '../shared/models/event-model';
 import { EventService } from '../shared/services/event-service';
 import { Configuration } from '../shared/config/configuration';
@@ -9,6 +10,7 @@ import { Configuration } from '../shared/config/configuration';
   styles: [
   ]
 })
+
 export class HomePageComponent implements OnInit {
   eventItem: EventItem[];
   itemsEvent = [];
@@ -31,6 +33,4 @@ export class HomePageComponent implements OnInit {
   onChangePage(pageOfItemsEvent: Array<any>) {
     this.pageOfItemsEvent = pageOfItemsEvent;
   }
-
-  createVisit
 }

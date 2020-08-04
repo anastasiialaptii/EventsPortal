@@ -9,6 +9,7 @@ import { UploadService } from '../shared/services/upload-service';
   styles: [
   ]
 })
+
 export class UploadImgComponent implements OnInit {
   public progress: number;
   public message: string;
@@ -19,14 +20,13 @@ export class UploadImgComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public uploadFile = (files) => {
+  uploadFile = (files) => {
     if (files.length === 0) {
       return;
     }
     let fileToUpload = <File>files[0];
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
-
     this.uploadService.UploadImage(formData)
       .subscribe(event => {
         if (event.type === HttpEventType.UploadProgress)

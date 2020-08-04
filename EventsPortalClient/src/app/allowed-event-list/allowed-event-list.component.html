@@ -2,12 +2,9 @@
 <div class="main-content">
     <div class="text-center m-3">
         <h1 class="text-left">Events 🎉</h1>
-        <div *ngFor="let item of eventService.SearchEventList">
-            {{item.Name}} / {{item.Location}} / {{item.EventType.Name}}
-        </div>
         <form #form="ngForm" (submit)="onSearchEvent()" autocomplete="off">
             <div class="input-group mb-3">
-                <input name="Name" #Name="ngModel" [(ngModel)]="eventService.searchEventFormData.Name" class="form-control" placeholder="Search for an event" aria-describedby="basic-addon2">
+                <input type="text" name="Name" class="form-control" placeholder="Search for an event" aria-describedby="basic-addon2" #Name="ngModel" [(ngModel)]="eventService.searchEventFormData.Name">
             </div>
         </form>
     </div>

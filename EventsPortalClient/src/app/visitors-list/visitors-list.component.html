@@ -5,7 +5,7 @@
             <div *ngIf="tableMode; else edit">
                 <tr *ngFor="let item of eventService.EventByIdList">
                     <div class="inline">
-                        <img class="img-details" [src]="createImgPath(item.ImageURI)" class="rounded">
+                        <img class="img-details" [src]="config.createImgPath(item.ImageURI)" class="rounded">
                     </div>
                     <div class="inline">
                         {{item?.Name}}
