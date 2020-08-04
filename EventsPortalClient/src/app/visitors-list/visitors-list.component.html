@@ -1,54 +1,47 @@
 <app-auth></app-auth>
-<!-- <div class="main-content">
-    <div *ngFor="let item of eventService.EventByIdList">
-        <figure class="flex">
-            <img class="img-details" [src]="createImgPath(item.ImageURI)">
-            <div></div>
-            <div>
-                <button type="button" class="btn btn-warning">Edit</button>
-                <h3>{{item.Name}}</h3>
-                <h3>Description: {{item.Description}} </h3>
-                <h3>Location: {{item.Location}} </h3>
-                <p>Visitors:</p>
-                <h4 *ngFor="let item of visitService.VisitorsList">
-                    {{item.User.Name}}</h4>
-            </div>
-        </figure>
-    </div>
-</div> -->
+
 <div class="main-content">
-    <table class="table table-striped">
+    <div class="white-details rounded">
+        <table class="table">
             <div *ngIf="tableMode; else edit">
                 <tr *ngFor="let item of eventService.EventByIdList">
-                    <td>{{item?.Id}}</td>
-                    <td>{{item?.Name}}</td>
-                    <td>{{item?.Location}}</td>
-                    <td>{{item?.Description}}</td>
-                    <td>{{item?.OrganizerId}}</td>
-                    <td><img class="img-details" [src]="createImgPath(item.ImageURI)"></td>
-                    <td>
+                    <div class="inline">
+                        <img class="img-details" [src]="createImgPath(item.ImageURI)" class="rounded">
+                    </div>
+                    <div class="inline">
+                        {{item?.Name}}
+                    </div>
+                    <div class="inline">
                         <button class="btn btn-sm btn-primary" (click)="editEvent(item)">Изменить</button>
-                    </td>
+                    </div>
+                    <div class="details-description">
+                        Description: {{item?.Description}}
+                    </div>
+                    <div class="details-location">
+                        Location: {{item?.Location}}
+                    </div>
                 </tr>
             </div>
-    </table>
+        </table>
 
-    <ng-template #edit>
-       <td> <input type="hidden" [(ngModel)]="eventView.Id" class="form-control"></td>
-       <td><input type="hidden" [(ngModel)]="eventView.ImageURI" class="form-control"></td>  
-       <td><input type="hidden" [(ngModel)]="eventView.OrganizerId" class="form-control"></td>  
-        <td>
-            <input type="text" [(ngModel)]="eventView.Name" class="form-control" />
-        </td>
-        <td>
-            <input type="text" [(ngModel)]="eventView.Location" class="form-control" />
-        </td>
-        <td>
-            <input type="text" [(ngModel)]="eventView.Description" class="form-control" />
-        </td>
-        <td>
-            <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
-            <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning" />
-        </td>
-    </ng-template>
+        <ng-template #edit>
+            <td> <input type="hidden" [(ngModel)]="eventView.Id" class="form-control"></td>
+            <td><input type="hidden" [(ngModel)]="eventView.ImageURI" class="form-control"></td>
+            <td><input type="hidden" [(ngModel)]="eventView.OrganizerId" class="form-control"></td>
+            <td>
+                <input type="text" [(ngModel)]="eventView.Name" class="form-control" />
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="eventView.Location" class="form-control" />
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="eventView.Description" class="form-control" />
+            </td>
+            <td>
+                <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
+                <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning" />
+            </td>
+        </ng-template>
+    </div>
 </div>
+<div class="visitors"></div>

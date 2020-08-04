@@ -7,8 +7,7 @@
         </div>
         <form #form="ngForm" (submit)="onSearchEvent()" autocomplete="off">
             <div class="input-group mb-3">
-                <input name="Name" #Name="ngModel" [(ngModel)]="eventService.searchEventFormData.Name"
-                    class="form-control" placeholder="Search for an event" aria-describedby="basic-addon2">
+                <input name="Name" #Name="ngModel" [(ngModel)]="eventService.searchEventFormData.Name" class="form-control" placeholder="Search for an event" aria-describedby="basic-addon2">
                 <div class="input-group-append">
                     <button class="btn btn-info" type="submit">Search</button>
                 </div>
@@ -20,14 +19,12 @@
             <div class="paginator" *ngFor="let item of pageOfItemsEvent">
                 <div class="flex-item">
                     <div class="card-body-width">
-                        <div class="details-link" (click)="onEventDetails(item.data.Id)"
-                            [routerLink]="['/visitors-list', 'item.data.Id']">
-                            <img class="card-img-top" [src]="config.createImgPath(item.data.ImageURI)"
-                                alt="Card image cap">
-                             </div>
-                            <h3 class="card-title">{{item.data.Name}}</h3>
-                            <h4 class="card-text">Location: {{item.data.Location}}</h4>
-                            <h6 class="card-title">Event Type: {{item.data.EventType.Name}}</h6>
+                        <div class="details-link" (click)="onEventDetails(item.data.Id)" [routerLink]="['/visitors-list', 'item.data.Id']">
+                            <img class="card-img-top rounded" [src]="config.createImgPath(item.data.ImageURI)" alt="Card image cap">
+                        </div>
+                        <h3 class="card-title">{{item.data.Name}}</h3>
+                        <h4 class="card-text">Location: {{item.data.Location}}</h4>
+                        <h6 class="card-title">Event Type: {{item.data.EventType.Name}}</h6>
                     </div>
                     <button class="btn btn-md btn-success" (click)="createVisit(item.data.Id)">Go</button>
                     <button class="btn btn-md btn-danger" (click)="onDelete(item.data.Id)">Delete</button>
@@ -35,8 +32,7 @@
             </div>
         </div>
         <div class="card-footer pb-0 pt-3">
-            <jw-pagination class="jw-pagination" [items]="itemsEvent" [pageSize]="50"
-                (changePage)="onChangePage($event)"></jw-pagination>
+            <jw-pagination class="jw-pagination" [items]="itemsEvent" [pageSize]="50" (changePage)="onChangePage($event)"></jw-pagination>
         </div>
     </div>
 </div>
