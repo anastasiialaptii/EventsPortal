@@ -18,6 +18,10 @@ export class VisitorsListComponent implements OnInit {
   private subscription: Subscription;
   eventView: EventItem = new EventItem();
   tableMode: boolean = true;
+  eventTypes = [
+    { Id: 1, Name: "Private" },
+    { Id: 2, Name: "Public" }
+  ];
 
   constructor(
     public activateRoute: ActivatedRoute,
@@ -39,6 +43,8 @@ export class VisitorsListComponent implements OnInit {
   editEvent(eventItem: EventItem) {
     this.tableMode = false;
     this.eventView = eventItem;
+    debugger;
+    console.log(this.eventView);
   }
 
   cancel() {

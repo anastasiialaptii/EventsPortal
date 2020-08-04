@@ -26,7 +26,6 @@ body {
 .card-body {
     display: flex;
     flex-wrap: wrap;
-    background: rgb(226, 19, 201);
     background: linear-gradient(90deg, rgba(226, 19, 201, 0.6870098381149334) 0%, rgba(236, 245, 83, 0.7710434515603116) 35%, rgba(0, 212, 255, 1) 100%);
     width: auto;
     height: auto;
@@ -84,17 +83,6 @@ body {
 
 .btn-md {
     margin: 1%;
-}
-
-.inline {
-    margin-left: 5rem;
-    float: left;
-    margin-right: 5rem;
-}
-
-.inline img {
-    width: 200px;
-    height: 200px;
 }
 
 .white-details {

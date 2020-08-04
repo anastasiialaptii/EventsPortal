@@ -8,9 +8,6 @@
         <form #form="ngForm" (submit)="onSearchEvent()" autocomplete="off">
             <div class="input-group mb-3">
                 <input name="Name" #Name="ngModel" [(ngModel)]="eventService.searchEventFormData.Name" class="form-control" placeholder="Search for an event" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-info" type="submit">Search</button>
-                </div>
             </div>
         </form>
     </div>
@@ -20,7 +17,7 @@
                 <div class="flex-item">
                     <div class="card-body-width">
                         <div class="details-link" (click)="onEventDetails(item.data.Id)" [routerLink]="['/visitors-list', 'item.data.Id']">
-                            <img class="card-img-top rounded" [src]="config.createImgPath(item.data.ImageURI)" alt="Card image cap">
+                            <img class="card-img-top" [src]="config.createImgPath(item.data.ImageURI)" alt="Card image cap">
                         </div>
                         <h3 class="card-title">{{item.data.Name}}</h3>
                         <h4 class="card-text">Location: {{item.data.Location}}</h4>

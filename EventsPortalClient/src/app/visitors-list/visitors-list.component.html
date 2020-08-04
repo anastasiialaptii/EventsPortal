@@ -1,5 +1,4 @@
 <app-auth></app-auth>
-
 <div class="main-content">
     <div class="white-details rounded">
         <table class="table">
@@ -23,9 +22,8 @@
                 </tr>
             </div>
         </table>
-
         <ng-template #edit>
-            <td> <input type="hidden" [(ngModel)]="eventView.Id" class="form-control"></td>
+            <td><input type="hidden" [(ngModel)]="eventView.Id" class="form-control"></td>
             <td><input type="hidden" [(ngModel)]="eventView.ImageURI" class="form-control"></td>
             <td><input type="hidden" [(ngModel)]="eventView.OrganizerId" class="form-control"></td>
             <td>
@@ -38,10 +36,22 @@
                 <input type="text" [(ngModel)]="eventView.Description" class="form-control" />
             </td>
             <td>
+                <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventView.EventTypeId" class="form-control">
+                    <option *ngFor="let type of eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
+                </select>
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="eventView.Description" class="form-control" />
+            </td>
+            <td>
                 <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
                 <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning" />
             </td>
         </ng-template>
+        <div class="visitors">
+            <h4 *ngIf="visitService.VisitorsList!=null">Visitors:</h4>
+            <h4 *ngFor="let item of visitService.VisitorsList">
+                {{item.User.Name}}</h4>
+        </div>
     </div>
 </div>
-<div class="visitors"></div>
