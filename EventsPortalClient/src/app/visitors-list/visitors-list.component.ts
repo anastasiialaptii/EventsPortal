@@ -17,8 +17,8 @@ import { EventItem } from '../shared/models/event-model';
 })
 
 export class VisitorsListComponent implements OnInit {
-  id: number;
   private subscription: Subscription;
+  id: number;
   eventView: EventItem = new EventItem();
   tableMode: boolean = true;
 

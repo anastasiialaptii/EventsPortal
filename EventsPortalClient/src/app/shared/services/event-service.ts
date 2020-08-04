@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEventType } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Configuration } from '../config/configuration';
 import { EventItem } from '../models/event-model';
@@ -9,15 +9,15 @@ import { EventItem } from '../models/event-model';
 })
 
 export class EventService {
-    formData: EventItem;
-    searchEventFormData: EventItem;
+    FormData: EventItem;
+    SearchEventFormData: EventItem;
     SearchEventList: EventItem[];
     EventByIdList: EventItem[];
 
     constructor(private http: HttpClient) { }
 
     CreateEvent() {
-        return this.http.post(Configuration.URI + '/Event/CreateEvent', this.formData, { reportProgress: true, observe: 'events' });
+        return this.http.post(Configuration.URI + '/Event/CreateEvent', this.FormData, { reportProgress: true, observe: 'events' });
     }
 
     GetAllowedEventList(idUser?: string, searchString?: string) {

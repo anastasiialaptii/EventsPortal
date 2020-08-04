@@ -10,7 +10,6 @@ import { Visit } from '../models/visit-model';
 
 export class VisitService {
     VisitorsList: Visit[];
-    visitorsPerEvent: number;
 
     constructor(private http: HttpClient) { }
 
@@ -22,5 +21,9 @@ export class VisitService {
         return this.http.get(Configuration.URI + '/Visit/GetVisitorsList/' + eventId)
             .toPromise()
             .then(res => this.VisitorsList = res as Visit[]);
+    }
+
+    IsEventUserCreated(eventId: number, userId: string) {
+        return this.http.get(Configuration.URI + '/Visit/IsEventUserCreated/' + eventId + '/' + userId)
     }
 }

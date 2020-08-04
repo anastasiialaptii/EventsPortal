@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 
 export class UserService {
+    
     constructor(private http: HttpClient) { }
 
     GetUserByToken(token: string): Observable<number> {

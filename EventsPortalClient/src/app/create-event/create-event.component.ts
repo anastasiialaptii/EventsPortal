@@ -29,7 +29,7 @@ export class CreateEventComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    if (this.eventService.formData.Id == 0) {
+    if (this.eventService.FormData.Id == 0) {
       this.createEvent(form);
     }
   }
@@ -49,18 +49,18 @@ export class CreateEventComponent implements OnInit {
   uploadFinished = (event) => {
     this.response = event;
     debugger;
-    this.eventService.formData.ImageURI = this.response.dbPath;
+    this.eventService.FormData.ImageURI = this.response.dbPath;
   }
 
   resetForm(form?: NgForm) {
     if (form != null)
       form.form.reset();
-    this.eventService.searchEventFormData = {
+    this.eventService.SearchEventFormData = {
       Name: ''
     };
     this.userService.GetUserByToken(this.token.Message).subscribe(
       res => {
-        this.eventService.formData = {
+        this.eventService.FormData = {
           Id: 0,
           Name: '',
           Location: '',

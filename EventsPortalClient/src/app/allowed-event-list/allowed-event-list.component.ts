@@ -44,8 +44,8 @@ export class AllowedEventListComponent implements OnInit {
   }
 
   onSearchEvent() {
-    if (this.eventService.searchEventFormData.Name != null) {
-      this.eventService.GetAllowedEventList(this.token.Message, this.eventService.searchEventFormData.Name).subscribe((res: any) => {
+    if (this.eventService.SearchEventFormData.Name != null) {
+      this.eventService.GetAllowedEventList(this.token.Message, this.eventService.SearchEventFormData.Name).subscribe((res: any) => {
         this.eventItem = res;
         debugger;
         console.log(res)
@@ -72,12 +72,12 @@ export class AllowedEventListComponent implements OnInit {
     if (form != null)
       form.form.reset();
 
-    this.eventService.searchEventFormData = {
+    this.eventService.SearchEventFormData = {
       Name: ''
     };
     this.userService.GetUserByToken(this.token.Message).subscribe(
       res => {
-        this.eventService.formData = {
+        this.eventService.FormData = {
           Id: 0,
           Name: '',
           Location: '',
@@ -110,7 +110,7 @@ export class AllowedEventListComponent implements OnInit {
     if (confirm('Are you sure to delete this record ?')) {
       this.eventService.DeleteEvent(id)
         .subscribe(res => {
-          this.eventService.GetAllowedEventList(this.token.Message, this.eventService.searchEventFormData.Name).subscribe((res: any) => {
+          this.eventService.GetAllowedEventList(this.token.Message, this.eventService.SearchEventFormData.Name).subscribe((res: any) => {
             this.eventItem = res;
             debugger;
             console.log(res)

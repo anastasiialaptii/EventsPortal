@@ -4,27 +4,27 @@
     <h2>Tell us about your awesome event 🐙</h2>
     <h4>Don't worry you can change this info later</h4>
     <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
-        <input type="hidden" name="Id" [value]="eventService.formData.Id">
-        <input type="hidden" name="ImageURI" [value]="eventService.formData.ImageURI">
-        <input type="hidden" name="OrganizerId" [value]="eventService.formData.OrganizerId">
+        <input type="hidden" name="Id" [value]="eventService.FormData.Id">
+        <input type="hidden" name="ImageURI" [value]="eventService.FormData.ImageURI">
+        <input type="hidden" name="OrganizerId" [value]="eventService.FormData.OrganizerId">
         <div class="flex-container">
             <div class="form-group">
                 <h5>Event name:</h5>
-                <input name="Name" #Name="ngModel" [(ngModel)]="eventService.formData.Name" class="form-control" placeholder="Name" required>
+                <input name="Name" #Name="ngModel" [(ngModel)]="eventService.FormData.Name" class="form-control" placeholder="Name" required>
             </div>
             <div class="form-group">
                 <h5>Event location:</h5>
-                <input name="Location" #Name="ngModel" [(ngModel)]="eventService.formData.Location" class="form-control" placeholder="Location" required>
+                <input name="Location" #Name="ngModel" [(ngModel)]="eventService.FormData.Location" class="form-control" placeholder="Location" required>
             </div>
             <div class="form-group">
                 <h5>Event Category</h5>
-                <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventService.formData.EventTypeId" class="form-control" required>
+                <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventService.FormData.EventTypeId" class="form-control" required>
                     <option *ngFor="let type of config.eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
                 </select>
             </div>
             <div class="form-group">
                 <h5>Event Description:</h5>
-                <textarea name="Description" #Name="ngModel" [(ngModel)]="eventService.formData.Description" class="form-control" placeholder="Provide short info about event" required></textarea>
+                <textarea name="Description" #Name="ngModel" [(ngModel)]="eventService.FormData.Description" class="form-control" placeholder="Provide short info about event" required></textarea>
             </div>
             <div class="form-group">
                 <h5>Event photo:</h5>

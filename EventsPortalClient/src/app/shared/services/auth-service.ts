@@ -8,12 +8,10 @@ import { Configuration } from '../config/configuration';
 })
 
 export class GoogleAuthService {
-    url: string;
 
     constructor(private http: HttpClient) { }
-    
+
     AuthUser(responce) {
-        this.url = Configuration.URI + '/Auth/Savesresponse';
-        return this.http.post(this.url, responce);
+        return this.http.post(Configuration.URI + '/Auth/Savesresponse', responce);
     }
 }
