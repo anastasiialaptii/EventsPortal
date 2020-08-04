@@ -20,7 +20,7 @@
                         <h4 class="card-text">Location: {{item.data.Location}}</h4>
                         <h6 class="card-title">Event Type: {{item.data.EventType.Name}}</h6>
                     </div>
-                    <button class="btn btn-md btn-success" (click)="createVisit(item.data.Id)" *ngIf="disabledGo">Go</button>
+                    <button class="btn btn-md btn-success" (click)="createVisit(item.data.Id)" *ngIf="isUserEventCreated(item.data.Id)">Go</button>
                     <button class="btn btn-md btn-danger" (click)="onDelete(item.data.Id)">Delete</button>
                 </div>
             </div>

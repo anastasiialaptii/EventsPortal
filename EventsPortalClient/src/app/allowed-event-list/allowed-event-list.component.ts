@@ -63,6 +63,10 @@ export class AllowedEventListComponent implements OnInit {
       return true;
   }
 
+  isUserEventCreated(idEvent: number) {
+    return this.visitService.IsEventUserCreated(idEvent, this.token.Message);
+  }
+
   onEventDetails(eventId: number) {
     this.visitService.GetVisitorsList(eventId);
     this.eventService.GetEventById(eventId);
