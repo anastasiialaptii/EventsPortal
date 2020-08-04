@@ -1,5 +1,5 @@
 <app-auth></app-auth>
-<div class="main-content">
+<!-- <div class="main-content">
     <div *ngFor="let item of eventService.EventByIdList">
         <figure class="flex">
             <img class="img-details" [src]="createImgPath(item.ImageURI)">
@@ -15,4 +15,40 @@
             </div>
         </figure>
     </div>
+</div> -->
+<div class="main-content">
+    <table class="table table-striped">
+            <div *ngIf="tableMode; else edit">
+                <tr *ngFor="let item of eventService.EventByIdList">
+                    <td>{{item?.Id}}</td>
+                    <td>{{item?.Name}}</td>
+                    <td>{{item?.Location}}</td>
+                    <td>{{item?.Description}}</td>
+                    <td>{{item?.OrganizerId}}</td>
+                    <td><img class="img-details" [src]="createImgPath(item.ImageURI)"></td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" (click)="editEvent(item)">Изменить</button>
+                    </td>
+                </tr>
+            </div>
+    </table>
+
+    <ng-template #edit>
+       <td> <input type="hidden" [(ngModel)]="eventView.Id" class="form-control"></td>
+       <td><input type="hidden" [(ngModel)]="eventView.ImageURI" class="form-control"></td>  
+       <td><input type="hidden" [(ngModel)]="eventView.OrganizerId" class="form-control"></td>  
+        <td>
+            <input type="text" [(ngModel)]="eventView.Name" class="form-control" />
+        </td>
+        <td>
+            <input type="text" [(ngModel)]="eventView.Location" class="form-control" />
+        </td>
+        <td>
+            <input type="text" [(ngModel)]="eventView.Description" class="form-control" />
+        </td>
+        <td>
+            <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
+            <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning" />
+        </td>
+    </ng-template>
 </div>

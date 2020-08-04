@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { VisitService } from '../shared/services/visit-service';
 import { EventService } from '../shared/services/event-service';
+import { EventItem } from '../shared/models/event-model';
 
 @Component({
   selector: 'app-visitors-list',
@@ -15,6 +16,8 @@ import { EventService } from '../shared/services/event-service';
 export class VisitorsListComponent implements OnInit {
   id: number;
   private subscription: Subscription;
+  eventView: EventItem = new EventItem();
+  tableMode: boolean = true;
 
   constructor(
     public activateRoute: ActivatedRoute,
@@ -29,7 +32,22 @@ export class VisitorsListComponent implements OnInit {
     this.eventService.GetEventById(this.id);
   }
 
-  public createImgPath = (serverPath: string) => {
+  createImgPath = (serverPath: string) => {
     return `http://localhost:50618/${serverPath}`;
+  }
+
+  editEvent(eventItem: EventItem) {
+    this.tableMode = false;
+    this.eventView = eventItem;
+  }
+
+  cancel() {
+    this.eventView = new EventItem();
+    this.tableMode = true;
+  }
+
+  save() {
+    this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res=>{});
+    this.tableMode = true;
   }
 }
