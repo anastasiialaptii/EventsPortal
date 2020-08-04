@@ -63,7 +63,8 @@ namespace Data.Repository
                     {
                         Id = x.User.Id,
                         Name = x.User.Name,
-                        Email = x.User.Email
+                        Email = x.User.Email,
+                        Token = x.User.Token
                     }
                 })
                 .ToListAsync();

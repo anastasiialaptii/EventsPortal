@@ -64,5 +64,20 @@ namespace Service.Services
             return _mapper.Map<List<VisitDTO>>(
                 await _dbOperation.Visits.GetAllAsync());
         }
+
+        public async Task<bool> IsEventUserCreated(int eventId, string userId)
+        {
+            var eventVisitorsList = _mapper.Map<List<VisitDTO>>(
+                await _dbOperation.Visits.GetAllAsync());
+
+            foreach (var item in eventVisitorsList)
+            {
+                if(item.EventId == eventId && item.User.Token == userId)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

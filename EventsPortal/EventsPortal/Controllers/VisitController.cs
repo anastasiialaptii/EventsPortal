@@ -23,6 +23,12 @@ namespace EventsPortal.Controllers
             return await _visitService.GetTotalVisitorsPerEvent(eventId);
         }
 
+        [HttpGet("{eventId}/{userId}")]
+        public async Task<bool> IsEventUserCreated(int eventId, string userId)
+        {
+            return await _visitService.IsEventUserCreated(eventId, userId);
+        }
+
         [HttpGet]
         public async Task<IEnumerable<VisitDTO>> GetVisitList()
         {

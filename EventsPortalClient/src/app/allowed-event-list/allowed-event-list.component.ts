@@ -25,6 +25,7 @@ export class AllowedEventListComponent implements OnInit {
   eventItem: EventItem[];
   pageOfItemsEvent: Array<EventItem>;
   event: EventItem = new EventItem();
+  disabledGo: boolean = true;
 
   constructor(
     public eventService: EventService,
