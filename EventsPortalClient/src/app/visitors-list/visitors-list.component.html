@@ -1,58 +1,47 @@
 <app-auth></app-auth>
 <div class="main-content">
     <div class="white-details rounded">
-        <table class="table">
-            <div *ngIf="tableMode; else edit">
-                <div class="visitors">
-                    <h4 *ngIf="visitService.VisitorsList!=null">Visitors:</h4>
-                    <h4 *ngFor="let item of visitService.VisitorsList">
-                        {{item.User.Name}}</h4>
+        <div class="card" *ngIf="tableMode; else edit">
+            <div class="row no-gutters" *ngFor="let item of eventService.EventByIdList">
+                <div class="col-auto">
+                    <img class="img-details" [src]="config.createImgPath(item.ImageURI)" class="rounded">
                 </div>
-                <tr *ngFor="let item of eventService.EventByIdList">
-                    <div class="inline">
-                        <img class="img-details" [src]="config.createImgPath(item.ImageURI)" class="rounded">
-                    </div>
-                    <div class="inline">
-                        {{item?.Name}}
-                    </div>
-                    <div class="inline">
+                <div class="col">
+                    <div class="card-block px-2">
+                        <h4 class="card-title">{{item?.Name}}</h4>
+                        <p class="card-text">{{item?.Description}}</p>
+                        <h3>{{item?.Location}}</h3>
                         <button class="btn btn-sm btn-primary" (click)="editEvent(item)">Edit</button>
                     </div>
-                    <div class="details-description">
-                        Description: {{item?.Description}}
-                    </div>
-                    <div class="details-location">
-                        Location: {{item?.Location}}
-                    </div>
-                </tr>
+                </div>
             </div>
-        </table>
-        <ng-template #edit>
-            <td><input type="hidden" [(ngModel)]="eventView.Id" class="form-control"></td>
-            <td><input type="hidden" [(ngModel)]="eventView.ImageURI" class="form-control"></td>
-            <td><input type="hidden" [(ngModel)]="eventView.OrganizerId" class="form-control"></td>
-            <td>
-                <input type="text" [(ngModel)]="eventView.Name" class="form-control" />
-            </td>
-            <td>
-                <input type="text" [(ngModel)]="eventView.Location" class="form-control" />
-            </td>
-            <td>
-                <input type="text" [(ngModel)]="eventView.Description" class="form-control" />
-            </td>
-            <td>
-                <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventView.EventTypeId" class="form-control">
-                    <option *ngFor="let type of config.eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
-                </select>
-            </td>
-            <td>
-                <input type="text" [(ngModel)]="eventView.Description" class="form-control" />
-            </td>
-            <td>
-                <input type="button" value="Save" (click)="save()" class="btn btn-sm btn-success" />
-                <input type="button" value="Cancel" (click)="cancel()" class="btn btn-sm btn-warning" />
-            </td>
-        </ng-template>
-
+        </div>
     </div>
 </div>
+
+<ng-template #edit>
+    <td><input type="hidden" [(ngModel)]="eventView.Id" class="form-control"></td>
+    <td><input type="hidden" [(ngModel)]="eventView.ImageURI" class="form-control"></td>
+    <td><input type="hidden" [(ngModel)]="eventView.OrganizerId" class="form-control"></td>
+    <td>
+        <input type="text" [(ngModel)]="eventView.Name" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="eventView.Location" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="eventView.Description" class="form-control" />
+    </td>
+    <td>
+        <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventView.EventTypeId" class="form-control">
+            <option *ngFor="let type of config.eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
+        </select>
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="eventView.Description" class="form-control" />
+    </td>
+    <td>
+        <input type="button" value="Save" (click)="save()" class="btn btn-sm btn-success" />
+        <input type="button" value="Cancel" (click)="cancel()" class="btn btn-sm btn-warning" />
+    </td>
+</ng-template>

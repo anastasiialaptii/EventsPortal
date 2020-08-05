@@ -7,9 +7,7 @@ import { VisitService } from '../shared/services/visit-service';
 import { UserService } from '../shared/services/user-service';
 import { Visit } from '../shared/models/visit-model';
 import { EventItem } from '../shared/models/event-model';
-import { Configuration } from '../shared/config/configuration'
-import { stringify } from '@angular/compiler/src/util';
-
+import { Configuration } from '../shared/config/configuration';
 
 @Component({
   selector: 'app-allowed-event-list',
