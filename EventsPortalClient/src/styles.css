@@ -75,7 +75,7 @@
     }
     
     .img-edit {
-        width: 700px;
+        width: 500px;
         height: auto;
     }
     
@@ -126,7 +126,7 @@
             margin-left: 10%;
             margin-right: 10%;
             margin-bottom: auto;
-            font-size: 1.7em;
+            font-size: 3em;
             background: linear-gradient(90deg, rgba(147, 17, 233, 0.897) 0%, rgba(253, 29, 29, 0.7010154403558299) 50%, rgba(252, 176, 69, 0.8606793059020483) 100%);
         }
         .paginator {
@@ -187,7 +187,7 @@
     }
     /*iPhone X, 6,7,8*/
     
-    @media (min-width: 375px) and (max-width: 767px) {
+    @media (min-width: 375px) and (max-width: 390px) {
         .img-edit {
             width: 200px;
             height: 150px;
@@ -216,5 +216,23 @@
         }
         .form-group {
             margin-bottom: 1.7rem;
+        }
+        .paginator {            
+            margin: 0.4rem;
+        }
+        .create-form {
+            padding-top: 10%;
+            padding-left: 3%;
+            padding-right: 3%;
+            padding-bottom: 23%;
+            background: rgba(240, 230, 230, 0.753);
+            border-radius: 8px;
+        }
+        .md-form {
+            margin-bottom: 7%;
+        }
+        .col{
+            display: flex; 
+            flex-direction: column;
         }
     }

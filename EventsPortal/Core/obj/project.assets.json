@@ -5001,19 +5001,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Office\\.nuget\\packages\\": {}
+    "C:\\Users\\lapti\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\WebAPI\\EventsPortal\\Core\\Core.csproj",
+      "projectUniqueName": "H:\\TechStack\\EventsPortal\\EventsPortal\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "D:\\WebAPI\\EventsPortal\\Core\\Core.csproj",
-      "packagesPath": "C:\\Users\\Office\\.nuget\\packages\\",
-      "outputPath": "D:\\WebAPI\\EventsPortal\\Core\\obj\\",
+      "projectPath": "H:\\TechStack\\EventsPortal\\EventsPortal\\Core\\Core.csproj",
+      "packagesPath": "C:\\Users\\lapti\\.nuget\\packages\\",
+      "outputPath": "H:\\TechStack\\EventsPortal\\EventsPortal\\Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Office\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lapti\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

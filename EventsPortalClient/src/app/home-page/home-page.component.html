@@ -1,24 +1,17 @@
 <app-auth></app-auth>
-<div class="main-content">
-    <div class="text-center m-3">
-        <h1 class="text-left">Events 🎉</h1>
-    </div>
     <div class="card text-center m-3">
-        <div class="card-body">
+        <div class="card-body d-flex">
             <div class="paginator" *ngFor="let item of pageOfItemsEvent">
-                <div class="flex-item">
-                    <div class="card-body-width">                  
-                            <img class="card-img-top" [src]="config.createImgPath(item.data.ImageURI)"
-                                alt="Card image cap">
-                            <h3 class="card-title">{{item.data.Name}}</h3>
-                            <h4 class="card-text">Location: {{item.data.Location}}</h4>
+                <div class="card-body-size">
+                    <div class="details-link" (click)="onEventDetails(item.data.Id)" [routerLink]="['/visitors-list', 'item.data.Id']">
+                        <img class="card-img-top" [src]="config.createImgPath(item.data.ImageURI)" alt="Card image cap">
                     </div>
+                    <h3 class="card-title">{{item.data.Name}}</h3>
                 </div>
             </div>
         </div>
         <div class="card-footer pb-0 pt-3">
-            <jw-pagination class="jw-pagination" [items]="itemsEvent" [pageSize]="50"
-                (changePage)="onChangePage($event)"></jw-pagination>
+            <jw-pagination class="jw-pagination" [items]="itemsEvent" [pageSize]="16" (changePage)="onChangePage($event)">
+            </jw-pagination>
         </div>
     </div>
-</div>
