@@ -2,11 +2,11 @@
 <div class="main-content">
     <div class="text-center m-3">
         <h1 class="text-left">Events 🎉</h1>
-        <form #form="ngForm" (submit)="onSearchEvent()" autocomplete="off">
-            <div class="input-group mb-3">
-                <input type="text" name="Name" class="form-control" placeholder="Search for an event" aria-describedby="basic-addon2" #Name="ngModel" [(ngModel)]="eventService.SearchEventFormData.Name">
-            </div>
-        </form>
+        <!-- <form #form="ngForm" (submit)="onSearchEvent()" autocomplete="off"> -->
+        <div class="input-group mb-3">
+            <input (ngModelChange)="onSearchEvent(eventService.SearchEventFormData.Name)" type="text" name="Name" class="form-control" placeholder="Search for an event" aria-describedby="basic-addon2" #Name="ngModel" [(ngModel)]="eventService.SearchEventFormData.Name">
+        </div>
+        <!-- </form> -->
     </div>
     <div class="card text-center m-3">
         <div class="card-body d-flex">

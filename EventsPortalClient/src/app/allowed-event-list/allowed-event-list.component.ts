@@ -8,6 +8,7 @@ import { UserService } from '../shared/services/user-service';
 import { Visit } from '../shared/models/visit-model';
 import { EventItem } from '../shared/models/event-model';
 import { Configuration } from '../shared/config/configuration'
+import { stringify } from '@angular/compiler/src/util';
 
 
 @Component({
@@ -43,11 +44,18 @@ export class AllowedEventListComponent implements OnInit {
     });
   }
 
-  onSearchEvent() {
-    if (this.eventService.SearchEventFormData.Name != null) {
-      this.eventService.GetAllowedEventList(this.token.Message, this.eventService.SearchEventFormData.Name).subscribe((res: any) => {
+  onSearchEvent(name: string) {
+    if (name.length > 1) {
+      this.eventService.GetAllowedEventList(this.token.Message, name).subscribe((res: any) => {
         this.eventItem = res;
         debugger;
+        console.log(res)
+        this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
+      });
+    }
+    else {
+      this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
+        this.eventItem = res;
         console.log(res)
         this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
       });
