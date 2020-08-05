@@ -18,10 +18,11 @@
                     <h3 class="card-title">{{item.data.Name}}</h3>
                     <h6 class="card-title">{{item.data.EventType.Name}}</h6>
                 </div>
-                <div class="card-btn">
-                    <button class="btn btn-md btn-success" (click)="createVisit(item.data.Id)">Go</button>
-                    <button class="btn btn-md btn-danger" (click)="onDelete(item.data.Id)">Delete</button>
+                <div class="card-btn"> <button class="btn btn-md btn-danger" (click)="onDelete(item.data.Id)">Delete</button>
                 </div>
+                <div class="card-btn">
+                    <button class="btn btn-md btn-success" (click)="createVisit(item.data.Id)">Join</button></div>
+
             </div>
         </div>
         <div class="card-footer pb-0 pt-3">

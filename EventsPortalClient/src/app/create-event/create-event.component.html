@@ -10,7 +10,7 @@
         <div class="flex-container">
             <div class="form-group">
                 <h5>Event name:</h5>
-                <input name="Name" #Name="ngModel" [(ngModel)]="eventService.FormData.Name" class="form-control" placeholder="Name" required maxlength="35">
+                <input name="Name" #Name="ngModel" [(ngModel)]="eventService.FormData.Name" class="form-control" placeholder="Name" required minlength="20" maxlength="30">
             </div>
             <div class="form-group">
                 <h5>Event location:</h5>
