@@ -10,7 +10,7 @@
         <div class="flex-container">
             <div class="form-group">
                 <h5>Event name:</h5>
-                <input name="Name" #Name="ngModel" [(ngModel)]="eventService.FormData.Name" class="form-control" placeholder="Name" required>
+                <input name="Name" #Name="ngModel" [(ngModel)]="eventService.FormData.Name" class="form-control" placeholder="Name" required maxlength="35">
             </div>
             <div class="form-group">
                 <h5>Event location:</h5>
@@ -30,7 +30,11 @@
                 <h5>Event photo:</h5>
                 <app-upload-img (onUploadFinished)="uploadFinished($event)"></app-upload-img>
             </div>
-            <button class="btn btn-lg btn-success pull-right" [disabled]="form.invalid" type="submit">Create</button>
+            <div class="form-group">
+                <br>
+                <button class="btn btn-lg btn-success pull-right" [disabled]="form.invalid" type="submit">Create</button>
+                <br>
+            </div>
         </div>
     </form>
 </div>

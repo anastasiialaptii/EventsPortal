@@ -3,6 +3,11 @@
     <div class="white-details rounded">
         <table class="table">
             <div *ngIf="tableMode; else edit">
+                <div class="visitors">
+                    <h4 *ngIf="visitService.VisitorsList!=null">Visitors:</h4>
+                    <h4 *ngFor="let item of visitService.VisitorsList">
+                        {{item.User.Name}}</h4>
+                </div>
                 <tr *ngFor="let item of eventService.EventByIdList">
                     <div class="inline">
                         <img class="img-details" [src]="config.createImgPath(item.ImageURI)" class="rounded">
@@ -48,10 +53,6 @@
                 <input type="button" value="Cancel" (click)="cancel()" class="btn btn-sm btn-warning" />
             </td>
         </ng-template>
-        <div class="visitors">
-            <h4 *ngIf="visitService.VisitorsList!=null">Visitors:</h4>
-            <h4 *ngFor="let item of visitService.VisitorsList">
-                {{item.User.Name}}</h4>
-        </div>
+
     </div>
 </div>
