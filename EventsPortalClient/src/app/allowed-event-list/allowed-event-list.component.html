@@ -1,5 +1,5 @@
 <app-auth></app-auth>
-<div class="text-center m-3">
+<!-- <div class="text-center m-3">
     <h1 class="text-left">Events 🎉</h1>
     <div class="input-group mb-3">
         <input (ngModelChange)="onSearchEvent(eventService.SearchEventFormData.Name)" type="text" name="Name" class="form-control" placeholder="Search for an event" aria-describedby="basic-addon2" #Name="ngModel" [(ngModel)]="eventService.SearchEventFormData.Name">
@@ -27,4 +27,50 @@
         <jw-pagination class="jw-pagination " [items]="itemsEvent " [pageSize]="16 " (changePage)="onChangePage($event) ">
         </jw-pagination>
     </div>
-</div>
+</div> -->
+
+
+<!--Main layout-->
+<main class="mt-5">
+
+    <!--Main container-->
+    <div class="container">
+        <!--Grid row-->
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4" *ngFor="let item of pageOfItemsEvent">
+
+                <!--Card-->
+                <div class="card">
+
+                    <!--Card image-->
+                    <div class="view overlay">
+                        <img [src]="config.createImgPath(item.data.ImageURI)" class="card-img-top" alt="">
+                        <div class="mask rgba-white-slight"></div>
+                    </div>
+
+                    <!--Card content-->
+                    <div class="card-body">
+                        <!--Title-->
+                        <h4 class="card-title">{{item.data.Name}}</h4>
+                        <!--Text-->
+                        <p class="card-text">{{item.data.EventType.Name}}</p>
+                        <a href="#" class="btn btn-indigo" (click)="onDelete(item.data.Id)">Delete</a>
+                    </div>
+
+                </div>
+                <!--/.Card-->
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+        <div class="card-footer pb-0 pt-3 ">
+            <jw-pagination class="jw-pagination " [items]="itemsEvent " [pageSize]="9 " (changePage)="onChangePage($event) ">
+            </jw-pagination>
+        </div>
+    </div>
+    <!--Main container-->
+
+</main>
