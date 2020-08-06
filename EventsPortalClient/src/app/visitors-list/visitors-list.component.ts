@@ -21,6 +21,7 @@ export class VisitorsListComponent implements OnInit {
   id: number;
   eventView: EventItem = new EventItem();
   tableMode: boolean = true;
+  tableModeMobile: boolean = true;
 
   constructor(
     public activateRoute: ActivatedRoute,
@@ -41,13 +42,20 @@ export class VisitorsListComponent implements OnInit {
     this.eventView = eventItem;
   }
 
+  editEventMobile(eventItem: EventItem) {
+    this.tableModeMobile = false;
+    this.eventView = eventItem;
+  }
+
   cancel() {
     this.eventView = new EventItem();
     this.tableMode = true;
+    this.tableModeMobile = true;
   }
 
   save() {
     this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res=>{});
     this.tableMode = true;
+    this.tableModeMobile = true;
   }
 }
