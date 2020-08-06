@@ -1,5 +1,5 @@
 <app-auth></app-auth>
-<h1 class="main-content text-center">Create event ✨</h1>
+<!-- <h1 class="main-content text-center">Create event ✨</h1>
 <div class="create-form">
     <h2>Tell us about your awesome event 🐙</h2>
     <h4>Don't worry you can change this info later</h4>
@@ -37,4 +37,33 @@
             </div>
         </div>
     </form>
+</div> -->
+
+<div class="mt-5">
+    <!--Main container-->
+    <div class="container">
+         <div class="row">
+            <!--Grid column-->
+            <div class="col-md-12 mb-4">
+                <h1 class="text-center">Create event ✨</h1>
+            </div>
+        </div>
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-md-12 mb-4 text-center">
+                <h2>Tell us about your awesome event 🐙</h2>
+                <h4>Don't worry you can change this info later</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-4 text-center">
+            <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+                <input type="hidden" name="Id" [value]="eventService.FormData.Id">
+                <input type="hidden" name="ImageURI" [value]="eventService.FormData.ImageURI">
+                <input type="hidden" name="OrganizerId" [value]="eventService.FormData.OrganizerId">
+                <input name="Name" #Name="ngModel" [(ngModel)]="eventService.FormData.Name" class="form-control" placeholder="Name" required maxlength="16">
+
+            </form> 
+        </div> 
+    </div>
 </div>
