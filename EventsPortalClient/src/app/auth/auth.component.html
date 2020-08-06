@@ -1,34 +1,10 @@
-<!-- <nav class="navbar navbar-expand-custom navbar-dark">
-    <a class="navbar-brand" *ngIf="this.authGuard.canActivate()" href="/allowed-event-list">{{userName}}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse collapse" id="collapsingNavbar">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" *ngIf="!this.authGuard.canActivate()" class="nav-link" href="#" (click)="socialSignIn('google')">Sign
-                    In</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" *ngIf="this.authGuard.canActivate()" routerLink="/allowed-event-list" class="nav-link">Events</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" *ngIf="this.authGuard.canActivate()" routerLink="/create-event" class="nav-link">Create Event</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" *ngIf="this.authGuard.canActivate()" class="nav-link" href="#" (click)="logOut()">Log out</a>
-            </li>
-        </ul>
-    </div>
-</nav> -->
-
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
         <a class="navbar-brand" href="#">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-        <div class="collapse navbar-collapse" id="basicExampleNav">
+        <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" *ngIf="this.authGuard.canActivate()" routerLink="/allowed-event-list">Events</a>
@@ -39,6 +15,9 @@
                 <li class="nav-item">
                     <a class="nav-link" *ngIf="!this.authGuard.canActivate()" (click)="socialSignIn('google')" href="#">Sign in</a>
                     <a class="nav-link" *ngIf="this.authGuard.canActivate()" class="nav-link" href="#" (click)="logOut()">Log out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" *ngIf="this.authGuard.canActivate()">Hello, {{userName}}</a>
                 </li>
             </ul>
         </div>
