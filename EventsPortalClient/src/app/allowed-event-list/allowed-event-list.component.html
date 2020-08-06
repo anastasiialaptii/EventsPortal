@@ -44,7 +44,7 @@
                 <div class="card">
 
                     <!--Card image-->
-                    <div class="view overlay">
+                    <div class="view overlay" (click)="onEventDetails(item.data.Id)" [routerLink]="['/visitors-list', 'item.data.Id']">
                         <img [src]="config.createImgPath(item.data.ImageURI)" class="card-img-top" alt="">
                         <div class="mask rgba-white-slight"></div>
                     </div>
