@@ -10,7 +10,7 @@
         <div class="paginator" *ngFor="let item of pageOfItemsEvent">
             <div class="card-body-size">
                 <div class="details-link" (click)="onEventDetails(item.data.Id)" [routerLink]="['/visitors-list', 'item.data.Id']">
-                    <img class="card-img-top" [src]="config.createImgPath(item.data.ImageURI)" alt="Card image cap">
+                    <img class="img-fluid rounded-top" [src]="config.createImgPath(item.data.ImageURI)" alt="Card image cap">
                 </div>
                 <h3 class="card-title">{{item.data.Name}}</h3>
                 <h6 class="card-title">{{item.data.EventType.Name}}</h6>

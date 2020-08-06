@@ -5,7 +5,7 @@
             <div class="card-edit rounded" *ngIf="tableMode; else edit">
                 <div class="row no-gutters" *ngFor="let item of eventService.EventByIdList">
                     <div class="col-edit container-item">
-                        <img class="img-edit rounded" [src]="config.createImgPath(item.ImageURI)">
+                        <img class="mx-auto d-block rounded img-fluid" [src]="config.createImgPath(item.ImageURI)">
                     </div>
                     <div class="col">
                         <div class="card-block px-2 container-item">
