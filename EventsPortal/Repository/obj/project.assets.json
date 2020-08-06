@@ -5063,19 +5063,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lapti\\.nuget\\packages\\": {}
+    "C:\\Users\\Office\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\TechStack\\EventsPortal\\EventsPortal\\Repository\\Data.csproj",
+      "projectUniqueName": "D:\\WebAPI\\EventsPortal\\Repository\\Data.csproj",
       "projectName": "Data",
-      "projectPath": "H:\\TechStack\\EventsPortal\\EventsPortal\\Repository\\Data.csproj",
-      "packagesPath": "C:\\Users\\lapti\\.nuget\\packages\\",
-      "outputPath": "H:\\TechStack\\EventsPortal\\EventsPortal\\Repository\\obj\\",
+      "projectPath": "D:\\WebAPI\\EventsPortal\\Repository\\Data.csproj",
+      "packagesPath": "C:\\Users\\Office\\.nuget\\packages\\",
+      "outputPath": "D:\\WebAPI\\EventsPortal\\Repository\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\lapti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Office\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5088,8 +5088,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "H:\\TechStack\\EventsPortal\\EventsPortal\\Core\\Core.csproj": {
-              "projectPath": "H:\\TechStack\\EventsPortal\\EventsPortal\\Core\\Core.csproj"
+            "D:\\WebAPI\\EventsPortal\\Core\\Core.csproj": {
+              "projectPath": "D:\\WebAPI\\EventsPortal\\Core\\Core.csproj"
             }
           }
         }

@@ -39,8 +39,6 @@ export class VisitorsListComponent implements OnInit {
   editEvent(eventItem: EventItem) {
     this.tableMode = false;
     this.eventView = eventItem;
-    debugger;
-    console.log(this.eventView);
   }
 
   cancel() {

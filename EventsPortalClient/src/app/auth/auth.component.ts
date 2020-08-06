@@ -36,21 +36,15 @@ export class AuthComponent implements OnInit {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
     this.oAuth.signIn(socialPlatformProvider).then(users => {
-      console.log(socialProvider, users);
-      console.log(users);
       this.savesresponse(users);
     });
   }
 
   savesresponse(users: User) {
     this.gAuthService.AuthUser(users).subscribe((res: any) => {
-      debugger;
-      console.log(res);
       this.users = res;
       this.response = res.userDetail;
       localStorage.setItem('socialusers', JSON.stringify(this.users));
-      console.log(localStorage.setItem('socialusers', JSON.stringify(this.users)));
-      console.log(localStorage.getItem('socialusers'));
       this.router.navigate(["/allowed-event-list"]);
     })
   }

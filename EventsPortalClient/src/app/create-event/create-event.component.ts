@@ -48,7 +48,6 @@ export class CreateEventComponent implements OnInit {
 
   uploadFinished = (event) => {
     this.response = event;
-    debugger;
     this.eventService.FormData.ImageURI = this.response.dbPath;
   }
 

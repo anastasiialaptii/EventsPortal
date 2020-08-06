@@ -84,7 +84,7 @@
     }
     
     .btn-edit {
-        margin-top: 10%;
+        margin-top: 8%;
     }
     
     .navbar {
@@ -95,7 +95,14 @@
         font-family: Lato;
     }
     
+    .btn-edit-mode {
+        margin-left: 2%;
+    }
+    
     @media (min-width:1200px) {
+        .only-mobile-edit-mode {
+            visibility: hidden;
+        }
         .navbar-expand-custom {
             flex-direction: row;
             flex-wrap: nowrap;
@@ -113,76 +120,6 @@
         }
         .navbar-expand-custom .navbar-toggler {
             display: none;
-        }
-    }
-    
-    @media (min-width: 1025px) and (max-width: 1280px) {}
-    
-    @media (min-width: 768px) and (max-width: 1024px) {
-        body {
-            max-width: 80%;
-            max-height: 80%;
-            background-color: rgba(204, 237, 238, 0.164);
-            margin-left: 10%;
-            margin-right: 10%;
-            margin-bottom: auto;
-            font-size: 3em;
-            background: linear-gradient(90deg, rgba(147, 17, 233, 0.897) 0%, rgba(253, 29, 29, 0.7010154403558299) 50%, rgba(252, 176, 69, 0.8606793059020483) 100%);
-        }
-        .paginator {
-            background: rgba(240, 230, 230, 0.753);
-            border-radius: 5px;
-            margin: 0.7rem;
-        }
-        .card-img-top {
-            padding: 5%;
-            border-radius: 7%;
-            max-width: auto;
-            min-height: 260px;
-            max-height: 170px;
-        }
-        .card-body {
-            flex-wrap: wrap;
-            justify-content: space-between;
-            background: linear-gradient(90deg, rgba(226, 19, 201, 0.6870098381149334) 0%, rgba(236, 245, 83, 0.7710434515603116) 35%, rgba(0, 212, 255, 1) 100%);
-        }
-        .card-body::after {
-            content: "";
-            flex: 1 1 40%;
-        }
-        .card-body-size {
-            width: 17rem;
-        }
-        .card-btn {
-            width: 25%;
-            margin-bottom: 1rem;
-            min-height: 100%;
-            width: 100%;
-            text-align: center;
-        }
-        .card-text {
-            font-weight: lighter;
-        }
-        .create-form {
-            padding-top: 3%;
-            padding-left: 3%;
-            padding-right: 3%;
-            padding-bottom: 2%;
-            background: rgba(240, 230, 230, 0.753);
-            border-radius: 8px;
-        }
-        .btn-md {
-            margin: 1%;
-        }
-        .white-details {
-            background: rgba(240, 230, 230, 0.753);
-        }
-    }
-    
-    @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-        .img-edit {
-            width: 500px;
-            height: 550px;
         }
     }
     /*iPhone X, 6,7,8*/
@@ -217,22 +154,30 @@
         .form-group {
             margin-bottom: 1.7rem;
         }
-        .paginator {            
+        .paginator {
             margin: 0.4rem;
         }
         .create-form {
             padding-top: 10%;
             padding-left: 3%;
             padding-right: 3%;
-            padding-bottom: 23%;
+            padding-bottom: 15%;
             background: rgba(240, 230, 230, 0.753);
             border-radius: 8px;
+            margin-bottom: 7%;
         }
         .md-form {
             margin-bottom: 7%;
         }
-        .col{
-            display: flex; 
+        .col {
+            display: flex;
             flex-direction: column;
+        }
+        .only-mobile-edit-mode {
+            background-color: yellow;
+            color: #000;
+        }
+        .main-content {
+            visibility: hidden;
         }
     }

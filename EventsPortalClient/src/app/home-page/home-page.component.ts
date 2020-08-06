@@ -25,7 +25,6 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.eventService.GetEventList().subscribe((res: any) => {
       this.eventItem = res;
-      console.log(res)
       this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
     });
   }
