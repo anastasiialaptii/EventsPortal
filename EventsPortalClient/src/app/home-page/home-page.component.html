@@ -1,17 +1,41 @@
 <app-auth></app-auth>
-    <div class="card text-center m-3">
-        <div class="card-body d-flex">
-            <div class="paginator" *ngFor="let item of pageOfItemsEvent">
-                <div class="card-body-size">
-                    <div class="details-link" (click)="onEventDetails(item.data.Id)" [routerLink]="['/visitors-list', 'item.data.Id']">
-                        <img class="card-img-top" [src]="config.createImgPath(item.data.ImageURI)" alt="Card image cap">
-                    </div>
-                    <h3 class="card-title">{{item.data.Name}}</h3>
-                </div>
+<!--Main layout-->
+<main class="mt-5">
+    <!--Main container-->
+    <div class="container">
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-md-12 mb-4">
+                <h1 class="text-center">Events 🎉</h1>
             </div>
         </div>
-        <div class="card-footer pb-0 pt-3">
-            <jw-pagination class="jw-pagination" [items]="itemsEvent" [pageSize]="16" (changePage)="onChangePage($event)">
+        <!--Grid row-->
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4" *ngFor="let item of pageOfItemsEvent">
+                <!--Card-->
+                <div class="card">
+                    <!--Card image-->
+                    <div class="view overlay">
+                        <img [src]="config.createImgPath(item.data.ImageURI)" class="card-img-top" alt="">
+                        <div class="mask rgba-white-slight"></div>
+                    </div>
+                    <!--Card content-->
+                    <div class="card-body">
+                        <!--Title-->
+                        <h4 class="card-title">{{item.data.Name}}</h4>
+                    </div>
+                </div>
+                <!--/.Card-->
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+        <div class="card-footer pb-0 pt-3 ">
+            <jw-pagination class="jw-pagination " [items]="itemsEvent " [pageSize]="9"
+                (changePage)="onChangePage($event)">
             </jw-pagination>
         </div>
     </div>
+    <!--Main container-->
+</main>
