@@ -8,6 +8,7 @@ import { UserService } from '../shared/services/user-service';
 import { Visit } from '../shared/models/visit-model';
 import { EventItem } from '../shared/models/event-model';
 import { Configuration } from '../shared/config/configuration';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-allowed-event-list',
@@ -24,13 +25,13 @@ export class AllowedEventListComponent implements OnInit {
   eventItem: EventItem[];
   pageOfItemsEvent: Array<EventItem>;
   event: EventItem = new EventItem();
-  disabledGo: boolean = true;
 
   constructor(
     public eventService: EventService,
     public visitService: VisitService,
     public userService: UserService,
-    public config: Configuration
+    public config: Configuration,
+    public router: Router
   ) { }
 
   ngOnInit(): void {
@@ -69,13 +70,9 @@ export class AllowedEventListComponent implements OnInit {
       return true;
   }
 
-  isUserEventCreated(idEvent: number) {
-    return this.visitService.IsEventUserCreated(idEvent, this.token.Message);
-  }
-
   onEventDetails(eventId: number) {
-    this.visitService.GetVisitorsList(eventId);
     this.eventService.GetEventById(eventId);
+    this.router.navigate(["/visitors-list/" + eventId]);
   }
 
   resetForm(form?: NgForm) {

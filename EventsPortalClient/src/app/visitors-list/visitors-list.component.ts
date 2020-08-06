@@ -8,6 +8,7 @@ import { VisitService } from '../shared/services/visit-service';
 import { EventService } from '../shared/services/event-service';
 
 import { EventItem } from '../shared/models/event-model';
+import { Visit } from '../shared/models/visit-model';
 
 @Component({
   selector: 'app-visitors-list',
@@ -22,29 +23,54 @@ export class VisitorsListComponent implements OnInit {
   eventView: EventItem = new EventItem();
   tableMode: boolean = true;
   tableModeMobile: boolean = true;
+  isVisitorsExists: boolean = false;
+  pageOfItemsEvent: Array<Visit>;
+  visitEvent = [];
+  visitItem: Visit[];
 
   constructor(
-    public activateRoute: ActivatedRoute,
+    private activateRoute: ActivatedRoute,
     public visitService: VisitService,
     public eventService: EventService,
     public config: Configuration
   ) {
-    this.subscription = activateRoute.params.subscribe(params => this.id = +params['eventId']);
+    this.subscription = activateRoute.params.subscribe(params => this.id = params['eventId']);
   }
 
   ngOnInit(): void {
-    this.visitService.GetVisitorsList(this.id);
-    this.eventService.GetEventById(this.id);
+    this.visitService.GetVisitorsList(this.id).subscribe((res: any) => {
+      debugger;
+      this.visitItem = res;
+      console.log(res)
+      this.visitorsCounter(res);
+      this.visitEvent = Array(this.visitItem.length).fill(0).map((x, i) => ({ data: this.visitItem[i] }));
+    });
+  }
+
+  onChangePage(pageOfItemsEvent: Array<any>) {
+    this.pageOfItemsEvent = pageOfItemsEvent;
   }
 
   editEvent(eventItem: EventItem) {
     this.tableMode = false;
     this.eventView = eventItem;
+    debugger;
+    console.log(this.eventView);
   }
 
   editEventMobile(eventItem: EventItem) {
     this.tableModeMobile = false;
     this.eventView = eventItem;
+    debugger;
+    console.log(this.eventView);
+  }
+
+  visitorsCounter(visitors: Visit[]) {
+    if (visitors.length == 0) {
+      this.isVisitorsExists = false;
+    }
+    else
+      this.isVisitorsExists = true;
   }
 
   cancel() {
@@ -54,7 +80,7 @@ export class VisitorsListComponent implements OnInit {
   }
 
   save() {
-    this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res=>{});
+    this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { });
     this.tableMode = true;
     this.tableModeMobile = true;
   }

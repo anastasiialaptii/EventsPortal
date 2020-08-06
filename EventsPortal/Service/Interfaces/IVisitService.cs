@@ -13,7 +13,5 @@ namespace Service.Interfaces
         Task<IEnumerable<VisitDTO>> GetVisitorsByEvent(int eventId);
 
         Task<int> GetTotalVisitorsPerEvent(int eventId);
-
-        Task<bool> IsEventUserCreated(int eventId, string userId);
     }
 }
