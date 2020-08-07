@@ -32,9 +32,11 @@
                             <hr>
                         </div>
                     </div>
-                    <div class="card-footer pb-0 pt-3 ">
-                        <jw-pagination class="jw-pagination" [items]="visitEvent" [pageSize]="5" (changePage)="onChangePage($event)">
-                        </jw-pagination>
+                    <div class="row mt-4">
+                        <div class="mx-auto mt-4">
+                            <jw-pagination class="jw-pagination" [items]="visitEvent" [pageSize]="5" (changePage)="onChangePage($event)">
+                            </jw-pagination>
+                        </div>
                     </div>
                 </ng-template>
                 <ng-template #emptyVisitorsList>
