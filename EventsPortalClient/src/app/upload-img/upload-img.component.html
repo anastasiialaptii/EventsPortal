@@ -1,5 +1,5 @@
 <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;" multiple>
-<button type="button" class="btn btn-primary" (click)="file.click()">Upload Promo</button>
+<button type="button" class="btn btn-primary btn-md pull-left" (click)="file.click()">Upload Promo</button>
 <span class="upload" *ngIf="progress > 0">
   {{progress}}%
 </span>
