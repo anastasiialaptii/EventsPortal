@@ -19,24 +19,8 @@
                     </div>
                 </div>
             </div>
-            <ng-container *ngIf="isVisitorsExists==true; then eventVisitorsList; else emptyVisitorsList">
-            </ng-container>
-            <ng-template #eventVisitorsList>
-                <div *ngFor="let item of pageOfItemsEvent">
-                    <div>
-                        <h3>{{item.data.User.Name}} - {{item.data.User.Email}}</h3>
-                    </div>
-                </div>
-                <div class="card-footer pb-0 pt-3 ">
-                    <jw-pagination class="jw-pagination" [items]="visitEvent" [pageSize]="1" (changePage)="onChangePage($event)">
-                    </jw-pagination>
-                </div>
-            </ng-template>
-            <ng-template #emptyVisitorsList>
-                <div>
-                    <h4>There are no participants.</h4>
-                </div>
-            </ng-template>
+            
+           
         </div>
     </div>
 </div>
@@ -90,38 +74,7 @@
         </div>
         <br>
     </div>
-</ng-template>
-<ng-template #editMobile>
-    <br>
-    <div class="create-form">
-        <input type="hidden" [(ngModel)]="eventView.Id" class="form-control">
-        <input type="hidden" [(ngModel)]="eventView.ImageURI" class="form-control">
-        <input type="hidden" [(ngModel)]="eventView.OrganizerId" class="form-control">
-        <div class="md-form form-lg">
-            <label for="eventView.Name">Name</label>
-            <input type="text" [(ngModel)]="eventView.Name" class="form-control form-control-lg">
-        </div>
-        <div class="md-form form-lg">
-            <label for="eventView.Location">Location</label>
-            <input type="text" [(ngModel)]="eventView.Location" class="form-control form-control-lg">
-        </div>
-        <div class="md-form form-lg">
-            <label for="eventView.Description">Description</label>
-            <textarea type="text" [(ngModel)]="eventView.Description" class="form-control form-control-lg" rows="12" cols="50"></textarea>
-        </div>
-        <div class="md-form form-lg">
-            <label for="eventView.Name">Event Type</label>
-            <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventView.EventTypeId" class="form-control">
-                <option *ngFor="let type of config.eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
-            </select>
-        </div>
-        <div class="md-form form-lg btn-edit">
-            <input type="button" value="Cancel" (click)="cancel()" class="btn btn-lg btn-warning pull-right btn-edit-mode" />
-            <input type="button" value="Save" (click)="save()" class="btn btn-lg btn-success pull-right btn-edit-mode" />
-        </div>
-        <br>
-    </div>
-</ng-template> -->
+</ng-template>-->
 
 <div class="mt-5">
     <!--Main container-->
@@ -148,5 +101,25 @@
                     <div class="col-md-7 mb-4">
                     </div>
                 </div>
+                <ng-container *ngIf="isVisitorsExists==true; then eventVisitorsList; else emptyVisitorsList">
+                </ng-container>
+                <ng-template #eventVisitorsList>
+                    <div *ngFor="let item of pageOfItemsEvent">
+                        <div>
+                            <p>{{item.data.User.Name}} - {{item.data.User.Email}}</p>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="card-footer pb-0 pt-3 ">
+                        <jw-pagination class="jw-pagination" [items]="visitEvent" [pageSize]="5" (changePage)="onChangePage($event)">
+                        </jw-pagination>
+                    </div>
+                </ng-template>
+                <ng-template #emptyVisitorsList>
+                    <div>
+                        <h4>There are no participants.</h4>
+                    </div>
+                </ng-template>
             </div>
         </div>
+    </div>
