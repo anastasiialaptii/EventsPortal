@@ -1,5 +1,5 @@
 <app-auth></app-auth>
-<div class="desktop-content">
+<!-- <div class="desktop-content">
     <div class="create-form">
         <div class="edit-event">
             <div class="card-edit rounded" *ngIf="tableMode; else edit">
@@ -48,7 +48,6 @@
         <div class="container-item-edit">
             <img class="img-edit rounded" [src]="config.createImgPath(item.ImageURI)">
         </div>
-
         <div class="container-item-edit">
             {{item?.Description}}
         </div>
@@ -59,8 +58,9 @@
             <button class="btn btn-lg btn-primary pull-right" (click)="editEventMobile(item)">Edit</button>
         </div>
     </div>
-</div>
-<ng-template #edit>
+</div> -->
+
+<!-- <ng-template #edit>
     <br>
     <div class="create-form">
         <input type="hidden" [(ngModel)]="eventView.Id" class="form-control">
@@ -121,4 +121,32 @@
         </div>
         <br>
     </div>
-</ng-template>
+</ng-template> -->
+
+<div class="mt-5">
+    <!--Main container-->
+    <div class="container" *ngFor="let item of eventService.EventByIdList">
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-md-12 mb-4">
+                <div class="row pr-lg-5">
+                    <div class="col-md-5 mb-4">
+                        <div class="view">
+                            <img [src]="config.createImgPath(item.ImageURI)" class="img-fluid rounded" alt="event image">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <h3 class="font-weight-bold mr-5">{{item?.Name}}</h3>
+                        <div class="col-md-13">
+                            <p class="text-justify">{{item?.Description}}</p>
+                            <p>{{item?.Location}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-1 mb-4">
+                        <button type="button" class="btn btn-primary btn-rounded btn-md mr-2" (click)="editEvent(item)">Edit</button>
+                    </div>
+                    <div class="col-md-7 mb-4">
+                    </div>
+                </div>
+            </div>
+        </div>
