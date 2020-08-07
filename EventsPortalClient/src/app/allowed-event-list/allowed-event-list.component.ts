@@ -9,6 +9,7 @@ import { Visit } from '../shared/models/visit-model';
 import { EventItem } from '../shared/models/event-model';
 import { Configuration } from '../shared/config/configuration';
 import { Router } from '@angular/router';
+import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 
 @Component({
   selector: 'app-allowed-event-list',
@@ -27,6 +28,7 @@ export class AllowedEventListComponent implements OnInit {
   event: EventItem = new EventItem();
 
   constructor(
+    public confirmationDialogService: ConfirmationDialogService,
     public eventService: EventService,
     public visitService: VisitService,
     public userService: UserService,
@@ -113,20 +115,20 @@ export class AllowedEventListComponent implements OnInit {
   }
 
   onDelete(id) {
-    if (confirm('Are you sure to delete this record ?')) {
-      this.eventService.DeleteEvent(id)
+    this.confirmationDialogService.confirm()
+    .then((confirmed) => 
+    this.eventService.DeleteEvent(id)
         .subscribe(res => {
           this.eventService.GetAllowedEventList(this.token.Message, this.eventService.SearchEventFormData.Name).subscribe((res: any) => {
             this.eventItem = res;
             debugger;
             console.log(res)
             this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
-          });
-        },
-          err => {
-            debugger;
-            console.log(err);
-          })
-    }
+          })}) ,
+                err => {
+                  debugger;
+                  console.log(err);
+                })  
+           .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 }

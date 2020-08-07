@@ -16,6 +16,9 @@ import { UploadImgComponent } from './upload-img/upload-img.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { Configuration } from './shared/config/configuration';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,23 +28,29 @@ import { HomePageComponent } from './home-page/home-page.component';
     VisitorsListComponent,
     UploadImgComponent,
     CreateEventComponent,
-    HomePageComponent
+    HomePageComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SocialLoginModule,
     HttpClientModule,
-    FormsModule, JwPaginationModule
+    FormsModule, 
+    JwPaginationModule, 
+    NgbModule
   ],
   providers: [
-    AuthGuard, Configuration,
+    AuthGuard, 
+    Configuration, 
+    ConfirmationDialogService,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ ConfirmationDialogComponent ]
 })
 
 export class AppModule { }
