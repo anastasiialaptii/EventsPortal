@@ -17,7 +17,7 @@
                 <div class="card">
                     <!--Card image-->
                     <div class="view overlay">
-                        <img [src]="config.createImgPath(item.data.ImageURI)" class="card-img-top" alt="">
+                        <img [src]="config.createImgPath(item.data.ImageURI)" class="card-img-top" alt="event image">
                         <div class="mask rgba-white-slight"></div>
                     </div>
                     <!--Card content-->
@@ -32,8 +32,7 @@
         </div>
         <!--Grid row-->
         <div class="card-footer pb-0 pt-3 ">
-            <jw-pagination class="jw-pagination " [items]="itemsEvent " [pageSize]="9"
-                (changePage)="onChangePage($event)">
+            <jw-pagination class="jw-pagination " [items]="itemsEvent " [pageSize]="9" (changePage)="onChangePage($event)">
             </jw-pagination>
         </div>
     </div>
