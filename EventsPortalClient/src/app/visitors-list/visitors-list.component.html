@@ -1,9 +1,7 @@
 <app-auth></app-auth>
 <div class="mt-5">
-    <!--Main container-->
     <div class="container" *ngFor="let item of eventService.EventByIdList">
         <div class="row" *ngIf="tableMode; else edit">
-            <!--Grid column-->
             <div class="col-md-12 mb-4">
                 <div class="row pr-lg-5">
                     <div class="col-md-5 mb-4">
