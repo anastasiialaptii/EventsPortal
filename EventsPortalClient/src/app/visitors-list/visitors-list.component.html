@@ -27,7 +27,8 @@
                 <ng-container *ngIf="isVisitorsExists==true; then eventVisitorsList; else emptyVisitorsList">
                 </ng-container>
                 <ng-template #eventVisitorsList>
-                    <div *ngFor="let item of pageOfItemsEvent">
+                    <p>Participants:</p>
+                    <div class="ml-4" *ngFor="let item of pageOfItemsEvent">
                         <div>
                             <p>{{item.data.User.Name}} - {{item.data.User.Email}}</p>
                             <hr>
