@@ -47,7 +47,6 @@ export class AllowedEventListComponent implements OnInit {
     if (name.length > 1) {
       this.eventService.GetAllowedEventList(this.token.Message, name).subscribe((res: any) => {
         this.eventItem = res;
-        //debugger;
         console.log(res)
         this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
       });
