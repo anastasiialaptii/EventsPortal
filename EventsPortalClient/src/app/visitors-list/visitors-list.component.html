@@ -1,85 +1,8 @@
 <app-auth></app-auth>
-<!-- <div class="desktop-content">
-    <div class="create-form">
-        <div class="edit-event">
-            <div class="card-edit rounded" *ngIf="tableMode; else edit">
-                <div class="row no-gutters" *ngFor="let item of eventService.EventByIdList">
-                    <div class="col-edit container-item">
-                        <img class="mx-auto d-block rounded img-fluid" [src]="config.createImgPath(item.ImageURI)">
-                    </div>
-                    <div class="col">
-                        <div class="card-block px-2 container-item">
-                            <h4 class="card-title">{{item?.Name}}</h4>
-                            <p class="card-text">{{item?.Description}}</p>
-                            <h3>{{item?.Location}}</h3>
-                            <div class="btn-edit">
-                                <button class="btn btn-lg btn-primary pull-right" (click)="editEvent(item)">Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-           
-        </div>
-    </div>
-</div>
-<div class="only-mobile-edit-mode create-form" *ngIf="tableModeMobile; else edit">
-    <div class="container-edit" *ngFor="let item of eventService.EventByIdList">
-        <div class="container-item-edit">
-            <h5>{{item?.Name}}</h5>
-        </div>
-        <div class="container-item-edit">
-            <img class="img-edit rounded" [src]="config.createImgPath(item.ImageURI)">
-        </div>
-        <div class="container-item-edit">
-            {{item?.Description}}
-        </div>
-        <div class="container-item-edit">
-            <h5> {{item?.Location}}</h5>
-        </div>
-        <div class="container-item-edit">
-            <button class="btn btn-lg btn-primary pull-right" (click)="editEventMobile(item)">Edit</button>
-        </div>
-    </div>
-</div> -->
-
-<!-- <ng-template #edit>
-    <br>
-    <div class="create-form">
-        <input type="hidden" [(ngModel)]="eventView.Id" class="form-control">
-        <input type="hidden" [(ngModel)]="eventView.ImageURI" class="form-control">
-        <input type="hidden" [(ngModel)]="eventView.OrganizerId" class="form-control">
-        <div class="md-form form-lg">
-            <label for="eventView.Name">Name</label>
-            <input type="text" [(ngModel)]="eventView.Name" class="form-control form-control-lg">
-        </div>
-        <div class="md-form form-lg">
-            <label for="eventView.Location">Location</label>
-            <input type="text" [(ngModel)]="eventView.Location" class="form-control form-control-lg">
-        </div>
-        <div class="md-form form-lg">
-            <label for="eventView.Description">Description</label>
-            <textarea type="text" [(ngModel)]="eventView.Description" class="form-control form-control-lg" rows="12" cols="50"></textarea>
-        </div>
-        <div class="md-form form-lg">
-            <label for="eventView.Name">Event Type</label>
-            <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventView.EventTypeId" class="form-control">
-                <option *ngFor="let type of config.eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
-            </select>
-        </div>
-        <div class="md-form form-lg btn-edit">
-            <input type="button" value="Cancel" (click)="cancel()" class="btn btn-lg btn-warning pull-right btn-edit-mode" />
-            <input type="button" value="Save" (click)="save()" class="btn btn-lg btn-success pull-right btn-edit-mode" />
-        </div>
-        <br>
-    </div>
-</ng-template>-->
-
 <div class="mt-5">
     <!--Main container-->
     <div class="container" *ngFor="let item of eventService.EventByIdList">
-        <div class="row">
+        <div class="row" *ngIf="tableMode; else edit">
             <!--Grid column-->
             <div class="col-md-12 mb-4">
                 <div class="row pr-lg-5">
@@ -123,3 +46,32 @@
             </div>
         </div>
     </div>
+    <ng-template #edit>
+        <div class="edit-form">
+            <input type="hidden" [(ngModel)]="eventView.Id" class="form-control">
+            <input type="hidden" [(ngModel)]="eventView.ImageURI" class="form-control">
+            <input type="hidden" [(ngModel)]="eventView.OrganizerId" class="form-control">
+            <div class="mb-4">
+                <label for="eventView.Name">Name</label>
+                <input type="text" [(ngModel)]="eventView.Name" class="form-control form-control-lg" maxlength="25" required>
+            </div>
+            <div class="mb-4">
+                <label for="eventView.Location">Location</label>
+                <input type="text" [(ngModel)]="eventView.Location" class="form-control form-control-lg">
+            </div>
+            <div class="mb-4">
+                <label for="eventView.Description">Description</label>
+                <textarea type="text" [(ngModel)]="eventView.Description" class="form-control form-control-lg" rows="12" cols="50"></textarea>
+            </div>
+            <div class="mb-4">
+                <label for="eventView.Name">Event Type</label>
+                <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventView.EventTypeId" class="form-control">
+                    <option *ngFor="let type of config.eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <input type="button" value="Cancel" (click)="cancel()" class="btn btn-lg btn-warning mb-2 mr-2 pull-right" />
+                <input type="button" value="Save" (click)="save()" class="btn btn-lg btn-success mb-2 mr-2 pull-right" />
+            </div>
+        </div>
+    </ng-template>

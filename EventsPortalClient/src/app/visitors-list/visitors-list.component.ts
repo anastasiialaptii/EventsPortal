@@ -22,7 +22,6 @@ export class VisitorsListComponent implements OnInit {
   id: number;
   eventView: EventItem = new EventItem();
   tableMode: boolean = true;
-  tableModeMobile: boolean = true;
   isVisitorsExists: boolean = false;
   pageOfItemsEvent: Array<Visit>;
   visitEvent = [];
@@ -58,13 +57,6 @@ export class VisitorsListComponent implements OnInit {
     console.log(this.eventView);
   }
 
-  editEventMobile(eventItem: EventItem) {
-    this.tableModeMobile = false;
-    this.eventView = eventItem;
-    debugger;
-    console.log(this.eventView);
-  }
-
   visitorsCounter(visitors: Visit[]) {
     if (visitors.length == 0) {
       this.isVisitorsExists = false;
@@ -76,12 +68,10 @@ export class VisitorsListComponent implements OnInit {
   cancel() {
     this.eventView = new EventItem();
     this.tableMode = true;
-    this.tableModeMobile = true;
   }
 
   save() {
     this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { });
     this.tableMode = true;
-    this.tableModeMobile = true;
   }
 }

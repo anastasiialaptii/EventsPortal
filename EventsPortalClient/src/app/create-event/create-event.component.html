@@ -21,7 +21,7 @@
                     <input type="hidden" name="Id" [value]="eventService.FormData.Id">
                     <input type="hidden" name="ImageURI" [value]="eventService.FormData.ImageURI">
                     <input type="hidden" name="OrganizerId" [value]="eventService.FormData.OrganizerId">
-                    <input class="form-control mb-4" name="Name" #Name="ngModel" [(ngModel)]="eventService.FormData.Name" placeholder="Name" maxlength="16" required>
+                    <input class="form-control mb-4" name="Name" #Name="ngModel" [(ngModel)]="eventService.FormData.Name" placeholder="Name" maxlength="25" required>
                     <input class="form-control mb-4" name="Location" #Name="ngModel" [(ngModel)]="eventService.FormData.Location" placeholder="Location" required>
                     <select class="form-control mb-4" name="EventTypeId" #Name="ngModel" [(ngModel)]="eventService.FormData.EventTypeId" required>
                         <option *ngFor="let type of config.eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
