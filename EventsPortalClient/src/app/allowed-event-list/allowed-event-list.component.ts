@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 import { EventService } from '../shared/services/event-service';
 import { VisitService } from '../shared/services/visit-service';
@@ -33,7 +34,8 @@ export class AllowedEventListComponent implements OnInit {
     public visitService: VisitService,
     public userService: UserService,
     public config: Configuration,
-    public router: Router
+    public router: Router,
+    public toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -105,11 +107,14 @@ export class AllowedEventListComponent implements OnInit {
           UserId: res
         }
         this.visitService.CreateVisit(this.visit).subscribe(
-          res => { console.log("success") },
+          res => { console.log("success");this.toastr.success('Participation confirmed','Success'); },
           err => {
             debugger;
             console.log(err);
+            console.log("success");
+            this.toastr.warning('Participation already confirmed','Warning');
           });
+          
       }
     )
   }
@@ -124,6 +129,7 @@ export class AllowedEventListComponent implements OnInit {
             debugger;
             console.log(res)
             this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
+            this.toastr.info('Event successfully deleted','Info');
           })}) ,
                 err => {
                   debugger;

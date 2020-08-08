@@ -6,6 +6,9 @@ import { EventService } from '../shared/services/event-service';
 import { UserService } from '../shared/services/user-service';
 import { Configuration } from '../shared/config/configuration';
 
+import { ToastrService } from 'ngx-toastr';
+
+
 @Component({
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
@@ -21,7 +24,8 @@ export class CreateEventComponent implements OnInit {
     public eventService: EventService,
     public userService: UserService,
     private router: Router,
-    public config: Configuration
+    public config: Configuration,
+    public toastr: ToastrService
     ) { }
 
   ngOnInit(): void {
@@ -31,6 +35,10 @@ export class CreateEventComponent implements OnInit {
   onSubmit(form: NgForm) {
     if (this.eventService.FormData.Id == 0) {
       this.createEvent(form);
+      this.toastr.success('Added new event', 'Success');
+    }
+    else{
+      this.toastr.error('Something wrong!', 'Error');
     }
   }
 

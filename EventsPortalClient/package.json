@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.0.3",
+    "@angular/animations": "~10.0.8",
     "@angular/common": "~10.0.3",
     "@angular/compiler": "~10.0.3",
     "@angular/core": "~10.0.3",
@@ -24,6 +25,7 @@
     "angular-6-social-login": "^1.1.1",
     "bootstrap": "^4.5.0",
     "jw-angular-pagination": "^1.2.0",
+    "ngx-toastr": "^13.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
