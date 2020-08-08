@@ -18,14 +18,20 @@
                     <input type="hidden" name="Id" [value]="eventService.FormData.Id">
                     <input type="hidden" name="ImageURI" [value]="eventService.FormData.ImageURI">
                     <input type="hidden" name="OrganizerId" [value]="eventService.FormData.OrganizerId">
-                    <input class="form-control mb-4" name="Name" #Name="ngModel" [(ngModel)]="eventService.FormData.Name" placeholder="Name" maxlength="23" required>
-                    <input class="form-control mb-4" name="Location" #Name="ngModel" [(ngModel)]="eventService.FormData.Location" placeholder="Location" maxlength="40" required>
-                    <select class="form-control mb-4" name="EventTypeId" #Name="ngModel" [(ngModel)]="eventService.FormData.EventTypeId" required>
+                    <input class="form-control mb-4" name="Name" #Name="ngModel"
+                        [(ngModel)]="eventService.FormData.Name" placeholder="Name" maxlength="23" required>
+                    <input class="form-control mb-4" name="Location" #Name="ngModel"
+                        [(ngModel)]="eventService.FormData.Location" placeholder="Location" maxlength="40" required>
+                    <select class="form-control mb-4" name="EventTypeId" #Name="ngModel"
+                        [(ngModel)]="eventService.FormData.EventTypeId" required>
                         <option *ngFor="let type of config.eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
                     </select>
-                    <textarea class="form-control mb-4" name="Description" #Name="ngModel" [(ngModel)]="eventService.FormData.Description" placeholder="Provide short info about event" required rows="8" cols="50"></textarea>
+                    <textarea class="form-control mb-4" name="Description" #Name="ngModel"
+                        [(ngModel)]="eventService.FormData.Description" placeholder="Provide short info about event"
+                        required rows="8" cols="50"></textarea>
                     <app-upload-img (onUploadFinished)="uploadFinished($event)"></app-upload-img>
-                    <button class="btn btn-md btn-success pull-right" [disabled]="form.invalid" type="submit">Create</button>
+                    <button class="btn btn-md btn-success pull-right" [disabled]="form.invalid"
+                        type="submit">Create</button>
                 </form>
             </div>
         </div>
