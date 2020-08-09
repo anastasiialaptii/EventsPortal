@@ -53,8 +53,6 @@ export class VisitorsListComponent implements OnInit {
   editEvent(eventItem: EventItem) {
     this.tableMode = false;
     this.eventView = eventItem;
-    debugger;
-    console.log(this.eventView);
   }
 
   visitorsCounter(visitors: Visit[]) {
@@ -66,12 +64,12 @@ export class VisitorsListComponent implements OnInit {
   }
 
   cancel() {
-    this.eventView = new EventItem();
     this.tableMode = true;
+    this.eventService.GetEventById(this.eventView.Id);
   }
 
   save() {
-    this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { });
+    this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { console.log('success')});
     this.tableMode = true;
   }
 }
