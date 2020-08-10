@@ -74,6 +74,7 @@ export class CreateEventComponent implements OnInit {
           Location: '',
           Description: '',
           EventTypeId: 1,
+          Date: Date.now(),
           OrganizerId: res
         }
       }

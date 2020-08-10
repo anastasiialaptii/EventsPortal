@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Core.Entities
 {
@@ -11,6 +12,8 @@ namespace Core.Entities
         public string Description { get; set; }
 
         public string ImageURI { get; set; }
+
+        public DateTime Date { get; set; }
 
         public int EventTypeId { get; set; }
 

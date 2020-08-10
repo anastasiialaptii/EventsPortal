@@ -11,4 +11,5 @@ export class EventItem {
     public OrganizerId?: number;
     public Organizer?: User;
     public TypeEvent?: EventType;
+    public Date?: number;
 }

@@ -1,4 +1,5 @@
 ﻿using Core.DTO;
+using System;
 
 namespace Service.DTO
 {
@@ -11,6 +12,8 @@ namespace Service.DTO
         public string Description { get; set; }
 
         public string ImageURI { get; set; }
+
+        public DateTime Date { get; set; }
 
         public int EventTypeId { get; set; }
 

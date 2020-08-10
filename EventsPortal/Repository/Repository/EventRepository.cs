@@ -54,6 +54,7 @@ namespace Data.Repository
                     Description = x.Description,
                     OrganizerId = x.OrganizerId,
                     EventTypeId = x.EventTypeId,
+                    Date = x.Date,
                     Organizer = new User
                     {
                         Id = x.Organizer.Id,
