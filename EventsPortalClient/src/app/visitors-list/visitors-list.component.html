@@ -75,7 +75,7 @@
             </div>
             <div class="mb-4">
                 <mat-datepicker-toggle class="pull-left mr-2" matSuffix [for]="Date"></mat-datepicker-toggle>
-                <input [min]="config.minDate" class="form-control col" matInput [matDatepicker]="Date" name="Date" #Name="ngModel" [(ngModel)]="eventService.FormData.Date" placeholder="Choose a date">
+                <input [min]="config.minDate" class="form-control col" matInput [matDatepicker]="Date" name="Date" #Name="ngModel" [(ngModel)]="eventView.Date" placeholder="Choose a date">
                 <mat-datepicker #Date></mat-datepicker>
             </div>
             <div class="mb-4">
