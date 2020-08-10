@@ -14,6 +14,8 @@ import { JwPaginationModule } from 'jw-angular-pagination';
 import { SocialLoginModule, AuthServiceConfig } from "angular-6-social-login";
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 import { AuthComponent } from './auth/auth.component';
 import { AllowedEventListComponent } from './allowed-event-list/allowed-event-list.component';
@@ -22,6 +24,8 @@ import { UploadImgComponent } from './upload-img/upload-img.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { Configuration } from './shared/config/configuration';
 import { HomePageComponent } from './home-page/home-page.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -36,6 +40,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     ConfirmationDialogComponent
   ],
   imports: [
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule, 
     BrowserModule,
     AppRoutingModule,
     SocialLoginModule,
@@ -47,6 +54,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     ToastrModule.forRoot()
   ],
   providers: [
+    MatDatepickerModule,
     AuthGuard, 
     Configuration, 
     ConfirmationDialogService,
