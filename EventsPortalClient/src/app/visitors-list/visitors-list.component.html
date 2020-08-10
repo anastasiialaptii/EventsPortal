@@ -16,7 +16,7 @@
                             <p>{{item?.Location}}</p>
                         </div>
                     </div>
-                    <div class="col-md-1 mb-4">
+                    <div class="col-md-1 mb-4" *ngIf="item.Organizer.Token==token.Message">
                         <button type="button" class="btn btn-primary btn-rounded btn-md mr-2" (click)="editEvent(item)">Edit</button>
                     </div>
                     <div class="col-md-7 mb-4">

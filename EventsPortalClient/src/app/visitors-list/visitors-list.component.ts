@@ -26,6 +26,7 @@ export class VisitorsListComponent implements OnInit {
   pageOfItemsEvent: Array<Visit>;
   visitEvent = [];
   visitItem: Visit[];
+  token = JSON.parse(localStorage.getItem('socialusers'));
 
   constructor(
     private activateRoute: ActivatedRoute,
