@@ -27,6 +27,7 @@ export class AllowedEventListComponent implements OnInit {
   eventItem: EventItem[];
   pageOfItemsEvent: Array<EventItem>;
   event: EventItem = new EventItem();
+  dis: boolean[] = [false, true, false, false, true, false];
 
   constructor(
     public confirmationDialogService: ConfirmationDialogService,
@@ -40,6 +41,7 @@ export class AllowedEventListComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetForm();
+    this.eventService.GetAllowedToVisitEvent(this.token.Message);
     this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
       this.eventItem = res;
       console.log(res)
@@ -107,34 +109,44 @@ export class AllowedEventListComponent implements OnInit {
           UserId: res
         }
         this.visitService.CreateVisit(this.visit).subscribe(
-          res => { console.log("success");this.toastr.success('Participation confirmed','Success'); },
+          res => {
+            console.log("success");
+            this.toastr.success('Participation confirmed', 'Success');
+            this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
+              this.eventItem = res;
+              console.log(res)
+              this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
+              this.eventService.GetAllowedToVisitEvent(this.token.Message);
+            });
+          },
           err => {
             debugger;
             console.log(err);
             console.log("success");
-            this.toastr.warning('Participation already confirmed','Warning');
+            this.toastr.warning('Participation already confirmed', 'Warning');
           });
-          
+
       }
     )
   }
 
   onDelete(id) {
     this.confirmationDialogService.confirm()
-    .then((confirmed) => 
-    this.eventService.DeleteEvent(id)
-        .subscribe(res => {
-          this.eventService.GetAllowedEventList(this.token.Message, this.eventService.SearchEventFormData.Name).subscribe((res: any) => {
-            this.eventItem = res;
-            debugger;
-            console.log(res)
-            this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
-            this.toastr.info('Event successfully deleted','Info');
-          })}) ,
-                err => {
-                  debugger;
-                  console.log(err);
-                })  
-           .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+      .then((confirmed) =>
+        this.eventService.DeleteEvent(id)
+          .subscribe(res => {
+            this.eventService.GetAllowedEventList(this.token.Message, this.eventService.SearchEventFormData.Name).subscribe((res: any) => {
+              this.eventItem = res;
+              debugger;
+              console.log(res)
+              this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
+              this.toastr.info('Event successfully deleted', 'Info');
+            })
+          }),
+        err => {
+          debugger;
+          console.log(err);
+        })
+      .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 }

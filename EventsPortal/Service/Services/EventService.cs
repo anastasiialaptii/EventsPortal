@@ -4,6 +4,7 @@ using Data.Interfaces;
 using Service.DTO;
 using Service.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Service.Services
@@ -125,6 +126,31 @@ namespace Service.Services
                     searchedEventList.Add(item);
             }
             return searchedEventList;
+        }
+
+        public async Task<List<int>> IsEventUserCreated(string userId)
+        {
+            var eventVisitorsList = _mapper.Map<List<VisitDTO>>(
+                await _dbOperation.Visits.GetAllAsync());
+
+            var events = _mapper.Map<List<EventDTO>>(
+                await _dbOperation.Events.GetAllAsync());
+
+            var visitEvent = new List<int>();
+
+            foreach (var item in eventVisitorsList)
+            {
+                visitEvent.Add(item.EventId);
+            }
+            
+            var eventsIdList = new List<int>();
+            
+            foreach(var item in events)
+            {
+                eventsIdList.Add(item.Id);
+            }
+
+            return eventsIdList.Except<int>(visitEvent).ToList();
         }
     }
 }

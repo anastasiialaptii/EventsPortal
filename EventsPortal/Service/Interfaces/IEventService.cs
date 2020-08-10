@@ -20,5 +20,7 @@ namespace Service.Interfaces
 
         Task<IEnumerable<EventDTO>> GetSearchedEventList(string searchEvent);
 
+        Task<List<int>> IsEventUserCreated(string userId);
+
     }
 }

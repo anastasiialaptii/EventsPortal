@@ -34,6 +34,12 @@ namespace EventsPortal.Controllers
             return NoContent();
         }
 
+        [HttpGet("{userId}")]
+        public async Task<IEnumerable<int>> GetAlloweEventToVisitList(string userId)
+        {
+            return await _eventService.IsEventUserCreated(userId);
+        }
+
         [HttpGet]
         public async Task<IEnumerable<EventDTO>> GetEventList()
         {

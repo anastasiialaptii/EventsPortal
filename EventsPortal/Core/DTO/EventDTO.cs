@@ -1,5 +1,6 @@
 ﻿using Core.DTO;
 using System;
+using System.Collections.Generic;
 
 namespace Service.DTO
 {
@@ -22,6 +23,5 @@ namespace Service.DTO
         public UserDTO Organizer { get; set; }
 
         public EventTypeDTO EventType { get; set; }
-
     }
 }
