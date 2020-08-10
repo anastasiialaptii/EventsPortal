@@ -78,6 +78,7 @@ export class VisitorsListComponent implements OnInit {
     else {
       this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { console.log('success') });
       this.tableMode = true;
+      this.toastr.success('Event has been updated','Success');
     }
   }
 }
