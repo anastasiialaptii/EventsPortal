@@ -9,6 +9,7 @@ import { EventService } from '../shared/services/event-service';
 
 import { EventItem } from '../shared/models/event-model';
 import { Visit } from '../shared/models/visit-model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-visitors-list',
@@ -32,7 +33,8 @@ export class VisitorsListComponent implements OnInit {
     private activateRoute: ActivatedRoute,
     public visitService: VisitService,
     public eventService: EventService,
-    public config: Configuration
+    public config: Configuration,
+    public toastr: ToastrService
   ) {
     this.subscription = activateRoute.params.subscribe(params => this.id = params['eventId']);
   }
@@ -70,7 +72,12 @@ export class VisitorsListComponent implements OnInit {
   }
 
   save() {
-    this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { console.log('success')});
-    this.tableMode = true;
+    if (!this.eventView.Name || !this.eventView.Location || !this.eventView.Description || !this.eventView.TypeEvent || !this.eventView.Date) {
+      this.toastr.error('Fill out all the fields','Error');
+    } 
+    else {
+      this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { console.log('success') });
+      this.tableMode = true;
+    }
   }
 }
