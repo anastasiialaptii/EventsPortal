@@ -79,7 +79,6 @@
         <input [min]="config.minDate" class="form-control col" matInput [matDatepicker]="Date" name="Date" #Name="ngModel" [(ngModel)]="eventView.Date" placeholder="Choose a date">
         <mat-datepicker #Date></mat-datepicker>
     </div>
-
     <div class="mb-4">
         <app-upload-img (onUploadFinished)="uploadFinished($event)"></app-upload-img>
         <input type="button" value="Cancel" (click)="cancel()" class="btn btn-lg btn-warning mb-2 mr-2 pull-right" />

@@ -34,7 +34,7 @@ export class CreateEventComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     if (this.eventService.FormData.Id == 0) {
-      if (!this.eventService.FormData.ImageURI)
+      if (!this.eventService.FormData.ImageURI || !this.eventService.FormData.Date)
         this.toastr.error('Something wrong!', 'Error');
       else {
         this.createEvent(form);
