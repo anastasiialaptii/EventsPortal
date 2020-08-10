@@ -27,7 +27,6 @@ export class AllowedEventListComponent implements OnInit {
   eventItem: EventItem[];
   pageOfItemsEvent: Array<EventItem>;
   event: EventItem = new EventItem();
-  dis: boolean[] = [false, true, false, false, true, false];
 
   constructor(
     public confirmationDialogService: ConfirmationDialogService,
