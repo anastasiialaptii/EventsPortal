@@ -140,6 +140,7 @@ namespace Service.Services
 
             foreach (var item in eventVisitorsList)
             {
+                if(item.User.Token==userId)
                 visitEvent.Add(item.EventId);
             }
             
