@@ -25,7 +25,7 @@
                 <ng-container *ngIf="isVisitorsExists==true; then eventVisitorsList; else emptyVisitorsList">
                 </ng-container>
                 <ng-template #eventVisitorsList>
-                    <p>Participants:</p>
+                    <h4>Participants:</h4>
                     <div class="ml-4" *ngFor="let item of pageOfItemsEvent">
                         <div>
                             <p>{{item.data.User.Name}} - {{item.data.User.Email}}</p>
@@ -54,7 +54,7 @@
             <input type="hidden" [(ngModel)]="eventView.OrganizerId" class="form-control">
             <div class="mb-4">
                 <label for="eventView.Name">Name</label>
-                <input type="text" [(ngModel)]="eventView.Name" class="form-control form-control-lg" maxlength="23" required>
+                <input type="text" [(ngModel)]="eventView.Name" class="form-control form-control-lg">
             </div>
             <div class="mb-4">
                 <label for="eventView.Location">Location</label>
@@ -69,6 +69,11 @@
                 <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventView.EventTypeId" class="form-control">
                     <option *ngFor="let type of config.eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
                 </select>
+            </div>
+            <div class="mb-4">
+                <mat-datepicker-toggle class="pull-left mr-2" matSuffix [for]="Date"></mat-datepicker-toggle>
+                <input [min]="config.minDate" class="form-control col" matInput [matDatepicker]="Date" name="Date" #Name="ngModel" [(ngModel)]="eventService.FormData.Date" placeholder="Choose a date">
+                <mat-datepicker #Date></mat-datepicker>
             </div>
             <div class="mb-4">
                 <input type="button" value="Cancel" (click)="cancel()" class="btn btn-lg btn-warning mb-2 mr-2 pull-right" />

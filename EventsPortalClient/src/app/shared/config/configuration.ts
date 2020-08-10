@@ -6,6 +6,8 @@ export class Configuration {
         { Id: 1, Name: "Private" },
         { Id: 2, Name: "Public" }
       ];
+
+    minDate = new Date(Date.now());
       
     createImgPath = (serverPath: string) => {
         return `http://localhost:50618/${serverPath}`;

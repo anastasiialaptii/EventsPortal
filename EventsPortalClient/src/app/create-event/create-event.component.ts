@@ -19,7 +19,6 @@ import { ToastrService } from 'ngx-toastr';
 export class CreateEventComponent implements OnInit {
   response: { "dbPath": '' };
   token = JSON.parse(localStorage.getItem('socialusers'));
-  minDate = new Date(Date.now());
   
   constructor(
     public eventService: EventService,

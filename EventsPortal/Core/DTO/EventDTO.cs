@@ -13,7 +13,7 @@ namespace Service.DTO
 
         public string ImageURI { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTimeOffset Date { get; set; }
 
         public int EventTypeId { get; set; }
 
