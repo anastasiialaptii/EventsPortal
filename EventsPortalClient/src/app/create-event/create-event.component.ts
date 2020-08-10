@@ -19,14 +19,14 @@ import { ToastrService } from 'ngx-toastr';
 export class CreateEventComponent implements OnInit {
   response: { "dbPath": '' };
   token = JSON.parse(localStorage.getItem('socialusers'));
-  
+
   constructor(
     public eventService: EventService,
     public userService: UserService,
     private router: Router,
     public config: Configuration,
     public toastr: ToastrService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.resetForm();
@@ -34,10 +34,14 @@ export class CreateEventComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     if (this.eventService.FormData.Id == 0) {
-      this.createEvent(form);
-      this.toastr.success('Added new event', 'Success');
+      if (!this.eventService.FormData.ImageURI)
+        this.toastr.error('Something wrong!', 'Error');
+      else {
+        this.createEvent(form);
+        this.toastr.success('Added new event', 'Success');
+      }
     }
-    else{
+    else {
       this.toastr.error('Something wrong!', 'Error');
     }
   }
