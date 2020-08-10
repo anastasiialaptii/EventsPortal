@@ -16,8 +16,11 @@
                             <p>{{item?.Location}}</p>
                         </div>
                     </div>
-                    <div class="col-md-1 mb-4" *ngIf="item.Organizer.Token==token.Message">
+                    <div class="col-md-1 mb-4" *ngIf="item.Organizer.Token==token.Message; else editDisallowed">
                         <button type="button" class="btn btn-primary btn-rounded btn-md mr-2" (click)="editEvent(item)">Edit</button>
+                        <ng-template #editDisallowed>
+                            <button disabled type="button" class="btn btn-primary btn-rounded btn-md mr-2" (click)="editEvent(item)">Edit</button>
+                        </ng-template>
                     </div>
                     <div class="col-md-7 mb-4">
                     </div>
