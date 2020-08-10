@@ -124,7 +124,6 @@ export class AllowedEventListComponent implements OnInit {
             console.log("success");
             this.toastr.warning('Participation already confirmed', 'Warning');
           });
-
       }
     )
   }

@@ -8,7 +8,6 @@ import { Configuration } from '../shared/config/configuration';
 
 import { ToastrService } from 'ngx-toastr';
 
-
 @Component({
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
