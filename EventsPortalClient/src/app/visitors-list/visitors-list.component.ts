@@ -28,6 +28,7 @@ export class VisitorsListComponent implements OnInit {
   visitEvent = [];
   visitItem: Visit[];
   token = JSON.parse(localStorage.getItem('socialusers'));
+  response: { "dbPath": '' };
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -69,6 +70,12 @@ export class VisitorsListComponent implements OnInit {
   cancel() {
     this.tableMode = true;
     this.eventService.GetEventById(this.eventView.Id);
+  }
+
+  uploadFinished = (event) => {
+    this.response = event;
+    debugger;
+    this.eventView.ImageURI = this.response.dbPath;
   }
 
   save() {
