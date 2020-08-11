@@ -5,6 +5,7 @@ using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Security.Policy;
 using System.Threading.Tasks;
 
 namespace EventsPortal.Controllers
@@ -57,6 +58,14 @@ namespace EventsPortal.Controllers
         [HttpGet]
         public async Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId, string searchEvent)
         {
+            return await _eventService.GetAllowedEventList(organizerId, searchEvent);
+        }
+
+
+        public async Task<IEnumerable<EventDTO>> GetAllEvents(string searchTerm)
+        {
+            //var user = User.dfsdf.Id;
+
             return await _eventService.GetAllowedEventList(organizerId, searchEvent);
         }
 

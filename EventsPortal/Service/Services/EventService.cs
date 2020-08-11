@@ -79,6 +79,7 @@ namespace Service.Services
 
         public async Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId, string searchEvent)
         {
+
             var events = _mapper.Map<List<EventDTO>>(
                 await _dbOperation.Events.GetAllAsync());
 

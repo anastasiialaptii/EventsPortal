@@ -6,6 +6,17 @@
                 <h1 class="text-center">Events 🎉</h1>
             </div>
         </div>
+
+        <!-- <div class="row">
+            <div class="col-md-12 mb-4">
+                <mat-datepicker-toggle class="pull-left mr-2" matSuffix [for]="Date"></mat-datepicker-toggle>
+                <div class="row">
+                    <input type="date | date" (ngModelChange)="onSearchEventByDate(eventService.EventDate)" class="form-control col" matInput [matDatepicker]="Date" name="Date" #Name="ngModel" [(ngModel)]="eventService.EventDate" placeholder="Choose a date">
+                </div>
+                <mat-datepicker #Date></mat-datepicker>
+            </div>
+        </div> -->
+
         <div class="row">
             <div class="col-md-12 mb-4">
                 <input (ngModelChange)="onSearchEvent(eventService.SearchEventFormData.Name)" type="text" name="Name" class="form-control" placeholder="Search for an event" aria-describedby="basic-addon2" #Name="ngModel" [(ngModel)]="eventService.SearchEventFormData.Name">

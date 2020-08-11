@@ -14,7 +14,7 @@ export class EventService {
     SearchEventList: EventItem[];
     EventByIdList: EventItem[];
     AllowedToVisitEvent: number[];
-    EventDate:Date;
+    EventDate:Date
 
     constructor(private http: HttpClient) { }
 
@@ -31,9 +31,9 @@ export class EventService {
         }
     }
 
-    GetEventListByDate(date: number) {
-        return this.http.get(Configuration.URI + '/Event/GetEventsByDate/' + date);
-    }
+    // GetEventListByDate(date: Date) {
+    //     return this.http.get(Configuration.URI + '/Event/GetEventsByDate/' + date.toISOString());
+    // }
 
     GetEventList() {
         return this.http.get(Configuration.URI + '/Event/GetAllowedEventList');
