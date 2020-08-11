@@ -7,16 +7,19 @@ import { AllowedEventListComponent } from './allowed-event-list/allowed-event-li
 import { VisitorsListComponent } from './visitors-list/visitors-list.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { NotFoundComponent } from './not-found.component';
 
 const routes: Routes = [
   { path: 'allowed-event-list', component: AllowedEventListComponent, canActivate: [AuthGuard] },
   { path: 'visitors-list/:eventId', component: VisitorsListComponent, canActivate: [AuthGuard] },
   { path: 'create-event', component: CreateEventComponent, canActivate: [AuthGuard] },
-  { path: '', component: HomePageComponent }
+  { path: '', component: HomePageComponent },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+  declarations:[NotFoundComponent],
   exports: [RouterModule]
 })
 

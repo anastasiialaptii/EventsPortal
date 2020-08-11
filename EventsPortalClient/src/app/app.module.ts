@@ -14,7 +14,7 @@ import { JwPaginationModule } from 'jw-angular-pagination';
 import { SocialLoginModule, AuthServiceConfig } from "angular-6-social-login";
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 import { AuthComponent } from './auth/auth.component';
@@ -42,22 +42,22 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   imports: [
     MatDatepickerModule,
     MatNativeDateModule,
-    MatFormFieldModule, 
+    MatFormFieldModule,
     BrowserModule,
     AppRoutingModule,
     SocialLoginModule,
     HttpClientModule,
-    FormsModule, 
-    JwPaginationModule, 
+    FormsModule,
+    JwPaginationModule,
     NgbModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgxFileDropModule
   ],
   providers: [
     MatDatepickerModule,
-    AuthGuard, 
-    Configuration, 
+    AuthGuard,
+    Configuration,
     ConfirmationDialogService,
     {
       provide: AuthServiceConfig,
@@ -65,7 +65,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ ConfirmationDialogComponent ]
+  entryComponents: [ConfirmationDialogComponent]
 })
 
 export class AppModule { }
