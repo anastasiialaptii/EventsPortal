@@ -1,8 +1,21 @@
-<input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;" multiple>
+<!-- <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;" multiple>
 <button type="button" class="btn btn-primary btn-sm pull-left" (click)="file.click()">Upload Promo</button>
 <span class="upload" *ngIf="progress > 0" class="pull-left ml-2">
   {{progress}}%
 </span>
 <span class="upload" *ngIf="message" class="pull-left ml-2">
   {{message}}
-</span>
+</span> -->
+
+
+<div class="Neon Neon-theme-dragdropbox">
+    <input style="z-index: 999; opacity: 0; width: 320px; height: 200px; position: absolute; right: 0px; left: 0px; margin-right: auto; margin-left: auto;" type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;"
+        multiple>
+    <div class="Neon-input-dragDrop">
+        <div class="Neon-input-inner">
+            <div class="Neon-input-icon"><i class="fa fa-file-image-o"></i></div>
+            <div class="Neon-input-text">
+            </div><a class="Neon-input-choose-btn blue" (click)="file.click()">Browse Files</a>
+        </div>
+    </div>
+</div>
