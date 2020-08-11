@@ -21,6 +21,7 @@ export class UploadImgComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //base upload
   uploadFile = (files) => {
     if (files.length === 0) {
       return;
@@ -39,18 +40,15 @@ export class UploadImgComponent implements OnInit {
       });
   }
 
+  //DRAG&DROP
   public files: NgxFileDropEntry[] = [];
  
   public dropped(files: NgxFileDropEntry[]) {
     this.files = files;
     for (const droppedFile of files) {
- 
-      // Is it a file?
       if (droppedFile.fileEntry.isFile) {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
         fileEntry.file((file: File) => {
- 
-          // Here you can access the real file
           console.log(droppedFile.relativePath, file);
      const formData = new FormData();
 
@@ -66,7 +64,6 @@ export class UploadImgComponent implements OnInit {
            });
         });
       } else {
-        // It was a directory (empty directories are added, otherwise only files)
         const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
         console.log(droppedFile.relativePath, fileEntry);
       }

@@ -1,17 +1,8 @@
-<!-- <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;" multiple>
-<button type="button" class="btn btn-primary btn-sm pull-left" (click)="file.click()">Upload Promo</button>
-<span class="upload" *ngIf="progress > 0" class="pull-left ml-2">
-  {{progress}}%
-</span>
-<span class="upload" *ngIf="message" class="pull-left ml-2">
-  {{message}}
-</span> -->
-
-<div class="center">
-    <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" (change)="uploadFile(file.files)" (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+<div class="center mb-4">
+    <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
         <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
             <input type="file" #file placeholder="Choose file" style="display:none;" multiple>
-            <button type="button" class="btn btn-primary btn-sm pull-left" (click)="file.click()">Upload Promo</button>
+            <button type="button" class="btn btn-primary btn-sm pull-left" (click)="file.click()">Drop or upload image here</button>
             <span class="upload" *ngIf="progress > 0" class="pull-left ml-2">
             {{progress}}%
           </span>
