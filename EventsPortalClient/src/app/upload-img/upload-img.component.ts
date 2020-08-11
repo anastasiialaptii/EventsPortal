@@ -21,7 +21,6 @@ export class UploadImgComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  //base upload
   uploadFile = (files) => {
     if (files.length === 0) {
       return;
@@ -40,7 +39,6 @@ export class UploadImgComponent implements OnInit {
       });
   }
 
-  //DRAG&DROP
   public files: NgxFileDropEntry[] = [];
  
   public dropped(files: NgxFileDropEntry[]) {

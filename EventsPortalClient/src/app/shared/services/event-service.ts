@@ -14,6 +14,7 @@ export class EventService {
     SearchEventList: EventItem[];
     EventByIdList: EventItem[];
     AllowedToVisitEvent: number[];
+    EventDate:Date;
 
     constructor(private http: HttpClient) { }
 
@@ -30,14 +31,18 @@ export class EventService {
         }
     }
 
-    GetEventList(){
+    GetEventListByDate(date: number) {
+        return this.http.get(Configuration.URI + '/Event/GetEventsByDate/' + date);
+    }
+
+    GetEventList() {
         return this.http.get(Configuration.URI + '/Event/GetAllowedEventList');
     }
 
-    GetAllowedToVisitEvent(idUser?: string){
+    GetAllowedToVisitEvent(idUser?: string) {
         return this.http.get(Configuration.URI + '/Event/GetAlloweEventToVisitList/' + idUser)
-        .toPromise()
-        .then(res=>this.AllowedToVisitEvent = res as number[]);
+            .toPromise()
+            .then(res => this.AllowedToVisitEvent = res as number[]);
     }
 
     GetEventById(id: number) {

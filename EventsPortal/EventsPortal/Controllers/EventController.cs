@@ -46,6 +46,12 @@ namespace EventsPortal.Controllers
             return await _eventService.GetEvents();
         }
 
+        [HttpGet("{startDate}")]
+        public async Task<IEnumerable<EventDTO>> GetEventsByDate(string startDate)
+        {
+            return await _eventService.GetEventsByDate(startDate);
+        }
+
         [HttpGet("{organizerId}/{searchEvent}")]
         [HttpGet("{organizerId}")]
         [HttpGet]

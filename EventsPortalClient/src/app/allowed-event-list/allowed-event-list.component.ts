@@ -65,6 +65,17 @@ export class AllowedEventListComponent implements OnInit {
     }
   }
 
+  onSearchEventByDate(date:number){
+    debugger;
+    document.getElementById("Date").nodeValue = "2014-02-09";
+    //console.log(new Date(date));
+    // this.eventService.GetEventListByDate(date).subscribe((res: any) => {      
+    //   this.eventItem = res;
+    //   console.log(res)
+    //   this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
+    // });
+  }
+
   onChangePage(pageOfItemsEvent: Array<any>) {
     this.pageOfItemsEvent = pageOfItemsEvent;
   }

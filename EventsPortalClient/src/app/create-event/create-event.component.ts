@@ -48,6 +48,7 @@ export class CreateEventComponent implements OnInit {
   createEvent(form: NgForm) {
     this.eventService.CreateEvent().subscribe(
       res => {
+        debugger;
         this.router.navigate(['/allowed-event-list']);
         this.resetForm();
       },

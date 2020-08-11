@@ -3,6 +3,7 @@ using Core.Entities;
 using Data.Interfaces;
 using Service.DTO;
 using Service.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -140,18 +141,34 @@ namespace Service.Services
 
             foreach (var item in eventVisitorsList)
             {
-                if(item.User.Token==userId)
-                visitEvent.Add(item.EventId);
+                if (item.User.Token == userId)
+                    visitEvent.Add(item.EventId);
             }
-            
+
             var eventsIdList = new List<int>();
-            
-            foreach(var item in events)
+
+            foreach (var item in events)
             {
                 eventsIdList.Add(item.Id);
             }
 
             return eventsIdList.Except<int>(visitEvent).ToList();
+        }
+
+        public async Task<IEnumerable<EventDTO>> GetEventsByDate(string startDate)
+        {
+            var events = _mapper.Map<List<EventDTO>>(
+                await _dbOperation.Events.GetAllAsync());
+
+            var eventsByDate = new List<EventDTO>();
+                foreach (var item in events)
+                {
+                    if (item.Date.ToString() == startDate)
+                    {
+                        events.Add(item);
+                    }
+                }
+            return eventsByDate;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Service.DTO;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -21,6 +22,8 @@ namespace Service.Interfaces
         Task<IEnumerable<EventDTO>> GetSearchedEventList(string searchEvent);
 
         Task<List<int>> IsEventUserCreated(string userId);
+
+        Task<IEnumerable<EventDTO>> GetEventsByDate(string startDate);
 
     }
 }
