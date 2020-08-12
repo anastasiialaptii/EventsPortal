@@ -27,6 +27,8 @@ export class AuthComponent implements OnInit {
   ) { }
 
   ngOnInit() { 
+       //this.gAuthService.AuthCookie().subscribe(res=>{res});
+
     this.userName=this.token.UserName;
   }
 

@@ -12,6 +12,11 @@ export class GoogleAuthService {
     constructor(private http: HttpClient) { }
 
     AuthUser(responce) {
+        
         return this.http.post(Configuration.URI + '/Auth/Savesresponse', responce);
+    }
+
+    AuthCookie() {
+        return this.http.get(Configuration.URI + '/Auth/Authenticate');
     }
 }

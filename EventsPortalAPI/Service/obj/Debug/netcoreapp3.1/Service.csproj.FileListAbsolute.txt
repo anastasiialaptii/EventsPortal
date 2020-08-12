@@ -1,0 +1,17 @@
+D:\WebAPI\EventsPortalAPI\Service\bin\Debug\netcoreapp3.1\Service.deps.json
+D:\WebAPI\EventsPortalAPI\Service\bin\Debug\netcoreapp3.1\Service.dll
+D:\WebAPI\EventsPortalAPI\Service\bin\Debug\netcoreapp3.1\Service.pdb
+D:\WebAPI\EventsPortalAPI\Service\obj\Debug\netcoreapp3.1\Service.csprojAssemblyReference.cache
+D:\WebAPI\EventsPortalAPI\Service\obj\Debug\netcoreapp3.1\Service.AssemblyInfoInputs.cache
+D:\WebAPI\EventsPortalAPI\Service\obj\Debug\netcoreapp3.1\Service.AssemblyInfo.cs
+D:\WebAPI\EventsPortalAPI\Service\obj\Debug\netcoreapp3.1\Service.dll
+D:\WebAPI\EventsPortalAPI\Service\obj\Debug\netcoreapp3.1\Service.pdb
+D:\WebAPI\EventsPortalAPI\Service\bin\Debug\netcoreapp3.1\Service.runtimeconfig.json
+D:\WebAPI\EventsPortalAPI\Service\bin\Debug\netcoreapp3.1\Service.runtimeconfig.dev.json
+D:\WebAPI\EventsPortalAPI\Service\bin\Debug\netcoreapp3.1\Core.dll
+D:\WebAPI\EventsPortalAPI\Service\bin\Debug\netcoreapp3.1\Repository.dll
+D:\WebAPI\EventsPortalAPI\Service\bin\Debug\netcoreapp3.1\Repository.pdb
+D:\WebAPI\EventsPortalAPI\Service\bin\Debug\netcoreapp3.1\Core.pdb
+D:\WebAPI\EventsPortalAPI\Service\obj\Debug\netcoreapp3.1\Service.csproj.CopyComplete
+D:\WebAPI\EventsPortalAPI\Service\obj\Debug\netcoreapp3.1\Service.genruntimeconfig.cache
+D:\WebAPI\EventsPortalAPI\Service\obj\Debug\netcoreapp3.1\Service.csproj.CoreCompileInputs.cache

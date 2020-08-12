@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTO;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Security.Policy;
 using System.Threading.Tasks;
 
@@ -56,13 +58,15 @@ namespace EventsPortal.Controllers
         [HttpGet("{organizerId}/{searchEvent}")]
         [HttpGet("{organizerId}")]
         [HttpGet]
+        
         public async Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId, string searchEvent)
         {
+            var s = User.Identity.Name;
             return await _eventService.GetAllowedEventList(organizerId, searchEvent);
         }
 
 
-        public async Task<IEnumerable<EventDTO>> GetAllEvents(string searchTerm)
+        public async Task<IEnumerable<EventDTO>> GetAllEvents(string organizerId, string searchEvent)
         {
             //var user = User.dfsdf.Id;
 

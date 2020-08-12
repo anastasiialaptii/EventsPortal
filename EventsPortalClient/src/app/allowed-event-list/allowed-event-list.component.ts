@@ -11,6 +11,8 @@ import { EventItem } from '../shared/models/event-model';
 import { Configuration } from '../shared/config/configuration';
 import { Router } from '@angular/router';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
+import { AuthComponent } from '../auth/auth.component';
+import { GoogleAuthService } from '../shared/services/auth-service';
 
 @Component({
   selector: 'app-allowed-event-list',
@@ -39,13 +41,14 @@ export class AllowedEventListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.resetForm();
-    this.eventService.GetAllowedToVisitEvent(this.token.Message);
-    this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
-      this.eventItem = res;
-      console.log(res)
-      this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
-    });
+    // this.resetForm();
+    
+    // this.eventService.GetAllowedToVisitEvent(this.token.Message);
+    // this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
+    //   this.eventItem = res;
+    //   console.log(res)
+    //   this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
+    // });
   }
 
   onSearchEvent(name: string) {
@@ -65,16 +68,7 @@ export class AllowedEventListComponent implements OnInit {
     }
   }
 
-  onSearchEventByDate(date:string){
-    debugger;
-    console.log(date);
-    this.eventService.GetEventListByDate(date).subscribe((res: any) => {      
-      debugger;
-      this.eventItem = res;
-      console.log(res)      
-      this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
-    });
-  }
+
 
   onChangePage(pageOfItemsEvent: Array<any>) {
     this.pageOfItemsEvent = pageOfItemsEvent;

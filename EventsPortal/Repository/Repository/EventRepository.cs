@@ -45,11 +45,11 @@ namespace Data.Repository
 
         public async Task<IEnumerable<Event>> GetAllAsync()
         {
-            var events = _dbContext.Events
-                                .Where(e => e.Name.Contains("name"))
-                                .Select(e => new EventDTO {
-                                    )
-                                .ToList();
+            //var events = _dbContext.Events
+            //                    .Where(e => e.Name.Contains("name"))
+            //                    .Select(e => new EventDTO {
+            //                        )
+            //                    .ToList();
             return await _dbContext.Events
                 .Select(x => new Event
                 {
