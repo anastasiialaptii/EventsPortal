@@ -31,10 +31,6 @@ export class EventService {
         }
     }
 
-    // GetEventListByDate(date: Date) {
-    //     return this.http.get(Configuration.URI + '/Event/GetEventsByDate/' + date.toISOString());
-    // }
-
     GetEventList() {
         return this.http.get(Configuration.URI + '/Event/GetAllowedEventList');
     }

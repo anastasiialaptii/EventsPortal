@@ -46,7 +46,7 @@ namespace EventsPortal.Controllers
             {
                 if (user.Email == googleUser.email)
                 {
-                   // await Authenticate(googleUser.name);
+                    await Authenticate(googleUser.name);
                     return new Response { Message = user.Token, UserName = user.Name, Status = "Exists" };
                 }
             }
@@ -61,7 +61,7 @@ namespace EventsPortal.Controllers
                 Token = googleUser.token
             };
             await _userService.AddUser(userDTO);
-            //await Authenticate(googleUser.name);
+           // await Authenticate(googleUser.name);
             return new Response { Message = googleUser.token, UserName = googleUser.name, Status = "OK" };
         }
     }

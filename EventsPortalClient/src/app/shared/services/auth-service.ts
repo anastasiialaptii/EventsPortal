@@ -12,8 +12,8 @@ export class GoogleAuthService {
     constructor(private http: HttpClient) { }
 
     AuthUser(responce) {
-        
-        return this.http.post(Configuration.URI + '/Auth/Savesresponse', responce);
+
+        return this.http.post(Configuration.URI + '/Auth/Savesresponse', responce, { withCredentials: true });
     }
 
     AuthCookie() {
