@@ -26,18 +26,10 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-    this.auth.AuthCookie().subscribe(response => {
-      const token = (<any>response).token;
-      localStorage.setItem("jwt", token);
-     
-    }, err => {
-      
+    this.eventService.GetEventList().subscribe((res: any) => {
+      this.eventItem = res;
+      this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
     });
-    // this.eventService.GetEventList().subscribe((res: any) => {
-    //   this.eventItem = res;
-    //   this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
-    // });
   }
 
   onChangePage(pageOfItemsEvent: Array<any>) {

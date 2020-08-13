@@ -1,5 +1,5 @@
 export class Configuration {
-    static URI: string = 'http://localhost:55184/api';
+    static URI: string = 'http://localhost:50618/api';
     static GoogleProvider: string = '1056893109317-gm4i7slkdmgb5r8breicrvfodok1o4lh.apps.googleusercontent.com';
     
     eventTypes = [
@@ -10,6 +10,6 @@ export class Configuration {
     minDate = new Date(Date.now());
       
     createImgPath = (serverPath: string) => {
-        return `http://localhost:55184/${serverPath}`;
+        return `http://localhost:50618/${serverPath}`;
     }
 }

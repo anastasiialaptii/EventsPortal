@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTO;
 using Service.Interfaces;
@@ -16,55 +17,52 @@ namespace EventsPortal.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-      //  private readonly IUserService _userService;
+        private readonly IUserService _userService;
 
-        public AuthController(/*IUserService userService*/)
+        public AuthController(IUserService userService)
         {
-        //    _userService = userService;
+            _userService = userService;
         }
 
         [HttpGet]
-        public async Task Authenticate()
+        public async Task Authenticate(string user)
         {
-            // создаем один claim
+
             var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, "qwe")
+                new Claim(ClaimsIdentity.DefaultNameClaimType, "test")
             };
-            // создаем объект ClaimsIdentity
-            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-            // установка аутентификационных куки
+            ClaimsIdentity id = new ClaimsIdentity(claims, "Cookies", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
 
 
-        //[HttpPost]
-        //public async Task<object> Savesresponse(GoogleUser googleUser)
-        //{
-        //    var userList = await _userService.GetUsers();   
+        [HttpPost]
+        public async Task<object> Savesresponse(GoogleUser googleUser)
+        {
+            var userList = await _userService.GetUsers();
 
-        //    foreach (var user in userList)
-        //    {
-        //        if (user.Email == googleUser.email)
-        //        {
-        //            await Authenticate();
-        //            return new Response { Message = user.Token, UserName = user.Name, Status = "Exists" };
-        //        }
-        //    }
-        //    var userDTO = new UserDTO()
-        //    {
-        //        GoogleId = googleUser.id,
-        //        Email = googleUser.email,
-        //        IdToken = googleUser.idToken,
-        //        Image = googleUser.image,
-        //        Name = googleUser.name,
-        //        Provider = googleUser.provider,
-        //        Token = googleUser.token
-        //    };
-        //    await _userService.AddUser(userDTO);
-        //    await Authenticate();
-
-        //    return new Response { Message = googleUser.token, UserName = googleUser.name, Status = "OK" };
-        //}
+            foreach (var user in userList)
+            {
+                if (user.Email == googleUser.email)
+                {
+                   // await Authenticate(googleUser.name);
+                    return new Response { Message = user.Token, UserName = user.Name, Status = "Exists" };
+                }
+            }
+            var userDTO = new UserDTO()
+            {
+                GoogleId = googleUser.id,
+                Email = googleUser.email,
+                IdToken = googleUser.idToken,
+                Image = googleUser.image,
+                Name = googleUser.name,
+                Provider = googleUser.provider,
+                Token = googleUser.token
+            };
+            await _userService.AddUser(userDTO);
+            //await Authenticate(googleUser.name);
+            return new Response { Message = googleUser.token, UserName = googleUser.name, Status = "OK" };
+        }
     }
 }

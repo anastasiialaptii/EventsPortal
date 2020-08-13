@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 import { AuthComponent } from '../auth/auth.component';
 import { GoogleAuthService } from '../shared/services/auth-service';
+import { AuthService } from 'angular-6-social-login';
 
 @Component({
   selector: 'app-allowed-event-list',
@@ -37,18 +38,20 @@ export class AllowedEventListComponent implements OnInit {
     public userService: UserService,
     public config: Configuration,
     public router: Router,
-    public toastr: ToastrService
+    public toastr: ToastrService,
+    public authService: GoogleAuthService
   ) { }
 
   ngOnInit(): void {
-    // this.resetForm();
-    
-    // this.eventService.GetAllowedToVisitEvent(this.token.Message);
-    // this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
-    //   this.eventItem = res;
-    //   console.log(res)
-    //   this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
-    // });
+    this.authService.AuthCookie().subscribe(res => { console.log('success') }, err => { console.log('------') });
+
+    this.resetForm();
+    this.eventService.GetAllowedToVisitEvent(this.token.Message);
+    this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
+      this.eventItem = res;
+      console.log(res)
+      this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
+    });
   }
 
   onSearchEvent(name: string) {

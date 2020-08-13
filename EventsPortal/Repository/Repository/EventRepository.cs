@@ -1,7 +1,6 @@
 ﻿using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Repository;
-using Service.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +22,7 @@ namespace Data.Repository
             if (item != null)
             {
                 _dbContext.Events.Add(item);
+
             }
         }
 
@@ -30,6 +30,7 @@ namespace Data.Repository
         {
             if (item != null)
             {
+
                 _dbContext.Events.Remove(item);
             }
         }
@@ -50,6 +51,9 @@ namespace Data.Repository
             //                    .Select(e => new EventDTO {
             //                        )
             //                    .ToList();
+
+
+
             return await _dbContext.Events
                 .Select(x => new Event
                 {

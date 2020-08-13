@@ -26,10 +26,8 @@ export class AuthComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() { 
-       //this.gAuthService.AuthCookie().subscribe(res=>{res});
-
-    this.userName=this.token.UserName;
+  ngOnInit() {
+    this.userName = this.token.UserName;
   }
 
   socialSignIn(socialProvider: string) {

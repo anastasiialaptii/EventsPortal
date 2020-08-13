@@ -33,80 +33,85 @@ namespace EventsPortal
         {
             services.AddControllers();
 
-            //services.AddMvc()
-            //   .SetCompatibilityVersion(CompatibilityVersion.Latest)
-            //   .AddJsonOptions(options =>
-            //   {
-            //       options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-            //       options.JsonSerializerOptions.PropertyNamingPolicy = null;
+            services.AddMvc()
+               .SetCompatibilityVersion(CompatibilityVersion.Latest)
+               .AddJsonOptions(options =>
+               {
+                   options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                   options.JsonSerializerOptions.PropertyNamingPolicy = null;
 
-            //   });
+               });
 
-            //services.Configure<FormOptions>(o =>
-            //{
-            //    o.ValueLengthLimit = int.MaxValue;
-            //    o.MultipartBodyLengthLimit = int.MaxValue;
-            //    o.MemoryBufferThreshold = int.MaxValue;
-            //});
+            services.Configure<FormOptions>(o =>
+            {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
 
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    );
+                    builder =>
+                    {
+                        builder.SetIsOriginAllowed(_ => true);
+                        builder.AllowAnyMethod();
+                        builder.AllowAnyHeader();
+                        builder.AllowCredentials();
+                    });
             });
 
-            //services.AddDbContext<EventsPortalDbContext>(options =>
-            //     options.UseSqlServer(Configuration.GetConnectionString("EventsPortalConnection")));
+            services.AddDbContext<EventsPortalDbContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("EventsPortalConnection")));
 
-            //services.AddTransient<IEventService, EventService>();
-            //services.AddTransient<IUserService, UserService>();
-            //services.AddTransient<IVisitService, VisitService>();
-            //services.AddTransient<IUnitOfWork, EventsPortalUnitOfWork>();
+            services.AddTransient<IEventService, EventService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IVisitService, VisitService>();
+            services.AddTransient<IUnitOfWork, EventsPortalUnitOfWork>();
 
-            //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            //services.AddAuthentication()
-            //    .AddGoogle("Google", opt =>
-            //    {
-            //        var googleAuth = Configuration.GetSection("Authentication:Google");
-            //        opt.ClientId = googleAuth["ClientId"];
-            //        opt.ClientSecret = googleAuth["ClientSecret"];
-            //    });
+            services.AddAuthentication()
+                .AddGoogle("Google", opt =>
+                {
+                    var googleAuth = Configuration.GetSection("Authentication:Google");
+                    opt.ClientId = googleAuth["ClientId"];
+                    opt.ClientSecret = googleAuth["ClientSecret"];
+                });
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-       .AddCookie(options => //CookieAuthenticationOptions
-        {
-            //options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
-        });
+                .AddCookie(options =>
+                {
+                    //options.Cookie.HttpOnly = true;
+                    options.Cookie.Name = "Cookies";
+                    //options.Cookie.SameSite = SameSiteMode.None;
+                });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-            }
+                if (env.IsDevelopment())
+                {
+                    app.UseDeveloperExceptionPage();
+                }
 
-            app.UseRouting();
+                app.UseRouting();
             app.UseCors("CorsPolicy");
 
             app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
-                RequestPath = new PathString("/Resources")
-            });
+                app.UseStaticFiles(new StaticFileOptions()
+                {
+                    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+                    RequestPath = new PathString("/Resources")
+                });
 
-            app.UseAuthentication();
-            app.UseAuthorization();
+                app.UseAuthentication();
+                app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+                app.UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                });
+            }
         }
     }
-}

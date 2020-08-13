@@ -12,7 +12,6 @@ D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.csproj.CopyComple
 D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.dll
 D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.pdb
 D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.genruntimeconfig.cache
-D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.csproj.CoreCompileInputs.cache
 H:\TechStack\EventsPortal\EventsPortal\Repository\bin\Debug\netcoreapp3.1\Data.deps.json
 H:\TechStack\EventsPortal\EventsPortal\Repository\bin\Debug\netcoreapp3.1\Data.runtimeconfig.json
 H:\TechStack\EventsPortal\EventsPortal\Repository\bin\Debug\netcoreapp3.1\Data.runtimeconfig.dev.json
@@ -28,3 +27,4 @@ H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.c
 H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.dll
 H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.pdb
 H:\TechStack\EventsPortal\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.genruntimeconfig.cache
+D:\WebAPI\EventsPortal\Repository\obj\Debug\netcoreapp3.1\Data.csproj.CoreCompileInputs.cache

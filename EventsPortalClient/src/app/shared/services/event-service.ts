@@ -24,10 +24,10 @@ export class EventService {
 
     GetAllowedEventList(idUser?: string, searchString?: string) {
         if (idUser != null && searchString == null) {
-            return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/' + idUser);
+            return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/' + idUser,{ withCredentials: true });
         }
         else if (idUser != null && searchString != null) {
-            return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/' + idUser + '/' + searchString);
+            return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/' + idUser + '/' + searchString,{ withCredentials: true });
         }
     }
 

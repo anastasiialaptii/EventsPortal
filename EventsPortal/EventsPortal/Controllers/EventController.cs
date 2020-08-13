@@ -1,12 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Service.DTO;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
 using System.Security.Policy;
 using System.Threading.Tasks;
 
@@ -58,6 +62,7 @@ namespace EventsPortal.Controllers
         [HttpGet("{organizerId}/{searchEvent}")]
         [HttpGet("{organizerId}")]
         [HttpGet]
+        [Authorize]
         
         public async Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId, string searchEvent)
         {
@@ -68,8 +73,6 @@ namespace EventsPortal.Controllers
 
         public async Task<IEnumerable<EventDTO>> GetAllEvents(string organizerId, string searchEvent)
         {
-            //var user = User.dfsdf.Id;
-
             return await _eventService.GetAllowedEventList(organizerId, searchEvent);
         }
 
@@ -104,6 +107,8 @@ namespace EventsPortal.Controllers
         {
             if (id != null)
             {
+                string userId = User.Claims.First(c => c.Type == "UserID").Value;
+
                 var searchItem = await _eventService.GetEventById(id);
                 if (searchItem != null)
                 {

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxFileDropModule } from 'ngx-file-drop';
@@ -26,6 +26,8 @@ import { Configuration } from './shared/config/configuration';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
+
+import {HttpRequestInterceptor} from '../app/shared/config/HttpRequestInterceptor';
 
 
 @NgModule({
@@ -62,7 +64,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
-    }
+    },
+    [
+      { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
+  ],
   ],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationDialogComponent]
