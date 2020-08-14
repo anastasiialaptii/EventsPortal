@@ -21,6 +21,7 @@ import { AuthenticateService } from '../shared/services/auth-service';
 export class AllowedEventListComponent implements OnInit {
   userId: number;
   visit: Visit;
+  
   publicOwnEvents = [];
   eventItems: EventItem[];
   pageOfItemsEvent: Array<EventItem>;
@@ -66,7 +67,7 @@ export class AllowedEventListComponent implements OnInit {
   }
 
   onEventDetails(eventId: number) {
-    this.eventService.GetEventById(eventId);
+    this.eventService.GetEvent(eventId);
     this.router.navigate(["/visitors-list/" + eventId]);
   }
 

@@ -92,66 +92,63 @@ namespace Service.Services
 
         public IEnumerable<EventDTO> GetPublicEvents()
         {
-            return _mapper.Map<List<EventDTO>>(
-                _dbOperation.Events.GetItems()
-                .Where(x => x.EventType.Name == "Public")
-                .Select(x => new EventDTO
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Location = x.Location,
-                    ImageURI = x.ImageURI,
-                    Description = x.Description,
-                    Date = x.Date,
-                    OrganizerId = x.OrganizerId,
-                    EventTypeId = x.EventTypeId,
-                    Organizer = new UserDTO
-                    {
-                        Id = x.Organizer.Id,
-                        Name = x.Organizer.Name,
-                        Email = x.Organizer.Email
-                    },
-                    EventType = new EventTypeDTO
-                    {
-                        Id = x.EventType.Id,
-                        Name = x.EventType.Name
-                    }
-                }).ToList());
+            return _dbOperation.Events.GetItems()
+               .Where(x => x.EventType.Name == "Public")
+               .Select(x => new EventDTO
+               {
+                   Id = x.Id,
+                   Name = x.Name,
+                   Location = x.Location,
+                   ImageURI = x.ImageURI,
+                   Description = x.Description,
+                   Date = x.Date,
+                   OrganizerId = x.OrganizerId,
+                   EventTypeId = x.EventTypeId,
+                   Organizer = new UserDTO
+                   {
+                       Id = x.Organizer.Id,
+                       Name = x.Organizer.Name,
+                       Email = x.Organizer.Email
+                   },
+                   EventType = new EventTypeDTO
+                   {
+                       Id = x.EventType.Id,
+                       Name = x.EventType.Name
+                   }
+               }).ToList();
         }
 
         public IEnumerable<EventDTO> GetPublicOwnEvents(string userId)
         {
-            return _mapper.Map<List<EventDTO>>(
-                _dbOperation.Events.GetItems()
-                .Where(x => x.EventType.Name == "Public" || x.EventType.Name == "Private" && x.Organizer.Email == userId)
-                .Select(x => new EventDTO
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Location = x.Location,
-                    ImageURI = x.ImageURI,
-                    Description = x.Description,
-                    Date = x.Date,
-                    OrganizerId = x.OrganizerId,
-                    EventTypeId = x.EventTypeId,
-                    Organizer = new UserDTO
-                    {
-                        Id = x.Organizer.Id,
-                        Name = x.Organizer.Name,
-                        Email = x.Organizer.Email
-                    },
-                    EventType = new EventTypeDTO
-                    {
-                        Id = x.EventType.Id,
-                        Name = x.EventType.Name
-                    }
-                }).ToList());
+            return _dbOperation.Events.GetItems()
+              .Where(x => x.EventType.Name == "Public" || x.EventType.Name == "Private" && x.Organizer.Email == userId)
+              .Select(x => new EventDTO
+              {
+                  Id = x.Id,
+                  Name = x.Name,
+                  Location = x.Location,
+                  ImageURI = x.ImageURI,
+                  Description = x.Description,
+                  Date = x.Date,
+                  OrganizerId = x.OrganizerId,
+                  EventTypeId = x.EventTypeId,
+                  Organizer = new UserDTO
+                  {
+                      Id = x.Organizer.Id,
+                      Name = x.Organizer.Name,
+                      Email = x.Organizer.Email
+                  },
+                  EventType = new EventTypeDTO
+                  {
+                      Id = x.EventType.Id,
+                      Name = x.EventType.Name
+                  }
+              }).ToList();
         }
 
         public IEnumerable<EventDTO> SearchEvents(string userId, string eventName)
         {
-            return _mapper.Map<List<EventDTO>>(
-                _dbOperation.Events.GetItems()
+            return _dbOperation.Events.GetItems()
                 .Where(x => x.EventType.Name == "Public" || x.EventType.Name == "Private" && x.Organizer.Email == userId)
                 .Where(x => x.Name.Contains(eventName))
                 .Select(x => new EventDTO
@@ -175,68 +172,19 @@ namespace Service.Services
                         Id = x.EventType.Id,
                         Name = x.EventType.Name
                     }
-                }).ToList());
+                }).ToList();
         }
 
-        //public async Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId, string searchEvent)
+        //public List<int> IsEventUserCreated(string userId)
         //{
-        //    var events = _mapper.Map<List<EventDTO>>(
-        //        await _dbOperation.Events.GetAllAsync());
+        //    var eventVisitorsList = 
+        //        _dbOperation.Visits.GetItems()
+        //         .Where(x => x.User.Email == userId)
+        //         .Select(x => new VisitDTO { EventId = x.EventId })
+        //         .ToList();
 
-        //    var allowedEventList = new List<EventDTO>();
-
-        //    if (organizerId != null && searchEvent != null)
-        //    {
-        //        foreach (var item in events)
-        //        {
-        //            if ((item.EventType.Name == "Public" || item.Organizer.Token == organizerId) && item.Name.Contains(searchEvent))
-        //                allowedEventList.Add(item);
-        //        }
-        //        return allowedEventList;
-        //    }
-        //    else if (organizerId != null && searchEvent == null)
-        //    {
-        //        foreach (var item in events)
-        //        {
-        //            if (item.EventType.Name == "Public" || item.Organizer.Token == organizerId)
-        //                allowedEventList.Add(item);
-        //        }
-        //        return allowedEventList;
-        //    }
-
-        //    else if (organizerId == null && searchEvent == null)
-        //    {
-        //        foreach (var item in events)
-        //        {
-        //            if (item.EventType.Name == "Public")
-        //                allowedEventList.Add(item);
-        //        }
-        //        return allowedEventList;
-        //    }
-        //    return new List<EventDTO>() { new EventDTO { Description = "none" } };
-        //}
-
-        //public async Task<IEnumerable<EventDTO>> GetSearchedEventList(string searchEvent)
-        //{
-        //    var events = _mapper.Map<List<EventDTO>>(
-        //        await _dbOperation.Events.GetAllAsync());
-
-        //    var searchedEventList = new List<EventDTO>();
-        //    foreach (var item in events)
-        //    {
-        //        if (item.Name.Contains(searchEvent))
-        //            searchedEventList.Add(item);
-        //    }
-        //    return searchedEventList;
-        //}
-
-        //public async Task<List<int>> IsEventUserCreated(string userId)
-        //{
-        //    var eventVisitorsList = _mapper.Map<List<VisitDTO>>(
-        //        await _dbOperation.Visits.GetAllAsync());
-
-        //    var events = _mapper.Map<List<EventDTO>>(
-        //        await _dbOperation.Events.GetAllAsync());
+        //    //var events = _mapper.Map<List<EventDTO>>(
+        //    //    _dbOperation.Events.GetItems()).ToList();
 
         //    var visitEvent = new List<int>();
 

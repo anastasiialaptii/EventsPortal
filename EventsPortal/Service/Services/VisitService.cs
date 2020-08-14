@@ -4,6 +4,7 @@ using Data.Interfaces;
 using Service.DTO;
 using Service.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Service.Services
@@ -28,44 +29,15 @@ namespace Service.Services
             await _dbOperation.SaveAsync();
         }
 
-        public async Task<int> GetTotalVisitorsPerEvent(int eventId)
+        public IEnumerable<VisitDTO> GetVisits()
         {
-            //var events = _mapper.Map<List<VisitDTO>>(
-            //await _dbOperation.Visits.GetAllAsync());
-
-            //var visitorsPerEvent = new List<VisitDTO>();
-
-            //foreach (var item in events)
-            //{
-            //    if (item.EventId == eventId)
-            //        visitorsPerEvent.Add(item);
-            //}
-            //return visitorsPerEvent.Count;
-            return 1;
-        }
-
-        public async Task<IEnumerable<VisitDTO>> GetVisitorsByEvent(int eventId)
-        {
-            //var eventVisitorsList = _mapper.Map<List<VisitDTO>>(
-            //    await _dbOperation.Visits.GetAllAsync());
-
-            //var visitorsList = new List<VisitDTO>();
-            //foreach (var item in eventVisitorsList)
-            //{
-            //    if (item.EventId == eventId)
-            //    {
-            //        visitorsList.Add(item);
-            //    }
-            //}
-            //return visitorsList;
-            return null;
-        }
-
-        public async Task<IEnumerable<VisitDTO>> GetVisits()
-        {
-            //    return _mapper.Map<List<VisitDTO>>(
-            //        await _dbOperation.Visits.GetAllAsync());
-            return null;
+            return _mapper.Map<List<VisitDTO>>(
+                _dbOperation.Visits.GetItems()
+                .Select(x => new VisitDTO
+                {
+                    EventId = x.EventId,
+                    UserId = x.UserId
+                }).ToList());
         }
     }
 }

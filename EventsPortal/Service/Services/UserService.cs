@@ -58,7 +58,7 @@ namespace Service.Services
 
         public UserDTO FindUserByEmail(string email)
         {
-            return _mapper.Map<UserDTO>(_dbOperation.Users.FindItem(x => x.Email== email));
+            return _mapper.Map<UserDTO>(_dbOperation.Users.FindItem(x => x.Email == email));
         }
 
         public UserDTO GetUser(int? id)
@@ -69,9 +69,8 @@ namespace Service.Services
 
         public IEnumerable<UserDTO> GetUsers()
         {
-            return _mapper.Map<List<UserDTO>>(
-                 _dbOperation.Users.GetItems()
-                .Select(x => new UserDTO { Email = x.Email }).ToList());
+            return _dbOperation.Users.GetItems()
+                .Select(x => new UserDTO { Email = x.Email }).ToList();
         }
     }
 }

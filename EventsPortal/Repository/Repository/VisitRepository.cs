@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Repository;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -42,64 +41,19 @@ namespace Data.Repository
                  .FirstOrDefault();
         }
 
-        public async Task<IEnumerable<Visit>> GetAllAsync()
+        public Visit GetItem(int? id)
         {
-            return await _dbContext.Visits
-                .Select(x => new Visit
-                {
-                    EventId = x.EventId,
-                    UserId = x.UserId,
-                    Event = new Event
-                    {
-                        Id = x.Event.Id,
-                        Name = x.Event.Name,
-                        Description = x.Event.Description,
-                        ImageURI = x.Event.ImageURI,
-                        Location = x.Event.Location,
-                        OrganizerId = x.Event.OrganizerId,
-                        EventTypeId = x.Event.EventTypeId
-                    },
-                    User = new User
-                    {
-                        Id = x.User.Id,
-                        Name = x.User.Name,
-                        Email = x.User.Email,
-                        Token = x.User.Token
-                    }
-                })
-                .ToListAsync();
-        }
-
-        public async Task<Visit> GetItem(int? id)
-        {
-            if (id != null)
-            {
-                var searchItem = await _dbContext.Visits.FindAsync(id);
-
-                if (searchItem != null)
-                    return searchItem;
-                else throw new ArgumentNullException();
-            }
-            else throw new ArgumentNullException();
+            throw new NotImplementedException();
         }
 
         public IQueryable<Visit> GetItems()
         {
-            throw new NotImplementedException();
+            return _dbContext.Visits;
         }
 
         public void Update(Visit item)
         {
-            if (item != null)
-            {
-                _dbContext.Entry(item).State = EntityState.Modified;
-            }
-            else throw new ArgumentNullException();
-        }
-
-        Visit IRepository<Visit>.GetItem(int? id)
-        {
-            throw new NotImplementedException();
+            _dbContext.Entry(item).State = EntityState.Modified;
         }
     }
 }

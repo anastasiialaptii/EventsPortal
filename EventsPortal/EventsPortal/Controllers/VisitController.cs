@@ -17,23 +17,17 @@ namespace EventsPortal.Controllers
             _visitService = visitService;
         }
 
-        [HttpGet("{eventId}")]
-        public async Task<int> GetTotalVisitorsPerEvent(int eventId)
-        {
-            return await _visitService.GetTotalVisitorsPerEvent(eventId);
-        }
+        //[HttpGet]
+        //public async Task<IEnumerable<VisitDTO>> GetVisitList()
+        //{
+        //    return await _visitService.GetVisits();
+        //}
 
-        [HttpGet]
-        public async Task<IEnumerable<VisitDTO>> GetVisitList()
-        {
-            return await _visitService.GetVisits();
-        }
-
-        [HttpGet("{eventId}")]
-        public async Task<IEnumerable<VisitDTO>> GetVisitorsList(int eventId)
-        {
-            return await _visitService.GetVisitorsByEvent(eventId);
-        }
+        //[HttpGet("{eventId}")]
+        //public async Task<IEnumerable<VisitDTO>> GetVisitorsList(int eventId)
+        //{
+        //    return await _visitService.GetVisitorsByEvent(eventId);
+        //}
 
         [HttpPost]
         public async Task CreateVisit([FromBody] VisitDTO visitDTO)

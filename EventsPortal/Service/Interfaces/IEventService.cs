@@ -23,11 +23,7 @@ namespace Service.Interfaces
 
         Task AddEvent(EventDTO eventDTO);
 
-        //Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId, string searchEvent);
-
-        //Task<IEnumerable<EventDTO>> GetSearchedEventList(string searchEvent);
-
-        //Task<List<int>> IsEventUserCreated(string userId);
+      //  Task<List<int>> IsEventUserCreated(string userId);
 
     }
 }

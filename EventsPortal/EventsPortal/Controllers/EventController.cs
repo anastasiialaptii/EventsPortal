@@ -23,11 +23,17 @@ namespace EventsPortal.Controllers
             _userService = userService;
         }
 
-        //[HttpGet("{userId}")]
-        //public async Task<IEnumerable<int>> GetAlloweEventToVisitList(string userId)
+        //[HttpGet]
+        //public async Task<IEnumerable<int>> GetAllowedEventToVisitList()
         //{
-        //    return await _eventService.IsEventUserCreated(userId);
+        //    return await _eventService.IsEventUserCreated(User.Identity.Name);
         //}
+
+        [HttpGet]
+        public IEnumerable<EventDTO> GetPublicEvents()
+        {
+            return _eventService.GetPublicEvents();
+        }
 
         [Authorize]
         [HttpGet]
@@ -42,34 +48,6 @@ namespace EventsPortal.Controllers
         {
             return _eventService.SearchEvents(User.Identity.Name, eventName);
         }
-
-        [HttpGet]
-        public IEnumerable<EventDTO> GetPublicEvents()
-        {
-            return _eventService.GetPublicEvents();
-        }
-
-        //[HttpGet("{organizerId}/{searchEvent}")]
-        //[HttpGet("{organizerId}")]
-        //[HttpGet]
-        //[Authorize]
-
-        //public async Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId, string searchEvent)
-        //{
-        //    var s = User.Identity.Name;
-        //    return await _eventService.GetAllowedEventList(organizerId, searchEvent);
-        //}
-
-        //public async Task<IEnumerable<EventDTO>> GetAllEvents(string organizerId, string searchEvent)
-        //{
-        //    return await _eventService.GetAllowedEventList(organizerId, searchEvent);
-        //}
-
-        //[HttpGet("{searchEvent}")]
-        //public async Task<IEnumerable<EventDTO>> GetSearchedEventList(string searchEvent)
-        //{
-        //    return await _eventService.GetSearchedEventList(searchEvent);
-        //}
 
         [Authorize]
         [HttpGet("{id}")]
