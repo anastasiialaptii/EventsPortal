@@ -1,6 +1,7 @@
 ﻿using EventsPortal.GoogleAuthModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,12 +29,13 @@ namespace EventsPortal.Controllers
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, "test")
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user)
             };
             ClaimsIdentity id = new ClaimsIdentity(claims, "Cookies", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
 
+        [Authorize]
         public void SignOut()
         {
             Response.Cookies.Delete("Cookies");
@@ -48,7 +50,7 @@ namespace EventsPortal.Controllers
             {
                 if (user.Email == googleUser.email)
                 {
-                    await Authenticate(googleUser.name);
+                    await Authenticate(googleUser.email);
                     return new Response { UserEmail = user.Email};
                 }
             }
@@ -63,7 +65,7 @@ namespace EventsPortal.Controllers
                 Token = googleUser.token
             };
             await _userService.AddUser(userDTO);
-            await Authenticate(googleUser.name);
+            await Authenticate(googleUser.email);
             return new Response { UserEmail = googleUser.email };
         }
     }

@@ -82,36 +82,34 @@ namespace EventsPortal
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
-                    //options.Cookie.HttpOnly = true;
                     options.Cookie.Name = "Cookies";
-                    //options.Cookie.SameSite = SameSiteMode.None;
                 });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
             {
-                if (env.IsDevelopment())
-                {
-                    app.UseDeveloperExceptionPage();
-                }
+                app.UseDeveloperExceptionPage();
+            }
 
-                app.UseRouting();
+            app.UseRouting();
             app.UseCors("CorsPolicy");
 
             app.UseStaticFiles();
-                app.UseStaticFiles(new StaticFileOptions()
-                {
-                    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
-                    RequestPath = new PathString("/Resources")
-                });
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+                RequestPath = new PathString("/Resources")
+            });
 
-                app.UseAuthentication();
-                app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
-                app.UseEndpoints(endpoints =>
-                {
-                    endpoints.MapControllers();
-                });
-            }
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
+}

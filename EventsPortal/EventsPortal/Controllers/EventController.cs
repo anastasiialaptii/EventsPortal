@@ -80,6 +80,7 @@ namespace EventsPortal.Controllers
         [HttpPost, DisableRequestSizeLimit]
         public async Task<ActionResult<EventDTO>> CreateEvent([FromBody] EventDTO eventDTO)
         {
+            var s = User.Identity.Name;
             if (eventDTO != null)
             {
                 await _eventService.AddEvent(eventDTO);
