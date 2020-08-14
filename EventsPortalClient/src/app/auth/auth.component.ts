@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleLoginProvider, AuthService } from 'angular-6-social-login';
-import { GoogleAuthService } from '../shared/services/auth-service';
+import { AuthenticateService } from '../shared/services/auth-service';
 import { User } from '../shared/models/user-model';
 import { AuthGuard } from '../shared/config/auth-provider';
 import { Router } from '@angular/router';
@@ -20,7 +20,7 @@ export class AuthComponent implements OnInit {
 
   constructor(
     public oAuth: AuthService,
-    public gAuthService: GoogleAuthService,
+    public gAuthService: AuthenticateService,
     public authGuard: AuthGuard,
     private router: Router
   ) { }

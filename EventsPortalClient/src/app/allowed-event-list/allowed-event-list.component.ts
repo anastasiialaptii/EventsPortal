@@ -12,8 +12,8 @@ import { Configuration } from '../shared/config/configuration';
 import { Router } from '@angular/router';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 import { AuthComponent } from '../auth/auth.component';
-import { GoogleAuthService } from '../shared/services/auth-service';
-import { AuthService } from 'angular-6-social-login';
+import { AuthenticateService } from '../shared/services/auth-service';
+//import { AuthService } from 'angular-6-social-login';
 
 @Component({
   selector: 'app-allowed-event-list',
@@ -39,7 +39,7 @@ export class AllowedEventListComponent implements OnInit {
     public config: Configuration,
     public router: Router,
     public toastr: ToastrService,
-    public authService: GoogleAuthService
+    public authService: AuthenticateService
   ) { }
 
   ngOnInit(): void {
@@ -70,8 +70,6 @@ export class AllowedEventListComponent implements OnInit {
       });
     }
   }
-
-
 
   onChangePage(pageOfItemsEvent: Array<any>) {
     this.pageOfItemsEvent = pageOfItemsEvent;

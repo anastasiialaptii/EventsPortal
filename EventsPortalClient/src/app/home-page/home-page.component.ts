@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventItem } from '../shared/models/event-model';
 import { EventService } from '../shared/services/event-service';
 import { Configuration } from '../shared/config/configuration';
-import { GoogleAuthService } from '../shared/services/auth-service';
+import { AuthenticateService } from '../shared/services/auth-service';
 
 @Component({
   selector: 'app-home-page',
@@ -22,7 +22,7 @@ export class HomePageComponent implements OnInit {
   constructor(
     public eventService:EventService,
     public config: Configuration,
-    public auth: GoogleAuthService
+    public auth: AuthenticateService
   ) { }
 
   ngOnInit(): void {

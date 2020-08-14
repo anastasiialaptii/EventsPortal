@@ -6,7 +6,7 @@ import { Configuration } from '../config/configuration';
     providedIn: 'root'
 })
 
-export class GoogleAuthService {
+export class AuthenticateService {
 
     constructor(private http: HttpClient) { }
 
