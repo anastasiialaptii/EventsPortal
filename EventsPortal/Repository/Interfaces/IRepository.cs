@@ -15,8 +15,6 @@ namespace Repository
 
         IQueryable<TEntity> GetItems();
 
-        Task<IEnumerable<TEntity>> GetAllAsync();
-
         TEntity GetItem(int? id);
 
         TEntity FindItem(Func<TEntity, bool> item);

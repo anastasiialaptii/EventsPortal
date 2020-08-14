@@ -3,8 +3,8 @@ using Core.Entities;
 using Data.Interfaces;
 using Service.DTO;
 using Service.Interfaces;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Service.Services
@@ -56,31 +56,22 @@ namespace Service.Services
             }
         }
 
-        public async Task<UserDTO> GetUserById(int? id)
+        public UserDTO FindUserByEmail(string email)
         {
-            if (id != null)
-            {
-                return _mapper.Map<UserDTO>(
-                     _dbOperation.Users.GetItem(id));
-            }
-            else throw new ArgumentNullException();
+            return _mapper.Map<UserDTO>(_dbOperation.Users.FindItem(x => x.Email== email));
         }
 
-        public async Task<int> GetUserByToken(string token)
+        public UserDTO GetUser(int? id)
         {
-            var userList = await _dbOperation.Users.GetAllAsync();
-            foreach (var item in userList)
-            {
-                if (item.Token == token)
-                    return item.Id;
-            }
-            return 0;
+            return _mapper.Map<UserDTO>(
+                 _dbOperation.Users.GetItem(id));
         }
 
-        public async Task<IEnumerable<UserDTO>> GetUsers()
+        public IEnumerable<UserDTO> GetUsers()
         {
             return _mapper.Map<List<UserDTO>>(
-                await _dbOperation.Users.GetAllAsync());
+                 _dbOperation.Users.GetItems()
+                .Select(x => new UserDTO { Email = x.Email }).ToList());
         }
     }
 }

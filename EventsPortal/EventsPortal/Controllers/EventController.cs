@@ -17,10 +17,12 @@ namespace EventsPortal.Controllers
     public class EventController : ControllerBase
     {
         private readonly IEventService _eventService;
+        private readonly IUserService _userService;
 
-        public EventController(IEventService eventService)
+        public EventController(IEventService eventService, IUserService userService)
         {
             _eventService = eventService;
+            _userService = userService;
         }
 
         //[HttpGet("{userId}")]
@@ -80,12 +82,19 @@ namespace EventsPortal.Controllers
         [HttpPost, DisableRequestSizeLimit]
         public async Task<ActionResult<EventDTO>> CreateEvent([FromBody] EventDTO eventDTO)
         {
-            var s = User.Identity.Name;
-            if (eventDTO != null)
+            try
             {
-                await _eventService.AddEvent(eventDTO);
+                if (eventDTO != null)
+                {
+                    eventDTO.OrganizerId = _userService.FindUserByEmail(User.Identity.Name).Id;
+                    await _eventService.AddEvent(eventDTO);
+                }
+                return Ok();
             }
-            return Ok();
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
         }
 
         [Authorize]

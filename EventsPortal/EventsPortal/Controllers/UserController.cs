@@ -22,32 +22,26 @@ namespace UsersPortal.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<UserDTO>> GetUsersList()
+        public IEnumerable<UserDTO> GetUsersList()
         {
-            return await _userService.GetUsers();
+            return _userService.GetUsers();
         }
 
-        [HttpGet("{token}")]
-        public async Task<int> GetUserByToken(string token)
-        {
-            return await _userService.GetUserByToken(token);
-        }
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<UserDTO>> GetUserById(int? id)
+        //{
+        //    if (id != null)
+        //    {
+        //        var serachItem = await _userService.GetUser(id);
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<UserDTO>> GetUserById(int? id)
-        {
-            if (id != null)
-            {
-                var serachItem = await _userService.GetUserById(id);
-
-                if (serachItem != null)
-                {
-                    return serachItem;
-                }
-                else return NotFound();
-            }
-            else throw new ArgumentNullException();
-        }
+        //        if (serachItem != null)
+        //        {
+        //            return serachItem;
+        //        }
+        //        else return NotFound();
+        //    }
+        //    else throw new ArgumentNullException();
+        //}
 
         [HttpPost]
         public async Task<IActionResult> CreateUser([FromBody] UserDTO UserDTO)
@@ -56,19 +50,19 @@ namespace UsersPortal.Controllers
             {
                 await _userService.AddUser(UserDTO);
             }
-            return CreatedAtAction(nameof(GetUserById), new { id = UserDTO.Id }, UserDTO);
+            return Ok();
 
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteUser(int? id)
+        public ActionResult DeleteUser(int? id)
         {
             if (id != null)
             {
-                var searchItem = await _userService.GetUserById(id);
+                var searchItem =  _userService.GetUser(id);
                 if (searchItem != null)
                 {
-                    await _userService.DeleteUser(id);
+                     _userService.DeleteUser(id);
                     return NoContent();
                 }
                 else return NotFound();
@@ -89,7 +83,7 @@ namespace UsersPortal.Controllers
             }
             catch (DBConcurrencyException)
             {
-                if (_userService.GetUserById(id) == null)
+                if (_userService.GetUser(id) == null)
                 {
                     return NotFound();
                 }

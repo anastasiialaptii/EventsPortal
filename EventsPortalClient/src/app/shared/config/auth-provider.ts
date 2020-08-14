@@ -23,9 +23,7 @@ export class AuthGuard implements CanActivate {
   constructor() { }
 
   canActivate() {
-    let token = (localStorage.getItem('socialusers'));
-    if (token) {
-      console.log("token exists");
+    if (localStorage.getItem('token')) {
       return true;
     }
     return false;

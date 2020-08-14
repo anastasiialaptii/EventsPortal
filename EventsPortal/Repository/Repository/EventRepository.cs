@@ -42,16 +42,6 @@ namespace Data.Repository
             else throw new ArgumentNullException();
         }
 
-
-        /// <summary>
-        /// /////////////////////
-        /// </summary>
-        /// <returns></returns>
-        public async Task<IEnumerable<Event>> GetAllAsync()
-        {
-            return await _dbContext.Events.ToListAsync();
-        }
-
         public Event GetItem(int? id)
         {
             return _dbContext.Events.Where(x => x.Id == id).FirstOrDefault();

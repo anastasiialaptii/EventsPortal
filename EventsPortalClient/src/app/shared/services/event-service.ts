@@ -26,7 +26,7 @@ export class EventService {
     }
 
     CreateEvent() {
-        return this.http.post(Configuration.URI + '/Event/CreateEvent', this.FormData, { reportProgress: true, observe: 'events' });
+        return this.http.post(Configuration.URI + '/Event/CreateEvent', this.FormData, { reportProgress: true, observe: 'events', withCredentials: true });
     }
 
     GetAllowedEventList(idUser?: string, searchString?: string) {

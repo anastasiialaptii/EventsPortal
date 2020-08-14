@@ -44,7 +44,7 @@ namespace EventsPortal.Controllers
         [HttpPost]
         public async Task<Response> GoogleAuth(GoogleUser googleUser)
         {
-            var userList = await _userService.GetUsers();
+            var userList = _userService.GetUsers();
 
             foreach (var user in userList)
             {

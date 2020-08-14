@@ -25,7 +25,7 @@ export class AuthComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userEmail = JSON.parse(sessionStorage.getItem('token')).UserEmail;
+    this.userEmail = JSON.parse(localStorage.getItem('token')).UserEmail;
   }
 
   socialSignIn(socialProvider: string) {
@@ -44,8 +44,7 @@ export class AuthComponent implements OnInit {
     this.authService.AuthUser(users).subscribe((res: any) => {
       this.users = res;
       this.response = res.userDetail;
-      sessionStorage.setItem('token', JSON.stringify(res));
-      localStorage.setItem('socialusers', JSON.stringify(this.users));
+      localStorage.setItem('token', JSON.stringify(res));
       this.router.navigate(["/allowed-event-list"]);
     })
   }

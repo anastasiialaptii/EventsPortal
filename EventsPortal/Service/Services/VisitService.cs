@@ -30,39 +30,42 @@ namespace Service.Services
 
         public async Task<int> GetTotalVisitorsPerEvent(int eventId)
         {
-            var events = _mapper.Map<List<VisitDTO>>(
-            await _dbOperation.Visits.GetAllAsync());
+            //var events = _mapper.Map<List<VisitDTO>>(
+            //await _dbOperation.Visits.GetAllAsync());
 
-            var visitorsPerEvent = new List<VisitDTO>();
+            //var visitorsPerEvent = new List<VisitDTO>();
 
-            foreach (var item in events)
-            {
-                if (item.EventId == eventId)
-                    visitorsPerEvent.Add(item);
-            }
-            return visitorsPerEvent.Count;
+            //foreach (var item in events)
+            //{
+            //    if (item.EventId == eventId)
+            //        visitorsPerEvent.Add(item);
+            //}
+            //return visitorsPerEvent.Count;
+            return 1;
         }
 
         public async Task<IEnumerable<VisitDTO>> GetVisitorsByEvent(int eventId)
         {
-            var eventVisitorsList = _mapper.Map<List<VisitDTO>>(
-                await _dbOperation.Visits.GetAllAsync());
+            //var eventVisitorsList = _mapper.Map<List<VisitDTO>>(
+            //    await _dbOperation.Visits.GetAllAsync());
 
-            var visitorsList = new List<VisitDTO>();
-            foreach (var item in eventVisitorsList)
-            {
-                if (item.EventId == eventId)
-                {
-                    visitorsList.Add(item);
-                }
-            }
-            return visitorsList;
+            //var visitorsList = new List<VisitDTO>();
+            //foreach (var item in eventVisitorsList)
+            //{
+            //    if (item.EventId == eventId)
+            //    {
+            //        visitorsList.Add(item);
+            //    }
+            //}
+            //return visitorsList;
+            return null;
         }
 
         public async Task<IEnumerable<VisitDTO>> GetVisits()
         {
-            return _mapper.Map<List<VisitDTO>>(
-                await _dbOperation.Visits.GetAllAsync());
+            //    return _mapper.Map<List<VisitDTO>>(
+            //        await _dbOperation.Visits.GetAllAsync());
+            return null;
         }
     }
 }

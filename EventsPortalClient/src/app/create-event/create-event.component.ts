@@ -17,7 +17,6 @@ import { ToastrService } from 'ngx-toastr';
 
 export class CreateEventComponent implements OnInit {
   response: { "dbPath": '' };
-  token = JSON.parse(localStorage.getItem('socialusers'));
 
   constructor(
     public eventService: EventService,
@@ -48,13 +47,10 @@ export class CreateEventComponent implements OnInit {
   createEvent(form: NgForm) {
     this.eventService.CreateEvent().subscribe(
       res => {
-        debugger;
         this.router.navigate(['/allowed-event-list']);
         this.resetForm();
       },
       err => {
-        debugger;
-        console.log(err);
       })
   }
 
@@ -67,21 +63,15 @@ export class CreateEventComponent implements OnInit {
   resetForm(form?: NgForm) {
     if (form != null)
       form.form.reset();
-    this.eventService.SearchEventFormData = {
-      Name: ''
-    };
-    this.userService.GetUserByToken(this.token.Message).subscribe(
-      res => {
-        this.eventService.FormData = {
-          Id: 0,
-          Name: '',
-          Location: '',
-          Description: '',
-          EventTypeId: 1,
-          Date: null,
-          OrganizerId: res
-        }
-      }
-    )
+
+    this.eventService.FormData = {
+      Id: 0,
+      Name: '',
+      Location: '',
+      Description: '',
+      EventTypeId: 1,
+      Date: null,
+      OrganizerId: 0
+    }
   }
 }

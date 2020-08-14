@@ -2,9 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Repository;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Data.Repository
 {
@@ -43,45 +41,9 @@ namespace Data.Repository
             else throw new ArgumentNullException();
         }
 
-        public async Task<IEnumerable<User>> GetAllAsync()
-        {
-            return await _dbContext.Users
-                .Select(x => new User
-                {
-                    Id = x.Id,
-                    IdToken = x.IdToken,
-                    Email = x.Email,
-                    Image = x.Image,
-                    Name = x.Name,
-                    Provider = x.Provider,
-                    Token = x.Token
-                })
-                .ToListAsync();
-        }
-
-        public async Task<User> GetItem(int? id)
-        {
-            if (id != null)
-            {
-                return await _dbContext.Users
-                .Select(x => new User
-                {
-                    Id = x.Id,
-                    IdToken = x.IdToken,
-                    Email = x.Email,
-                    Image = x.Image,
-                    Name = x.Name,
-                    Provider = x.Provider,
-                    Token = x.Token
-                })
-                    .FirstOrDefaultAsync();
-            }
-            else throw new ArgumentNullException();
-        }
-
         public IQueryable<User> GetItems()
         {
-            throw new NotImplementedException();
+            return _dbContext.Users;
         }
 
         public void Update(User item)
@@ -93,9 +55,9 @@ namespace Data.Repository
             else throw new ArgumentNullException();
         }
 
-        User IRepository<User>.GetItem(int? id)
+        public User GetItem(int? id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Users.Where(x => x.Id == id).FirstOrDefault();
         }
     }
 }

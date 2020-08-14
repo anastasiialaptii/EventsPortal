@@ -1,4 +1,6 @@
-﻿using Service.DTO;
+﻿using Core.Entities;
+using Service.DTO;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,9 +8,9 @@ namespace Service.Interfaces
 {
     public interface IUserService
     {
-        Task<IEnumerable<UserDTO>> GetUsers();
+        IEnumerable<UserDTO> GetUsers();
 
-        Task<UserDTO> GetUserById(int? id);
+        UserDTO GetUser(int? id);
 
         Task DeleteUser(int? id);
 
@@ -16,6 +18,6 @@ namespace Service.Interfaces
 
         Task AddUser(UserDTO userDTO);
 
-        Task<int> GetUserByToken(string token);
+        UserDTO FindUserByEmail(string email);
     }
 }
