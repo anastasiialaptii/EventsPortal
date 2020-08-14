@@ -12,11 +12,7 @@ export class AuthenticateService {
 
     AuthUser(responce) {
 
-        return this.http.post(Configuration.URI + '/Auth/Savesresponse', responce, { withCredentials: true });
-    }
-
-    AuthCookie() {
-        return this.http.get(Configuration.URI + '/Auth/Authenticate');
+        return this.http.post(Configuration.URI + '/Auth/GoogleAuth', responce, { withCredentials: true });
     }
 
     SignOut() {

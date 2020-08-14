@@ -20,7 +20,7 @@ export class AuthComponent implements OnInit {
 
   constructor(
     public oAuth: AuthService,
-    public gAuthService: AuthenticateService,
+    public authService: AuthenticateService,
     public authGuard: AuthGuard,
     private router: Router
   ) { }
@@ -35,18 +35,14 @@ export class AuthComponent implements OnInit {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
     this.oAuth.signIn(socialPlatformProvider).then(users => {
-      console.log(socialProvider, users);
-      console.log(users);
       this.savesresponse(users);
     });
   }
 
   savesresponse(users: User) {
-    this.gAuthService.AuthUser(users).subscribe((res: any) => {
+    this.authService.AuthUser(users).subscribe((res: any) => {
       this.users = res;
       this.response = res.userDetail;
-      console.log(localStorage.setItem('socialusers', JSON.stringify(this.users)));
-      console.log(localStorage.getItem('socialusers'));
       localStorage.setItem('socialusers', JSON.stringify(this.users));
       this.router.navigate(["/allowed-event-list"]);
     })
@@ -54,6 +50,6 @@ export class AuthComponent implements OnInit {
 
   logOut() {
     localStorage.clear();
-    this.gAuthService.SignOut().subscribe((res: any)=>{});
+    this.authService.SignOut().subscribe((res: any)=>{});
   }
 }

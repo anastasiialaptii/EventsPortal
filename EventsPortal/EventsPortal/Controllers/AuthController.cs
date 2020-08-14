@@ -25,7 +25,6 @@ namespace EventsPortal.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
         public async Task Authenticate(string user)
         {
             var claims = new List<Claim>
@@ -36,14 +35,13 @@ namespace EventsPortal.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
 
-        [HttpGet]
         public void SignOut()
         {
             Response.Cookies.Delete("Cookies");
         }
 
         [HttpPost]
-        public async Task<object> Savesresponse(GoogleUser googleUser)
+        public async Task<object> GoogleAuth(GoogleUser googleUser)
         {
             var userList = await _userService.GetUsers();
 
@@ -66,7 +64,7 @@ namespace EventsPortal.Controllers
                 Token = googleUser.token
             };
             await _userService.AddUser(userDTO);
-           // await Authenticate(googleUser.name);
+            await Authenticate(googleUser.name);
             return new Response { Message = googleUser.token, UserName = googleUser.name, Status = "OK" };
         }
     }
