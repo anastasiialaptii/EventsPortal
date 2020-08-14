@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Repository
@@ -12,9 +13,11 @@ namespace Repository
 
         void Update(TEntity item);
 
+        IQueryable<TEntity> GetItems();
+
         Task<IEnumerable<TEntity>> GetAllAsync();
 
-        Task<TEntity> GetIdAsync(int? id);
+        TEntity GetItem(int? id);
 
         TEntity FindItem(Func<TEntity, bool> item);
     }

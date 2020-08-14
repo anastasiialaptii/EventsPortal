@@ -45,6 +45,7 @@ export class AllowedEventListComponent implements OnInit {
   ngOnInit(): void {
    // this.authService.AuthCookie().subscribe(res => { console.log('success') }, err => { console.log('------') });
     this.resetForm();
+    this.eventService.GetEventList();
     this.eventService.GetAllowedToVisitEvent(this.token.Message);
     this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
       this.eventItem = res;

@@ -1,15 +1,17 @@
 ﻿using Service.DTO;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Service.Interfaces
 {
     public interface IEventService
     {
-        Task<IEnumerable<EventDTO>> GetEvents();
+        IEnumerable<EventDTO> GetEvents();
 
-        Task<IEnumerable<EventDTO>> GetEventById(int? id);
+        IEnumerable<EventDTO> GetPublicEvents();
+
+        EventDTO GetEvent(int? id);
 
         Task DeleteEvent(int? id);
 
@@ -17,13 +19,11 @@ namespace Service.Interfaces
 
         Task AddEvent(EventDTO eventDTO);
 
-        Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId, string searchEvent);
+        //Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId, string searchEvent);
 
-        Task<IEnumerable<EventDTO>> GetSearchedEventList(string searchEvent);
+        //Task<IEnumerable<EventDTO>> GetSearchedEventList(string searchEvent);
 
-        Task<List<int>> IsEventUserCreated(string userId);
-
-        Task<IEnumerable<EventDTO>> GetEventsByDate(string startDate);
+        //Task<List<int>> IsEventUserCreated(string userId);
 
     }
 }

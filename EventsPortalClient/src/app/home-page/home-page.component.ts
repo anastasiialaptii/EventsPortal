@@ -13,11 +13,11 @@ import { GoogleAuthService } from '../shared/services/auth-service';
 })
 
 export class HomePageComponent implements OnInit {
-  eventItem: EventItem[];
-  itemsEvent = [];
+  eventItems: EventItem[];
+  publicEvents = [];
   pageOfItemsEvent: Array<EventItem>;
-  token = JSON.parse(localStorage.getItem('socialusers'));
-  qwe:string;
+  //token = JSON.parse(localStorage.getItem('socialusers'));
+  //qwe:string;
 
   constructor(
     public eventService:EventService,
@@ -26,9 +26,9 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.eventService.GetEventList().subscribe((res: any) => {
-      this.eventItem = res;
-      this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
+    this.eventService.GetPublicEvents().subscribe((res: any) => {
+      this.eventItems = res;
+      this.publicEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
     });
   }
 

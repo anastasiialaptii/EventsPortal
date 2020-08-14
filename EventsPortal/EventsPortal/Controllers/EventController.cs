@@ -1,17 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 using Service.DTO;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Security.Claims;
-using System.Security.Policy;
 using System.Threading.Tasks;
 
 namespace EventsPortal.Controllers
@@ -28,70 +23,73 @@ namespace EventsPortal.Controllers
             _eventService = eventService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            var x = await _eventService.GetSearchedEventList("3");
-            string test;
-            foreach (var item in x)
-            {
-                test = item.ImageURI;
-                return Ok("{\"image\"" + ":\"" + System.Convert.ToBase64String(System.IO.File.ReadAllBytes(test)) + "\"}");
-            }
-            return NoContent();
-        }
+        //[HttpGet]
+        //public async Task<IActionResult> Get()
+        //{
 
-        [HttpGet("{userId}")]
-        public async Task<IEnumerable<int>> GetAlloweEventToVisitList(string userId)
-        {
-            return await _eventService.IsEventUserCreated(userId);
-        }
+        //    string test;
+        //    foreach (var item in x)
+        //    {
+        //        test = item.ImageURI;
+        //        return Ok("{\"image\"" + ":\"" + System.Convert.ToBase64String(System.IO.File.ReadAllBytes(test)) + "\"}");
+        //    }
+        //    return NoContent();
+        //}
 
-        [HttpGet]
-        public async Task<IEnumerable<EventDTO>> GetEventList()
-        {
-            return await _eventService.GetEvents();
-        }
+        //[HttpGet("{userId}")]
+        //public async Task<IEnumerable<int>> GetAlloweEventToVisitList(string userId)
+        //{
+        //    return await _eventService.IsEventUserCreated(userId);
+        //}
 
-        [HttpGet("{startDate}")]
-        public async Task<IEnumerable<EventDTO>> GetEventsByDate(string startDate)
-        {
-            return await _eventService.GetEventsByDate(startDate);
-        }
-
-        [HttpGet("{organizerId}/{searchEvent}")]
-        [HttpGet("{organizerId}")]
         [HttpGet]
         [Authorize]
-        
-        public async Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId, string searchEvent)
+        public IEnumerable<EventDTO> GetEvents()
         {
-            var s = User.Identity.Name;
-            return await _eventService.GetAllowedEventList(organizerId, searchEvent);
+            return _eventService.GetEvents();
         }
 
-
-        public async Task<IEnumerable<EventDTO>> GetAllEvents(string organizerId, string searchEvent)
+        [HttpGet]
+        public IEnumerable<EventDTO> GetPublicEvents()
         {
-            return await _eventService.GetAllowedEventList(organizerId, searchEvent);
+            return _eventService.GetPublicEvents();
         }
 
-        [HttpGet("{searchEvent}")]
-        public async Task<IEnumerable<EventDTO>> GetSearchedEventList(string searchEvent)
-        {
-            return await _eventService.GetSearchedEventList(searchEvent);
-        }
+        //[HttpGet("{organizerId}/{searchEvent}")]
+        //[HttpGet("{organizerId}")]
+        //[HttpGet]
+        //[Authorize]
 
+        //public async Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId, string searchEvent)
+        //{
+        //    var s = User.Identity.Name;
+        //    return await _eventService.GetAllowedEventList(organizerId, searchEvent);
+        //}
+
+        //public async Task<IEnumerable<EventDTO>> GetEvents()
+        //{
+        //    return await _eventService.GetEvents();
+        //}
+
+        //public async Task<IEnumerable<EventDTO>> GetAllEvents(string organizerId, string searchEvent)
+        //{
+        //    return await _eventService.GetAllowedEventList(organizerId, searchEvent);
+        //}
+
+        //[HttpGet("{searchEvent}")]
+        //public async Task<IEnumerable<EventDTO>> GetSearchedEventList(string searchEvent)
+        //{
+        //    return await _eventService.GetSearchedEventList(searchEvent);
+        //}
+
+        [Authorize]
         [HttpGet("{id}")]
-        public async Task<IEnumerable<EventDTO>> GetEventById(int? id)
+        public EventDTO GetEvent(int? id)
         {
-            if (id != null)
-            {
-                return await _eventService.GetEventById(id);
-            }
-            else throw new ArgumentNullException();
+            return _eventService.GetEvent(id);
         }
 
+        [Authorize]
         [HttpPost, DisableRequestSizeLimit]
         public async Task<ActionResult<EventDTO>> CreateEvent([FromBody] EventDTO eventDTO)
         {
@@ -99,9 +97,10 @@ namespace EventsPortal.Controllers
             {
                 await _eventService.AddEvent(eventDTO);
             }
-            return CreatedAtAction(nameof(GetEventById), new { id = eventDTO.Id }, eventDTO);
+            return Ok();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteEvent(int? id)
         {
@@ -109,7 +108,7 @@ namespace EventsPortal.Controllers
             {
                 string userId = User.Claims.First(c => c.Type == "UserID").Value;
 
-                var searchItem = await _eventService.GetEventById(id);
+                var searchItem = _eventService.GetEvent(id);
                 if (searchItem != null)
                 {
                     await _eventService.DeleteEvent(id);
@@ -120,6 +119,7 @@ namespace EventsPortal.Controllers
             else throw new ArgumentNullException();
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEvent(int id, [FromBody] EventDTO eventDTO)
         {
@@ -133,11 +133,10 @@ namespace EventsPortal.Controllers
             }
             catch (DBConcurrencyException)
             {
-                if (_eventService.GetEventById(id) == null)
+                if (_eventService.GetEvent(id) == null)
                 {
                     return NotFound();
                 }
-
                 else
                 {
                     throw;

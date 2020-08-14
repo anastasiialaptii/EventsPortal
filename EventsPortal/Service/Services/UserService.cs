@@ -36,7 +36,7 @@ namespace Service.Services
         {
             if (id != null)
             {
-                var searchItem = await _dbOperation.Users.GetIdAsync(id);
+                var searchItem = _dbOperation.Users.GetItem(id);
 
                 if (searchItem != null)
                 {
@@ -61,7 +61,7 @@ namespace Service.Services
             if (id != null)
             {
                 return _mapper.Map<UserDTO>(
-                    await _dbOperation.Users.GetIdAsync(id));
+                     _dbOperation.Users.GetItem(id));
             }
             else throw new ArgumentNullException();
         }

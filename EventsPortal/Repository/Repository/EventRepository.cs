@@ -22,7 +22,6 @@ namespace Data.Repository
             if (item != null)
             {
                 _dbContext.Events.Add(item);
-
             }
         }
 
@@ -30,7 +29,6 @@ namespace Data.Repository
         {
             if (item != null)
             {
-
                 _dbContext.Events.Remove(item);
             }
         }
@@ -44,82 +42,24 @@ namespace Data.Repository
             else throw new ArgumentNullException();
         }
 
+
+        /// <summary>
+        /// /////////////////////
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<Event>> GetAllAsync()
         {
-            //var events = _dbContext.Events
-            //                    .Where(e => e.Name.Contains("name"))
-            //                    .Select(e => new EventDTO {
-            //                        )
-            //                    .ToList();
-
-
-
-            return await _dbContext.Events
-                .Select(x => new Event
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Location = x.Location,
-                    ImageURI = x.ImageURI,
-                    Description = x.Description,
-                    OrganizerId = x.OrganizerId,
-                    EventTypeId = x.EventTypeId,
-                    Date = x.Date,
-                    Organizer = new User
-                    {
-                        Id = x.Organizer.Id,
-                        Name = x.Organizer.Name,
-                        Email = x.Organizer.Email,
-                        GoogleId = x.Organizer.GoogleId,
-                        IdToken = x.Organizer.IdToken,
-                        Image = x.Organizer.Image,
-                        Provider = x.Organizer.Provider,
-                        Token = x.Organizer.Token
-                    },
-                    EventType = new EventType
-                    {
-                        Id = x.EventType.Id,
-                        Name = x.EventType.Name
-                    }
-                })
-                .ToListAsync();
+            return await _dbContext.Events.ToListAsync();
         }
 
-        public async Task<Event> GetIdAsync(int? id)
+        public Event GetItem(int? id)
         {
-            if (id != null)
-            {
-                return await _dbContext.Events
-                .Select(x => new Event
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Location = x.Location,
-                    ImageURI = x.ImageURI,
-                    Description = x.Description,
-                    OrganizerId = x.OrganizerId,
-                    EventTypeId = x.EventTypeId,
-                    Organizer = new User
-                    {
-                        Id = x.Organizer.Id,
-                        Name = x.Organizer.Name,
-                        Email = x.Organizer.Email,
-                        GoogleId = x.Organizer.GoogleId,
-                        IdToken = x.Organizer.IdToken,
-                        Image = x.Organizer.Image,
-                        Provider = x.Organizer.Provider,
-                        Token = x.Organizer.Token
-                    },
-                    EventType = new EventType
-                    {
-                        Id = x.EventType.Id,
-                        Name = x.EventType.Name
-                    }
-                })
-               .Where(x => x.Id == id)
-               .FirstOrDefaultAsync();
-            }
-            else throw new ArgumentNullException();
+            return _dbContext.Events.Where(x => x.Id == id).FirstOrDefault();
+        }
+
+        public IQueryable<Event> GetItems()
+        {
+            return _dbContext.Events;
         }
 
         public void Update(Event item)

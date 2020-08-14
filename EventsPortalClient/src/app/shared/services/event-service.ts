@@ -9,14 +9,21 @@ import { EventItem } from '../models/event-model';
 })
 
 export class EventService {
+    PublicEventsList: EventItem[];
+
+    ///////////////////
     FormData: EventItem;
     SearchEventFormData: EventItem;
     SearchEventList: EventItem[];
     EventByIdList: EventItem[];
     AllowedToVisitEvent: number[];
-    EventDate:Date
+    EventDate: Date
 
     constructor(private http: HttpClient) { }
+
+    GetPublicEvents(){
+        return this.http.get(Configuration.URI + '/Event/GetPublicEvents');
+    }
 
     CreateEvent() {
         return this.http.post(Configuration.URI + '/Event/CreateEvent', this.FormData, { reportProgress: true, observe: 'events' });
@@ -24,15 +31,15 @@ export class EventService {
 
     GetAllowedEventList(idUser?: string, searchString?: string) {
         if (idUser != null && searchString == null) {
-            return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/' + idUser,{ withCredentials: true });
+            return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/' + idUser, { withCredentials: true });
         }
         else if (idUser != null && searchString != null) {
-            return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/' + idUser + '/' + searchString,{ withCredentials: true });
+            return this.http.get(Configuration.URI + '/Event/GetAllowedEventList/' + idUser + '/' + searchString, { withCredentials: true });
         }
     }
 
     GetEventList() {
-        return this.http.get(Configuration.URI + '/Event/GetAllowedEventList');
+        return this.http.get(Configuration.URI + '/Event/GetEventList');
     }
 
     GetAllowedToVisitEvent(idUser?: string) {

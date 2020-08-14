@@ -59,7 +59,7 @@ namespace Data.Repository
                 .ToListAsync();
         }
 
-        public async Task<User> GetIdAsync(int? id)
+        public async Task<User> GetItem(int? id)
         {
             if (id != null)
             {
@@ -79,6 +79,11 @@ namespace Data.Repository
             else throw new ArgumentNullException();
         }
 
+        public IQueryable<User> GetItems()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(User item)
         {
             if (item != null)
@@ -86,6 +91,11 @@ namespace Data.Repository
                 _dbContext.Entry(item).State = EntityState.Modified;
             }
             else throw new ArgumentNullException();
+        }
+
+        User IRepository<User>.GetItem(int? id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
