@@ -1,6 +1,4 @@
-﻿using Core.Entities;
-using Service.DTO;
-using System;
+﻿using Service.DTO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

@@ -1,6 +1,5 @@
 ﻿using Service.DTO;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Service.Interfaces
@@ -23,7 +22,7 @@ namespace Service.Interfaces
 
         Task AddEvent(EventDTO eventDTO);
 
-      //  Task<List<int>> IsEventUserCreated(string userId);
+        //  Task<List<int>> IsEventUserCreated(string userId);
 
     }
 }
