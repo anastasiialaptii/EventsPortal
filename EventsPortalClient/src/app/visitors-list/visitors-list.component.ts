@@ -69,7 +69,7 @@ export class VisitorsListComponent implements OnInit {
 
   cancel() {
     this.tableMode = true;
-    this.eventService.GetEventById(this.eventView.Id);
+    this.eventService.GetEvent(this.eventView.Id);
   }
 
   uploadFinished = (event) => {

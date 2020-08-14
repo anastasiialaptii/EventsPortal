@@ -34,17 +34,15 @@ export class EventService {
     }
 
     GetAllowedToVisitEvent(idUser?: string) {
-        return this.http.get(Configuration.URI + '/Event/GetAlloweEventToVisitList/' + idUser)
-            .toPromise()
-            .then(res => this.AllowedToVisitEvent = res as number[]);
+        return this.http.get(Configuration.URI + '/Event/GetAllowedEventToVisitList/' + idUser);
     }
 
     GetEvent(id: number) {
         return this.http.get(Configuration.URI + '/Event/GetEvent/' + id);
     }
 
-    DeleteEvent(id: number) {
-        return this.http.delete(Configuration.URI + '/Event/DeleteEvent/' + id);
+    DeleteEvent(id: number, idUser: string) {
+        return this.http.delete(Configuration.URI + '/Event/DeleteEvent/' + id + '/' + idUser);
     }
 
     EditEvent(id: number, event: EventItem) {

@@ -21,7 +21,7 @@ import { AuthenticateService } from '../shared/services/auth-service';
 export class AllowedEventListComponent implements OnInit {
   userId: number;
   visit: Visit;
-  
+  token = JSON.parse(localStorage.getItem('token'));
   publicOwnEvents = [];
   eventItems: EventItem[];
   pageOfItemsEvent: Array<EventItem>;
@@ -108,23 +108,21 @@ export class AllowedEventListComponent implements OnInit {
   //   )
   // }
 
-  // onDelete(id) {
-  //   this.confirmationDialogService.confirm()
-  //     .then((confirmed) =>
-  //       this.eventService.DeleteEvent(id)
-  //         .subscribe(res => {
-  //           this.eventService.GetAllowedEventList(this.token.Message, this.eventService.SearchEventFormData.Name).subscribe((res: any) => {
-  //             this.eventItem = res;
-  //             debugger;
-  //             console.log(res)
-  //             this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
-  //             this.toastr.info('Event successfully deleted', 'Info');
-  //           })
-  //         }),
-  //       err => {
-  //         debugger;
-  //         console.log(err);
-  //       })
-  //     .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
-  // }
+  onDelete(id: number, idUser: string) {
+    this.confirmationDialogService.confirm()
+      .then((confirmed) =>
+        this.eventService.DeleteEvent(id, idUser)
+          .subscribe(res => {
+            this.eventService.GetPublicOwnEvents().subscribe((res: any) => {
+              this.eventItems = res;
+              this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
+              this.toastr.info('Event successfully deleted', 'Info');
+            })
+          }),
+        err => {
+          debugger;
+          console.log(err);
+        })
+      .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  }
 }

@@ -76,13 +76,17 @@ namespace EventsPortal.Controllers
         }
 
         [Authorize]
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteEvent(int? id)
+        [HttpDelete("{id}/{userId}")]
+        public async Task<ActionResult> DeleteEvent(int? id, string userId)
         {
             try
             {
-                await _eventService.DeleteEvent(id);
-                return Ok();
+                if (User.Identity.Name == userId)
+                {
+                    await _eventService.DeleteEvent(id);
+                    return Ok();
+                }
+                else return StatusCode(500);
             }
             catch (Exception ex)
             {
