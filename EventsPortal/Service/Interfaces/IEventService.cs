@@ -13,6 +13,8 @@ namespace Service.Interfaces
 
         IEnumerable<EventDTO> GetPublicOwnEvents(string userId);
 
+        IEnumerable<EventDTO> SearchEvents(string userId, string eventName);
+
         EventDTO GetEvent(int? id);
 
         Task DeleteEvent(int? id);

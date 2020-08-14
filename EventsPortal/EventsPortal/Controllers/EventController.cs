@@ -29,11 +29,18 @@ namespace EventsPortal.Controllers
         //    return await _eventService.IsEventUserCreated(userId);
         //}
 
-        [HttpGet]
         [Authorize]
+        [HttpGet]
         public IEnumerable<EventDTO> GetPublicOwnEvents()
         {
             return _eventService.GetPublicOwnEvents(User.Identity.Name);
+        }
+
+        [Authorize]
+        [HttpGet("{eventName}")]
+        public IEnumerable<EventDTO> SearchEvents(string eventName)
+        {
+            return _eventService.SearchEvents(User.Identity.Name, eventName);
         }
 
         [HttpGet]

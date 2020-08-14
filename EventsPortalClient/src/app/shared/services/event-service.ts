@@ -25,6 +25,10 @@ export class EventService {
         return this.http.get(Configuration.URI + '/Event/GetPublicOwnEvents');
     }
 
+    SearchEvents(eventName: string) {
+        return this.http.get(Configuration.URI + '/Event/SearchEvents/' + eventName);
+    }
+
     CreateEvent() {
         return this.http.post(Configuration.URI + '/Event/CreateEvent', this.FormData, { reportProgress: true, observe: 'events', withCredentials: true });
     }

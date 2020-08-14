@@ -148,10 +148,37 @@ namespace Service.Services
                     }
                 }).ToList());
         }
-        //IEnumerable<EventDTO> IEventService.GetEvent(int? id)
-        //{
-        //    throw new System.NotImplementedException();
-        //}
+
+        public IEnumerable<EventDTO> SearchEvents(string userId, string eventName)
+        {
+            return _mapper.Map<List<EventDTO>>(
+                _dbOperation.Events.GetItems()
+                .Where(x => x.EventType.Name == "Public" || x.EventType.Name == "Private")
+                .Where(x => x.Organizer.Email == userId)
+                .Where(x => x.Name.Contains(eventName))
+                .Select(x => new EventDTO
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Location = x.Location,
+                    ImageURI = x.ImageURI,
+                    Description = x.Description,
+                    Date = x.Date,
+                    OrganizerId = x.OrganizerId,
+                    EventTypeId = x.EventTypeId,
+                    Organizer = new UserDTO
+                    {
+                        Id = x.Organizer.Id,
+                        Name = x.Organizer.Name,
+                        Email = x.Organizer.Email
+                    },
+                    EventType = new EventTypeDTO
+                    {
+                        Id = x.EventType.Id,
+                        Name = x.EventType.Name
+                    }
+                }).ToList());
+        }
 
         //public async Task<IEnumerable<EventDTO>> GetAllowedEventList(string organizerId, string searchEvent)
         //{

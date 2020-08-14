@@ -43,31 +43,23 @@ export class AllowedEventListComponent implements OnInit {
       this.eventItems = res;
       this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
     });
-    // this.eventService.GetEventList();
-    // this.eventService.GetAllowedToVisitEvent(this.token.Message);
-    // this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
-    //   this.eventItem = res;
-    //   console.log(res)
-    //   this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
-    // });
   }
 
-  // onSearchEvent(name: string) {
-  //   if (name.length > 1) {
-  //     this.eventService.GetAllowedEventList(this.token.Message, name).subscribe((res: any) => {
-  //       this.eventItem = res;
-  //       console.log(res)
-  //       this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
-  //     });
-  //   }
-  //   else {
-  //     this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
-  //       this.eventItem = res;
-  //       console.log(res)
-  //       this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
-  //     });
-  //   }
-  // }
+  onSearchEvent(name: string) {
+    if (name.length > 1) {
+      this.eventService.SearchEvents(name).subscribe((res: any) => {
+        this.eventItems = res;
+        console.log(res)
+        this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
+      });
+    }
+    else {
+      this.eventService.GetPublicEvents().subscribe((res: any) => {
+        this.eventItems = res;
+        this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
+      });
+    }
+  }
 
   onChangePage(pageOfItemsEvent: Array<any>) {
     this.pageOfItemsEvent = pageOfItemsEvent;
