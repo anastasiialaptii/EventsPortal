@@ -123,8 +123,7 @@ namespace Service.Services
         {
             return _mapper.Map<List<EventDTO>>(
                 _dbOperation.Events.GetItems()
-                .Where(x => x.EventType.Name == "Public" || x.EventType.Name == "Private")
-                .Where(x => x.Organizer.Email == userId)
+                .Where(x => x.EventType.Name == "Public" || x.EventType.Name == "Private" && x.Organizer.Email == userId)
                 .Select(x => new EventDTO
                 {
                     Id = x.Id,
@@ -153,8 +152,7 @@ namespace Service.Services
         {
             return _mapper.Map<List<EventDTO>>(
                 _dbOperation.Events.GetItems()
-                .Where(x => x.EventType.Name == "Public" || x.EventType.Name == "Private")
-                .Where(x => x.Organizer.Email == userId)
+                .Where(x => x.EventType.Name == "Public" || x.EventType.Name == "Private" && x.Organizer.Email == userId)
                 .Where(x => x.Name.Contains(eventName))
                 .Select(x => new EventDTO
                 {

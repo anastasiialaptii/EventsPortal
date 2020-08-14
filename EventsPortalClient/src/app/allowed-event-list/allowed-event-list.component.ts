@@ -39,7 +39,7 @@ export class AllowedEventListComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetForm();
-    this.eventService.GetPublicEvents().subscribe((res: any) => {
+    this.eventService.GetPublicOwnEvents().subscribe((res: any) => {
       this.eventItems = res;
       this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
     });
@@ -54,7 +54,7 @@ export class AllowedEventListComponent implements OnInit {
       });
     }
     else {
-      this.eventService.GetPublicEvents().subscribe((res: any) => {
+      this.eventService.GetPublicOwnEvents().subscribe((res: any) => {
         this.eventItems = res;
         this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
       });
