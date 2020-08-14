@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Routing;
 using Service.DTO;
 using Service.Interfaces;
 using System.Collections.Generic;
@@ -41,7 +40,7 @@ namespace EventsPortal.Controllers
         }
 
         [HttpPost]
-        public async Task<object> GoogleAuth(GoogleUser googleUser)
+        public async Task<Response> GoogleAuth(GoogleUser googleUser)
         {
             var userList = await _userService.GetUsers();
 
@@ -50,7 +49,7 @@ namespace EventsPortal.Controllers
                 if (user.Email == googleUser.email)
                 {
                     await Authenticate(googleUser.name);
-                    return new Response { Message = user.Token, UserName = user.Name, Status = "Exists" };
+                    return new Response { UserEmail = user.Email};
                 }
             }
             var userDTO = new UserDTO()
@@ -65,7 +64,7 @@ namespace EventsPortal.Controllers
             };
             await _userService.AddUser(userDTO);
             await Authenticate(googleUser.name);
-            return new Response { Message = googleUser.token, UserName = googleUser.name, Status = "OK" };
+            return new Response { UserEmail = googleUser.email };
         }
     }
 }

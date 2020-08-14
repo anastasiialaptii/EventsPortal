@@ -23,19 +23,6 @@ namespace EventsPortal.Controllers
             _eventService = eventService;
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> Get()
-        //{
-
-        //    string test;
-        //    foreach (var item in x)
-        //    {
-        //        test = item.ImageURI;
-        //        return Ok("{\"image\"" + ":\"" + System.Convert.ToBase64String(System.IO.File.ReadAllBytes(test)) + "\"}");
-        //    }
-        //    return NoContent();
-        //}
-
         //[HttpGet("{userId}")]
         //public async Task<IEnumerable<int>> GetAlloweEventToVisitList(string userId)
         //{

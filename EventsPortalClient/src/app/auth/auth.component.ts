@@ -13,8 +13,7 @@ import { Router } from '@angular/router';
 })
 
 export class AuthComponent implements OnInit {
-  token = JSON.parse(localStorage.getItem('socialusers'));
-  userName: string;
+  userEmail: string;
   response;
   users = new User();
 
@@ -26,7 +25,7 @@ export class AuthComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userName = this.token.UserName;
+    this.userEmail = JSON.parse(sessionStorage.getItem('token')).UserEmail;
   }
 
   socialSignIn(socialProvider: string) {
@@ -35,6 +34,8 @@ export class AuthComponent implements OnInit {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
     this.oAuth.signIn(socialPlatformProvider).then(users => {
+      console.log(socialProvider, users);
+      console.log(users);
       this.savesresponse(users);
     });
   }
@@ -43,6 +44,7 @@ export class AuthComponent implements OnInit {
     this.authService.AuthUser(users).subscribe((res: any) => {
       this.users = res;
       this.response = res.userDetail;
+      sessionStorage.setItem('token', JSON.stringify(res));
       localStorage.setItem('socialusers', JSON.stringify(this.users));
       this.router.navigate(["/allowed-event-list"]);
     })
@@ -50,6 +52,7 @@ export class AuthComponent implements OnInit {
 
   logOut() {
     localStorage.clear();
-    this.authService.SignOut().subscribe((res: any)=>{});
+    sessionStorage.clear();
+    this.authService.SignOut().subscribe((res: any) => { });
   }
 }

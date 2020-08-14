@@ -11,9 +11,7 @@ import { EventItem } from '../shared/models/event-model';
 import { Configuration } from '../shared/config/configuration';
 import { Router } from '@angular/router';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
-import { AuthComponent } from '../auth/auth.component';
 import { AuthenticateService } from '../shared/services/auth-service';
-//import { AuthService } from 'angular-6-social-login';
 
 @Component({
   selector: 'app-allowed-event-list',
@@ -43,7 +41,6 @@ export class AllowedEventListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-   // this.authService.AuthCookie().subscribe(res => { console.log('success') }, err => { console.log('------') });
     this.resetForm();
     this.eventService.GetEventList();
     this.eventService.GetAllowedToVisitEvent(this.token.Message);

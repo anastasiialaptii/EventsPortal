@@ -17,7 +17,7 @@
                     <a class="nav-link" *ngIf="this.authGuard.canActivate()" class="nav-link" href="#" (click)="logOut()">Log out</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" *ngIf="this.authGuard.canActivate()">Hello, {{userName}}</a>
+                    <a class="nav-link disabled" *ngIf="this.authGuard.canActivate()">Hello, {{userEmail}}</a>
                 </li>
             </ul>
         </div>

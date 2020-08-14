@@ -11,7 +11,6 @@ export class AuthenticateService {
     constructor(private http: HttpClient) { }
 
     AuthUser(responce) {
-
         return this.http.post(Configuration.URI + '/Auth/GoogleAuth', responce, { withCredentials: true });
     }
 
