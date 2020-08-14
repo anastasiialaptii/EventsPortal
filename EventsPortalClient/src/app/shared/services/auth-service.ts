@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { Configuration } from '../config/configuration';
 
 @Injectable({
@@ -18,5 +17,9 @@ export class GoogleAuthService {
 
     AuthCookie() {
         return this.http.get(Configuration.URI + '/Auth/Authenticate');
+    }
+
+    SignOut() {
+        return this.http.get(Configuration.URI + '/Auth/SignOut');
     }
 }

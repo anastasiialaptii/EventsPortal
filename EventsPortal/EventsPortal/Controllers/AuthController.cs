@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Service.DTO;
 using Service.Interfaces;
 using System.Collections.Generic;
@@ -27,7 +28,6 @@ namespace EventsPortal.Controllers
         [HttpGet]
         public async Task Authenticate(string user)
         {
-
             var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, "test")
@@ -36,6 +36,11 @@ namespace EventsPortal.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
 
+        [HttpGet]
+        public void SignOut()
+        {
+            Response.Cookies.Delete("Cookies");
+        }
 
         [HttpPost]
         public async Task<object> Savesresponse(GoogleUser googleUser)

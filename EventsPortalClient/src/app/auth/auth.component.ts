@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleLoginProvider, AuthService } from 'angular-6-social-login';
-
 import { GoogleAuthService } from '../shared/services/auth-service';
 import { User } from '../shared/models/user-model';
 import { AuthGuard } from '../shared/config/auth-provider';
@@ -44,8 +43,6 @@ export class AuthComponent implements OnInit {
 
   savesresponse(users: User) {
     this.gAuthService.AuthUser(users).subscribe((res: any) => {
-      debugger;
-      console.log(res);
       this.users = res;
       this.response = res.userDetail;
       console.log(localStorage.setItem('socialusers', JSON.stringify(this.users)));
@@ -57,5 +54,6 @@ export class AuthComponent implements OnInit {
 
   logOut() {
     localStorage.clear();
+    this.gAuthService.SignOut().subscribe((res: any)=>{});
   }
 }
