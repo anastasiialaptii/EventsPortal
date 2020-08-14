@@ -6,17 +6,6 @@
                 <h1 class="text-center">Events 🎉</h1>
             </div>
         </div>
-
-        <!-- <div class="row">
-            <div class="col-md-12 mb-4">
-                <mat-datepicker-toggle class="pull-left mr-2" matSuffix [for]="Date"></mat-datepicker-toggle>
-                <div class="row">
-                    <input type="date | date" (ngModelChange)="onSearchEventByDate(eventService.EventDate)" class="form-control col" matInput [matDatepicker]="Date" name="Date" #Name="ngModel" [(ngModel)]="eventService.EventDate" placeholder="Choose a date">
-                </div>
-                <mat-datepicker #Date></mat-datepicker>
-            </div>
-        </div> -->
-
         <div class="row">
             <div class="col-md-12 mb-4">
                 <input (ngModelChange)="onSearchEvent(eventService.SearchEventFormData.Name)" type="text" name="Name" class="form-control" placeholder="Search for an event" aria-describedby="basic-addon2" #Name="ngModel" [(ngModel)]="eventService.SearchEventFormData.Name">
@@ -31,9 +20,9 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">{{item.data.Name}}</h4>
-                        <h4 class="card-title">{{item.data.Date|date}}</h4>
+                        <h4 class="card-title">{{item.data.Date | date}}</h4>
                         <p class="card-text">{{item.data.EventType.Name}}</p>
-                        <button *ngIf="item.data.Organizer.Token==token.Message; else deleteDisallowed" type="button" class="btn btn-danger mb-2 mr-2 pull-right" (click)="onDelete(item.data.Id)" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                        <!-- <button *ngIf="item.data.Organizer.Token==token.Message; else deleteDisallowed" type="button" class="btn btn-danger mb-2 mr-2 pull-right" (click)="onDelete(item.data.Id)" data-toggle="modal" data-target="#deleteModal">Delete</button>
                         <ng-template #deleteDisallowed>
                             <button disabled type="button" class="btn btn-danger mb-2 mr-2 pull-right" (click)="onDelete(item.data.Id)" data-toggle="modal" data-target="#deleteModal">Delete</button>
                         </ng-template>
@@ -41,14 +30,14 @@
                             <div *ngIf="x==item.data.Id">
                                 <button type="button" class="btn btn-success mb-2 mr-2 pull-right" (click)="createVisit(item.data.Id)">Join</button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="mx-auto mt-4">
-                <jw-pagination class="jw-pagination" [items]="itemsEvent" [pageSize]="9" (changePage)="onChangePage($event)">
+                <jw-pagination class="jw-pagination" [items]="publicOwnEvents" [pageSize]="9" (changePage)="onChangePage($event)">
                 </jw-pagination>
             </div>
         </div>

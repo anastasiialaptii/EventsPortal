@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { EventItem } from '../shared/models/event-model';
 import { EventService } from '../shared/services/event-service';
 import { Configuration } from '../shared/config/configuration';
@@ -16,8 +15,6 @@ export class HomePageComponent implements OnInit {
   eventItems: EventItem[];
   publicEvents = [];
   pageOfItemsEvent: Array<EventItem>;
-  //token = JSON.parse(localStorage.getItem('socialusers'));
-  //qwe:string;
 
   constructor(
     public eventService:EventService,

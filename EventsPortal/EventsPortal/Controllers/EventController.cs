@@ -5,8 +5,6 @@ using Service.DTO;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace EventsPortal.Controllers
@@ -33,9 +31,9 @@ namespace EventsPortal.Controllers
 
         [HttpGet]
         [Authorize]
-        public IEnumerable<EventDTO> GetEvents()
+        public IEnumerable<EventDTO> GetPublicOwnEvents()
         {
-            return _eventService.GetEvents();
+            return _eventService.GetPublicOwnEvents(User.Identity.Name);
         }
 
         [HttpGet]
@@ -53,11 +51,6 @@ namespace EventsPortal.Controllers
         //{
         //    var s = User.Identity.Name;
         //    return await _eventService.GetAllowedEventList(organizerId, searchEvent);
-        //}
-
-        //public async Task<IEnumerable<EventDTO>> GetEvents()
-        //{
-        //    return await _eventService.GetEvents();
         //}
 
         //public async Task<IEnumerable<EventDTO>> GetAllEvents(string organizerId, string searchEvent)
@@ -101,45 +94,41 @@ namespace EventsPortal.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteEvent(int? id)
         {
-            if (id != null)
+            try
             {
-                string userId = User.Claims.First(c => c.Type == "UserID").Value;
-
-                var searchItem = _eventService.GetEvent(id);
-                if (searchItem != null)
-                {
-                    await _eventService.DeleteEvent(id);
-                    return NoContent();
-                }
-                else return NotFound();
+                await _eventService.DeleteEvent(id);
+                return Ok();
             }
-            else throw new ArgumentNullException();
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
         }
 
         [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEvent(int id, [FromBody] EventDTO eventDTO)
         {
-            if (id != eventDTO.Id)
-            {
-                return BadRequest();
-            }
             try
             {
                 await _eventService.EditEvent(eventDTO);
+                return Ok();
             }
-            catch (DBConcurrencyException)
+            catch (Exception ex)
             {
-                if (_eventService.GetEvent(id) == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode(500, $"Internal server error: {ex}");
             }
-            return Ok();
         }
+        //catch (DBConcurrencyException)
+        //{
+        //    if (_eventService.GetEvent(id) == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    else
+        //    {
+        //        throw;
+        //    }
     }
 }
+

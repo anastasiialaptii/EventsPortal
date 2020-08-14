@@ -73,6 +73,7 @@ namespace Service.Services
                     Location = x.Location,
                     ImageURI = x.ImageURI,
                     Description = x.Description,
+                    Date = x.Date,
                     OrganizerId = x.OrganizerId,
                     EventTypeId = x.EventTypeId,
                     Organizer = new UserDTO
@@ -93,7 +94,7 @@ namespace Service.Services
         {
             return _mapper.Map<List<EventDTO>>(
                 _dbOperation.Events.GetItems()
-                .Where(x=>x.EventType.Name=="Public")
+                .Where(x => x.EventType.Name == "Public")
                 .Select(x => new EventDTO
                 {
                     Id = x.Id,
@@ -101,6 +102,37 @@ namespace Service.Services
                     Location = x.Location,
                     ImageURI = x.ImageURI,
                     Description = x.Description,
+                    Date = x.Date,
+                    OrganizerId = x.OrganizerId,
+                    EventTypeId = x.EventTypeId,
+                    Organizer = new UserDTO
+                    {
+                        Id = x.Organizer.Id,
+                        Name = x.Organizer.Name,
+                        Email = x.Organizer.Email
+                    },
+                    EventType = new EventTypeDTO
+                    {
+                        Id = x.EventType.Id,
+                        Name = x.EventType.Name
+                    }
+                }).ToList());
+        }
+
+        public IEnumerable<EventDTO> GetPublicOwnEvents(string userId)
+        {
+            return _mapper.Map<List<EventDTO>>(
+                _dbOperation.Events.GetItems()
+                .Where(x => x.EventType.Name == "Public" || x.EventType.Name == "Private")
+                .Where(x => x.Organizer.Email == userId)
+                .Select(x => new EventDTO
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Location = x.Location,
+                    ImageURI = x.ImageURI,
+                    Description = x.Description,
+                    Date = x.Date,
                     OrganizerId = x.OrganizerId,
                     EventTypeId = x.EventTypeId,
                     Organizer = new UserDTO

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { Configuration } from '../config/configuration';
 import { EventItem } from '../models/event-model';
 
@@ -9,20 +8,21 @@ import { EventItem } from '../models/event-model';
 })
 
 export class EventService {
-    PublicEventsList: EventItem[];
-
-    ///////////////////
     FormData: EventItem;
+
     SearchEventFormData: EventItem;
     SearchEventList: EventItem[];
     EventByIdList: EventItem[];
     AllowedToVisitEvent: number[];
-    EventDate: Date
 
     constructor(private http: HttpClient) { }
 
-    GetPublicEvents(){
+    GetPublicEvents() {
         return this.http.get(Configuration.URI + '/Event/GetPublicEvents');
+    }
+
+    GetPublicOwnEvents() {
+        return this.http.get(Configuration.URI + '/Event/GetPublicOwnEvents');
     }
 
     CreateEvent() {
