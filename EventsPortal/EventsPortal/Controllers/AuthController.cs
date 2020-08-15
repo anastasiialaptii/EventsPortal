@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTO;
 using Service.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -25,48 +26,71 @@ namespace EventsPortal.Controllers
             _userService = userService;
         }
 
-        public async Task Authenticate(string user)
+        public async Task<ActionResult> Authenticate(string user)
         {
-            var claims = new List<Claim>
+            try
+            {
+                var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user)
             };
-            ClaimsIdentity id = new ClaimsIdentity(claims, "Cookies", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+                ClaimsIdentity id = new ClaimsIdentity(claims, "Cookies", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
         }
 
         [Authorize]
-        public void SignOut()
+        public ActionResult SignOut()
         {
-            Response.Cookies.Delete("Cookies");
+            try
+            {
+                Response.Cookies.Delete("Cookies");
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
         }
 
         [HttpPost]
-        public async Task<Response> GoogleAuth(GoogleUser googleUser)
+        public async Task<ActionResult<Response>> GoogleAuth(GoogleUser googleUser)
         {
-            var userList = _userService.GetUsers();
+            try
+            {
+                var userList = _userService.GetUsers();
 
-            foreach (var user in userList)
-            {
-                if (user.Email == googleUser.email)
+                foreach (var user in userList)
                 {
-                    await Authenticate(googleUser.email);
-                    return new Response { UserEmail = user.Email};
+                    if (user.Email == googleUser.email)
+                    {
+                        await Authenticate(googleUser.email);
+                        return new Response { UserEmail = user.Email };
+                    }
                 }
+                var userDTO = new UserDTO()
+                {
+                    GoogleId = googleUser.id,
+                    Email = googleUser.email,
+                    IdToken = googleUser.idToken,
+                    Image = googleUser.image,
+                    Name = googleUser.name,
+                    Provider = googleUser.provider,
+                    Token = googleUser.token
+                };
+                await _userService.AddUser(userDTO);
+                await Authenticate(googleUser.email);
+                return new Response { UserEmail = googleUser.email };
             }
-            var userDTO = new UserDTO()
+            catch (Exception ex)
             {
-                GoogleId = googleUser.id,
-                Email = googleUser.email,
-                IdToken = googleUser.idToken,
-                Image = googleUser.image,
-                Name = googleUser.name,
-                Provider = googleUser.provider,
-                Token = googleUser.token
-            };
-            await _userService.AddUser(userDTO);
-            await Authenticate(googleUser.email);
-            return new Response { UserEmail = googleUser.email };
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
         }
     }
 }

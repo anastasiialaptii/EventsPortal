@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
 {
@@ -48,6 +49,7 @@ namespace Data.Migrations
                     Location = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     ImageURI = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTimeOffset>(nullable: false),
                     EventTypeId = table.Column<int>(nullable: false),
                     OrganizerId = table.Column<int>(nullable: false)
                 },

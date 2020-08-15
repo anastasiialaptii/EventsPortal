@@ -9,7 +9,6 @@ import { EventItem } from '../models/event-model';
 
 export class EventService {
     FormData: EventItem;
-
     SearchEventFormData: EventItem;
     SearchEventList: EventItem[];
     EventByIdList: EventItem[];

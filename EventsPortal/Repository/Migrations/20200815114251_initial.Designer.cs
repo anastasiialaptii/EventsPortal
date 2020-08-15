@@ -10,8 +10,8 @@ using Repository;
 namespace Data.Migrations
 {
     [DbContext(typeof(EventsPortalDbContext))]
-    [Migration("20200810101655_date-field-offset")]
-    partial class datefieldoffset
+    [Migration("20200815114251_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

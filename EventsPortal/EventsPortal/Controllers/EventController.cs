@@ -12,6 +12,7 @@ namespace EventsPortal.Controllers
     [EnableCors("CorsPolicy")]
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class EventController : ControllerBase
     {
         private readonly IEventService _eventService;
@@ -28,35 +29,38 @@ namespace EventsPortal.Controllers
         //{
         //    return await _eventService.IsEventUserCreated(User.Identity.Name);
         //}
-
+        [AllowAnonymous]
         [HttpGet]
         public IEnumerable<EventDTO> GetPublicEvents()
         {
             return _eventService.GetPublicEvents();
         }
 
-        [Authorize]
         [HttpGet]
         public IEnumerable<EventDTO> GetPublicOwnEvents()
         {
             return _eventService.GetPublicOwnEvents(User.Identity.Name);
         }
 
-        [Authorize]
         [HttpGet("{eventName}")]
         public IEnumerable<EventDTO> SearchEvents(string eventName)
         {
             return _eventService.SearchEvents(User.Identity.Name, eventName);
         }
 
-        [Authorize]
         [HttpGet("{id}")]
-        public EventDTO GetEvent(int? id)
+        public ActionResult<EventDTO> GetEvent(int? id)
         {
-            return _eventService.GetEvent(id);
+            try
+            {
+                return _eventService.GetEvent(id);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
         }
 
-        [Authorize]
         [HttpPost, DisableRequestSizeLimit]
         public async Task<ActionResult<EventDTO>> CreateEvent([FromBody] EventDTO eventDTO)
         {
@@ -75,7 +79,6 @@ namespace EventsPortal.Controllers
             }
         }
 
-        [Authorize]
         [HttpDelete("{id}/{userId}")]
         public async Task<ActionResult> DeleteEvent(int? id, string userId)
         {
@@ -94,7 +97,6 @@ namespace EventsPortal.Controllers
             }
         }
 
-        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEvent(int id, [FromBody] EventDTO eventDTO)
         {
@@ -108,16 +110,6 @@ namespace EventsPortal.Controllers
                 return StatusCode(500, $"Internal server error: {ex}");
             }
         }
-        //catch (DBConcurrencyException)
-        //{
-        //    if (_eventService.GetEvent(id) == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    else
-        //    {
-        //        throw;
-        //    }
     }
 }
 

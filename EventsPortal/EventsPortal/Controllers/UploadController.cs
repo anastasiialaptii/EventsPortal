@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
 using System.Net.Http.Headers;
@@ -7,6 +8,7 @@ namespace EventsPortal.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class UploadController : ControllerBase
     {
         [HttpPost, DisableRequestSizeLimit]

@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTO;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Threading.Tasks;
 
 namespace UsersPortal.Controllers
@@ -12,6 +12,7 @@ namespace UsersPortal.Controllers
     [EnableCors("CorsPolicy")]
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -27,73 +28,59 @@ namespace UsersPortal.Controllers
             return _userService.GetUsers();
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<UserDTO>> GetUserById(int? id)
-        //{
-        //    if (id != null)
-        //    {
-        //        var serachItem = await _userService.GetUser(id);
-
-        //        if (serachItem != null)
-        //        {
-        //            return serachItem;
-        //        }
-        //        else return NotFound();
-        //    }
-        //    else throw new ArgumentNullException();
-        //}
+        [HttpGet("{id}")]
+        public ActionResult<UserDTO> GetUserById(int? id)
+        {
+            try
+            {
+                return _userService.GetUser(id);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
+        }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUser([FromBody] UserDTO UserDTO)
+        public async Task<ActionResult> CreateUser([FromBody] UserDTO UserDTO)
         {
-            if (UserDTO != null)
+            try
             {
                 await _userService.AddUser(UserDTO);
+                return Ok();
             }
-            return Ok();
-
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
         }
 
         [HttpDelete("{id}")]
         public ActionResult DeleteUser(int? id)
         {
-            if (id != null)
+            try
             {
-                var searchItem =  _userService.GetUser(id);
-                if (searchItem != null)
-                {
-                     _userService.DeleteUser(id);
-                    return NoContent();
-                }
-                else return NotFound();
+                _userService.DeleteUser(id);
+                return NoContent();
             }
-            else throw new ArgumentNullException();
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] UserDTO userDTO)
+        public async Task<ActionResult> UpdateUser(int id, [FromBody] UserDTO userDTO)
         {
-            if (id != userDTO.Id)
-            {
-                return BadRequest();
-            }
             try
             {
                 await _userService.EditUser(userDTO);
+                return Ok();
             }
-            catch (DBConcurrencyException)
+            catch (Exception ex)
             {
-                if (_userService.GetUser(id) == null)
-                {
-                    return NotFound();
-                }
-
-                else
-                {
-                    throw;
-                }
+                return StatusCode(500, $"Internal server error: {ex}");
             }
-            return Ok();
         }
     }
 }

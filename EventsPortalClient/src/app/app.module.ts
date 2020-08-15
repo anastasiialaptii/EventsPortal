@@ -62,7 +62,7 @@ import { HttpRequestInterceptor } from '../app/shared/config/HttpRequestIntercep
     },
     [
       { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
-    ],
+    ]
   ],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationDialogComponent]

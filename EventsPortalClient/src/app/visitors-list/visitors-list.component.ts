@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-
 import { Configuration } from '../shared/config/configuration'
-
 import { VisitService } from '../shared/services/visit-service';
 import { EventService } from '../shared/services/event-service';
-
 import { EventItem } from '../shared/models/event-model';
 import { Visit } from '../shared/models/visit-model';
 import { ToastrService } from 'ngx-toastr';
@@ -27,8 +24,8 @@ export class VisitorsListComponent implements OnInit {
   pageOfItemsEvent: Array<Visit>;
   visitEvent = [];
   visitItem: Visit[];
-  token = JSON.parse(localStorage.getItem('socialusers'));
   response: { "dbPath": '' };
+  eventEdit: EventItem;
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -41,10 +38,9 @@ export class VisitorsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.eventService.GetEvent(this.id).subscribe(res=>{this.eventEdit = res});
     this.visitService.GetVisitorsList(this.id).subscribe((res: any) => {
-      debugger;
       this.visitItem = res;
-      console.log(res)
       this.visitorsCounter(res);
       this.visitEvent = Array(this.visitItem.length).fill(0).map((x, i) => ({ data: this.visitItem[i] }));
     });
@@ -69,12 +65,11 @@ export class VisitorsListComponent implements OnInit {
 
   cancel() {
     this.tableMode = true;
-    this.eventService.GetEvent(this.eventView.Id);
+    this.eventService.GetEvent(this.id).subscribe(res=>{this.eventEdit = res});
   }
 
   uploadFinished = (event) => {
     this.response = event;
-    debugger;
     this.eventView.ImageURI = this.response.dbPath;
   }
 
@@ -83,7 +78,7 @@ export class VisitorsListComponent implements OnInit {
       this.toastr.error('Fill out all the fields','Error');
     } 
     else {
-      this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { console.log('success') });
+      this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { res});
       this.tableMode = true;
       this.toastr.success('Event has been updated','Success');
     }

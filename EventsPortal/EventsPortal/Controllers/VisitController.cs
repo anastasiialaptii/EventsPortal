@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Service.DTO;
 using Service.Interfaces;
-using System.Collections.Generic;
+using System;
 using System.Threading.Tasks;
 
 namespace EventsPortal.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class VisitController : ControllerBase
     {
         private readonly IVisitService _visitService;
@@ -30,11 +32,16 @@ namespace EventsPortal.Controllers
         //}
 
         [HttpPost]
-        public async Task CreateVisit([FromBody] VisitDTO visitDTO)
+        public async Task <ActionResult> CreateVisit ([FromBody] VisitDTO visitDTO)
         {
-            if (visitDTO != null)
+            try
             {
                 await _visitService.AddVisit(visitDTO);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
             }
         }
     }

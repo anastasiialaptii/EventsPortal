@@ -34,8 +34,6 @@ export class AuthComponent implements OnInit {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
     this.oAuth.signIn(socialPlatformProvider).then(users => {
-      console.log(socialProvider, users);
-      console.log(users);
       this.savesresponse(users);
     });
   }
