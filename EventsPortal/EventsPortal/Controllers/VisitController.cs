@@ -3,13 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using Service.DTO;
 using Service.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace EventsPortal.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class VisitController : ControllerBase
     {
         private readonly IVisitService _visitService;
@@ -25,11 +26,11 @@ namespace EventsPortal.Controllers
         //    return await _visitService.GetVisits();
         //}
 
-        //[HttpGet("{eventId}")]
-        //public async Task<IEnumerable<VisitDTO>> GetVisitorsList(int eventId)
-        //{
-        //    return await _visitService.GetVisitorsByEvent(eventId);
-        //}
+        [HttpGet("{eventId}")]
+        public IEnumerable<VisitDTO> GetVisitorsPerEvent(int eventId)
+        {
+            return _visitService.GetVisitorsPerEvent(eventId);
+        }
 
         [HttpPost]
         public async Task <ActionResult> CreateVisit ([FromBody] VisitDTO visitDTO)

@@ -29,6 +29,20 @@ namespace Service.Services
             await _dbOperation.SaveAsync();
         }
 
+        public IEnumerable<VisitDTO> GetVisitorsPerEvent(int id)
+        {
+            return _dbOperation.Visits.GetItems()
+                .Where(x => x.EventId == id)
+                .Select(x => new VisitDTO
+                {
+                    User = new UserDTO
+                    {
+                        Email = x.User.Email,
+                        Name = x.User.Name
+                    }
+                }).ToList();
+        }
+
         public IEnumerable<VisitDTO> GetVisits()
         {
             return _mapper.Map<List<VisitDTO>>(

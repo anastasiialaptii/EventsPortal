@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Configuration } from '../shared/config/configuration'
 import { VisitService } from '../shared/services/visit-service';
-import { EventService } from '../shared/services/event-service';
+import { EventService } from '../shared/services/event-service'; 0
 import { EventItem } from '../shared/models/event-model';
 import { Visit } from '../shared/models/visit-model';
 import { ToastrService } from 'ngx-toastr';
@@ -18,14 +18,15 @@ import { ToastrService } from 'ngx-toastr';
 export class VisitorsListComponent implements OnInit {
   private subscription: Subscription;
   id: number;
+  eventEdit: EventItem;
   eventView: EventItem = new EventItem();
-  tableMode: boolean = true;
   isVisitorsExists: boolean = false;
   pageOfItemsEvent: Array<Visit>;
-  visitEvent = [];
-  visitItem: Visit[];
+  visitorsPerEventList = [];
+  visitor: Visit[];
   response: { "dbPath": '' };
-  eventEdit: EventItem;
+  
+  tableMode: boolean = true;
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -38,21 +39,16 @@ export class VisitorsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.eventService.GetEvent(this.id).subscribe(res=>{this.eventEdit = res});
-    this.visitService.GetVisitorsList(this.id).subscribe((res: any) => {
-      this.visitItem = res;
+    this.eventService.GetEvent(this.id).subscribe(res => { this.eventEdit = res });
+    this.visitService.GetVisitorsPerEvent(this.id).subscribe((res: any) => {
+      this.visitor = res;
       this.visitorsCounter(res);
-      this.visitEvent = Array(this.visitItem.length).fill(0).map((x, i) => ({ data: this.visitItem[i] }));
+      this.visitorsPerEventList= Array(this.visitor.length).fill(0).map((x, i) => ({ data: this.visitor[i] }));
     });
   }
 
   onChangePage(pageOfItemsEvent: Array<any>) {
     this.pageOfItemsEvent = pageOfItemsEvent;
-  }
-
-  editEvent(eventItem: EventItem) {
-    this.tableMode = false;
-    this.eventView = eventItem;
   }
 
   visitorsCounter(visitors: Visit[]) {
@@ -63,24 +59,29 @@ export class VisitorsListComponent implements OnInit {
       this.isVisitorsExists = true;
   }
 
+  editEvent(eventItem: EventItem) {
+    this.tableMode = false;
+    this.eventView = eventItem;
+  }
+
+  save() {
+    if (!this.eventView.Name || !this.eventView.Location || !this.eventView.Description || !this.eventView.Date || !this.eventView.ImageURI) {
+      this.toastr.error('Fill out all the fields', 'Error');
+    }
+    else {
+      this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { res });
+      this.tableMode = true;
+      this.toastr.success('Event has been updated', 'Success');
+    }
+  }
+
   cancel() {
     this.tableMode = true;
-    this.eventService.GetEvent(this.id).subscribe(res=>{this.eventEdit = res});
+    this.eventService.GetEvent(this.id).subscribe(res => { this.eventEdit = res });
   }
 
   uploadFinished = (event) => {
     this.response = event;
     this.eventView.ImageURI = this.response.dbPath;
-  }
-
-  save() {
-    if (!this.eventView.Name || !this.eventView.Location || !this.eventView.Description || !this.eventView.Date || !this.eventView.ImageURI) {
-      this.toastr.error('Fill out all the fields','Error');
-    } 
-    else {
-      this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { res});
-      this.tableMode = true;
-      this.toastr.success('Event has been updated','Success');
-    }
   }
 }

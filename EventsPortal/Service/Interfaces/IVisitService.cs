@@ -8,6 +8,8 @@ namespace Service.Interfaces
     {
         IEnumerable<VisitDTO> GetVisits();
 
+        IEnumerable<VisitDTO> GetVisitorsPerEvent(int id);
+
         Task AddVisit(VisitDTO visitDTO);
     }
 }

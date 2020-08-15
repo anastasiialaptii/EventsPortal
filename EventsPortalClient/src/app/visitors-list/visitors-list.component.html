@@ -1,22 +1,24 @@
 <app-auth></app-auth>
 <div class="mt-5">
-    <div class="container" >
+    <div class="container">
         <div class="row" *ngIf="tableMode; else edit">
             <div class="col-md-12 mb-4">
                 <div class="row pr-lg-5">
                     <div class="col-md-5 mb-4">
                         <div class="view">
-                            <img [src]="config.createImgPath(eventEdit.ImageURI)" class="img-fluid rounded" alt="event image">
+                            <img [src]="config.createImgPath(eventEdit?.ImageURI)" class="img-fluid rounded"
+                                alt="event image">
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
-                        <h3 class="font-weight-bold mr-5">{{eventEdit.Name}}</h3>
+                        <h3 class="font-weight-bold mr-5">{{eventEdit?.Name}}</h3>
                         <div class="col-md-13">
-                            <p class="text-justify">{{eventEdit.Description}}</p>
-                            <p>{{item?.Location}}</p>
+                            <p class="text-justify">{{eventEdit?.Description}}</p>
+                            <p>{{eventEdit?.Location}}</p>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary btn-rounded btn-md mr-2" (click)="editEvent(eventEdit)">Edit</button>
+                    <button type="button" class="btn btn-primary btn-rounded btn-md mr-2"
+                        (click)="editEvent(eventEdit)">Edit</button>
 
                     <!-- <div class="col-md-1 mb-4" *ngIf="item.Organizer.Token==token.Message; else editDisallowed">
                         <button type="button" class="btn btn-primary btn-rounded btn-md mr-2" (click)="editEvent(item)">Edit</button>
@@ -27,19 +29,20 @@
                     <div class="col-md-7 mb-4">
                     </div>
                 </div>
-                <!-- <ng-container *ngIf="isVisitorsExists==true; then eventVisitorsList; else emptyVisitorsList">
+                <ng-container *ngIf="isVisitorsExists==true; then eventVisitorsList; else emptyVisitorsList">
                 </ng-container>
                 <ng-template #eventVisitorsList>
                     <h4>Participants:</h4>
                     <div class="ml-4" *ngFor="let item of pageOfItemsEvent">
                         <div>
-                            <p>{{item.data.User.Name}} - {{item.data.User.Email}}</p>
+                            <p>{{item?.data.User.Name}} - {{item?.data.User.Email}}</p>
                             <hr>
                         </div>
                     </div>
                     <div class="row mt-4">
                         <div class="mx-auto mt-4">
-                            <jw-pagination class="jw-pagination" [items]="visitEvent" [pageSize]="5" (changePage)="onChangePage($event)">
+                            <jw-pagination class="jw-pagination" [items]="visitorsPerEventList" [pageSize]="5"
+                                (changePage)="onChangePage($event)">
                             </jw-pagination>
                         </div>
                     </div>
@@ -48,7 +51,7 @@
                     <div>
                         <h4>There are no participants.</h4>
                     </div>
-                </ng-template> -->
+                </ng-template>
             </div>
         </div>
     </div>
@@ -68,17 +71,19 @@
     </div>
     <div class="mb-4">
         <label for="eventView.Description">Description</label>
-        <textarea type="text" [(ngModel)]="eventView.Description" class="form-control form-control-lg" rows="12" cols="50"></textarea>
+        <textarea type="text" [(ngModel)]="eventView.Description" class="form-control form-control-lg" rows="12"
+            cols="50"></textarea>
     </div>
     <div class="mb-4">
         <label for="eventView.Name">Event Type</label>
         <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventView.EventTypeId" class="form-control">
-                    <option *ngFor="let type of config.eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
-                </select>
+            <option *ngFor="let type of config.eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
+        </select>
     </div>
     <div class="mb-4">
         <mat-datepicker-toggle class="pull-left mr-2" matSuffix [for]="Date"></mat-datepicker-toggle>
-        <input [min]="config.minDate" class="form-control col" matInput [matDatepicker]="Date" name="Date" #Name="ngModel" [(ngModel)]="eventView.Date" placeholder="Choose a date">
+        <input [min]="config.minDate" class="form-control col" matInput [matDatepicker]="Date" name="Date"
+            #Name="ngModel" [(ngModel)]="eventView.Date" placeholder="Choose a date">
         <mat-datepicker #Date></mat-datepicker>
     </div>
     <div class="mb-4">
