@@ -14,10 +14,12 @@ namespace EventsPortal.Controllers
     public class VisitController : ControllerBase
     {
         private readonly IVisitService _visitService;
+        private readonly IUserService _userService;
 
-        public VisitController(IVisitService visitService)
+        public VisitController(IVisitService visitService, IUserService userService)
         {
             _visitService = visitService;
+            _userService = userService;
         }
 
         //[HttpGet]
@@ -37,6 +39,7 @@ namespace EventsPortal.Controllers
         {
             try
             {
+                visitDTO.UserId = _userService.FindUserByEmail(User.Identity.Name).Id;
                 await _visitService.AddVisit(visitDTO);
                 return Ok();
             }

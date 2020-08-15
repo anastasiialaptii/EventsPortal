@@ -35,6 +35,8 @@ namespace Service.Services
                 .Where(x => x.EventId == id)
                 .Select(x => new VisitDTO
                 {
+                    UserId = x.UserId,
+                    EventId = x.EventId,
                     User = new UserDTO
                     {
                         Email = x.User.Email,

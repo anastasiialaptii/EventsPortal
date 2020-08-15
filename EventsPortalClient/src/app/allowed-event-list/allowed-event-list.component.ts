@@ -80,33 +80,24 @@ export class AllowedEventListComponent implements OnInit {
     };
   }
 
-  // createVisit(id: number) {
-  //   this.userService.GetUserByToken(this.token.Message).subscribe(
-  //     res => {
-  //       this.visit = {
-  //         EventId: id,
-  //         UserId: res
-  //       }
-  //       this.visitService.CreateVisit(this.visit).subscribe(
-  //         res => {
-  //           console.log("success");
-  //           this.toastr.success('Participation confirmed', 'Success');
-  //           this.eventService.GetAllowedEventList(this.token.Message).subscribe((res: any) => {
-  //             this.eventItem = res;
-  //             console.log(res)
-  //             this.itemsEvent = Array(this.eventItem.length).fill(0).map((x, i) => ({ data: this.eventItem[i] }));
-  //             this.eventService.GetAllowedToVisitEvent(this.token.Message);
-  //           });
-  //         },
-  //         err => {
-  //           debugger;
-  //           console.log(err);
-  //           console.log("success");
-  //           this.toastr.warning('Participation already confirmed', 'Warning');
-  //         });
-  //     }
-  //   )
-  // }
+  createVisit(id: number) {
+    this.visit = {
+      EventId: id,
+      UserId: 0
+    }
+    this.visitService.CreateVisit(this.visit).subscribe(
+      res => {
+        res;
+        this.toastr.success('Participation confirmed', 'Success');
+        this.eventService.GetPublicOwnEvents().subscribe((res: any) => {
+          this.eventItems = res;
+          this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
+        });
+      },
+      err => {
+        this.toastr.warning('Participation already confirmed', 'Warning');
+      });
+  }
 
   onDelete(id: number, idUser: string) {
     this.confirmationDialogService.confirm()
@@ -120,8 +111,7 @@ export class AllowedEventListComponent implements OnInit {
             })
           }),
         err => {
-          debugger;
-          console.log(err);
+          err
         })
       .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }

@@ -23,10 +23,14 @@
                         <h4 class="card-title">{{item.data.Date | date}}</h4>
                         <p class="card-text">{{item.data.EventType.Name}}</p>
                         <p class="card-text">{{item.data.Organizer.Id}}</p>
+                        <p class="card-text">{{item.data.Id}}</p>
+
                         <button *ngIf="item.data.Organizer.Email==token.UserEmail; else deleteDisallowed" type="button" class="btn btn-danger mb-2 mr-2 pull-right" (click)="onDelete(item.data.Id, item.data.Organizer.Email)" data-toggle="modal" data-target="#deleteModal">Delete</button>
                         <ng-template #deleteDisallowed>
-                            <!-- <button type="button" class="btn btn-danger mb-2 mr-2 pull-right" disabled>d</button> -->
+                            <!-- delete disabled -->
                         </ng-template>
+
+                        <button type="button" class="btn btn-success mb-2 mr-2 pull-right" (click)="createVisit(item.data.Id)">Join</button>
 
                         <!-- <div *ngFor="let x of this.eventService.AllowedToVisitEvent">
                             <div *ngIf="x==item.data.Id">
