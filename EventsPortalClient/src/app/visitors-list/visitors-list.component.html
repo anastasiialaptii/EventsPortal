@@ -13,19 +13,16 @@
                     <div class="col-md-6 mb-4">
                         <h3 class="font-weight-bold mr-5">{{eventEdit?.Name}}</h3>
                         <div class="col-md-13">
-                            <p class="text-justify">{{eventEdit?.Description}}</p>
+                            <p class="text-justify"> {{eventEdit?.Organizer.Email}}</p>
                             <p>{{eventEdit?.Location}}</p>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary btn-rounded btn-md mr-2"
-                        (click)="editEvent(eventEdit)">Edit</button>
-
-                    <!-- <div class="col-md-1 mb-4" *ngIf="eventEdit.Organizer.Email==config.userEmail; else editDisallowed">
+                    <div class="col-md-1 mb-4" *ngIf="eventEdit?.Organizer.Email==token.UserEmail; else editDisallowed">
                         <button type="button" class="btn btn-primary btn-rounded btn-md mr-2" (click)="editEvent(eventEdit)">Edit</button>
                         <ng-template #editDisallowed>
                             <button disabled type="button" class="btn btn-primary btn-rounded btn-md mr-2" (click)="editEvent(eventEdit)">Edit</button>
                         </ng-template>
-                    </div> -->
+                    </div>
                     <div class="col-md-7 mb-4">
                     </div>
                 </div>

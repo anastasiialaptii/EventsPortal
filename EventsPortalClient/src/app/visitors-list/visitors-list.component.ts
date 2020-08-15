@@ -25,7 +25,7 @@ export class VisitorsListComponent implements OnInit {
   visitorsPerEventList = [];
   visitor: Visit[];
   response: { "dbPath": '' };
-  
+  token = JSON.parse(localStorage.getItem('token'));
   tableMode: boolean = true;
 
   constructor(
