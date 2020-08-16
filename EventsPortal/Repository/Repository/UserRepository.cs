@@ -17,28 +17,17 @@ namespace Data.Repository
 
         public void Create(User item)
         {
-            if (item != null)
-            {
-                _dbContext.Users.Add(item);
-            }
-            else throw new ArgumentNullException();
+            _dbContext.Users.Add(item);
         }
 
         public void Delete(User item)
         {
-            if (item != null)
-            {
-                _dbContext.Users.Remove(item);
-            }
+            _dbContext.Users.Remove(item);
         }
 
         public User FindItem(Func<User, bool> item)
         {
-            if (item != null)
-            {
-                return _dbContext.Users.Where(item).FirstOrDefault();
-            }
-            else throw new ArgumentNullException();
+            return _dbContext.Users.Where(item).FirstOrDefault();
         }
 
         public IQueryable<User> GetItems()
@@ -48,11 +37,7 @@ namespace Data.Repository
 
         public void Update(User item)
         {
-            if (item != null)
-            {
-                _dbContext.Entry(item).State = EntityState.Modified;
-            }
-            else throw new ArgumentNullException();
+            _dbContext.Entry(item).State = EntityState.Modified;
         }
 
         public User GetItem(int? id)

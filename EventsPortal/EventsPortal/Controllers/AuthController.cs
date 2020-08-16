@@ -17,6 +17,7 @@ namespace EventsPortal.Controllers
     [EnableCors("CorsPolicy")]
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [AllowAnonymous]
     public class AuthController : ControllerBase
     {
         private readonly IUserService _userService;

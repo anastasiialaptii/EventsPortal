@@ -17,20 +17,12 @@ namespace Data.Repository
 
         public void Create(Visit item)
         {
-            if (item != null)
-            {
-                _dbContext.Visits.Add(item);
-            }
-            else throw new ArgumentNullException();
+            _dbContext.Visits.Add(item);
         }
 
         public void Delete(Visit item)
         {
-            if (item != null)
-            {
-                _dbContext.Visits.Remove(item);
-            }
-            else throw new ArgumentNullException();
+            _dbContext.Visits.Remove(item);
         }
 
         public Visit FindItem(Func<Visit, bool> item)

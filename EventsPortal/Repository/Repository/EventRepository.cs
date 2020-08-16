@@ -33,11 +33,8 @@ namespace Data.Repository
 
         public Event FindItem(Func<Event, bool> item)
         {
-            if (item != null)
-            {
-                return _dbContext.Events.Where(item).FirstOrDefault();
-            }
-            else throw new ArgumentNullException();
+
+            return _dbContext.Events.Where(item).FirstOrDefault();
         }
 
         public Event GetItem(int? id)
@@ -74,10 +71,7 @@ namespace Data.Repository
 
         public void Update(Event item)
         {
-            if (item != null)
-            {
-                _dbContext.Entry(item).State = EntityState.Modified;
-            }
+            _dbContext.Entry(item).State = EntityState.Modified;
         }
     }
 }
