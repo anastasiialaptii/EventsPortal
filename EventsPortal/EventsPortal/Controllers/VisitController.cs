@@ -28,6 +28,12 @@ namespace EventsPortal.Controllers
             return _visitService.GetEnrollEvents(_userService.FindUserByEmail(User.Identity.Name).Id);
         }
 
+        [HttpGet]
+        public IEnumerable<VisitDTO> GetConfirmedVisits()
+        {
+            return _visitService.GetConfirmedVisits(_userService.FindUserByEmail(User.Identity.Name).Id);
+        }
+
         [HttpGet("{eventId}")]
         public IEnumerable<VisitDTO> GetVisitorsPerEvent(int eventId)
         {

@@ -39,6 +39,14 @@ namespace Service.Services
                 .ToList();
         }
 
+        public IEnumerable<VisitDTO> GetConfirmedVisits(int userId)
+        {
+            return _dbOperation.Visits.GetItems()
+                .Where(x => x.UserId == userId)
+                .Select(x => new VisitDTO { EventId = x.EventId })
+                .ToList();
+        }
+
         public IEnumerable<VisitDTO> GetVisitorsPerEvent(int id)
         {
             return _dbOperation.Visits.GetItems()

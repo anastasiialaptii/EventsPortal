@@ -12,6 +12,8 @@ namespace Service.Interfaces
 
         IEnumerable<VisitDTO> GetEnrollEvents(int userId);
 
+        IEnumerable<VisitDTO> GetConfirmedVisits(int userId);
+
         Task AddVisit(VisitDTO visitDTO);
     }
 }

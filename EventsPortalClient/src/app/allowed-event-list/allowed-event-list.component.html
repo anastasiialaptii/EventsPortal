@@ -22,11 +22,15 @@
                         <h4 class="card-title">{{item.data.Name}}</h4>
                         <h4 class="card-title">{{item.data.Date | date}}</h4>
                         <p class="card-text">{{item.data.EventType.Name}}</p>
-                        <h4 class="card-title">eventId {{item.data.Id}}</h4>
                         <button *ngIf="item.data.Organizer.Email==token.UserEmail" type="button" class="btn btn-danger mb-2 mr-2 pull-right" (click)="onDelete(item.data.Id, item.data.Organizer.Email)" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                        <div *ngFor="let x of GetEnrollEventsList">
+                        <div *ngFor="let x of GetEnrollEventList">
                             <div *ngIf="x.EventId==item.data.Id">
                                 <button type="button" class="btn btn-success mb-2 mr-2 pull-right" (click)="createVisit(item.data.Id)">Join</button>
+                            </div>
+                        </div>
+                        <div *ngFor="let x of GetConfirmedVisitList">
+                            <div *ngIf="x.EventId==item.data.Id" class="mb-4">
+                                Participation confirmed ✅
                             </div>
                         </div>
                     </div>

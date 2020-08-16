@@ -21,4 +21,8 @@ export class VisitService {
     GetEnrollEvents() {
         return this.http.get(Configuration.URI + '/Visit/GetEnrollEvents');
     }
+
+    GetConfirmedVisits() {
+        return this.http.get(Configuration.URI + '/Visit/GetConfirmedVisits');
+    }
 }
