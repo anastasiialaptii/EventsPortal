@@ -12,7 +12,7 @@ namespace EventsPortal.Controllers
     [EnableCors("CorsPolicy")]
     [Route("api/[controller]/[action]")]
     [ApiController]
-   // [Authorize]
+    [Authorize]
     public class EventController : ControllerBase
     {
         private readonly IEventService _eventService;
@@ -24,11 +24,6 @@ namespace EventsPortal.Controllers
             _userService = userService;
         }
 
-        //[HttpGet]
-        //public async Task<IEnumerable<int>> GetAllowedEventToVisitList()
-        //{
-        //    return await _eventService.IsEventUserCreated(User.Identity.Name);
-        //}
         [AllowAnonymous]
         [HttpGet]
         public IEnumerable<EventDTO> GetPublicEvents()

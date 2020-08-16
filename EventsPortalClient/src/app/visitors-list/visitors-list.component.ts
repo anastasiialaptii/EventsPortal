@@ -43,7 +43,7 @@ export class VisitorsListComponent implements OnInit {
     this.visitService.GetVisitorsPerEvent(this.id).subscribe((res: any) => {
       this.visitor = res;
       this.visitorsCounter(res);
-      this.visitorsPerEventList= Array(this.visitor.length).fill(0).map((x, i) => ({ data: this.visitor[i] }));
+      this.visitorsPerEventList = Array(this.visitor.length).fill(0).map((x, i) => ({ data: this.visitor[i] }));
     });
   }
 

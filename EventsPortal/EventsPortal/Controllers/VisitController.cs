@@ -10,7 +10,7 @@ namespace EventsPortal.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class VisitController : ControllerBase
     {
         private readonly IVisitService _visitService;
@@ -22,11 +22,11 @@ namespace EventsPortal.Controllers
             _userService = userService;
         }
 
-        //[HttpGet]
-        //public async Task<IEnumerable<VisitDTO>> GetVisitList()
-        //{
-        //    return await _visitService.GetVisits();
-        //}
+        [HttpGet]
+        public IEnumerable<VisitDTO> GetEnrollEvents()
+        { 
+            return _visitService.GetEnrollEvents(_userService.FindUserByEmail(User.Identity.Name).Id);
+        }
 
         [HttpGet("{eventId}")]
         public IEnumerable<VisitDTO> GetVisitorsPerEvent(int eventId)
@@ -35,7 +35,7 @@ namespace EventsPortal.Controllers
         }
 
         [HttpPost]
-        public async Task <ActionResult> CreateVisit ([FromBody] VisitDTO visitDTO)
+        public async Task<ActionResult> CreateVisit([FromBody] VisitDTO visitDTO)
         {
             try
             {

@@ -40,8 +40,4 @@ export class EventService {
     SearchEvents(eventName: string) {
         return this.http.get(Configuration.URI + '/Event/SearchEvents/' + eventName);
     } 
-    
-    GetAllowedToVisitEvent(idUser?: string) {
-        return this.http.get(Configuration.URI + '/Event/GetAllowedEventToVisitList/' + idUser);
-    }
 }

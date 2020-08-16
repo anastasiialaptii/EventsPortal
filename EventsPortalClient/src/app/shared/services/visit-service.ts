@@ -17,4 +17,8 @@ export class VisitService {
     GetVisitorsPerEvent(eventId: number) {
         return this.http.get(Configuration.URI + '/Visit/GetVisitorsPerEvent/' + eventId);
     }
+
+    GetEnrollEvents() {
+        return this.http.get(Configuration.URI + '/Visit/GetEnrollEvents');
+    }
 }
