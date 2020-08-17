@@ -65,7 +65,7 @@ export class VisitorsListComponent implements OnInit {
   }
 
   save() {
-    if (!this.eventView.Name || !this.eventView.Location || !this.eventView.Description || !this.eventView.Date || !this.eventView.ImageURI) {
+    if (!this.eventView.Name || !this.eventView.Location || !this.eventView.Description || !this.eventView.Date || !this.eventView.ImageURI || this.eventView.Name.length>20) {
       this.toastr.error('Fill out all the fields', 'Error');
     }
     else {

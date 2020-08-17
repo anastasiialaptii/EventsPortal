@@ -6,15 +6,14 @@
                 <div class="row pr-lg-5">
                     <div class="col-md-5 mb-4">
                         <div class="view">
-                            <img [src]="config.createImgPath(eventEdit?.ImageURI)" class="img-fluid rounded"
-                                alt="event image">
+                            <img [src]="config.createImgPath(eventEdit?.ImageURI)" class="img-fluid rounded" alt="event image">
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
                         <h3 class="font-weight-bold mr-5">{{eventEdit?.Name}}</h3>
                         <div class="col-md-13">
-                            <p class="text-justify"> {{eventEdit?.Organizer.Email}}</p>
-                            <p>{{eventEdit?.Location}}</p>
+                            <p class="text-justify"> {{eventEdit?.Description}}</p>
+                            <h6>{{eventEdit?.Location}}, {{eventEdit?.Date | date}}</h6>
                         </div>
                     </div>
                     <div class="col-md-1 mb-4" *ngIf="eventEdit?.Organizer.Email==token.UserEmail; else editDisallowed">
@@ -38,8 +37,7 @@
                     </div>
                     <div class="row mt-4">
                         <div class="mx-auto mt-4">
-                            <jw-pagination class="jw-pagination" [items]="visitorsPerEventList" [pageSize]="5"
-                                (changePage)="onChangePage($event)">
+                            <jw-pagination class="jw-pagination" [items]="visitorsPerEventList" [pageSize]="5" (changePage)="onChangePage($event)">
                             </jw-pagination>
                         </div>
                     </div>
@@ -68,8 +66,7 @@
     </div>
     <div class="mb-4">
         <label for="eventView.Description">Description</label>
-        <textarea type="text" [(ngModel)]="eventView.Description" class="form-control form-control-lg" rows="12"
-            cols="50"></textarea>
+        <textarea type="text" [(ngModel)]="eventView.Description" class="form-control form-control-lg" rows="12" cols="50"></textarea>
     </div>
     <div class="mb-4">
         <label for="eventView.Name">Event Type</label>
@@ -79,8 +76,7 @@
     </div>
     <div class="mb-4">
         <mat-datepicker-toggle class="pull-left mr-2" matSuffix [for]="Date"></mat-datepicker-toggle>
-        <input [min]="config.minDate" class="form-control col" matInput [matDatepicker]="Date" name="Date"
-            #Name="ngModel" [(ngModel)]="eventView.Date" placeholder="Choose a date">
+        <input [min]="config.minDate" class="form-control col" matInput [matDatepicker]="Date" name="Date" #Name="ngModel" [(ngModel)]="eventView.Date" placeholder="Choose a date">
         <mat-datepicker #Date></mat-datepicker>
     </div>
     <div class="mb-4">
