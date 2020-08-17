@@ -19,7 +19,6 @@ import { AuthenticateService } from '../shared/services/auth-service';
 })
 
 export class EventListComponent implements OnInit {
-  userId: number;
   visit: Visit;
   token = JSON.parse(localStorage.getItem('token'));
   publicOwnEvents = [];
@@ -54,7 +53,6 @@ export class EventListComponent implements OnInit {
     if (name.length > 1) {
       this.eventService.SearchEvents(name).subscribe((res: any) => {
         this.eventItems = res;
-        console.log(res)
         this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
       });
     }

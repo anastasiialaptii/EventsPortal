@@ -51,7 +51,6 @@ export class AuthComponent implements OnInit {
 
   logOut() {
     localStorage.clear();
-    sessionStorage.clear();
     this.authService.SignOut().subscribe((res: any) => { });
   }
 }

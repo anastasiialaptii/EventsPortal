@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { AuthGuard } from './shared/config/auth-provider';
-
 import { EventListComponent } from './event-list/event-list.component';
 import { VisitorsListComponent } from './visitors-list/visitors-list.component';
 import { CreateEventComponent } from './create-event/create-event.component';
