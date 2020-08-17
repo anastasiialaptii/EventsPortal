@@ -44,7 +44,6 @@ export class CreateEventComponent implements OnInit {
     this.uploadService.UploadImage(formData)
       .subscribe(event => {
         if (event.type === HttpEventType.Response) {
-          this.message = 'Upload success.';
           this.response = event.body;
           this.eventService.FormData.ImageURI = this.response.dbPath;
           if (this.eventService.FormData.Id == 0) {
