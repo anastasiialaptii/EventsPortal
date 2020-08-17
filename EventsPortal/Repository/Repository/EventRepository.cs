@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Repository;
 using System;
+using System.IO;
 using System.Linq;
 
 namespace Data.Repository
@@ -27,6 +28,7 @@ namespace Data.Repository
         {
             if (item != null)
             {
+                File.Delete(item.ImageURI);
                 _dbContext.Events.Remove(item);
             }
         }

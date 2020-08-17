@@ -46,9 +46,7 @@ export class CreateEventComponent implements OnInit {
     this.uploadService.UploadImage(formData)
       .subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) { 
-          debugger;
-          this.progress = Math.round(100 * event.loaded / event.total); 
-          debugger;    
+          this.progress = Math.round(100 * event.loaded / event.total);    
         }
         else if (event.type === HttpEventType.Response) {
           this.message = 'Upload success.';
