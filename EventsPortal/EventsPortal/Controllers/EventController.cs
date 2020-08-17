@@ -5,7 +5,6 @@ using Service.DTO;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace EventsPortal.Controllers

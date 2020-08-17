@@ -32,7 +32,7 @@ namespace Service.Services
         public IEnumerable<VisitDTO> GetEnrollEvents(int userId)
         {
             return _dbOperation.Events.GetItems()
-                .Select(x => new VisitDTO { EventId = x.Id }) 
+                .Select(x => new VisitDTO { EventId = x.Id })
                 .Except(_dbOperation.Visits.GetItems()
                 .Where(x => x.UserId == userId)
                 .Select(x => new VisitDTO { EventId = x.EventId }))

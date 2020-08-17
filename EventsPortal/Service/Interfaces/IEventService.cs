@@ -21,8 +21,5 @@ namespace Service.Interfaces
         Task EditEvent(EventDTO eventDTO);
 
         Task AddEvent(EventDTO eventDTO);
-
-        //  Task<List<int>> IsEventUserCreated(string userId);
-
     }
 }

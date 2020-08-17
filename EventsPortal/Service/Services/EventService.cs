@@ -50,8 +50,7 @@ namespace Service.Services
         {
             if (eventDTO != null)
             {
-                _dbOperation.Events.Update(
-                    _mapper.Map<Event>(eventDTO));
+                    _mapper.Map<Event>(eventDTO);
                 await _dbOperation.SaveAsync();
             }
         }
@@ -174,34 +173,5 @@ namespace Service.Services
                     }
                 }).ToList();
         }
-
-        //public List<int> IsEventUserCreated(string userId)
-        //{
-        //    var eventVisitorsList = 
-        //        _dbOperation.Visits.GetItems()
-        //         .Where(x => x.User.Email == userId)
-        //         .Select(x => new VisitDTO { EventId = x.EventId })
-        //         .ToList();
-
-        //    //var events = _mapper.Map<List<EventDTO>>(
-        //    //    _dbOperation.Events.GetItems()).ToList();
-
-        //    var visitEvent = new List<int>();
-
-        //    foreach (var item in eventVisitorsList)
-        //    {
-        //        if (item.User.Token == userId)
-        //            visitEvent.Add(item.EventId);
-        //    }
-
-        //    var eventsIdList = new List<int>();
-
-        //    foreach (var item in events)
-        //    {
-        //        eventsIdList.Add(item.Id);
-        //    }
-
-        //    return eventsIdList.Except<int>(visitEvent).ToList();
-        //}
     }
 }
