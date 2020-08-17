@@ -74,8 +74,8 @@ export class VisitorsListComponent implements OnInit {
     else {
       if (files.length === 0) {
         this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { res });
-              this.tableMode = true;
-              this.toastr.success('Event has been updated', 'Success');
+        this.tableMode = true;
+        this.toastr.success('Event has been updated', 'Success');
       }
       else {
         let fileToUpload = <File>files[0];
@@ -95,8 +95,8 @@ export class VisitorsListComponent implements OnInit {
     }
   }
 
-    cancel() {
-      this.tableMode = true;
-      this.eventService.GetEvent(this.id).subscribe(res => { this.eventEdit = res });
-    }
+  cancel() {
+    this.tableMode = true;
+    this.eventService.GetEvent(this.id).subscribe(res => { this.eventEdit = res });
   }
+}
