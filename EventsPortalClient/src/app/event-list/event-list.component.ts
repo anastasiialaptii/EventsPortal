@@ -6,7 +6,7 @@ import { VisitService } from '../shared/services/visit-service';
 import { UserService } from '../shared/services/user-service';
 import { Visit } from '../shared/models/visit-model';
 import { EventItem } from '../shared/models/event-model';
-import { Configuration } from '../shared/config/configuration';
+import { ImgUtil } from '../utils/img-util';
 import { Router } from '@angular/router';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 import { AuthenticateService } from '../shared/services/auth-service';
@@ -33,7 +33,7 @@ export class EventListComponent implements OnInit {
     public eventService: EventService,
     public visitService: VisitService,
     public userService: UserService,
-    public config: Configuration,
+    public imgUtil: ImgUtil,
     public router: Router,
     public toastr: ToastrService,
     public authService: AuthenticateService

@@ -4,7 +4,6 @@ import { AuthenticateService } from '../shared/services/auth-service';
 import { User } from '../shared/models/user-model';
 import { AuthGuard } from '../shared/config/auth-provider';
 import { Router } from '@angular/router';
-import { Configuration } from '../shared/config/configuration';
 
 @Component({
   selector: 'app-auth',
@@ -22,8 +21,7 @@ export class AuthComponent implements OnInit {
     public oAuth: AuthService,
     public authService: AuthenticateService,
     public authGuard: AuthGuard,
-    private router: Router,
-    public config: Configuration
+    private router: Router
   ) { }
 
   ngOnInit() {

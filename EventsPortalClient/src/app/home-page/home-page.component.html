@@ -1,5 +1,5 @@
 <app-auth></app-auth>
-<main class="mt-5">
+<div class="mt-5">
     <div class="container">
         <div class="row">
             <div class="col-md-12 mb-4">
@@ -10,7 +10,7 @@
             <div class="col-lg-4 col-md-6 mb-4" *ngFor="let item of pageOfItemsEvent">
                 <div class="card">
                     <div class="view overlay">
-                        <img [src]="config.createImgPath(item.data.ImageURI)" class="card-img-top" alt="event image">
+                        <img [src]="imgUtil.createImgPath(item.data.ImageURI)" class="card-img-top" alt="event image">
                         <div class="mask rgba-white-slight"></div>
                     </div>
                     <div class="card-body">
@@ -26,4 +26,4 @@
             </div>
         </div>
     </div>
-</main>
+</div>

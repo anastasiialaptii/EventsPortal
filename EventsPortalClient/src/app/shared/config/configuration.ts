@@ -8,8 +8,4 @@ export class Configuration {
       ];
 
     minDate = new Date(Date.now());
-      
-    createImgPath = (serverPath: string) => {
-        return `http://localhost:50618/${serverPath}`;
-    }
 }
