@@ -3,6 +3,7 @@ import { HttpEventType } from '@angular/common/http';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 
 import { UploadService } from '../shared/services/upload-service';
+import { createOfflineCompileUrlResolver } from '@angular/compiler';
 
 @Component({
   selector: 'app-upload-img',
@@ -15,7 +16,7 @@ export class UploadImgComponent implements OnInit {
   public progress: number;
   public message: string;
   @Output() public onUploadFinished = new EventEmitter();
-
+  response: { "dbPath": '' };
   constructor(public uploadService: UploadService) { }
 
   ngOnInit(): void {
@@ -34,7 +35,7 @@ export class UploadImgComponent implements OnInit {
           this.progress = Math.round(100 * event.loaded / event.total);
         else if (event.type === HttpEventType.Response) {
           this.message = 'Upload success.';
-          this.onUploadFinished.emit(event.body);
+          console.log(event.body)
         }
       });
   }

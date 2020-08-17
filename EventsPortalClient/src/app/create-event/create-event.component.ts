@@ -7,6 +7,8 @@ import { UserService } from '../shared/services/user-service';
 import { Configuration } from '../shared/config/configuration';
 
 import { ToastrService } from 'ngx-toastr';
+import { HttpEventType } from '@angular/common/http';
+import { UploadService } from '../shared/services/upload-service';
 
 @Component({
   selector: 'app-create-event',
@@ -16,9 +18,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 
 export class CreateEventComponent implements OnInit {
-  response: { "dbPath": '' };
+  response;
+  public progress: number;
+  public message: string;
 
   constructor(
+    public uploadService: UploadService,
     public eventService: EventService,
     public userService: UserService,
     private router: Router,
@@ -30,18 +35,38 @@ export class CreateEventComponent implements OnInit {
     this.resetForm();
   }
 
-  onSubmit(form: NgForm) {
-    if (this.eventService.FormData.Id == 0) {
-      if (!this.eventService.FormData.ImageURI || !this.eventService.FormData.Date)
-        this.toastr.error('Something wrong!', 'Error');
-      else {
-        this.createEvent(form);
-        this.toastr.success('Added new event', 'Success');
-      }
-    }
-    else {
+  onSubmit(form: NgForm, files) {
+    if (files.length === 0) {
       this.toastr.error('Something wrong!', 'Error');
+      return;
     }
+    let fileToUpload = <File>files[0];
+    const formData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+    this.uploadService.UploadImage(formData)
+      .subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress) { 
+          debugger;
+          this.progress = Math.round(100 * event.loaded / event.total); 
+          debugger;    
+        }
+        else if (event.type === HttpEventType.Response) {
+          this.message = 'Upload success.';
+          this.response = event.body;
+          this.eventService.FormData.ImageURI = this.response.dbPath;
+          if (this.eventService.FormData.Id == 0) {
+            if (!this.eventService.FormData.ImageURI || !this.eventService.FormData.Date)
+              this.toastr.error('Something wrong!', 'Error');
+            else {
+              this.createEvent(form);
+              this.toastr.success('Added new event', 'Success');
+            }
+          }
+          else {
+            this.toastr.error('Something wrong!', 'Error');
+          }
+        }
+      });
   }
 
   createEvent(form: NgForm) {
@@ -52,11 +77,6 @@ export class CreateEventComponent implements OnInit {
       },
       err => {
       })
-  }
-
-  uploadFinished = (event) => {
-    this.response = event;
-    this.eventService.FormData.ImageURI = this.response.dbPath;
   }
 
   resetForm(form?: NgForm) {

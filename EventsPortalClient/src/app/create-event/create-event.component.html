@@ -14,7 +14,7 @@
         </div>
         <div class="row">
             <div class="col-md-12 mb-4 text-center">
-                <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+                <form #form="ngForm" (submit)="onSubmit(form,file.files)" autocomplete="off">
                     <input type="hidden" name="Id" [value]="eventService.FormData.Id">
                     <input type="hidden" name="ImageURI" [value]="eventService.FormData.ImageURI">
                     <input type="hidden" name="OrganizerId" [value]="eventService.FormData.OrganizerId">
@@ -31,7 +31,14 @@
                         <option *ngFor="let type of config.eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
                     </select>
                     <textarea class="form-control mb-4" name="Description" #Name="ngModel" [(ngModel)]="eventService.FormData.Description" placeholder="Provide short info about event" required rows="8" cols="50"></textarea>
-                    <app-upload-img (onUploadFinished)="uploadFinished($event)"></app-upload-img>
+                    <input type="file" #file placeholder="Choose file" style="display:none;" multiple>
+                    <button type="button" class="btn btn-primary btn-sm pull-left" (click)="file.click()">Drop or upload image here</button>
+                    <span class="upload" *ngIf="progress > 0" class="pull-left ml-2">
+                        {{progress}}%
+                      </span>
+                    <span class="upload" *ngIf="message" class="pull-left ml-2">
+                        {{message}}
+                      </span>
                     <button class="btn btn-md btn-success pull-right" [disabled]="form.invalid" type="submit">Create</button>
                 </form>
             </div>
