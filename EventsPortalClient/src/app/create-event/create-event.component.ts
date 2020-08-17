@@ -37,7 +37,7 @@ export class CreateEventComponent implements OnInit {
 
   onSubmit(form: NgForm, files) {
     if (files.length === 0) {
-      this.toastr.error('Something wrong!', 'Error');
+      this.toastr.error('Image spot is empty!', 'Error');
       return;
     }
     let fileToUpload = <File>files[0];
@@ -45,10 +45,7 @@ export class CreateEventComponent implements OnInit {
     formData.append('file', fileToUpload, fileToUpload.name);
     this.uploadService.UploadImage(formData)
       .subscribe(event => {
-        if (event.type === HttpEventType.UploadProgress) { 
-          this.progress = Math.round(100 * event.loaded / event.total);    
-        }
-        else if (event.type === HttpEventType.Response) {
+        if (event.type === HttpEventType.Response) {
           this.message = 'Upload success.';
           this.response = event.body;
           this.eventService.FormData.ImageURI = this.response.dbPath;

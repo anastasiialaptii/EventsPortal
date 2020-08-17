@@ -35,7 +35,6 @@ namespace Data.Repository
 
         public Event FindItem(Func<Event, bool> item)
         {
-
             return _dbContext.Events.Where(item).FirstOrDefault();
         }
 
@@ -73,6 +72,10 @@ namespace Data.Repository
 
         public void Update(Event item)
         {
+            if (item.ImageURI != _dbContext.Events.Find(item.Id).ImageURI)
+            {
+                File.Delete(_dbContext.Events.Find(item.Id).ImageURI);
+            }
             _dbContext.Entry(item).State = EntityState.Modified;
         }
     }
