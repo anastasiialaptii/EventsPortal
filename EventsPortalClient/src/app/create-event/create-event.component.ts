@@ -63,14 +63,6 @@ export class CreateEventComponent implements OnInit {
   }
 
   onSubmit(form: NgForm, files) {
-    // if (files.length === 0) {
-    //   this.toastr.error('Image spot is empty!', 'Error');
-    //   return;
-    // }
-    // let fileToUpload = <File>files[0];
-    // const formData = new FormData();
-    // formData.append('file', fileToUpload, fileToUpload.name);
-   // this.qwe(files)
     this.uploadService.UploadImage(this.qwe(files))
       .subscribe(event => {
         if(this.greeter(event))

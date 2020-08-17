@@ -19,6 +19,8 @@ import { EventListComponent } from './event-list/event-list.component';
 import { VisitorsListComponent } from './visitors-list/visitors-list.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { Configuration } from './shared/config/configuration';
+import { BaseRoute } from './shared/config/BaseRoute';
+
 import {ImgUtil} from './utils/img-util';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -54,6 +56,7 @@ import { HttpRequestInterceptor } from '../app/shared/config/HttpRequestIntercep
     MatDatepickerModule,
     AuthGuard,
     Configuration,
+    BaseRoute,
     ImgUtil,
     ConfirmationDialogService,
     {
