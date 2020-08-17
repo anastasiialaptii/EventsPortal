@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UploadService } from '../shared/services/upload-service';
 import { HttpEventType } from '@angular/common/http';
 import { ImgUtil } from '../utils/img-util';
+import { EventValidator } from '../utils/event-validator';
 
 @Component({
   selector: 'app-visitors-list',
@@ -37,7 +38,9 @@ export class VisitorsListComponent implements OnInit {
     public eventService: EventService,
     public imgUtil: ImgUtil,
     public toastr: ToastrService,
-    public uploadService: UploadService
+    public uploadService: UploadService,
+    public eventValidator: EventValidator,
+    public config: Configuration
   ) {
     this.subscription = activateRoute.params.subscribe(params => this.id = params['eventId']);
   }
@@ -74,7 +77,7 @@ export class VisitorsListComponent implements OnInit {
     }
     else {
       if (files.length === 0) {
-        this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { res });
+        this.eventService.EditEvent(this.eventEdit.Id, this.eventEdit).subscribe(res => { res });
         this.tableMode = true;
         this.toastr.success('Event has been updated', 'Success');
       }
@@ -85,9 +88,10 @@ export class VisitorsListComponent implements OnInit {
         this.uploadService.UploadImage(formData)
           .subscribe(event => {
             if (event.type === HttpEventType.Response) {
+              debugger;
               this.response = event.body;
               this.eventView.ImageURI = this.response.dbPath;
-              this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { res });
+              this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { debugger; console.log(res) });
               this.tableMode = true;
               this.toastr.success('Event has been updated', 'Success');
             }

@@ -50,7 +50,7 @@ namespace Service.Services
         {
             if (eventDTO != null)
             {
-                    _mapper.Map<Event>(eventDTO);
+                   _dbOperation.Events.Update( _mapper.Map<Event>(eventDTO));
                 await _dbOperation.SaveAsync();
             }
         }
