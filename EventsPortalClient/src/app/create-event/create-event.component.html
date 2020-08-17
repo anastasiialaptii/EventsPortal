@@ -32,7 +32,7 @@
                     </select>
                     <textarea class="form-control mb-4" name="Description" #Name="ngModel" [(ngModel)]="eventService.FormData.Description" placeholder="Provide short info about event" required rows="8" cols="50"></textarea>
                     <input type="file" #file placeholder="Choose file" style="display:none;" multiple>
-                    <button type="button" class="btn btn-primary btn-sm pull-left" (click)="file.click()">Drop or upload image here</button>
+                    <button type="button" class="btn btn-primary btn-sm pull-left" (click)="file.click()">Upload image here</button>
                     <button class="btn btn-md btn-success pull-right" [disabled]="form.invalid" type="submit">Create</button>
                 </form>
             </div>

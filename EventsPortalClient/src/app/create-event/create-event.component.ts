@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { EventService } from '../shared/services/event-service';
 import { UserService } from '../shared/services/user-service';
 import { Configuration } from '../shared/config/configuration';
-
 import { ToastrService } from 'ngx-toastr';
 import { HttpEventType } from '@angular/common/http';
 import { UploadService } from '../shared/services/upload-service';

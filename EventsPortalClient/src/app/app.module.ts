@@ -17,7 +17,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AuthComponent } from './auth/auth.component';
 import { AllowedEventListComponent } from './allowed-event-list/allowed-event-list.component';
 import { VisitorsListComponent } from './visitors-list/visitors-list.component';
-import { UploadImgComponent } from './upload-img/upload-img.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { Configuration } from './shared/config/configuration';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -31,7 +30,6 @@ import { HttpRequestInterceptor } from '../app/shared/config/HttpRequestIntercep
     AuthComponent,
     AllowedEventListComponent,
     VisitorsListComponent,
-    UploadImgComponent,
     CreateEventComponent,
     HomePageComponent,
     ConfirmationDialogComponent
