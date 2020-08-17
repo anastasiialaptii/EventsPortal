@@ -33,12 +33,6 @@
                     <textarea class="form-control mb-4" name="Description" #Name="ngModel" [(ngModel)]="eventService.FormData.Description" placeholder="Provide short info about event" required rows="8" cols="50"></textarea>
                     <input type="file" #file placeholder="Choose file" style="display:none;" multiple>
                     <button type="button" class="btn btn-primary btn-sm pull-left" (click)="file.click()">Drop or upload image here</button>
-                    <span class="upload" *ngIf="progress > 0" class="pull-left ml-2">
-                        {{progress}}%
-                      </span>
-                    <span class="upload" *ngIf="message" class="pull-left ml-2">
-                        {{message}}
-                      </span>
                     <button class="btn btn-md btn-success pull-right" [disabled]="form.invalid" type="submit">Create</button>
                 </form>
             </div>

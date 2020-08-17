@@ -19,8 +19,6 @@ import { UploadService } from '../shared/services/upload-service';
 
 export class CreateEventComponent implements OnInit {
   response;
-  public progress: number;
-  public message: string;
 
   constructor(
     public uploadService: UploadService,
