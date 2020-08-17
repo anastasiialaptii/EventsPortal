@@ -80,8 +80,8 @@
         <mat-datepicker #Date></mat-datepicker>
     </div>
     <div class="mb-4">
-        <app-upload-img (onUploadFinished)="uploadFinished($event)"></app-upload-img>
-        <input type="button" value="Cancel" (click)="cancel()" class="btn btn-lg btn-warning mb-2 mr-2 pull-right" />
-        <input type="button" value="Save" (click)="save()" class="btn btn-lg btn-success mb-2 mr-2 pull-right" />
+        <input type="file" #file placeholder="Choose file" style="display:none;" multiple>
+        <button type="button" class="btn btn-primary btn-sm pull-left" (click)="file.click()">Drop or upload image here</button> <input type="button" value="Cancel" (click)="cancel()" class="btn btn-lg btn-warning mb-2 mr-2 pull-right" />
+        <input type="button" value="Save" (click)="save(file.files)" class="btn btn-lg btn-success mb-2 mr-2 pull-right" />
     </div>
 </ng-template>

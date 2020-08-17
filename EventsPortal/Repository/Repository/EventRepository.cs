@@ -72,10 +72,6 @@ namespace Data.Repository
 
         public void Update(Event item)
         {
-            if (item.ImageURI != _dbContext.Events.Find(item.Id).ImageURI)
-            {
-                File.Delete(_dbContext.Events.Find(item.Id).ImageURI);
-            }
             _dbContext.Entry(item).State = EntityState.Modified;
         }
     }

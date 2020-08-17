@@ -7,6 +7,8 @@ import { EventService } from '../shared/services/event-service'; 0
 import { EventItem } from '../shared/models/event-model';
 import { Visit } from '../shared/models/visit-model';
 import { ToastrService } from 'ngx-toastr';
+import { UploadService } from '../shared/services/upload-service';
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-visitors-list',
@@ -24,16 +26,17 @@ export class VisitorsListComponent implements OnInit {
   pageOfItemsEvent: Array<Visit>;
   visitorsPerEventList = [];
   visitor: Visit[];
-  response: { "dbPath": '' };
   token = JSON.parse(localStorage.getItem('token'));
   tableMode: boolean = true;
+  response;
 
   constructor(
     private activateRoute: ActivatedRoute,
     public visitService: VisitService,
     public eventService: EventService,
     public config: Configuration,
-    public toastr: ToastrService
+    public toastr: ToastrService,
+    public uploadService: UploadService
   ) {
     this.subscription = activateRoute.params.subscribe(params => this.id = params['eventId']);
   }
@@ -64,24 +67,41 @@ export class VisitorsListComponent implements OnInit {
     this.eventView = eventItem;
   }
 
-  save() {
-    if (!this.eventView.Name || !this.eventView.Location || !this.eventView.Description || !this.eventView.Date || !this.eventView.ImageURI || this.eventView.Name.length>20) {
+  save(files) {
+    if (!this.eventView.Name || !this.eventView.Location || !this.eventView.Description || !this.eventView.Date || !this.eventView.ImageURI || this.eventView.Name.length > 20) {
       this.toastr.error('Fill out all the fields', 'Error');
     }
     else {
-      this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { res });
-      this.tableMode = true;
-      this.toastr.success('Event has been updated', 'Success');
+      if (files.length === 0) {
+        this.toastr.error('Image spot is empty!', 'Error');
+        return;
+      }
+      else {
+        let fileToUpload = <File>files[0];
+        const formData = new FormData();
+        formData.append('file', fileToUpload, fileToUpload.name);
+        this.uploadService.UploadImage(formData)
+          .subscribe(event => {
+            if (event.type === HttpEventType.Response) {
+              debugger;
+              this.response = event.body;
+              this.eventView.ImageURI = this.response.dbPath;
+              this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { res });
+              this.tableMode = true;
+              this.toastr.success('Event has been updated', 'Success');
+            }
+          });
+      }
     }
   }
 
-  cancel() {
-    this.tableMode = true;
-    this.eventService.GetEvent(this.id).subscribe(res => { this.eventEdit = res });
-  }
+    cancel() {
+      this.tableMode = true;
+      this.eventService.GetEvent(this.id).subscribe(res => { this.eventEdit = res });
+    }
 
-  uploadFinished = (event) => {
-    this.response = event;
-    this.eventView.ImageURI = this.response.dbPath;
+    // uploadFinished = (event) => {
+    //   this.response = event;
+    //   this.eventView.ImageURI = this.response.dbPath;
+    // }
   }
-}
