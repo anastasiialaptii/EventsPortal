@@ -12,13 +12,13 @@ import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-d
 import { AuthenticateService } from '../shared/services/auth-service';
 
 @Component({
-  selector: 'app-allowed-event-list',
-  templateUrl: './allowed-event-list.component.html',
+  selector: 'app-event-list',
+  templateUrl: './event-list.component.html',
   styles: [
   ]
 })
 
-export class AllowedEventListComponent implements OnInit {
+export class EventListComponent implements OnInit {
   userId: number;
   visit: Visit;
   token = JSON.parse(localStorage.getItem('token'));

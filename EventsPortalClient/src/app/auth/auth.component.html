@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="basicExampleNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" *ngIf="this.authGuard.canActivate()" routerLink="/allowed-event-list">Events</a>
+                    <a class="nav-link" *ngIf="this.authGuard.canActivate()" routerLink="/event-list">Events</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" *ngIf="this.authGuard.canActivate()" routerLink="/create-event">Create Event</a>

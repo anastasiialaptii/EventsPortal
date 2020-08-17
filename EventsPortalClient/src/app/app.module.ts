@@ -15,7 +15,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AuthComponent } from './auth/auth.component';
-import { AllowedEventListComponent } from './allowed-event-list/allowed-event-list.component';
+import { EventListComponent } from './event-list/event-list.component';
 import { VisitorsListComponent } from './visitors-list/visitors-list.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { Configuration } from './shared/config/configuration';
@@ -28,7 +28,7 @@ import { HttpRequestInterceptor } from '../app/shared/config/HttpRequestIntercep
   declarations: [
     AppComponent,
     AuthComponent,
-    AllowedEventListComponent,
+    EventListComponent,
     VisitorsListComponent,
     CreateEventComponent,
     HomePageComponent,

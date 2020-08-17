@@ -45,7 +45,7 @@ export class AuthComponent implements OnInit {
       this.users = res;
       this.response = res.userDetail;
       localStorage.setItem('token', JSON.stringify(res));
-      this.router.navigate(["/allowed-event-list"]);
+      this.router.navigate(["/event-list"]);
     })
   }
 
