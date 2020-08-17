@@ -31,7 +31,27 @@ export class CreateEventComponent implements OnInit {
     this.resetForm();
   }
 
-  onSubmit(form: NgForm, files) {
+  greeter(event){
+    if (event.type === HttpEventType.Response) {
+      this.response = event.body;
+      this.eventService.FormData.ImageURI = this.response.dbPath;
+      if (this.eventService.FormData.Id == 0) {
+        if (!this.eventService.FormData.ImageURI || !this.eventService.FormData.Date)
+          this.toastr.error('Something wrong!', 'Error');
+        else {
+          //this.createEvent(form);
+          //this.toastr.success('Added new event', 'Success');
+          return true;
+        }
+      }
+      else {
+        return false;
+        //this.toastr.error('Something wrong!', 'Error');
+      }
+    }
+  }
+  
+  qwe(files){
     if (files.length === 0) {
       this.toastr.error('Image spot is empty!', 'Error');
       return;
@@ -39,30 +59,31 @@ export class CreateEventComponent implements OnInit {
     let fileToUpload = <File>files[0];
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
-    this.uploadService.UploadImage(formData)
-      .subscribe(event => {
-        if (event.type === HttpEventType.Response) {
-          this.response = event.body;
-          this.eventService.FormData.ImageURI = this.response.dbPath;
-          if (this.eventService.FormData.Id == 0) {
-            if (!this.eventService.FormData.ImageURI || !this.eventService.FormData.Date)
-              this.toastr.error('Something wrong!', 'Error');
-            else {
-              this.createEvent(form);
-              this.toastr.success('Added new event', 'Success');
-            }
-          }
-          else {
-            this.toastr.error('Something wrong!', 'Error');
-          }
-        }
-      });
+    return formData;
   }
+
+  onSubmit(form: NgForm, files) {
+    // if (files.length === 0) {
+    //   this.toastr.error('Image spot is empty!', 'Error');
+    //   return;
+    // }
+    // let fileToUpload = <File>files[0];
+    // const formData = new FormData();
+    // formData.append('file', fileToUpload, fileToUpload.name);
+   // this.qwe(files)
+    this.uploadService.UploadImage(this.qwe(files))
+      .subscribe(event => {
+        if(this.greeter(event))
+        {
+          this.createEvent(form);
+        }
+  });
+}
 
   createEvent(form: NgForm) {
     this.eventService.CreateEvent().subscribe(
       res => {
-        this.router.navigate(['/allowed-event-list']);
+        this.router.navigate(['/event-list']);
         this.resetForm();
       },
       err => {

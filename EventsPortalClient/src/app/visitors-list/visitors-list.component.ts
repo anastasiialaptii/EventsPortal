@@ -9,6 +9,7 @@ import { Visit } from '../shared/models/visit-model';
 import { ToastrService } from 'ngx-toastr';
 import { UploadService } from '../shared/services/upload-service';
 import { HttpEventType } from '@angular/common/http';
+import { ImgUtil } from '../utils/img-util';
 
 @Component({
   selector: 'app-visitors-list',
@@ -34,7 +35,7 @@ export class VisitorsListComponent implements OnInit {
     private activateRoute: ActivatedRoute,
     public visitService: VisitService,
     public eventService: EventService,
-    public config: Configuration,
+    public imgUtil: ImgUtil,
     public toastr: ToastrService,
     public uploadService: UploadService
   ) {
