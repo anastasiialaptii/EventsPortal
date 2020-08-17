@@ -5,8 +5,9 @@ import { EventService } from '../shared/services/event-service';
 import { UserService } from '../shared/services/user-service';
 import { Configuration } from '../shared/config/configuration';
 import { ToastrService } from 'ngx-toastr';
-import { HttpEventType } from '@angular/common/http';
 import { UploadService } from '../shared/services/upload-service';
+import { ImgUtil } from '../utils/img-util';
+import { EventValidator } from '../utils/event-validator';
 
 @Component({
   selector: 'app-create-event',
@@ -16,7 +17,6 @@ import { UploadService } from '../shared/services/upload-service';
 })
 
 export class CreateEventComponent implements OnInit {
-  response;
 
   constructor(
     public uploadService: UploadService,
@@ -24,48 +24,19 @@ export class CreateEventComponent implements OnInit {
     public userService: UserService,
     private router: Router,
     public config: Configuration,
-    public toastr: ToastrService
+    public toastr: ToastrService,
+    public imgUtil: ImgUtil,
+    public eventValidator: EventValidator
   ) { }
 
   ngOnInit(): void {
     this.resetForm();
   }
 
-  greeter(event){
-    if (event.type === HttpEventType.Response) {
-      this.response = event.body;
-      this.eventService.FormData.ImageURI = this.response.dbPath;
-      if (this.eventService.FormData.Id == 0) {
-        if (!this.eventService.FormData.ImageURI || !this.eventService.FormData.Date)
-          this.toastr.error('Something wrong!', 'Error');
-        else {
-          //this.createEvent(form);
-          //this.toastr.success('Added new event', 'Success');
-          return true;
-        }
-      }
-      else {
-        return false;
-        //this.toastr.error('Something wrong!', 'Error');
-      }
-    }
-  }
-  
-  qwe(files){
-    if (files.length === 0) {
-      this.toastr.error('Image spot is empty!', 'Error');
-      return;
-    }
-    let fileToUpload = <File>files[0];
-    const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name);
-    return formData;
-  }
-
   onSubmit(form: NgForm, files) {
-    this.uploadService.UploadImage(this.qwe(files))
+    this.uploadService.UploadImage(this.imgUtil.downloadImg(files))
       .subscribe(event => {
-        if(this.greeter(event))
+        if(this.eventValidator.isEventValid(event))
         {
           this.createEvent(form);
         }

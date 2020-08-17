@@ -20,12 +20,12 @@ import { VisitorsListComponent } from './visitors-list/visitors-list.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { Configuration } from './shared/config/configuration';
 import { BaseRoute } from './shared/config/BaseRoute';
-
 import {ImgUtil} from './utils/img-util';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpRequestInterceptor } from '../app/shared/config/HttpRequestInterceptor';
+import { EventValidator } from './utils/event-validator';
 
 @NgModule({
   declarations: [
@@ -58,6 +58,7 @@ import { HttpRequestInterceptor } from '../app/shared/config/HttpRequestIntercep
     Configuration,
     BaseRoute,
     ImgUtil,
+    EventValidator,
     ConfirmationDialogService,
     {
       provide: AuthServiceConfig,
