@@ -95,12 +95,12 @@ namespace EventsPortal.Controllers
             }
         }
 
-        [HttpDelete("{id}/{userId}")]
-        public async Task<ActionResult> DeleteEvent(int? id, string userId)
+        [HttpDelete("{id}/{userEmail}")]
+        public async Task<ActionResult> DeleteEvent(int? id, string userEmail)
         {
             try
             {
-                if (User.Identity.Name == userId)
+                if (User.Identity.Name == userEmail)
                 {
                     await _eventService.DeleteEvent(id);
                     return Ok();

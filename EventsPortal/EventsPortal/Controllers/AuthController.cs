@@ -27,16 +27,18 @@ namespace EventsPortal.Controllers
             _userService = userService;
         }
 
-        public async Task<ActionResult> Authenticate(string user)
+        public async Task<ActionResult> Authenticate(string email)
         {
             try
             {
                 var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, user)
+                new Claim(ClaimsIdentity.DefaultNameClaimType, email)
             };
-                ClaimsIdentity id = new ClaimsIdentity(claims, "Cookies", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(
+                        new ClaimsIdentity(claims, "Cookies", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType)));
                 return Ok();
             }
             catch (Exception ex)
