@@ -7,10 +7,10 @@ import { BaseRoute } from '../config/BaseRoute';
 })
 
 export class UploadService {
-    
+
     constructor(private http: HttpClient) { }
-    
-    UploadImage(formData: FormData){
-        return this.http.post(BaseRoute.Upload + '/Upload', formData, {reportProgress: true, observe: 'events'});
+
+    UploadImage(formData: FormData) {
+        return this.http.post(BaseRoute.Upload + '/Upload', formData, { reportProgress: true, observe: 'events' });
     }
 }

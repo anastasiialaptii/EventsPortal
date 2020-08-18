@@ -5,7 +5,7 @@ import { EventService } from '../shared/services/event-service';
 
 export class ImgUtil {
     response;
-    
+
     constructor(
         public toastr: ToastrService,
         public eventService: EventService) { }

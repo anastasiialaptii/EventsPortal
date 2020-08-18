@@ -19,14 +19,14 @@ export class EventService {
 
     GetPublicOwnEvents() {
         return this.http.get(BaseRoute.Events + '/GetPublicOwnEvents');
-    }     
+    }
 
     GetEvent(id: number) {
         return this.http.get(BaseRoute.Events + '/GetEvent/' + id);
     }
-    
+
     CreateEvent() {
-        return this.http.post(BaseRoute.Events + '/CreateEvent', this.FormData, { reportProgress: true, observe: 'events'});
+        return this.http.post(BaseRoute.Events + '/CreateEvent', this.FormData, { reportProgress: true, observe: 'events' });
     }
 
     DeleteEvent(id: number, idUser: string) {
@@ -36,8 +36,8 @@ export class EventService {
     EditEvent(id: number, event: EventItem) {
         return this.http.put(BaseRoute.Events + '/UpdateEvent/' + id, event);
     }
-    
+
     SearchEvents(eventName: string) {
         return this.http.get(BaseRoute.Events + '/SearchEvents/' + eventName);
-    } 
+    }
 }
