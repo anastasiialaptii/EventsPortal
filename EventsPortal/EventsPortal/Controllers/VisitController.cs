@@ -22,19 +22,6 @@ namespace EventsPortal.Controllers
             _userService = userService;
         }
 
-        //[HttpGet]
-        //public ActionResult<IEnumerable<VisitDTO>> GetEnrollEvents()
-        //{
-        //    try
-        //    {
-        //        return Ok(_visitService.GetEnrollEvents(1));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(500, $"Internal server error: {ex}");
-        //    }
-        //}
-
         [HttpGet]
         public ActionResult<IEnumerable<VisitDTO>> GetConfirmedVisits()
         {
