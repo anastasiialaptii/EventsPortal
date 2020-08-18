@@ -21,8 +21,6 @@ import { EventValidator } from '../utils/event-validator';
 export class VisitorsListComponent implements OnInit {
   private subscription: Subscription;
   id: number;
- // eventEdit: EventItem;
-  eventView: EventItem = new EventItem();
   isVisitorsExists: boolean = false;
   pageOfItemsEvent: Array<Visit>;
   visitorsPerEventList = [];
@@ -66,7 +64,6 @@ export class VisitorsListComponent implements OnInit {
 
   editEvent(eventItem: EventItem) {
     this.tableMode = false;
-    this.eventView = this.eventService.FormData;
   }
 
   save(files) {
