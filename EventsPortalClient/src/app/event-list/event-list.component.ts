@@ -42,16 +42,15 @@ export class EventListComponent implements OnInit {
   ngOnInit(): void {
     this.resetForm();
     this.visitService.GetConfirmedVisits().subscribe(res => { this.GetConfirmedVisitList = res as number[] });
-    // this.visitService.GetEnrollEvents().subscribe(res => { this.GetEnrollEventList = res as Visit[] });
     this.eventService.GetPublicOwnEvents().subscribe((res: any) => {
       this.eventItems = res;
       this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
     });
   }
 
-  onSearchEvent(name: string) {
-    if (name.length > 1) {
-      this.eventService.SearchEvents(name).subscribe((res: any) => {
+  onSearchEvent(eventName: string) {
+    if (eventName.length > 1) {
+      this.eventService.SearchEvents(eventName).subscribe((res: any) => {
         this.eventItems = res;
         this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
       });
@@ -68,9 +67,9 @@ export class EventListComponent implements OnInit {
     this.pageOfItemsEvent = pageOfItemsEvent;
   }
 
-  onEventDetails(eventId: number) {
-    this.eventService.GetEvent(eventId);
-    this.router.navigate(["/visitors-list/" + eventId]);
+  onEventDetails(idEvent: number) {
+    this.eventService.GetEvent(idEvent);
+    this.router.navigate(["/visitors-list/" + idEvent]);
   }
 
   resetForm(form?: NgForm) {
@@ -82,9 +81,9 @@ export class EventListComponent implements OnInit {
     };
   }
 
-  createVisit(id: number) {
+  createVisit(idEvent: number) {
     this.visit = {
-      EventId: id,
+      EventId: idEvent,
       UserId: 0
     }
     this.visitService.CreateVisit(this.visit).subscribe(
@@ -103,10 +102,10 @@ export class EventListComponent implements OnInit {
       });
   }
 
-  onDelete(id: number, idUser: string) {
+  onDelete(idEvent: number, idUser: string) {
     this.confirmationDialogService.confirm()
       .then((confirmed) =>
-        this.eventService.DeleteEvent(id, idUser)
+        this.eventService.DeleteEvent(idEvent, idUser)
           .subscribe(res => {
             this.eventService.GetPublicOwnEvents().subscribe((res: any) => {
               this.eventItems = res;
@@ -119,4 +118,8 @@ export class EventListComponent implements OnInit {
         })
       .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
+
+//   isUserCanJoin(eventId: number) {
+//     return this.usersVisist.contain(eventId)
+// } 
 }

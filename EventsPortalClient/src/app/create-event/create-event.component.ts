@@ -33,25 +33,21 @@ export class CreateEventComponent implements OnInit {
     this.resetForm();
   }
 
-  onSubmit(form: NgForm, files) {
+  onSubmit( files) {
     this.uploadService.UploadImage(this.imgUtil.downloadImg(files))
       .subscribe(event => {
         if(this.eventValidator.isEventValid(event))
         {
-          this.createEvent(form);
+          this.eventService.CreateEvent().subscribe(
+            res => {
+              this.router.navigate(['/event-list']);
+              this.resetForm();
+            },
+            err => {
+            })
         }
   });
 }
-
-  createEvent(form: NgForm) {
-    this.eventService.CreateEvent().subscribe(
-      res => {
-        this.router.navigate(['/event-list']);
-        this.resetForm();
-      },
-      err => {
-      })
-  }
 
   resetForm(form?: NgForm) {
     if (form != null)

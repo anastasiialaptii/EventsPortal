@@ -14,7 +14,7 @@
         </div>
         <div class="row">
             <div class="col-md-12 mb-4 text-center">
-                <form #form="ngForm" (submit)="onSubmit(form,file.files)" autocomplete="off">
+                <form #form="ngForm" (submit)="onSubmit(file.files)" autocomplete="off">
                     <input type="hidden" name="Id" [value]="eventService.FormData.Id">
                     <input type="hidden" name="ImageURI" [value]="eventService.FormData.ImageURI">
                     <input type="hidden" name="OrganizerId" [value]="eventService.FormData.OrganizerId">
