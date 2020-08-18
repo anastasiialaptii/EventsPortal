@@ -19,6 +19,9 @@ export class EventValidator {
             this.toastr.error('Upload photo', 'Error');
             return false;
         }
+        else if (eventItem.Name.length > 22) {
+            this.toastr.error('Event name should be shorter', 'Error');
+        }
         return true;
     }
 }
