@@ -119,7 +119,8 @@ export class EventListComponent implements OnInit {
       .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
-//   isUserCanJoin(eventId: number) {
-//     return this.usersVisist.contain(eventId)
-// } 
+  isUserCanJoin(eventId: number) {
+    if(this.GetConfirmedVisitList.some(x=>x===eventId))
+    return true;
+  }
 }
