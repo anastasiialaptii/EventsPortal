@@ -29,18 +29,6 @@ namespace Service.Services
             await _dbOperation.SaveAsync();
         }
 
-        //public IEnumerable<VisitDTO> GetEnrollEvents(int userId)
-        //{
-        //    //return _dbOperation.Events.GetItems()
-        //    //    .Select(x => new VisitDTO { EventId = x.Id })
-        //    //    .Where(y =>!_dbOperation.Visits.GetItems()
-        //    //    .Select(x => x.EventId) .Contains(y.EventId))
-        //    //    .ToList();
-        //    _dbOperation.Events
-        //        .GetItems()
-        //        .Where(e=> e.Visits.Where(v => v.UserId == userId))
-        //}
-
         public IEnumerable<int> GetConfirmedVisits(int userId)
         {
             return _dbOperation.Visits.GetItems()

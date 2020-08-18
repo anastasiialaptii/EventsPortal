@@ -28,13 +28,17 @@ namespace Data.Repository
         public Visit FindItem(Func<Visit, bool> item)
         {
             return _dbContext.Visits
-                 .Where(item)
-                 .FirstOrDefault();
+                .Include(x => x.User)
+                .Include(x => x.Event)
+                .Where(item).FirstOrDefault();
         }
 
         public Visit GetItem(int? id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Visits
+                .Include(x => x.User)
+                .Include(x => x.Event)
+                .Where(x => x.EventId == id).FirstOrDefault();
         }
 
         public IQueryable<Visit> GetItems()
