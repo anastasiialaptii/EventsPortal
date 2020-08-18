@@ -21,7 +21,7 @@ import { EventValidator } from '../utils/event-validator';
 export class VisitorsListComponent implements OnInit {
   private subscription: Subscription;
   id: number;
-  eventEdit: EventItem;
+ // eventEdit: EventItem;
   eventView: EventItem = new EventItem();
   isVisitorsExists: boolean = false;
   pageOfItemsEvent: Array<Visit>;
@@ -44,7 +44,7 @@ export class VisitorsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.eventService.GetEvent(this.id).subscribe(res => { this.eventEdit = res });
+    this.eventService.GetEvent(this.id).subscribe(res => { this.eventService.FormData = res });
     this.visitService.GetVisitorsPerEvent(this.id).subscribe((res: any) => {
       this.visitor = res;
       this.visitorsCounter(res);
@@ -66,12 +66,12 @@ export class VisitorsListComponent implements OnInit {
 
   editEvent(eventItem: EventItem) {
     this.tableMode = false;
-    this.eventView = eventItem;
+    this.eventView = this.eventService.FormData;
   }
 
   save(files) {
       if (files.length === 0) {
-        this.eventService.EditEvent(this.eventEdit.Id, this.eventEdit).subscribe(res => { res });
+        this.eventService.EditEvent(this.eventService.FormData.Id, this.eventService.FormData).subscribe(res => { res });
         this.tableMode = true;
         this.toastr.success('Event has been updated', 'Success');
       }
@@ -79,7 +79,7 @@ export class VisitorsListComponent implements OnInit {
         this.uploadService.UploadImage(this.imgUtil.downloadImg(files))
           .subscribe(event => {
             if (this.eventValidator.isEventValid(event)) {
-              this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { res });
+              this.eventService.EditEvent(this.eventService.FormData.Id, this.eventService.FormData).subscribe(res => { res });
               this.tableMode = true;
               this.toastr.success('Event has been updated', 'Success');
             }
@@ -89,6 +89,6 @@ export class VisitorsListComponent implements OnInit {
 
   cancel() {
     this.tableMode = true;
-    this.eventService.GetEvent(this.id).subscribe(res => { this.eventEdit = res });
+    this.eventService.GetEvent(this.id).subscribe(res => { this.eventService.FormData = res });
   }
 }

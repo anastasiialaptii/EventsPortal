@@ -6,17 +6,17 @@
                 <div class="row pr-lg-5">
                     <div class="col-md-5 mb-4">
                         <div class="view">
-                            <img [src]="imgUtil.createImgPath(eventEdit?.ImageURI)" class="img-fluid rounded" alt="event image">
+                            <img [src]="imgUtil.createImgPath(eventService.FormData.ImageURI)" class="img-fluid rounded" alt="event image">
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
-                        <h3 class="font-weight-bold mr-5">{{eventEdit?.Name}}</h3>
+                        <h3 class="font-weight-bold mr-5">{{eventService.FormData.Name}}</h3>
                         <div class="col-md-13">
-                            <p class="text-justify"> {{eventEdit?.Description}}</p>
-                            <h6>{{eventEdit?.Location}}, {{eventEdit?.Date | date}}</h6>
+                            <p class="text-justify"> {{eventService.FormData.Description}}</p>
+                            <h6>{{eventService.FormData.Location}}, {{eventService.FormData.Date | date}}</h6>
                         </div>
                     </div>
-                    <div class="col-md-1 mb-4" *ngIf="eventEdit?.Organizer.Email==token.UserEmail; else editDisallowed">
+                    <div class="col-md-1 mb-4" *ngIf="eventService.FormData.Organizer.Email==token.UserEmail; else editDisallowed">
                         <button type="button" class="btn btn-primary btn-rounded btn-md mr-2" (click)="editEvent(eventEdit)">Edit</button>
                         <ng-template #editDisallowed>
                             <button disabled type="button" class="btn btn-primary btn-rounded btn-md mr-2" (click)="editEvent(eventEdit)">Edit</button>
@@ -53,30 +53,30 @@
 </div>
 
 <ng-template #edit>
-    <input type="hidden" [(ngModel)]="eventView.Id" class="form-control">
-    <input type="hidden" [(ngModel)]="eventView.ImageURI" class="form-control">
-    <input type="hidden" [(ngModel)]="eventView.OrganizerId" class="form-control">
+    <input type="hidden" [(ngModel)]="eventService.FormData.Id" class="form-control">
+    <input type="hidden" [(ngModel)]="eventService.FormData.ImageURI" class="form-control">
+    <input type="hidden" [(ngModel)]="eventService.FormData.OrganizerId" class="form-control">
     <div class="mb-4">
         <label for="eventView.Name">Name</label>
-        <input type="text" [(ngModel)]="eventView.Name" class="form-control form-control-lg">
+        <input type="text" [(ngModel)]="eventService.FormData.Name" class="form-control form-control-lg">
     </div>
     <div class="mb-4">
         <label for="eventView.Location">Location</label>
-        <input type="text" [(ngModel)]="eventView.Location" class="form-control form-control-lg">
+        <input type="text" [(ngModel)]="eventService.FormData.Location" class="form-control form-control-lg">
     </div>
     <div class="mb-4">
         <label for="eventView.Description">Description</label>
-        <textarea type="text" [(ngModel)]="eventView.Description" class="form-control form-control-lg" rows="12" cols="50"></textarea>
+        <textarea type="text" [(ngModel)]="eventService.FormData.Description" class="form-control form-control-lg" rows="12" cols="50"></textarea>
     </div>
     <div class="mb-4">
         <label for="eventView.Name">Event Type</label>
-        <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventView.EventTypeId" class="form-control">
+        <select name="EventTypeId" #Name="ngModel" [(ngModel)]="eventService.FormData.EventTypeId" class="form-control">
             <option *ngFor="let type of config.eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
         </select>
     </div>
     <div class="mb-4">
         <mat-datepicker-toggle class="pull-left mr-2" matSuffix [for]="Date"></mat-datepicker-toggle>
-        <input [min]="config.minDate" class="form-control col" matInput [matDatepicker]="Date" name="Date" #Name="ngModel" [(ngModel)]="eventView.Date" placeholder="Choose a date">
+        <input [min]="config.minDate" class="form-control col" matInput [matDatepicker]="Date" name="Date" #Name="ngModel" [(ngModel)]="eventService.FormData.Date" placeholder="Choose a date">
         <mat-datepicker #Date></mat-datepicker>
     </div>
     <div class="mb-4">

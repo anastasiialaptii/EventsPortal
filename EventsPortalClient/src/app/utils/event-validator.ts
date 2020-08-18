@@ -14,16 +14,11 @@ export class EventValidator {
         if (event.type === HttpEventType.Response) {
             this.response = event.body;
             this.eventService.FormData.ImageURI = this.response.dbPath;
-            if (this.eventService.FormData.Id == 0) {
                 if (!this.eventService.FormData.ImageURI || !this.eventService.FormData.Date)
                     this.toastr.error('Something wrong!', 'Error');
                 else {
                     return true;
                 }
-            }
-            else {
-                return false;
-            }
         }
     }
 }
