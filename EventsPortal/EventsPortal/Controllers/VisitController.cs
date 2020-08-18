@@ -23,21 +23,42 @@ namespace EventsPortal.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<VisitDTO> GetEnrollEvents()
-        { 
-            return _visitService.GetEnrollEvents(_userService.FindUserByEmail(User.Identity.Name).Id);
+        public ActionResult<IEnumerable<VisitDTO>> GetEnrollEvents()
+        {
+            try
+            {
+                return Ok(_visitService.GetEnrollEvents(_userService.FindUserByEmail(User.Identity.Name).Id));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
         }
 
         [HttpGet]
-        public IEnumerable<VisitDTO> GetConfirmedVisits()
+        public ActionResult<IEnumerable<VisitDTO>> GetConfirmedVisits()
         {
-            return _visitService.GetConfirmedVisits(_userService.FindUserByEmail(User.Identity.Name).Id);
+            try
+            {
+                return Ok(_visitService.GetConfirmedVisits(_userService.FindUserByEmail(User.Identity.Name).Id));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
         }
 
         [HttpGet("{eventId}")]
-        public IEnumerable<VisitDTO> GetVisitorsPerEvent(int eventId)
+        public ActionResult<IEnumerable<VisitDTO>> GetVisitorsPerEvent(int eventId)
         {
-            return _visitService.GetVisitorsPerEvent(eventId);
+            try
+            {
+                return Ok(_visitService.GetVisitorsPerEvent(eventId));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
         }
 
         [HttpPost]

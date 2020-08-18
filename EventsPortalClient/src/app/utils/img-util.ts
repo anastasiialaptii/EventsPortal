@@ -1,7 +1,6 @@
 import { ToastrService } from 'ngx-toastr';
 
 export class ImgUtil{
-    isEditMode: boolean;
     constructor(public toastr: ToastrService){}
 
     createImgPath = (serverPath: string) => {
@@ -11,7 +10,6 @@ export class ImgUtil{
     downloadImg(files){
         if (files.length === 0) {
             this.toastr.error('Image spot is empty!', 'Error');
-            this.isEditMode = false;
             return;
           }
           let fileToUpload = <File>files[0];

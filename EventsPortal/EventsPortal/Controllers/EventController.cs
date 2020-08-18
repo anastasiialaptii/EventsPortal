@@ -26,21 +26,42 @@ namespace EventsPortal.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public IEnumerable<EventDTO> GetPublicEvents()
+        public ActionResult<IEnumerable<EventDTO>> GetPublicEvents()
         {
-            return _eventService.GetPublicEvents();
+            try
+            {
+                return Ok(_eventService.GetPublicEvents());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
         }
 
         [HttpGet]
-        public IEnumerable<EventDTO> GetPublicOwnEvents()
+        public ActionResult<IEnumerable<EventDTO>> GetPublicOwnEvents()
         {
-            return _eventService.GetPublicOwnEvents(User.Identity.Name);
+            try
+            {
+                return Ok(_eventService.GetPublicOwnEvents(User.Identity.Name));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
         }
 
         [HttpGet("{eventName}")]
-        public IEnumerable<EventDTO> SearchEvents(string eventName)
+        public ActionResult<IEnumerable<EventDTO>> SearchEvents(string eventName)
         {
-            return _eventService.SearchEvents(User.Identity.Name, eventName);
+            try
+            {
+                return Ok(_eventService.SearchEvents(User.Identity.Name, eventName));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
         }
 
         [HttpGet("{id}")]

@@ -8,7 +8,6 @@ import { EventItem } from '../shared/models/event-model';
 import { Visit } from '../shared/models/visit-model';
 import { ToastrService } from 'ngx-toastr';
 import { UploadService } from '../shared/services/upload-service';
-import { HttpEventType } from '@angular/common/http';
 import { ImgUtil } from '../utils/img-util';
 import { EventValidator } from '../utils/event-validator';
 
@@ -30,7 +29,6 @@ export class VisitorsListComponent implements OnInit {
   visitor: Visit[];
   token = JSON.parse(localStorage.getItem('token'));
   tableMode: boolean = true;
-  response;
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -72,33 +70,22 @@ export class VisitorsListComponent implements OnInit {
   }
 
   save(files) {
-    if (!this.eventView.Name || !this.eventView.Location || !this.eventView.Description || !this.eventView.Date || !this.eventView.ImageURI || this.eventView.Name.length > 20) {
-      this.toastr.error('Fill out all the fields', 'Error');
-    }
-    else {
       if (files.length === 0) {
         this.eventService.EditEvent(this.eventEdit.Id, this.eventEdit).subscribe(res => { res });
         this.tableMode = true;
         this.toastr.success('Event has been updated', 'Success');
       }
-      else {
-        let fileToUpload = <File>files[0];
-        const formData = new FormData();
-        formData.append('file', fileToUpload, fileToUpload.name);
-        this.uploadService.UploadImage(formData)
+      else {     
+        this.uploadService.UploadImage(this.imgUtil.downloadImg(files))
           .subscribe(event => {
-            if (event.type === HttpEventType.Response) {
-              debugger;
-              this.response = event.body;
-              this.eventView.ImageURI = this.response.dbPath;
-              this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { debugger; console.log(res) });
+            if (this.eventValidator.isEventValid(event)) {
+              this.eventService.EditEvent(this.eventView.Id, this.eventView).subscribe(res => { res });
               this.tableMode = true;
               this.toastr.success('Event has been updated', 'Success');
             }
           });
       }
     }
-  }
 
   cancel() {
     this.tableMode = true;
