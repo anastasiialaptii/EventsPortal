@@ -20,7 +20,7 @@ import { EventHelper } from '../utils/event-helper';
 
 export class VisitorsListComponent implements OnInit {
   private subscription: Subscription;
-  id: number;
+  eventId: number;
   isVisitorsExists: boolean = false;
   pageOfItemsEvent: Array<Visit>;
   visitorsPerEventList = [];
@@ -38,12 +38,12 @@ export class VisitorsListComponent implements OnInit {
     public uploadService: UploadService,
     public eventValidator: EventValidator,
     public eventHelper: EventHelper) {
-    this.subscription = activateRoute.params.subscribe(params => this.id = params['eventId']);
+    this.subscription = activateRoute.params.subscribe(params => this.eventId = params['eventId']);
   }
 
   ngOnInit(): void {
-    this.eventService.GetEvent(this.id).subscribe(res => { this.eventService.FormData = res });
-    this.visitService.GetVisitorsPerEvent(this.id).subscribe((res: any) => {
+    this.eventService.GetEvent(this.eventId).subscribe(res => { this.eventService.FormData = res });
+    this.visitService.GetVisitorsPerEvent(this.eventId).subscribe((res: any) => {
       this.visitor = res;
       this.visitorsCounter(res);
       this.visitorsPerEventList = Array(this.visitor.length).fill(0).map((x, i) => ({ user: this.visitor[i] }));
@@ -88,6 +88,6 @@ export class VisitorsListComponent implements OnInit {
 
   cancel() {
     this.tableMode = true;
-    this.eventService.GetEvent(this.id).subscribe(res => { this.eventService.FormData = res });
+    this.eventService.GetEvent(this.eventId).subscribe(res => { this.eventService.FormData = res });
   }
 }

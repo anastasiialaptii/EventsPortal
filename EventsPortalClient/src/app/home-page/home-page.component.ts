@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { EventItem } from '../shared/models/event-model';
 import { EventService } from '../shared/services/event-service';
 import { ImgUtil } from '../utils/img-util';
-import { AuthenticateService } from '../shared/services/auth-service';
 
 @Component({
   selector: 'app-home-page',
@@ -18,8 +17,7 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     public eventService:EventService,
-    public imgUtil: ImgUtil,
-    public auth: AuthenticateService
+    public imgUtil: ImgUtil
   ) { }
 
   ngOnInit(): void {

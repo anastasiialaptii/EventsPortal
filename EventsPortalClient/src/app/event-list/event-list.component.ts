@@ -3,13 +3,12 @@ import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { EventService } from '../shared/services/event-service';
 import { VisitService } from '../shared/services/visit-service';
-import { UserService } from '../shared/services/user-service';
 import { Visit } from '../shared/models/visit-model';
 import { EventItem } from '../shared/models/event-model';
 import { ImgUtil } from '../utils/img-util';
 import { Router } from '@angular/router';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
-import { AuthenticateService } from '../shared/services/auth-service';
+import { EventHelper } from '../utils/event-helper';
 
 @Component({
   selector: 'app-event-list',
@@ -19,24 +18,21 @@ import { AuthenticateService } from '../shared/services/auth-service';
 })
 
 export class EventListComponent implements OnInit {
-  visit: Visit;
+  newVisit: Visit;
   token = JSON.parse(localStorage.getItem('token'));
   publicOwnEvents = [];
   eventItems: EventItem[];
   pageOfItemsEvent: Array<EventItem>;
-  event: EventItem = new EventItem();
-  GetEnrollEventList: Visit[];
   GetConfirmedVisitList: number[];
 
   constructor(
     public confirmationDialogService: ConfirmationDialogService,
     public eventService: EventService,
     public visitService: VisitService,
-    public userService: UserService,
     public imgUtil: ImgUtil,
     public router: Router,
     public toastr: ToastrService,
-    public authService: AuthenticateService
+    public eventHelper: EventHelper
   ) { }
 
   ngOnInit(): void {
@@ -73,8 +69,7 @@ export class EventListComponent implements OnInit {
   }
 
   resetForm(form?: NgForm) {
-    if (form != null)
-      form.form.reset();
+    this.eventHelper.resetForm(form);
 
     this.eventService.SearchEventFormData = {
       Name: ''
@@ -82,16 +77,15 @@ export class EventListComponent implements OnInit {
   }
 
   createVisit(idEvent: number) {
-    this.visit = {
+    this.newVisit = {
       EventId: idEvent,
       UserId: 0
     }
-    this.visitService.CreateVisit(this.visit).subscribe(
+    this.visitService.CreateVisit(this.newVisit).subscribe(
       res => {
         res;
         this.toastr.success('Participation confirmed', 'Success');
         this.visitService.GetConfirmedVisits().subscribe(res => { this.GetConfirmedVisitList = res as number[] });
-        this.visitService.GetEnrollEvents().subscribe(res => { this.GetEnrollEventList = res as Visit[] });
         this.eventService.GetPublicOwnEvents().subscribe((res: any) => {
           this.eventItems = res;
           this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ event: this.eventItems[i] }));
@@ -120,7 +114,7 @@ export class EventListComponent implements OnInit {
   }
 
   isUserCanJoin(eventId: number) {
-    if(this.GetConfirmedVisitList.some(x=>x===eventId))
-    return true;
+    if (this.GetConfirmedVisitList.some(x => x === eventId))
+      return true;
   }
 }

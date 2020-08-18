@@ -51,8 +51,7 @@ export class CreateEventComponent implements OnInit {
   }
 
   resetForm(form?: NgForm) {
-    if (form != null)
-      form.form.reset();
+    this.eventHelper.resetForm(form);
 
     this.eventService.FormData = {
       Id: 0,

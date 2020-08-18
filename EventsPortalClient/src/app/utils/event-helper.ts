@@ -1,3 +1,5 @@
+import { NgForm } from '@angular/forms';
+
 export class EventHelper{
     eventTypes = [
         { Id: 1, Name: "Private" },
@@ -5,4 +7,9 @@ export class EventHelper{
       ];
 
     minDate = new Date(Date.now());
+
+    resetForm(form?: NgForm){
+      if (form != null)
+      form.form.reset();
+    }
 }
