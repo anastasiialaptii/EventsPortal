@@ -27,6 +27,7 @@ export class VisitorsListComponent implements OnInit {
   visitor: Visit[];
   token = JSON.parse(localStorage.getItem('token'));
   tableMode: boolean = true;
+  editedEvent: EventItem;
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -62,24 +63,27 @@ export class VisitorsListComponent implements OnInit {
   }
 
   editEvent(eventItem: EventItem) {
+    this.editedEvent = eventItem;
     this.tableMode = false;
   }
 
   save(files) {
-    if (files.length === 0) {
-      this.eventService.EditEvent(this.eventService.FormData.Id, this.eventService.FormData).subscribe(res => { res });
-      this.tableMode = true;
+    if (this.eventValidator.isEventValid(this.editedEvent)) {
+      if (files.length === 0) {
+        this.eventService.EditEvent(this.eventService.FormData.Id, this.eventService.FormData).subscribe(res => { res });
+        this.tableMode = true;
+      }
+      else {
+        this.uploadService.UploadImage(this.imgUtil.downloadImg(files))
+          .subscribe(event => {
+            if (this.imgUtil.createImgPath(event)) {
+              this.eventService.EditEvent(this.eventService.FormData.Id, this.eventService.FormData).subscribe(res => { res });
+              this.tableMode = true;
+            }
+          });
+      }
+      this.toastr.success('Event has been updated', 'Success');
     }
-    else {
-      this.uploadService.UploadImage(this.imgUtil.downloadImg(files))
-        .subscribe(event => {
-          if (this.eventValidator.isEventValid(event)) {
-            this.eventService.EditEvent(this.eventService.FormData.Id, this.eventService.FormData).subscribe(res => { res });
-            this.tableMode = true;
-          }
-        });
-    }                    
-    this.toastr.success('Event has been updated', 'Success');
   }
 
   cancel() {

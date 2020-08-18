@@ -25,7 +25,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.eventService.GetPublicEvents().subscribe((res: any) => {
       this.eventItems = res;
-      this.publicEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
+      this.publicEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ event: this.eventItems[i] }));
     });
   }
 

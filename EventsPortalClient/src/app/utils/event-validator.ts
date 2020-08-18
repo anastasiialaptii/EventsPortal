@@ -1,6 +1,7 @@
 import { ToastrService } from 'ngx-toastr';
 import { HttpEventType } from '@angular/common/http';
 import { EventService } from '../shared/services/event-service';
+import { EventItem } from '../shared/models/event-model';
 
 export class EventValidator {
     response;
@@ -10,15 +11,21 @@ export class EventValidator {
         public eventService: EventService
     ) { }
 
-    isEventValid(event) {
-        if (event.type === HttpEventType.Response) {
-            this.response = event.body;
-            this.eventService.FormData.ImageURI = this.response.dbPath;
-                if (!this.eventService.FormData.ImageURI || !this.eventService.FormData.Date)
-                    this.toastr.error('Something wrong!', 'Error');
-                else {
-                    return true;
-                }
+    isEventValid(eventItem: EventItem) {
+        if (!eventItem.Name ||
+            !eventItem.Description ||
+            !eventItem.Location ||
+            !eventItem.Date
+            )
+         {
+            this.toastr.error('Fields cannot be empty', 'Error');
+            return false;
         }
-    }
+        else if(!eventItem.ImageURI)
+        {
+            this.toastr.error('Upload photo', 'Error');
+            return false;
+        }
+        return true;
+    }    
 }

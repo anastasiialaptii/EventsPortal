@@ -6,7 +6,7 @@
                 <div class="row pr-lg-5">
                     <div class="col-md-5 mb-4">
                         <div class="view">
-                            <img [src]="imgUtil.createImgPath(eventService.FormData.ImageURI)" class="img-fluid rounded" alt="event image">
+                            <img [src]="imgUtil.getImage(eventService.FormData.ImageURI)" class="img-fluid rounded" alt="event image">
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
@@ -17,9 +17,9 @@
                         </div>
                     </div>
                     <div class="col-md-1 mb-4" *ngIf="eventService.FormData.Organizer.Email==token.UserEmail; else editDisallowed">
-                        <button type="button" class="btn btn-primary btn-rounded btn-md mr-2" (click)="editEvent(eventEdit)">Edit</button>
+                        <button type="button" class="btn btn-primary btn-rounded btn-md mr-2" (click)="editEvent(eventService.FormData)">Edit</button>
                         <ng-template #editDisallowed>
-                            <button disabled type="button" class="btn btn-primary btn-rounded btn-md mr-2" (click)="editEvent(eventEdit)">Edit</button>
+                            <button disabled type="button" class="btn btn-primary btn-rounded btn-md mr-2" (click)="editEvent(eventService.FormData)">Edit</button>
                         </ng-template>
                     </div>
                     <div class="col-md-7 mb-4">
