@@ -94,7 +94,7 @@ export class EventListComponent implements OnInit {
         this.visitService.GetEnrollEvents().subscribe(res => { this.GetEnrollEventList = res as Visit[] });
         this.eventService.GetPublicOwnEvents().subscribe((res: any) => {
           this.eventItems = res;
-          this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
+          this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ event: this.eventItems[i] }));
         });
       },
       err => {
