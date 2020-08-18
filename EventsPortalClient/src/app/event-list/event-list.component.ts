@@ -44,7 +44,7 @@ export class EventListComponent implements OnInit {
     this.visitService.GetConfirmedVisits().subscribe(res => { this.GetConfirmedVisitList = res as number[] });
     this.eventService.GetPublicOwnEvents().subscribe((res: any) => {
       this.eventItems = res;
-      this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
+      this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ event: this.eventItems[i] }));
     });
   }
 
@@ -52,13 +52,13 @@ export class EventListComponent implements OnInit {
     if (eventName.length > 1) {
       this.eventService.SearchEvents(eventName).subscribe((res: any) => {
         this.eventItems = res;
-        this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
+        this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ event: this.eventItems[i] }));
       });
     }
     else {
       this.eventService.GetPublicOwnEvents().subscribe((res: any) => {
         this.eventItems = res;
-        this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
+        this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ event: this.eventItems[i] }));
       });
     }
   }

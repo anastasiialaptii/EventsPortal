@@ -21,14 +21,14 @@
                     <div class="mb-4">
                         <mat-datepicker-toggle class="pull-left mr-2" matSuffix [for]="Date"></mat-datepicker-toggle>
                         <div class="row">
-                            <input [min]="config.minDate" class="form-control col" matInput [matDatepicker]="Date" name="Date" #Name="ngModel" [(ngModel)]="eventService.FormData.Date" placeholder="Choose a date">
+                            <input [min]="eventHelper.minDate" class="form-control col" matInput [matDatepicker]="Date" name="Date" #Name="ngModel" [(ngModel)]="eventService.FormData.Date" placeholder="Choose a date">
                         </div>
                         <mat-datepicker #Date></mat-datepicker>
                     </div>
                     <input class="form-control mb-4" name="Name" #Name="ngModel" [(ngModel)]="eventService.FormData.Name" placeholder="Name" maxlength="23" required>
                     <input class="form-control mb-4" name="Location" #Name="ngModel" [(ngModel)]="eventService.FormData.Location" placeholder="Location" maxlength="40" required>
                     <select class="form-control mb-4" name="EventTypeId" #Name="ngModel" [(ngModel)]="eventService.FormData.EventTypeId" required>
-                        <option *ngFor="let type of config.eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
+                        <option *ngFor="let type of eventHelper.eventTypes" [ngValue]=type.Id>{{type.Name}}</option>
                     </select>
                     <textarea class="form-control mb-4" name="Description" #Name="ngModel" [(ngModel)]="eventService.FormData.Description" placeholder="Provide short info about event" required rows="8" cols="50"></textarea>
                     <input type="file" accept="image/jpeg,image/png,image/gif" #file placeholder="Choose file" style="display:none;" multiple>

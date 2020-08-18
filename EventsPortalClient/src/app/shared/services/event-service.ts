@@ -26,7 +26,7 @@ export class EventService {
     }
     
     CreateEvent() {
-        return this.http.post(BaseRoute.Events + '/CreateEvent', this.FormData, { reportProgress: true, observe: 'events', withCredentials: true });
+        return this.http.post(BaseRoute.Events + '/CreateEvent', this.FormData, { reportProgress: true, observe: 'events'});
     }
 
     DeleteEvent(id: number, idUser: string) {

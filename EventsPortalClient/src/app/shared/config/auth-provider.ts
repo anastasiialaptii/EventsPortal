@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate } from "@angular/router";
 
 export function getAuthServiceConfigs() {
+  
   let config = new AuthServiceConfig(
     [
       {
@@ -16,14 +17,11 @@ export function getAuthServiceConfigs() {
 }
 
 @Injectable()
+
 export class AuthGuard implements CanActivate {
 
-  constructor() { }
-
   canActivate() {
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem('token'))
       return true;
-    }
-    return false;
   }
 }

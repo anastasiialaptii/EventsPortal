@@ -4,7 +4,7 @@ import { ImgUtil } from '../utils/img-util';
 import { EventValidator } from '../utils/event-validator';
 import { EventService } from '../shared/services/event-service';
 import { Router } from '@angular/router';
-import { Configuration } from '../shared/config/configuration';
+import { EventHelper } from '../utils/event-helper';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -22,7 +22,7 @@ export class CreateEventComponent implements OnInit {
     public eventValidator: EventValidator,
     public eventService: EventService,
     private router: Router,
-    public config: Configuration
+    public eventHelper: EventHelper
   ) { }
 
   ngOnInit(): void {

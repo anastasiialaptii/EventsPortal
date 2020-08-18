@@ -14,17 +14,17 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4" *ngFor="let item of pageOfItemsEvent">
                 <div class="card">
-                    <div class="view overlay" (click)="onEventDetails(item.data.Id)" [routerLink]="['/visitors-list', 'item.data.Id']">
-                        <img [src]="imgUtil.createImgPath(item.data.ImageURI)" class="card-img-top img-fluid" alt="event image">
+                    <div class="view overlay" (click)="onEventDetails(item.event.Id)" [routerLink]="['/visitors-list', 'item.event.Id']">
+                        <img [src]="imgUtil.createImgPath(item.event.ImageURI)" class="card-img-top img-fluid" alt="event image">
                         <div class="mask rgba-white-slight"></div>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">{{item.data.Name}}</h4>
-                        <h4 class="card-title">{{item.data.Date | date}}</h4>
-                        <p class="card-text">{{item.data.EventType.Name}}</p>
-                        <button *ngIf="item.data.Organizer.Email==token.UserEmail" type="button" class="btn btn-danger mb-2 mr-2 pull-right" (click)="onDelete(item.data.Id, item.data.Organizer.Email)" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                        <button *ngIf="!isUserCanJoin(item.data.Id)" type="button" class="btn btn-success mb-2 mr-2 pull-right" (click)="createVisit(item.data.Id)">Join</button>
-                        <button *ngIf="isUserCanJoin(item.data.Id)" disabled type="button" class="btn btn-link mb-2 pull-left"> Participation ✅</button>
+                        <h4 class="card-title">{{item.event.Name}}</h4>
+                        <h4 class="card-title">{{item.event.Date | date}}</h4>
+                        <p class="card-text">{{item.event.EventType.Name}}</p>
+                        <button *ngIf="item.event.Organizer.Email==token.UserEmail" type="button" class="btn btn-danger mb-2 mr-2 pull-right" (click)="onDelete(item.event.Id, item.event.Organizer.Email)" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                        <button *ngIf="!isUserCanJoin(item.event.Id)" type="button" class="btn btn-success mb-2 mr-2 pull-right" (click)="createVisit(item.event.Id)">Join</button>
+                        <button *ngIf="isUserCanJoin(item.event.Id)" disabled type="button" class="btn btn-link mb-2 pull-left"> Participation ✅</button>
                     </div>
                 </div>
             </div>

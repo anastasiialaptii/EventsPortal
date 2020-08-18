@@ -26,6 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpRequestInterceptor } from '../app/shared/config/HttpRequestInterceptor';
 import { EventValidator } from './utils/event-validator';
+import { EventHelper } from './utils/event-helper';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { EventValidator } from './utils/event-validator';
     Configuration,
     BaseRoute,
     ImgUtil,
+    EventHelper,
     EventValidator,
     ConfirmationDialogService,
     {

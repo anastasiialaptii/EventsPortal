@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { Configuration } from '../shared/config/configuration'
 import { VisitService } from '../shared/services/visit-service';
 import { EventService } from '../shared/services/event-service'; 0
 import { EventItem } from '../shared/models/event-model';
@@ -10,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UploadService } from '../shared/services/upload-service';
 import { ImgUtil } from '../utils/img-util';
 import { EventValidator } from '../utils/event-validator';
+import { EventHelper } from '../utils/event-helper';
 
 @Component({
   selector: 'app-visitors-list',
@@ -36,8 +36,7 @@ export class VisitorsListComponent implements OnInit {
     public toastr: ToastrService,
     public uploadService: UploadService,
     public eventValidator: EventValidator,
-    public config: Configuration
-  ) {
+    public eventHelper: EventHelper) {
     this.subscription = activateRoute.params.subscribe(params => this.id = params['eventId']);
   }
 
@@ -67,22 +66,21 @@ export class VisitorsListComponent implements OnInit {
   }
 
   save(files) {
-      if (files.length === 0) {
-        this.eventService.EditEvent(this.eventService.FormData.Id, this.eventService.FormData).subscribe(res => { res });
-        this.tableMode = true;
-        this.toastr.success('Event has been updated', 'Success');
-      }
-      else {     
-        this.uploadService.UploadImage(this.imgUtil.downloadImg(files))
-          .subscribe(event => {
-            if (this.eventValidator.isEventValid(event)) {
-              this.eventService.EditEvent(this.eventService.FormData.Id, this.eventService.FormData).subscribe(res => { res });
-              this.tableMode = true;
-              this.toastr.success('Event has been updated', 'Success');
-            }
-          });
-      }
+    if (files.length === 0) {
+      this.eventService.EditEvent(this.eventService.FormData.Id, this.eventService.FormData).subscribe(res => { res });
+      this.tableMode = true;
     }
+    else {
+      this.uploadService.UploadImage(this.imgUtil.downloadImg(files))
+        .subscribe(event => {
+          if (this.eventValidator.isEventValid(event)) {
+            this.eventService.EditEvent(this.eventService.FormData.Id, this.eventService.FormData).subscribe(res => { res });
+            this.tableMode = true;
+          }
+        });
+    }                    
+    this.toastr.success('Event has been updated', 'Success');
+  }
 
   cancel() {
     this.tableMode = true;
