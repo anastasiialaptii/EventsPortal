@@ -12,7 +12,7 @@ namespace EventsPortal.Controllers
     [EnableCors("CorsPolicy")]
     [Route("api/[controller]/[action]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class EventController : ControllerBase
     {
         private readonly IEventService _eventService;

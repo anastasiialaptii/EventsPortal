@@ -50,7 +50,7 @@ namespace Service.Services
         {
             if (eventDTO != null)
             {
-                   _dbOperation.Events.Update( _mapper.Map<Event>(eventDTO));
+                _dbOperation.Events.Update(_mapper.Map<Event>(eventDTO));
                 await _dbOperation.SaveAsync();
             }
         }
@@ -120,7 +120,8 @@ namespace Service.Services
         public IEnumerable<EventDTO> GetPublicOwnEvents(string userId)
         {
             return _dbOperation.Events.GetItems()
-              .Where(x => x.EventType.Name == "Public" || x.Organizer.Email == userId)
+              .Where(x => x.EventType.Name == "Public" ||
+              x.Organizer.Email == userId)
               .Select(x => new EventDTO
               {
                   Id = x.Id,

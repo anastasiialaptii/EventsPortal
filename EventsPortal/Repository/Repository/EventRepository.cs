@@ -41,28 +41,32 @@ namespace Data.Repository
         public Event GetItem(int? id)
         {
             return _dbContext.Events.Where(x => x.Id == id)
-                .Select(x => new Event
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Location = x.Location,
-                    ImageURI = x.ImageURI,
-                    Description = x.Description,
-                    Date = x.Date,
-                    OrganizerId = x.OrganizerId,
-                    EventTypeId = x.EventTypeId,
-                    Organizer = new User
-                    {
-                        Id = x.Organizer.Id,
-                        Name = x.Organizer.Name,
-                        Email = x.Organizer.Email
-                    },
-                    EventType = new EventType
-                    {
-                        Id = x.EventType.Id,
-                        Name = x.EventType.Name
-                    }
-                }).FirstOrDefault();
+                .Include(x=> x.Organizer)
+                .Include(x=>x.Visits)
+                .Include(x=>x.EventType)
+                .FirstOrDefault();
+                //.Select(x => new Event
+                //{
+                //    Id = x.Id,
+                //    Name = x.Name,
+                //    Location = x.Location,
+                //    ImageURI = x.ImageURI,
+                //    Description = x.Description,
+                //    Date = x.Date,
+                //    OrganizerId = x.OrganizerId,
+                //    EventTypeId = x.EventTypeId,
+                //    Organizer = new User
+                //    {
+                //        Id = x.Organizer.Id,
+                //        Name = x.Organizer.Name,
+                //        Email = x.Organizer.Email
+                //    },
+                //    EventType = new EventType
+                //    {
+                //        Id = x.EventType.Id,
+                //        Name = x.EventType.Name
+                //    }
+                //}).FirstOrDefault();
         }
 
         public IQueryable<Event> GetItems()

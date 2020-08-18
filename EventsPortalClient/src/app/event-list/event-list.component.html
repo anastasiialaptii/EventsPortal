@@ -23,13 +23,13 @@
                         <h4 class="card-title">{{item.data.Date | date}}</h4>
                         <p class="card-text">{{item.data.EventType.Name}}</p>
                         <button *ngIf="item.data.Organizer.Email==token.UserEmail" type="button" class="btn btn-danger mb-2 mr-2 pull-right" (click)="onDelete(item.data.Id, item.data.Organizer.Email)" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                        <div *ngFor="let x of GetEnrollEventList" class="mb-2">
+                        <!-- //<div *ngFor="let x of GetEnrollEventList" class="mb-2">
                             <div *ngIf="x.EventId==item.data.Id">
                                 <button type="button" class="btn btn-success mb-2 mr-2 pull-right" (click)="createVisit(item.data.Id)">Join</button>
                             </div>
-                        </div>
+                        </div> -->
                         <div *ngFor="let x of GetConfirmedVisitList" class="mb-2">
-                            <div *ngIf="x.EventId==item.data.Id">
+                            <div *ngIf="x==item.data.Id">
                                 <button disabled type="button" class="btn btn-link mb-2 pull-left"> Participation ✅</button>
                             </div>
                         </div>
@@ -45,3 +45,14 @@
         </div>
     </div>
 </main>
+
+<!-- 
+//<div *ngFor="let x of GetEnrollEventList" class="mb-2">
+    <div *ngIf="isUserCanJoin(item.data.id)">
+        <button type="button" class="btn btn-success mb-2 mr-2 pull-right" (click)="createVisit(item.data.Id)">Join</button>
+    </div>
+</div>
+
+isUserCanJoin(string eventId) {
+    return this.usersVisist.contain(eventId)
+} -->

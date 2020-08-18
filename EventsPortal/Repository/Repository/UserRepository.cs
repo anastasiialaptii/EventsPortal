@@ -27,7 +27,10 @@ namespace Data.Repository
 
         public User FindItem(Func<User, bool> item)
         {
-            return _dbContext.Users.Where(item).FirstOrDefault();
+            return _dbContext.Users
+                .Include(x => x.Visits)
+                .Include(x => x.Events)
+                .Where(item).FirstOrDefault();
         }
 
         public IQueryable<User> GetItems()
@@ -42,7 +45,10 @@ namespace Data.Repository
 
         public User GetItem(int? id)
         {
-            return _dbContext.Users.Where(x => x.Id == id).FirstOrDefault();
+            return _dbContext.Users
+                .Include(x => x.Visits)
+                .Include(x => x.Events)
+                .Where(x => x.Id == id).FirstOrDefault();
         }
     }
 }

@@ -10,9 +10,9 @@ namespace Service.Interfaces
 
         IEnumerable<VisitDTO> GetVisitorsPerEvent(int id);
 
-        IEnumerable<VisitDTO> GetEnrollEvents(int userId);
+        //IEnumerable<VisitDTO> GetEnrollEvents(int userId);
 
-        IEnumerable<VisitDTO> GetConfirmedVisits(int userId);
+        IEnumerable<int> GetConfirmedVisits(int userId);
 
         Task AddVisit(VisitDTO visitDTO);
     }

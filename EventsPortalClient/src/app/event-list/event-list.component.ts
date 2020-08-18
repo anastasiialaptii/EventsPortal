@@ -26,7 +26,7 @@ export class EventListComponent implements OnInit {
   pageOfItemsEvent: Array<EventItem>;
   event: EventItem = new EventItem();
   GetEnrollEventList: Visit[];
-  GetConfirmedVisitList: Visit[];
+  GetConfirmedVisitList: number[];
 
   constructor(
     public confirmationDialogService: ConfirmationDialogService,
@@ -41,8 +41,8 @@ export class EventListComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetForm();
-    this.visitService.GetConfirmedVisits().subscribe(res => { this.GetConfirmedVisitList = res as Visit[] });
-    this.visitService.GetEnrollEvents().subscribe(res => { this.GetEnrollEventList = res as Visit[] });
+    this.visitService.GetConfirmedVisits().subscribe(res => { this.GetConfirmedVisitList = res as number[] });
+    // this.visitService.GetEnrollEvents().subscribe(res => { this.GetEnrollEventList = res as Visit[] });
     this.eventService.GetPublicOwnEvents().subscribe((res: any) => {
       this.eventItems = res;
       this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ data: this.eventItems[i] }));
@@ -91,7 +91,7 @@ export class EventListComponent implements OnInit {
       res => {
         res;
         this.toastr.success('Participation confirmed', 'Success');
-        this.visitService.GetConfirmedVisits().subscribe(res => { this.GetConfirmedVisitList = res as Visit[] });
+        this.visitService.GetConfirmedVisits().subscribe(res => { this.GetConfirmedVisitList = res as number[] });
         this.visitService.GetEnrollEvents().subscribe(res => { this.GetEnrollEventList = res as Visit[] });
         this.eventService.GetPublicOwnEvents().subscribe((res: any) => {
           this.eventItems = res;
