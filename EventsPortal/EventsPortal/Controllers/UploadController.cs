@@ -22,7 +22,6 @@ namespace EventsPortal.Controllers
 
                 if (file.ContentType == "image/jpeg" && file.Length > 0)
                 {
-
                     var fileName = Guid.NewGuid().ToString() + ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
                     var fullPath = Path.Combine(pathToSave, fileName);
                     var dbPath = Path.Combine(folderName, fileName);
