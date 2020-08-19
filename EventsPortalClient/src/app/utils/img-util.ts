@@ -20,6 +20,10 @@ export class ImgUtil {
             return;
         }
         let fileToUpload = <File>files[0];
+        if (fileToUpload.type.match(/image\/*/) == null) {
+            this.toastr.error('Only images are supported', 'Error');
+            return;
+        }
         const formData = new FormData();
         formData.append('file', fileToUpload, fileToUpload.name);
         return formData;

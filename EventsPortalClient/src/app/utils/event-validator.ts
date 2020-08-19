@@ -10,17 +10,11 @@ export class EventValidator {
         if (!eventItem.Name ||
             !eventItem.Description ||
             !eventItem.Location ||
-            !eventItem.Date
+            !eventItem.Date ||
+            !eventItem.ImageURI
         ) {
             this.toastr.error('Fields cannot be empty', 'Error');
             return false;
-        }
-        else if (!eventItem.ImageURI) {
-            this.toastr.error('Upload photo', 'Error');
-            return false;
-        }
-        else if (eventItem.Name.length > 22) {
-            this.toastr.error('Event name should be shorter', 'Error');
         }
         return true;
     }
