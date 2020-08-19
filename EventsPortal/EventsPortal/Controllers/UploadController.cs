@@ -20,8 +20,9 @@ namespace EventsPortal.Controllers
                 var folderName = Path.Combine("Resources", "Images");
                 var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
 
-                if (file.Length > 0)
+                if (file.ContentType == "image/jpeg" && file.Length > 0)
                 {
+
                     var fileName = Guid.NewGuid().ToString() + ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
                     var fullPath = Path.Combine(pathToSave, fileName);
                     var dbPath = Path.Combine(folderName, fileName);
@@ -30,7 +31,6 @@ namespace EventsPortal.Controllers
                     {
                         file.CopyTo(stream);
                     }
-
                     return Ok(new { dbPath });
                 }
                 else
