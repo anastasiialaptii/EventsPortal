@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Office\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Office\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_EventsPortal.-1512462336.00" t="ExcludeRecursive" />
+    <e p="D:\WebAPI\EventsPortal" t="IncludeFlat">
+      <e p="Core" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Core.csproj" t="IncludeRecursive" />
+        <e p="DTO" t="Include">
+          <e p="BaseEntityDTO.cs" t="Include" />
+          <e p="EventDTO.cs" t="Include" />
+          <e p="EventTypeDTO.cs" t="Include" />
+          <e p="UserDTO.cs" t="Include" />
+          <e p="VisitDTO.cs" t="Include" />
+        </e>
+        <e p="Entities" t="Include">
+          <e p="BaseEntity.cs" t="Include" />
+          <e p="Event.cs" t="Include" />
+          <e p="EventType.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+          <e p="Visit.cs" t="Include" />
+        </e>
+        <e p="EntitiesBuilder" t="Include">
+          <e p="EventBuilder.cs" t="Include" />
+          <e p="TypeBuilder.cs" t="Include" />
+          <e p="UserBuilder.cs" t="Include" />
+          <e p="VisitBuilder.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="Core.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="EventsPortal" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="AuthController.cs" t="Include" />
+          <e p="EventController.cs" t="Include" />
+          <e p="UploadController.cs" t="Include" />
+          <e p="UserController.cs" t="Include" />
+          <e p="VisitController.cs" t="Include" />
+        </e>
+        <e p="EventsPortal.csproj" t="IncludeRecursive" />
+        <e p="GoogleAuthModels" t="Include">
+          <e p="GoogleUser.cs" t="Include" />
+          <e p="Response.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="EventsPortal.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+          <e p="serviceDependencies.json" t="Include" />
+          <e p="serviceDependencies.local.json" t="Include" />
+        </e>
+        <e p="Resources" t="Include">
+          <e p="Images" t="Include">
+            <e p="01ec5271-45f2-483e-b155-3d4bcff6cde6Top20MusicFestivalsinEurope_MadCool.jpg" t="Include" />
+            <e p="08e40277-dd11-4eec-9d1b-65766caa25aeTOP20Wireless.jpg" t="Include" />
+            <e p="11586ba1-f08b-4e2e-8a6c-6610a082a1a3TOP20Download.jpg" t="Include" />
+            <e p="133589fb-d5cc-4efe-b1f9-5034014d7bedTop20EuropeTimeWarpDE.jpg" t="Include" />
+            <e p="1f69d46e-dc77-4ca9-92ef-fbeb649784e2Top20MusicFestivalsinEurope_MadCool.jpg" t="Include" />
+            <e p="1f9c4984-1387-4cf8-8304-bfb160f17313TOP20Wireless.jpg" t="Include" />
+            <e p="2a92cf81-b13e-4a70-ac3f-f0d1c1dbb663Top20EuropeTimeWarpDE.jpg" t="Include" />
+            <e p="2aa7ee0f-1dbf-481a-a5d1-2915b37a2b6dTop20EuropeRockenSeine.jpg" t="Include" />
+            <e p="2c4969c7-5fd8-4121-b32b-45eeb3feb8f2Top20EuropeAfroNation.jpg" t="Include" />
+            <e p="321c9c12-f832-4e65-a73f-333513c3560eTOP20EXIT.jpg" t="Include" />
+            <e p="39d707f2-7d24-48fe-8412-0b07ccaf7f5dTop20EuropeRockInRioLisboa.jpg" t="Include" />
+            <e p="4f3cac38-1f95-4146-bf63-f82ec42189d3Top20MusicFestivalsinEurope_MadCool.jpg" t="Include" />
+            <e p="51787d52-b99a-448f-8b77-e8ff3622d846Top20EuropeRockenSeine.jpg" t="Include" />
+            <e p="552dec1c-3f75-4fca-ad3a-824646565bd3TOP20EXIT.jpg" t="Include" />
+            <e p="555197b2-3ff8-4d27-816f-ce3067dad459TOP20RockamRing.jpg" t="Include" />
+            <e p="560981de-12c9-40fd-bb85-4614e4b07d5bTOP20Tomorrowland.jpg" t="Include" />
+            <e p="661cb2cf-c7bd-4e12-ab9d-b40f9ee98776Top20MusicFestivalsinEurope_UltraEurope2.jpg" t="Include" />
+            <e p="709c56e8-0899-47c1-991f-b5c1753b33b4TOP20Creamfields.jpg" t="Include" />
+            <e p="769f6564-27b8-473e-9032-d900f4981c0aTOP20Tomorrowland.jpg" t="Include" />
+            <e p="7ae32010-031a-421f-9465-3b3aa9338ef3Top20EuropeTimeWarpDE.jpg" t="Include" />
+            <e p="7c1215bb-349b-42b2-b9c9-8347a428052aTOP20Tomorrowland.jpg" t="Include" />
+            <e p="7f1fee98-e812-4bee-93ea-b081ef1a703dTop20MusicFestivalsinEurope_MadCool.jpg" t="Include" />
+            <e p="88746a88-bd69-45d1-b20c-39a837a02e0cTOP20Primavera.jpg" t="Include" />
+            <e p="8afddfb8-fae6-4149-acf7-89b20bca242eTOP20SBSR.jpg" t="Include" />
+            <e p="8d1dac77-b349-439d-a5a9-989ff406bb44Top20MusicFestivalsinEurope_MadCool.jpg" t="Include" />
+            <e p="94b9f841-9204-4db8-8d0d-74500ef72ffaTop20MusicFestivalsinEurope_MadCool.jpg" t="Include" />
+            <e p="a3df44c0-f109-420d-a965-2a9f5d1d65e3Top20MusicFestivalsinEurope_UltraEurope2.jpg" t="Include" />
+            <e p="a5a77705-6f6f-4302-955b-6d667c19436eTOP20Primavera.jpg" t="Include" />
+            <e p="b98d475b-997e-477a-b495-91ddd4a45abfTOP20Hellfest.jpg" t="Include" />
+            <e p="ba1c10bc-0989-4562-8144-c977a4048eabTOP20EXIT.jpg" t="Include" />
+            <e p="bdaa48ab-8cef-484f-b837-1a4248d2e454TOP20Roskilde.jpg" t="Include" />
+            <e p="ce9dede8-a7c9-41f1-912a-f6a254da48c8TOP20Primavera.jpg" t="Include" />
+            <e p="cf2dfc9b-7532-431e-969d-7e3fd6b27f17Top20MusicFestivalsinEurope_MadCool.jpg" t="Include" />
+            <e p="e42b245d-0b4f-4260-a6b6-57153de30b60TOP20RockamRing.jpg" t="Include" />
+            <e p="ecac5f8e-0ed6-4bbb-8a7b-b51d13a4c6eeTop20EuropeRockInRioLisboa.jpg" t="Include" />
+            <e p="f7896705-8f41-4e11-8b01-828f2f867c72Top20MusicFestivalsinEurope_UltraEurope2.jpg" t="Include" />
+          </e>
+        </e>
+        <e p="Startup.cs" t="Include" />
+      </e>
+      <e p="EventsPortal.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Repository" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Data.csproj" t="IncludeRecursive" />
+        <e p="EventsPortalContext" t="Include">
+          <e p="EventsPortalDbContext.cs" t="Include" />
+          <e p="ModelBuilderExtentions.cs" t="Include" />
+        </e>
+        <e p="Interfaces" t="Include">
+          <e p="IRepository.cs" t="Include" />
+          <e p="IUnitOfWork.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="20200818152050_Initial.cs" t="Include" />
+          <e p="20200818152050_Initial.Designer.cs" t="Include" />
+          <e p="EventsPortalDbContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="Data.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Repository" t="Include">
+          <e p="EventRepository.cs" t="Include" />
+          <e p="EventsPortalUnitOfWork.cs" t="Include" />
+          <e p="UserRepository.cs" t="Include" />
+          <e p="VisitRepository.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Service" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Interfaces" t="Include">
+          <e p="IEventService.cs" t="Include" />
+          <e p="IUserService.cs" t="Include" />
+          <e p="IVisitService.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="Service.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Service.csproj" t="IncludeRecursive" />
+        <e p="ServiceMapper" t="Include">
+          <e p="AutoMapperProfile.cs" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="EventService.cs" t="Include" />
+          <e p="UserService.cs" t="Include" />
+          <e p="VisitService.cs" t="Include" />
+        </e>
+      </e>
+    </e>
+  </component>
+</project>

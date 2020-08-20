@@ -16,7 +16,8 @@ export class AuthComponent implements OnInit {
   userEmail: string;
   response;
   users = new User();
-
+  email;
+  username;
   constructor(
     public oAuth: AuthService,
     public authService: AuthenticateService,

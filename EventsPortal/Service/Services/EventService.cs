@@ -65,6 +65,7 @@ namespace Service.Services
         {
             return _mapper.Map<List<EventDTO>>(
                 _dbOperation.Events.GetItems()
+                .OrderByDescending(x=>x.Date)
                 .Select(x => new EventDTO
                 {
                     Id = x.Id,
@@ -122,6 +123,7 @@ namespace Service.Services
             return _dbOperation.Events.GetItems()
               .Where(x => x.EventType.Name == "Public" ||
               x.Organizer.Email == userId)
+              .OrderByDescending(x=>x.Date)
               .Select(x => new EventDTO
               {
                   Id = x.Id,

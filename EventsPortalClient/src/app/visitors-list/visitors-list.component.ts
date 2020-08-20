@@ -82,7 +82,6 @@ export class VisitorsListComponent implements OnInit {
             }
           });
       }
-      this.toastr.success('Event has been updated', 'Success');
     }
   }
 

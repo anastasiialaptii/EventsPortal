@@ -9,6 +9,8 @@ import { ImgUtil } from '../utils/img-util';
 import { Router } from '@angular/router';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 import { EventHelper } from '../utils/event-helper';
+import { GoogleAnalytics } from '../shared/services/google-analytics-service'
+
 
 @Component({
   selector: 'app-event-list',
@@ -32,7 +34,8 @@ export class EventListComponent implements OnInit {
     public imgUtil: ImgUtil,
     public router: Router,
     public toastr: ToastrService,
-    public eventHelper: EventHelper
+    public eventHelper: EventHelper,
+    public ga: GoogleAnalytics
   ) { }
 
   ngOnInit(): void {
@@ -89,6 +92,7 @@ export class EventListComponent implements OnInit {
         this.eventService.GetPublicOwnEvents().subscribe((res: any) => {
           this.eventItems = res;
           this.publicOwnEvents = Array(this.eventItems.length).fill(0).map((x, i) => ({ event: this.eventItems[i] }));
+          this.ga.createVisit();
         });
       },
       err => {

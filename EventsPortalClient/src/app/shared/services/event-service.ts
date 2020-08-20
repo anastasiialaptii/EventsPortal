@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { BaseRoute } from '../config/BaseRoute';
 import { EventItem } from '../models/event-model';
 
+// declare let ga: Function;
+
 @Injectable({
     providedIn: 'root'
 })
@@ -13,7 +15,7 @@ export class EventService {
 
     constructor(private http: HttpClient) { }
 
-    GetPublicEvents() {
+    GetPublicEvents() { 
         return this.http.get(BaseRoute.Events + '/GetPublicEvents');
     }
 
@@ -26,6 +28,8 @@ export class EventService {
     }
 
     CreateEvent() {
+        // ga('send', 'event', 'CreateEvent', 'POST');
+
         return this.http.post(BaseRoute.Events + '/CreateEvent', this.FormData, { reportProgress: true, observe: 'events' });
     }
 
