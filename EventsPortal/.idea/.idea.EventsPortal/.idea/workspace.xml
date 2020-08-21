@@ -23,45 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1744381e-8e42-412f-a3cf-d1fe759ad8ae" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.vs/EventsPortal/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/EventsPortal/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/EventsPortal/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/EventsPortal/v16/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/obj/Core.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Core/obj/Core.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/obj/Core.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Core/obj/Core.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/obj/Debug/netcoreapp3.1/Core.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Core/obj/Debug/netcoreapp3.1/Core.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Core/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Core/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventsPortal/Resources/Images/3b3ceae3-75d3-4c55-9f2b-2c4fe829684aTOP20Creamfields.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventsPortal/Resources/Images/658a3a89-646e-42a1-9331-223069a15dc3Top20EuropeRockenSeine.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventsPortal/Resources/Images/d58da219-ed03-43f0-b08b-efa69bb91791TOP20Wireless.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventsPortal/Resources/Images/ef33d911-6053-4aac-9112-1edc771d58ebTop20EuropeTimeWarpDE.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventsPortal/Resources/Images/ef4d9200-a02b-41e9-a616-65b38048958aTop20MusicFestivalsinEurope_UltraEurope2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventsPortal/bin/Debug/netcoreapp3.1/EventsPortal.exe" beforeDir="false" afterPath="$PROJECT_DIR$/EventsPortal/bin/Debug/netcoreapp3.1/EventsPortal.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventsPortal/bin/Debug/netcoreapp3.1/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EventsPortal/bin/Debug/netcoreapp3.1/Service.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventsPortal/bin/Debug/netcoreapp3.1/Service.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/EventsPortal/bin/Debug/netcoreapp3.1/Service.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventsPortal/obj/Debug/netcoreapp3.1/EventsPortal.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/EventsPortal/obj/Debug/netcoreapp3.1/EventsPortal.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventsPortal/obj/Debug/netcoreapp3.1/EventsPortal.exe" beforeDir="false" afterPath="$PROJECT_DIR$/EventsPortal/obj/Debug/netcoreapp3.1/EventsPortal.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventsPortal/obj/EventsPortal.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/EventsPortal/obj/EventsPortal.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventsPortal/obj/EventsPortal.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/EventsPortal/obj/EventsPortal.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventsPortal/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/EventsPortal/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventsPortal/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/EventsPortal/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/obj/Data.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/obj/Data.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/obj/Data.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/obj/Data.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/obj/Debug/netcoreapp3.1/Data.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/obj/Debug/netcoreapp3.1/Data.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/Services/EventService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Services/EventService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/bin/Debug/netcoreapp3.1/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/netcoreapp3.1/Service.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/bin/Debug/netcoreapp3.1/Service.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/netcoreapp3.1/Service.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/netcoreapp3.1/Service.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/netcoreapp3.1/Service.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/netcoreapp3.1/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/netcoreapp3.1/Service.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/netcoreapp3.1/Service.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/netcoreapp3.1/Service.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Service.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Service.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/Service.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Service.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EventsPortalClient/src/app/confirmation-dialog/confirmation-dialog.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../EventsPortalClient/src/app/confirmation-dialog/confirmation-dialog.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EventsPortalClient/src/app/visitors-list/visitors-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../EventsPortalClient/src/app/visitors-list/visitors-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EventsPortalClient/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../EventsPortalClient/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EventsPortal/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EventsPortal/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EventsPortal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EventsPortal/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +90,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597911717239</updated>
-      <workItem from="1597911722676" duration="2697000" />
+      <workItem from="1597911722676" duration="2960000" />
     </task>
     <servers />
   </component>
@@ -149,21 +112,21 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1597911827374">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1598002627789">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597911827374" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1597911827374">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598002627789" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1598002627789">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597911827374" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1597911827374">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598002627789" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1598002627788">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597911827374" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1597911827374">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598002627788" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1598002627789">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597911827374" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598002627789" />
   </component>
 </project>

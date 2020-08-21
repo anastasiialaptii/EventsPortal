@@ -12,4 +12,13 @@ export class GoogleAnalytics{
         ga('send', 'event', 'CreateVisit', 'POST');
     }
 
+    homeClick(){
+        ga('send', 'event', 'homeClick', 'homeClick');
+    }
+
+    homePage(){
+        ga('send', 'event', 'homePage', 'homePage', 'homePage', {
+            nonInteraction: true
+          });
+        }
 }
