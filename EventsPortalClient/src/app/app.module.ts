@@ -27,6 +27,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpRequestInterceptor } from '../app/shared/config/HttpRequestInterceptor';
 import { EventValidator } from './utils/event-validator';
 import { EventHelper } from './utils/event-helper';
+import {NgsRevealModule} from 'ngx-scrollreveal';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { EventHelper } from './utils/event-helper';
     NgbModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    NgxFileDropModule
+    NgxFileDropModule,
+    [NgsRevealModule]
   ],
   providers: [
     MatDatepickerModule,
