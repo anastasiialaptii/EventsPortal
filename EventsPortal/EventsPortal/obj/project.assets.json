@@ -2,6 +2,9 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "AngularJS.Core/1.8.0": {
+        "type": "package"
+      },
       "AutoMapper/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -3169,6 +3172,21 @@
     }
   },
   "libraries": {
+    "AngularJS.Core/1.8.0": {
+      "sha512": "StzfBqVlaMzvRQOAxShY3mVJKZxnkPahHR8/jJTj3LTG4IraRhex1c228Xd0VBDESdqW9phbgGLnvbIBpvxIyA==",
+      "type": "package",
+      "path": "angularjs.core/1.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "angularjs.core.1.8.0.nupkg.sha512",
+        "angularjs.core.nuspec",
+        "content/Scripts/angular-mocks.js",
+        "content/Scripts/angular.js",
+        "content/Scripts/angular.min.js",
+        "content/Scripts/angular.min.js.map"
+      ]
+    },
     "AutoMapper/10.0.0": {
       "sha512": "T09NoqMZBqw0/JEauXulxnmmerl0Zj03e0r6VCcJ0LURWBIaYxZPPoiDv8bHf5Y4x2xcXJp4JPXoCaeOMJfHEA==",
       "type": "package",
@@ -9698,6 +9716,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "AngularJS.Core >= 1.8.0",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.0.0",
       "Microsoft.AspNetCore.Authentication.Google >= 3.1.6",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.6",
@@ -9751,6 +9770,10 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
+          "AngularJS.Core": {
+            "target": "Package",
+            "version": "[1.8.0, )"
+          },
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
             "version": "[8.0.0, )"

@@ -150,8 +150,6 @@ D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAna
 D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\WebAPI\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.csproj.CoreCompileInputs.cache
-D:\WebAPI\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.MvcApplicationPartsAssemblyInfo.cache
 D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\AutoMapper.dll
 D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 H:\TechStack\EventsPortal\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\appsettings.Development.json
@@ -330,3 +328,6 @@ D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.IdentityMo
 D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\WebAPI\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.csproj.CoreCompileInputs.cache
+D:\WebAPI\EventsPortal\EventsPortal\obj\Debug\netcoreapp3.1\EventsPortal.MvcApplicationPartsAssemblyInfo.cache
+D:\WebAPI\EventsPortal\EventsPortal\bin\Debug\netcoreapp3.1\libman.json

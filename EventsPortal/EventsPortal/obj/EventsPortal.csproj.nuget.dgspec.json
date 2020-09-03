@@ -110,6 +110,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "AngularJS.Core": {
+              "target": "Package",
+              "version": "[1.8.0, )"
+            },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[8.0.0, )"

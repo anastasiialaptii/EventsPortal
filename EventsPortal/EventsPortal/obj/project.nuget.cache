@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "thbLjFOchYhSSLrV7RszSzPT/dydONj/W27UaIfjo2pBlRPs4ub9mEGE0J9WDGJgxUJKT+QUhdM4zMu38jEmIA==",
+  "dgSpecHash": "eMqx//CRt8bPuo1ttDDx7Py9n5WZsh9X4OTmASzXGvoS8Cdd4XV9+Fx+q/FbWv97TjUg0oEPnpFDDOdCGt3YMg==",
   "success": true,
   "projectFilePath": "D:\\WebAPI\\EventsPortal\\EventsPortal\\EventsPortal.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Office\\.nuget\\packages\\angularjs.core\\1.8.0\\angularjs.core.1.8.0.nupkg.sha512",
     "C:\\Users\\Office\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\Office\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.0\\automapper.extensions.microsoft.dependencyinjection.8.0.0.nupkg.sha512",
     "C:\\Users\\Office\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "defaultProvider": "jsdelivr",
+  "libraries": [
+    {
+      "library": "angularjs@0.0.1",
+      "destination": "wwwroot/angularjs/"
+    }
+  ]
+}
