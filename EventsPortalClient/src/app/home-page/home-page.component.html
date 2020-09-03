@@ -1,10 +1,13 @@
-<app-auth></app-auth>
+<app-auth></app-auth>        
+<app-decor-div></app-decor-div>
+
 <div class="mt-5">
     <div class="container" ngsReveal>
         <div class="row">
             <div class="col-md-12 mb-4">
                 <h1 class="text-center">Events 🎉</h1>
             </div>
+           
         </div>
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4" *ngFor="let item of pageOfItemsEvent">
@@ -21,7 +24,8 @@
         </div>
         <div class="row">
             <div class="mx-auto mt-4">
-                <jw-pagination class="jw-pagination" [items]="publicEvents" [pageSize]="9" (changePage)="onChangePage($event)">
+                <jw-pagination class="jw-pagination" [items]="publicEvents" [pageSize]="9"
+                    (changePage)="onChangePage($event)">
                 </jw-pagination>
             </div>
         </div>

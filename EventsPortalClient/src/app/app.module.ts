@@ -28,6 +28,8 @@ import { HttpRequestInterceptor } from '../app/shared/config/HttpRequestIntercep
 import { EventValidator } from './utils/event-validator';
 import { EventHelper } from './utils/event-helper';
 import {NgsRevealModule} from 'ngx-scrollreveal';
+import { DecorDivComponent } from './decor-div/decor-div.component';
+import { InfoDivComponent } from './info-div/info-div.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import {NgsRevealModule} from 'ngx-scrollreveal';
     VisitorsListComponent,
     CreateEventComponent,
     HomePageComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    DecorDivComponent,
+    InfoDivComponent
   ],
   imports: [
     MatDatepickerModule,
